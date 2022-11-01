@@ -1,6 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_production_app/domain/auth/auth_failure.dart';
 import 'package:flutter_production_app/domain/auth/auth_user_model.dart';
+import 'package:fpdart/fpdart.dart';
 
 abstract class IAuthService {
   Stream<AuthUserModel> get authStateChanges;

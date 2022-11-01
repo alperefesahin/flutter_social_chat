@@ -1,7 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_production_app/domain/auth/auth_failure.dart';
@@ -12,7 +13,8 @@ part 'phone_number_sign_in_state.dart';
 
 @Injectable()
 class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
-  StreamSubscription<Either<AuthFailure, Tuple2<String, int?>>>? _phoneNumberSignInSubscription;
+  StreamSubscription<Either<AuthFailure, Tuple2<String, int?>>>?
+      _phoneNumberSignInSubscription;
   late final IAuthService _authService;
   final Duration verificationCodeTimeout = const Duration(seconds: 60);
 
@@ -67,9 +69,9 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
   }
 
   void verifySmsCode() {
-     if (state.isInProgress) {
-          return;
-        }
+    if (state.isInProgress) {
+      return;
+    }
     state.verificationIdOption.fold(
       () {
         //Verification id does not exist. This should not happen.
@@ -82,7 +84,8 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
           ),
         );
         final Either<AuthFailure, Unit> failureOrSuccess =
-            await _authService.verifySmsCode(smsCode: state.smsCode, verificationId: verificationId);
+            await _authService.verifySmsCode(
+                smsCode: state.smsCode, verificationId: verificationId);
         failureOrSuccess.fold(
           (AuthFailure failure) {
             emit(
@@ -119,12 +122,14 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
         .signInWithPhoneNumber(
           phoneNumber: state.phoneNumber,
           timeout: verificationCodeTimeout,
-          resendToken: state.phoneNumber != state.phoneNumberAndResendTokenPair.value1
-              ? null
-              : state.phoneNumberAndResendTokenPair.value2,
+          resendToken:
+              state.phoneNumber != state.phoneNumberAndResendTokenPair.first
+                  ? null
+                  : state.phoneNumberAndResendTokenPair.second,
         )
         .listen(
-          (Either<AuthFailure, Tuple2<String, int?>> failureOrVerificationId) => failureOrVerificationId.fold(
+          (Either<AuthFailure, Tuple2<String, int?>> failureOrVerificationId) =>
+              failureOrVerificationId.fold(
             (AuthFailure failure) {
               emit(
                 state.copyWith(
@@ -136,11 +141,12 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
             (Tuple2<String, int?> verificationIdResendTokenPair) {
               emit(
                 state.copyWith(
-                  verificationIdOption: some(verificationIdResendTokenPair.value1),
+                  verificationIdOption:
+                      some(verificationIdResendTokenPair.first),
                   isInProgress: false,
                   phoneNumberAndResendTokenPair: tuple2(
                     state.phoneNumber,
-                    verificationIdResendTokenPair.value2,
+                    verificationIdResendTokenPair.second,
                   ),
                 ),
               );
