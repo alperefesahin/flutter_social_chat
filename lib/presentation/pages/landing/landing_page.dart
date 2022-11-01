@@ -36,13 +36,9 @@ class _LandingPageState extends State<LandingPage> {
     return BlocListener<AuthCubit, AuthState>(
       listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
       listener: (context, state) {
-        debugPrint(state.toString());
         if (state.isUserLoggedIn) {
-          debugPrint("asdasd");
           context.router.navigate(const BottomTabRoute());
         } else {
-          debugPrint("AAAA");
-
           context.router.navigate(const SignInRoute());
         }
       },
