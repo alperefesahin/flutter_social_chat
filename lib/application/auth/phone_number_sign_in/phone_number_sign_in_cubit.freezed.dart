@@ -35,7 +35,8 @@ mixin _$PhoneNumberSignInState {
 abstract class $PhoneNumberSignInStateCopyWith<$Res> {
   factory $PhoneNumberSignInStateCopyWith(PhoneNumberSignInState value,
           $Res Function(PhoneNumberSignInState) then) =
-      _$PhoneNumberSignInStateCopyWithImpl<$Res>;
+      _$PhoneNumberSignInStateCopyWithImpl<$Res, PhoneNumberSignInState>;
+  @useResult
   $Res call(
       {String phoneNumber,
       String smsCode,
@@ -47,54 +48,57 @@ abstract class $PhoneNumberSignInStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PhoneNumberSignInStateCopyWithImpl<$Res>
+class _$PhoneNumberSignInStateCopyWithImpl<$Res,
+        $Val extends PhoneNumberSignInState>
     implements $PhoneNumberSignInStateCopyWith<$Res> {
   _$PhoneNumberSignInStateCopyWithImpl(this._value, this._then);
 
-  final PhoneNumberSignInState _value;
   // ignore: unused_field
-  final $Res Function(PhoneNumberSignInState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phoneNumber = freezed,
-    Object? smsCode = freezed,
-    Object? verificationIdOption = freezed,
-    Object? failureMessageOption = freezed,
-    Object? isInProgress = freezed,
-    Object? isPhoneNumberInputValidated = freezed,
-    Object? phoneNumberAndResendTokenPair = freezed,
+    Object? phoneNumber = null,
+    Object? smsCode = null,
+    Object? verificationIdOption = null,
+    Object? failureMessageOption = null,
+    Object? isInProgress = null,
+    Object? isPhoneNumberInputValidated = null,
+    Object? phoneNumberAndResendTokenPair = null,
   }) {
     return _then(_value.copyWith(
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      smsCode: smsCode == freezed
+      smsCode: null == smsCode
           ? _value.smsCode
           : smsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      verificationIdOption: verificationIdOption == freezed
+      verificationIdOption: null == verificationIdOption
           ? _value.verificationIdOption
           : verificationIdOption // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      failureMessageOption: failureMessageOption == freezed
+      failureMessageOption: null == failureMessageOption
           ? _value.failureMessageOption
           : failureMessageOption // ignore: cast_nullable_to_non_nullable
               as Option<AuthFailure>,
-      isInProgress: isInProgress == freezed
+      isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-      isPhoneNumberInputValidated: isPhoneNumberInputValidated == freezed
+      isPhoneNumberInputValidated: null == isPhoneNumberInputValidated
           ? _value.isPhoneNumberInputValidated
           : isPhoneNumberInputValidated // ignore: cast_nullable_to_non_nullable
               as bool,
-      phoneNumberAndResendTokenPair: phoneNumberAndResendTokenPair == freezed
+      phoneNumberAndResendTokenPair: null == phoneNumberAndResendTokenPair
           ? _value.phoneNumberAndResendTokenPair
           : phoneNumberAndResendTokenPair // ignore: cast_nullable_to_non_nullable
               as Tuple2<String, int?>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -105,6 +109,7 @@ abstract class _$$_PhoneNumberSignInStateCopyWith<$Res>
           $Res Function(_$_PhoneNumberSignInState) then) =
       __$$_PhoneNumberSignInStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String phoneNumber,
       String smsCode,
@@ -117,52 +122,50 @@ abstract class _$$_PhoneNumberSignInStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_PhoneNumberSignInStateCopyWithImpl<$Res>
-    extends _$PhoneNumberSignInStateCopyWithImpl<$Res>
+    extends _$PhoneNumberSignInStateCopyWithImpl<$Res,
+        _$_PhoneNumberSignInState>
     implements _$$_PhoneNumberSignInStateCopyWith<$Res> {
   __$$_PhoneNumberSignInStateCopyWithImpl(_$_PhoneNumberSignInState _value,
       $Res Function(_$_PhoneNumberSignInState) _then)
-      : super(_value, (v) => _then(v as _$_PhoneNumberSignInState));
+      : super(_value, _then);
 
-  @override
-  _$_PhoneNumberSignInState get _value =>
-      super._value as _$_PhoneNumberSignInState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phoneNumber = freezed,
-    Object? smsCode = freezed,
-    Object? verificationIdOption = freezed,
-    Object? failureMessageOption = freezed,
-    Object? isInProgress = freezed,
-    Object? isPhoneNumberInputValidated = freezed,
-    Object? phoneNumberAndResendTokenPair = freezed,
+    Object? phoneNumber = null,
+    Object? smsCode = null,
+    Object? verificationIdOption = null,
+    Object? failureMessageOption = null,
+    Object? isInProgress = null,
+    Object? isPhoneNumberInputValidated = null,
+    Object? phoneNumberAndResendTokenPair = null,
   }) {
     return _then(_$_PhoneNumberSignInState(
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      smsCode: smsCode == freezed
+      smsCode: null == smsCode
           ? _value.smsCode
           : smsCode // ignore: cast_nullable_to_non_nullable
               as String,
-      verificationIdOption: verificationIdOption == freezed
+      verificationIdOption: null == verificationIdOption
           ? _value.verificationIdOption
           : verificationIdOption // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      failureMessageOption: failureMessageOption == freezed
+      failureMessageOption: null == failureMessageOption
           ? _value.failureMessageOption
           : failureMessageOption // ignore: cast_nullable_to_non_nullable
               as Option<AuthFailure>,
-      isInProgress: isInProgress == freezed
+      isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-      isPhoneNumberInputValidated: isPhoneNumberInputValidated == freezed
+      isPhoneNumberInputValidated: null == isPhoneNumberInputValidated
           ? _value.isPhoneNumberInputValidated
           : isPhoneNumberInputValidated // ignore: cast_nullable_to_non_nullable
               as bool,
-      phoneNumberAndResendTokenPair: phoneNumberAndResendTokenPair == freezed
+      phoneNumberAndResendTokenPair: null == phoneNumberAndResendTokenPair
           ? _value.phoneNumberAndResendTokenPair
           : phoneNumberAndResendTokenPair // ignore: cast_nullable_to_non_nullable
               as Tuple2<String, int?>,
@@ -208,36 +211,39 @@ class _$_PhoneNumberSignInState extends _PhoneNumberSignInState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhoneNumberSignInState &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber) &&
-            const DeepCollectionEquality().equals(other.smsCode, smsCode) &&
-            const DeepCollectionEquality()
-                .equals(other.verificationIdOption, verificationIdOption) &&
-            const DeepCollectionEquality()
-                .equals(other.failureMessageOption, failureMessageOption) &&
-            const DeepCollectionEquality()
-                .equals(other.isInProgress, isInProgress) &&
-            const DeepCollectionEquality().equals(
-                other.isPhoneNumberInputValidated,
-                isPhoneNumberInputValidated) &&
-            const DeepCollectionEquality().equals(
-                other.phoneNumberAndResendTokenPair,
-                phoneNumberAndResendTokenPair));
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.smsCode, smsCode) || other.smsCode == smsCode) &&
+            (identical(other.verificationIdOption, verificationIdOption) ||
+                other.verificationIdOption == verificationIdOption) &&
+            (identical(other.failureMessageOption, failureMessageOption) ||
+                other.failureMessageOption == failureMessageOption) &&
+            (identical(other.isInProgress, isInProgress) ||
+                other.isInProgress == isInProgress) &&
+            (identical(other.isPhoneNumberInputValidated,
+                    isPhoneNumberInputValidated) ||
+                other.isPhoneNumberInputValidated ==
+                    isPhoneNumberInputValidated) &&
+            (identical(other.phoneNumberAndResendTokenPair,
+                    phoneNumberAndResendTokenPair) ||
+                other.phoneNumberAndResendTokenPair ==
+                    phoneNumberAndResendTokenPair));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(phoneNumber),
-      const DeepCollectionEquality().hash(smsCode),
-      const DeepCollectionEquality().hash(verificationIdOption),
-      const DeepCollectionEquality().hash(failureMessageOption),
-      const DeepCollectionEquality().hash(isInProgress),
-      const DeepCollectionEquality().hash(isPhoneNumberInputValidated),
-      const DeepCollectionEquality().hash(phoneNumberAndResendTokenPair));
+      phoneNumber,
+      smsCode,
+      verificationIdOption,
+      failureMessageOption,
+      isInProgress,
+      isPhoneNumberInputValidated,
+      phoneNumberAndResendTokenPair);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PhoneNumberSignInStateCopyWith<_$_PhoneNumberSignInState> get copyWith =>
       __$$_PhoneNumberSignInStateCopyWithImpl<_$_PhoneNumberSignInState>(
           this, _$identity);
@@ -256,21 +262,19 @@ abstract class _PhoneNumberSignInState extends PhoneNumberSignInState {
   const _PhoneNumberSignInState._() : super._();
 
   @override
-  String get phoneNumber => throw _privateConstructorUsedError;
+  String get phoneNumber;
   @override
-  String get smsCode => throw _privateConstructorUsedError;
+  String get smsCode;
   @override
-  Option<String> get verificationIdOption => throw _privateConstructorUsedError;
+  Option<String> get verificationIdOption;
   @override
-  Option<AuthFailure> get failureMessageOption =>
-      throw _privateConstructorUsedError;
+  Option<AuthFailure> get failureMessageOption;
   @override
-  bool get isInProgress => throw _privateConstructorUsedError;
+  bool get isInProgress;
   @override
-  bool get isPhoneNumberInputValidated => throw _privateConstructorUsedError;
+  bool get isPhoneNumberInputValidated;
   @override
-  Tuple2<String, int?> get phoneNumberAndResendTokenPair =>
-      throw _privateConstructorUsedError;
+  Tuple2<String, int?> get phoneNumberAndResendTokenPair;
   @override
   @JsonKey(ignore: true)
   _$$_PhoneNumberSignInStateCopyWith<_$_PhoneNumberSignInState> get copyWith =>

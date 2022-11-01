@@ -9,6 +9,7 @@ import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
 @LazySingleton(as: IAuthService)
 class FirebaseAuthService implements IAuthService {
   FirebaseAuthService(this._firebaseAuth);
+  
   final FirebaseAuth _firebaseAuth;
 
   @override

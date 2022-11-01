@@ -1,28 +1,58 @@
-import 'package:flow_builder/flow_builder.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
-import 'package:flutter_production_app/presentation/pages/home/home_page.dart';
-import 'package:flutter_production_app/presentation/pages/sign_in/sign_in_page.dart';
+import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return FlowBuilder<AuthState>(
-      state: context.select((AuthCubit cubit) => cubit.state),
-      onGeneratePages: (authState, pages) {
-        if (authState.isUserLoggedIn) {
-          return [
-            HomePage.page(),
-          ];
-        } else {
-          return [
-            SignInPage.page(),
-          ];
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        final bool isUserLoggedIn =
+            context.read<AuthCubit>().state.isUserLoggedIn;
+
+        if (isUserLoggedIn) {
+          AutoRouter.of(context).replace(const BottomTabRoute());
+        } else if (!isUserLoggedIn) {
+          AutoRouter.of(context).replace(const SignInRoute());
         }
       },
+    );
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<AuthCubit, AuthState>(
+      listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
+      listener: (context, state) {
+        debugPrint(state.toString());
+        if (state.isUserLoggedIn) {
+          debugPrint("asdasd");
+          context.router.navigate(const BottomTabRoute());
+        } else {
+          debugPrint("AAAA");
+
+          context.router.navigate(const SignInRoute());
+        }
+      },
+      child: const Scaffold(
+        body: Center(
+          child: CustomProgressIndicator(
+            progressIndicatorColor: Colors.black,
+          ),
+        ),
+      ),
     );
   }
 }
