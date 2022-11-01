@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_production_app/domain/auth/auth_failure.dart';
 import 'package:flutter_production_app/domain/auth/auth_user_model.dart';
@@ -35,7 +35,8 @@ class FirebaseAuthService implements IAuthService {
     required Duration timeout,
     required int? resendToken,
   }) async* {
-    final StreamController<Either<AuthFailure, Tuple2<String, int?>>> streamController =
+    final StreamController<Either<AuthFailure, Tuple2<String, int?>>>
+        streamController =
         StreamController<Either<AuthFailure, Tuple2<String, int?>>>();
 
     await _firebaseAuth.verifyPhoneNumber(
@@ -72,7 +73,8 @@ class FirebaseAuthService implements IAuthService {
     required String verificationId,
   }) async {
     try {
-      final PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
+      final PhoneAuthCredential phoneAuthCredential =
+          PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: smsCode,
       );
@@ -82,7 +84,8 @@ class FirebaseAuthService implements IAuthService {
     } on FirebaseAuthException catch (e) {
       if (e.code == "session-expired") {
         return left(const AuthFailure.sessionExpired());
-      } else if (e.code == "ınvalıd-verıfıcatıon-code" || e.code == "invalid-verification-code") {
+      } else if (e.code == "ınvalıd-verıfıcatıon-code" ||
+          e.code == "invalid-verification-code") {
         return left(const AuthFailure.invalidVerificationCode());
       }
       return left(const AuthFailure.serverError());

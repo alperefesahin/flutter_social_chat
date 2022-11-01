@@ -43,7 +43,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   injectable: ^1.5.3
   get_it: ^7.2.0
-  dartz: ^0.10.1
+  fpdart: ^0.3.0
   
   firebase_core: ^2.1.1
   firebase_auth: ^4.1.0
