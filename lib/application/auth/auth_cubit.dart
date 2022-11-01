@@ -16,7 +16,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   AuthCubit() : super(AuthState.empty()) {
     _authService = getIt<IAuthService>();
-    _authUserSubscription = _authService.authStateChanges.listen(_listenAuthStateChangesStream);
+    _authUserSubscription =
+        _authService.authStateChanges.listen(_listenAuthStateChangesStream);
   }
 
   @override

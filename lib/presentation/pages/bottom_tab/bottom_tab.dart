@@ -22,11 +22,17 @@ class BottomTabPage extends StatelessWidget {
             onTap: tabsRouter.setActiveIndex,
             items: const [
               BottomNavigationBarItem(
-                  label: 'Home', icon: Icon(CupertinoIcons.home)),
+                label: 'Home',
+                icon: Icon(CupertinoIcons.home),
+              ),
               BottomNavigationBarItem(
-                  label: 'Search', icon: Icon(CupertinoIcons.search)),
+                label: 'Search',
+                icon: Icon(CupertinoIcons.search),
+              ),
               BottomNavigationBarItem(
-                  label: 'Profile', icon: Icon(CupertinoIcons.person)),
+                label: 'Profile',
+                icon: Icon(CupertinoIcons.person),
+              ),
             ],
           );
         },

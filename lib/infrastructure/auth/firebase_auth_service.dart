@@ -1,5 +1,10 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
+import 'package:flutter_production_app/infrastructure/core/firebase_helpers.dart';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_production_app/domain/auth/auth_failure.dart';
@@ -8,9 +13,10 @@ import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
 
 @LazySingleton(as: IAuthService)
 class FirebaseAuthService implements IAuthService {
-  FirebaseAuthService(this._firebaseAuth);
-  
+  FirebaseAuthService(this._firebaseAuth, this._firestore);
+
   final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
 
   @override
   Stream<AuthUserModel> get authStateChanges {
@@ -19,11 +25,15 @@ class FirebaseAuthService implements IAuthService {
         if (user == null) {
           return AuthUserModel.empty();
         } else {
-          return AuthUserModel(id: user.uid, phoneNumber: user.phoneNumber!);
+          return user.toDomain();
         }
       },
     );
   }
+
+  @override
+  Future<Option<AuthUserModel>> getSignedInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<void> signOut() async {
@@ -80,7 +90,22 @@ class FirebaseAuthService implements IAuthService {
         smsCode: smsCode,
       );
 
-      await _firebaseAuth.signInWithCredential(phoneAuthCredential);
+      await _firebaseAuth.signInWithCredential(phoneAuthCredential).then(
+        (userCredential) async {
+          final userDoc = await _firestore.userDocument();
+          debugPrint(userCredential.toString());
+
+          final user = userCredential.user!;
+          return userDoc.set(
+            {
+              "userPhone": user.phoneNumber!,
+              "uid": user.uid,
+            },
+            SetOptions(merge: true),
+          );
+        },
+      );
+
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == "session-expired") {
