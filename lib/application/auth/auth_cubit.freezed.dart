@@ -28,46 +28,51 @@ mixin _$AuthState {
 /// @nodoc
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res>;
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
+  @useResult
   $Res call({AuthUserModel userModel, bool isUserLoggedIn, bool isInProgress});
 
   $AuthUserModelCopyWith<$Res> get userModel;
 }
 
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
   _$AuthStateCopyWithImpl(this._value, this._then);
 
-  final AuthState _value;
   // ignore: unused_field
-  final $Res Function(AuthState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userModel = freezed,
-    Object? isUserLoggedIn = freezed,
-    Object? isInProgress = freezed,
+    Object? userModel = null,
+    Object? isUserLoggedIn = null,
+    Object? isInProgress = null,
   }) {
     return _then(_value.copyWith(
-      userModel: userModel == freezed
+      userModel: null == userModel
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
               as AuthUserModel,
-      isUserLoggedIn: isUserLoggedIn == freezed
+      isUserLoggedIn: null == isUserLoggedIn
           ? _value.isUserLoggedIn
           : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
               as bool,
-      isInProgress: isInProgress == freezed
+      isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AuthUserModelCopyWith<$Res> get userModel {
     return $AuthUserModelCopyWith<$Res>(_value.userModel, (value) {
-      return _then(_value.copyWith(userModel: value));
+      return _then(_value.copyWith(userModel: value) as $Val);
     });
   }
 }
@@ -78,6 +83,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
           _$_AuthState value, $Res Function(_$_AuthState) then) =
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({AuthUserModel userModel, bool isUserLoggedIn, bool isInProgress});
 
   @override
@@ -85,31 +91,30 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthState>
     implements _$$_AuthStateCopyWith<$Res> {
   __$$_AuthStateCopyWithImpl(
       _$_AuthState _value, $Res Function(_$_AuthState) _then)
-      : super(_value, (v) => _then(v as _$_AuthState));
+      : super(_value, _then);
 
-  @override
-  _$_AuthState get _value => super._value as _$_AuthState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userModel = freezed,
-    Object? isUserLoggedIn = freezed,
-    Object? isInProgress = freezed,
+    Object? userModel = null,
+    Object? isUserLoggedIn = null,
+    Object? isInProgress = null,
   }) {
     return _then(_$_AuthState(
-      userModel: userModel == freezed
+      userModel: null == userModel
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
               as AuthUserModel,
-      isUserLoggedIn: isUserLoggedIn == freezed
+      isUserLoggedIn: null == isUserLoggedIn
           ? _value.isUserLoggedIn
           : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
               as bool,
-      isInProgress: isInProgress == freezed
+      isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -142,22 +147,21 @@ class _$_AuthState implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthState &&
-            const DeepCollectionEquality().equals(other.userModel, userModel) &&
-            const DeepCollectionEquality()
-                .equals(other.isUserLoggedIn, isUserLoggedIn) &&
-            const DeepCollectionEquality()
-                .equals(other.isInProgress, isInProgress));
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel) &&
+            (identical(other.isUserLoggedIn, isUserLoggedIn) ||
+                other.isUserLoggedIn == isUserLoggedIn) &&
+            (identical(other.isInProgress, isInProgress) ||
+                other.isInProgress == isInProgress));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(userModel),
-      const DeepCollectionEquality().hash(isUserLoggedIn),
-      const DeepCollectionEquality().hash(isInProgress));
+  int get hashCode =>
+      Object.hash(runtimeType, userModel, isUserLoggedIn, isInProgress);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
       __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
 }
@@ -169,11 +173,11 @@ abstract class _AuthState implements AuthState {
       required final bool isInProgress}) = _$_AuthState;
 
   @override
-  AuthUserModel get userModel => throw _privateConstructorUsedError;
+  AuthUserModel get userModel;
   @override
-  bool get isUserLoggedIn => throw _privateConstructorUsedError;
+  bool get isUserLoggedIn;
   @override
-  bool get isInProgress => throw _privateConstructorUsedError;
+  bool get isInProgress;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

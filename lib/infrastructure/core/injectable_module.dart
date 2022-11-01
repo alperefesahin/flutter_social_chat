@@ -6,6 +6,7 @@ import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 abstract class InjectableModule {
   @singleton
   AppRouter get appRouter => AppRouter();
+  
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
 }

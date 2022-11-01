@@ -28,12 +28,12 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? tooManyRequests,
-    TResult Function()? deviceNotSupported,
-    TResult Function()? smsTimeout,
-    TResult Function()? sessionExpired,
-    TResult Function()? invalidVerificationCode,
+    TResult? Function()? serverError,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidVerificationCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,12 +60,12 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_TooManyRequests value)? tooManyRequests,
-    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
-    TResult Function(_SmsTimeout value)? smsTimeout,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_SessionExpired value)? sessionExpired,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,16 +85,18 @@ mixin _$AuthFailure {
 abstract class $AuthFailureCopyWith<$Res> {
   factory $AuthFailureCopyWith(
           AuthFailure value, $Res Function(AuthFailure) then) =
-      _$AuthFailureCopyWithImpl<$Res>;
+      _$AuthFailureCopyWithImpl<$Res, AuthFailure>;
 }
 
 /// @nodoc
-class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
+class _$AuthFailureCopyWithImpl<$Res, $Val extends AuthFailure>
+    implements $AuthFailureCopyWith<$Res> {
   _$AuthFailureCopyWithImpl(this._value, this._then);
 
-  final AuthFailure _value;
   // ignore: unused_field
-  final $Res Function(AuthFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -105,14 +107,12 @@ abstract class _$$_ServerErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ServerErrorCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+class __$$_ServerErrorCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_ServerError>
     implements _$$_ServerErrorCopyWith<$Res> {
   __$$_ServerErrorCopyWithImpl(
       _$_ServerError _value, $Res Function(_$_ServerError) _then)
-      : super(_value, (v) => _then(v as _$_ServerError));
-
-  @override
-  _$_ServerError get _value => super._value as _$_ServerError;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -150,12 +150,12 @@ class _$_ServerError implements _ServerError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? tooManyRequests,
-    TResult Function()? deviceNotSupported,
-    TResult Function()? smsTimeout,
-    TResult Function()? sessionExpired,
-    TResult Function()? invalidVerificationCode,
+    TResult? Function()? serverError,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidVerificationCode,
   }) {
     return serverError?.call();
   }
@@ -194,12 +194,12 @@ class _$_ServerError implements _ServerError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_TooManyRequests value)? tooManyRequests,
-    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
-    TResult Function(_SmsTimeout value)? smsTimeout,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_SessionExpired value)? sessionExpired,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
   }) {
     return serverError?.call(this);
   }
@@ -235,14 +235,11 @@ abstract class _$$_TooManyRequestsCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TooManyRequestsCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_TooManyRequests>
     implements _$$_TooManyRequestsCopyWith<$Res> {
   __$$_TooManyRequestsCopyWithImpl(
       _$_TooManyRequests _value, $Res Function(_$_TooManyRequests) _then)
-      : super(_value, (v) => _then(v as _$_TooManyRequests));
-
-  @override
-  _$_TooManyRequests get _value => super._value as _$_TooManyRequests;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -280,12 +277,12 @@ class _$_TooManyRequests implements _TooManyRequests {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? tooManyRequests,
-    TResult Function()? deviceNotSupported,
-    TResult Function()? smsTimeout,
-    TResult Function()? sessionExpired,
-    TResult Function()? invalidVerificationCode,
+    TResult? Function()? serverError,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidVerificationCode,
   }) {
     return tooManyRequests?.call();
   }
@@ -324,12 +321,12 @@ class _$_TooManyRequests implements _TooManyRequests {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_TooManyRequests value)? tooManyRequests,
-    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
-    TResult Function(_SmsTimeout value)? smsTimeout,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_SessionExpired value)? sessionExpired,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
   }) {
     return tooManyRequests?.call(this);
   }
@@ -365,14 +362,11 @@ abstract class _$$_DeviceNotSupportedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_DeviceNotSupportedCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_DeviceNotSupported>
     implements _$$_DeviceNotSupportedCopyWith<$Res> {
   __$$_DeviceNotSupportedCopyWithImpl(
       _$_DeviceNotSupported _value, $Res Function(_$_DeviceNotSupported) _then)
-      : super(_value, (v) => _then(v as _$_DeviceNotSupported));
-
-  @override
-  _$_DeviceNotSupported get _value => super._value as _$_DeviceNotSupported;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -410,12 +404,12 @@ class _$_DeviceNotSupported implements _DeviceNotSupported {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? tooManyRequests,
-    TResult Function()? deviceNotSupported,
-    TResult Function()? smsTimeout,
-    TResult Function()? sessionExpired,
-    TResult Function()? invalidVerificationCode,
+    TResult? Function()? serverError,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidVerificationCode,
   }) {
     return deviceNotSupported?.call();
   }
@@ -454,12 +448,12 @@ class _$_DeviceNotSupported implements _DeviceNotSupported {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_TooManyRequests value)? tooManyRequests,
-    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
-    TResult Function(_SmsTimeout value)? smsTimeout,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_SessionExpired value)? sessionExpired,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
   }) {
     return deviceNotSupported?.call(this);
   }
@@ -494,14 +488,12 @@ abstract class _$$_SmsTimeoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SmsTimeoutCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+class __$$_SmsTimeoutCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_SmsTimeout>
     implements _$$_SmsTimeoutCopyWith<$Res> {
   __$$_SmsTimeoutCopyWithImpl(
       _$_SmsTimeout _value, $Res Function(_$_SmsTimeout) _then)
-      : super(_value, (v) => _then(v as _$_SmsTimeout));
-
-  @override
-  _$_SmsTimeout get _value => super._value as _$_SmsTimeout;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -539,12 +531,12 @@ class _$_SmsTimeout implements _SmsTimeout {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? tooManyRequests,
-    TResult Function()? deviceNotSupported,
-    TResult Function()? smsTimeout,
-    TResult Function()? sessionExpired,
-    TResult Function()? invalidVerificationCode,
+    TResult? Function()? serverError,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidVerificationCode,
   }) {
     return smsTimeout?.call();
   }
@@ -583,12 +575,12 @@ class _$_SmsTimeout implements _SmsTimeout {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_TooManyRequests value)? tooManyRequests,
-    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
-    TResult Function(_SmsTimeout value)? smsTimeout,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_SessionExpired value)? sessionExpired,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
   }) {
     return smsTimeout?.call(this);
   }
@@ -624,14 +616,11 @@ abstract class _$$_SessionExpiredCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SessionExpiredCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_SessionExpired>
     implements _$$_SessionExpiredCopyWith<$Res> {
   __$$_SessionExpiredCopyWithImpl(
       _$_SessionExpired _value, $Res Function(_$_SessionExpired) _then)
-      : super(_value, (v) => _then(v as _$_SessionExpired));
-
-  @override
-  _$_SessionExpired get _value => super._value as _$_SessionExpired;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -669,12 +658,12 @@ class _$_SessionExpired implements _SessionExpired {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? tooManyRequests,
-    TResult Function()? deviceNotSupported,
-    TResult Function()? smsTimeout,
-    TResult Function()? sessionExpired,
-    TResult Function()? invalidVerificationCode,
+    TResult? Function()? serverError,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidVerificationCode,
   }) {
     return sessionExpired?.call();
   }
@@ -713,12 +702,12 @@ class _$_SessionExpired implements _SessionExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_TooManyRequests value)? tooManyRequests,
-    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
-    TResult Function(_SmsTimeout value)? smsTimeout,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_SessionExpired value)? sessionExpired,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
   }) {
     return sessionExpired?.call(this);
   }
@@ -754,15 +743,11 @@ abstract class _$$_InvalidVerificationCodeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidVerificationCodeCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidVerificationCode>
     implements _$$_InvalidVerificationCodeCopyWith<$Res> {
   __$$_InvalidVerificationCodeCopyWithImpl(_$_InvalidVerificationCode _value,
       $Res Function(_$_InvalidVerificationCode) _then)
-      : super(_value, (v) => _then(v as _$_InvalidVerificationCode));
-
-  @override
-  _$_InvalidVerificationCode get _value =>
-      super._value as _$_InvalidVerificationCode;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -801,12 +786,12 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? tooManyRequests,
-    TResult Function()? deviceNotSupported,
-    TResult Function()? smsTimeout,
-    TResult Function()? sessionExpired,
-    TResult Function()? invalidVerificationCode,
+    TResult? Function()? serverError,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidVerificationCode,
   }) {
     return invalidVerificationCode?.call();
   }
@@ -845,12 +830,12 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ServerError value)? serverError,
-    TResult Function(_TooManyRequests value)? tooManyRequests,
-    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
-    TResult Function(_SmsTimeout value)? smsTimeout,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_SessionExpired value)? sessionExpired,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
   }) {
     return invalidVerificationCode?.call(this);
   }

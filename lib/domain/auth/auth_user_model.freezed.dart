@@ -28,34 +28,37 @@ mixin _$AuthUserModel {
 abstract class $AuthUserModelCopyWith<$Res> {
   factory $AuthUserModelCopyWith(
           AuthUserModel value, $Res Function(AuthUserModel) then) =
-      _$AuthUserModelCopyWithImpl<$Res>;
+      _$AuthUserModelCopyWithImpl<$Res, AuthUserModel>;
+  @useResult
   $Res call({String id, String phoneNumber});
 }
 
 /// @nodoc
-class _$AuthUserModelCopyWithImpl<$Res>
+class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
     implements $AuthUserModelCopyWith<$Res> {
   _$AuthUserModelCopyWithImpl(this._value, this._then);
 
-  final AuthUserModel _value;
   // ignore: unused_field
-  final $Res Function(AuthUserModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? phoneNumber = freezed,
+    Object? id = null,
+    Object? phoneNumber = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,31 +69,30 @@ abstract class _$$_AuthUserModelCopyWith<$Res>
           _$_AuthUserModel value, $Res Function(_$_AuthUserModel) then) =
       __$$_AuthUserModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, String phoneNumber});
 }
 
 /// @nodoc
 class __$$_AuthUserModelCopyWithImpl<$Res>
-    extends _$AuthUserModelCopyWithImpl<$Res>
+    extends _$AuthUserModelCopyWithImpl<$Res, _$_AuthUserModel>
     implements _$$_AuthUserModelCopyWith<$Res> {
   __$$_AuthUserModelCopyWithImpl(
       _$_AuthUserModel _value, $Res Function(_$_AuthUserModel) _then)
-      : super(_value, (v) => _then(v as _$_AuthUserModel));
+      : super(_value, _then);
 
-  @override
-  _$_AuthUserModel get _value => super._value as _$_AuthUserModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? phoneNumber = freezed,
+    Object? id = null,
+    Object? phoneNumber = null,
   }) {
     return _then(_$_AuthUserModel(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
@@ -119,19 +121,17 @@ class _$_AuthUserModel extends _AuthUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthUserModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(phoneNumber));
+  int get hashCode => Object.hash(runtimeType, id, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AuthUserModelCopyWith<_$_AuthUserModel> get copyWith =>
       __$$_AuthUserModelCopyWithImpl<_$_AuthUserModel>(this, _$identity);
 }
@@ -143,9 +143,9 @@ abstract class _AuthUserModel extends AuthUserModel {
   const _AuthUserModel._() : super._();
 
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get phoneNumber => throw _privateConstructorUsedError;
+  String get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$_AuthUserModelCopyWith<_$_AuthUserModel> get copyWith =>
