@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthUserModel {
   String get id => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  String? get displayName => throw _privateConstructorUsedError;
+  String? get userName => throw _privateConstructorUsedError;
+  String? get photoUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthUserModelCopyWith<AuthUserModel> get copyWith =>
@@ -30,7 +33,12 @@ abstract class $AuthUserModelCopyWith<$Res> {
           AuthUserModel value, $Res Function(AuthUserModel) then) =
       _$AuthUserModelCopyWithImpl<$Res, AuthUserModel>;
   @useResult
-  $Res call({String id, String phoneNumber});
+  $Res call(
+      {String id,
+      String phoneNumber,
+      String? displayName,
+      String? userName,
+      String? photoUrl});
 }
 
 /// @nodoc
@@ -48,6 +56,9 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
   $Res call({
     Object? id = null,
     Object? phoneNumber = null,
+    Object? displayName = freezed,
+    Object? userName = freezed,
+    Object? photoUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -58,6 +69,18 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      displayName: freezed == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -70,7 +93,12 @@ abstract class _$$_AuthUserModelCopyWith<$Res>
       __$$_AuthUserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String phoneNumber});
+  $Res call(
+      {String id,
+      String phoneNumber,
+      String? displayName,
+      String? userName,
+      String? photoUrl});
 }
 
 /// @nodoc
@@ -86,6 +114,9 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? phoneNumber = null,
+    Object? displayName = freezed,
+    Object? userName = freezed,
+    Object? photoUrl = freezed,
   }) {
     return _then(_$_AuthUserModel(
       id: null == id
@@ -96,6 +127,18 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      displayName: freezed == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photoUrl: freezed == photoUrl
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -103,17 +146,28 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthUserModel extends _AuthUserModel {
-  const _$_AuthUserModel({required this.id, required this.phoneNumber})
+  const _$_AuthUserModel(
+      {required this.id,
+      required this.phoneNumber,
+      this.displayName,
+      this.userName,
+      this.photoUrl})
       : super._();
 
   @override
   final String id;
   @override
   final String phoneNumber;
+  @override
+  final String? displayName;
+  @override
+  final String? userName;
+  @override
+  final String? photoUrl;
 
   @override
   String toString() {
-    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber)';
+    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber, displayName: $displayName, userName: $userName, photoUrl: $photoUrl)';
   }
 
   @override
@@ -123,11 +177,18 @@ class _$_AuthUserModel extends _AuthUserModel {
             other is _$_AuthUserModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.photoUrl, photoUrl) ||
+                other.photoUrl == photoUrl));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, phoneNumber);
+  int get hashCode => Object.hash(
+      runtimeType, id, phoneNumber, displayName, userName, photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -139,13 +200,22 @@ class _$_AuthUserModel extends _AuthUserModel {
 abstract class _AuthUserModel extends AuthUserModel {
   const factory _AuthUserModel(
       {required final String id,
-      required final String phoneNumber}) = _$_AuthUserModel;
+      required final String phoneNumber,
+      final String? displayName,
+      final String? userName,
+      final String? photoUrl}) = _$_AuthUserModel;
   const _AuthUserModel._() : super._();
 
   @override
   String get id;
   @override
   String get phoneNumber;
+  @override
+  String? get displayName;
+  @override
+  String? get userName;
+  @override
+  String? get photoUrl;
   @override
   @JsonKey(ignore: true)
   _$$_AuthUserModelCopyWith<_$_AuthUserModel> get copyWith =>
