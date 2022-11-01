@@ -20,7 +20,8 @@ class SignInPage extends StatelessWidget {
       builder: (context, state) {
         return state.isInProgress
             ? BlocListener<PhoneNumberSignInCubit, PhoneNumberSignInState>(
-                listenWhen: (p, c) => p.failureMessageOption != c.failureMessageOption,
+                listenWhen: (p, c) =>
+                    p.failureMessageOption != c.failureMessageOption,
                 listener: (context, state) {
                   state.failureMessageOption.fold(
                     () {},
@@ -32,28 +33,35 @@ class SignInPage extends StatelessWidget {
                           deviceNotSupported: () => "Device Not Supported",
                           smsTimeout: () => "Sms Timeout",
                           sessionExpired: () => "Session Expired",
-                          invalidVerificationCode: () => "Invalid Verification Code",
+                          invalidVerificationCode: () =>
+                              "Invalid Verification Code",
                         ),
                       );
                       context.read<PhoneNumberSignInCubit>().reset();
-                      AutoRouter.of(context).popUntilRoot();
+                      context.router.popUntilRoot();
                     },
                   );
                 },
-                child: const Scaffold(
-                  body: CustomProgressIndicator(
-                    progressIndicatorColor: blackColor,
+                child: WillPopScope(
+                  onWillPop: () async => false,
+                  child: const Scaffold(
+                    body: CustomProgressIndicator(
+                      progressIndicatorColor: blackColor,
+                    ),
                   ),
                 ),
               )
-            : Scaffold(
-                appBar: CustomAppBar(
-                  appBarIconColor: whiteColor,
-                  appBarBackgroundColor: customIndigoColor,
-                  appBarTitle: signInText,
-                  appBarAction: CupertinoIcons.line_horizontal_3_decrease,
+            : WillPopScope(
+                onWillPop: () async => false,
+                child: Scaffold(
+                  appBar: CustomAppBar(
+                    appBarIconColor: whiteColor,
+                    appBarBackgroundColor: customIndigoColor,
+                    appBarTitle: signInText,
+                    appBarAction: CupertinoIcons.line_horizontal_3_decrease,
+                  ),
+                  body: const SignInPageBody(),
                 ),
-                body: const SignInPageBody(),
               );
       },
     );
