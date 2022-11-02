@@ -30,3 +30,4 @@ ios/firebase_app_id_file.json
 ios/Runner/GoogleService-Info.plist
 macos/firebase_app_id_file.json
 macos/Runner/GoogleService-Info.plist
+lib/secrets.dart
