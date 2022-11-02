@@ -44,7 +44,8 @@ _i1.GetIt $initGetIt(
         get<_i6.FirebaseAuth>(),
         get<_i7.FirebaseFirestore>(),
       ));
-  gh.lazySingleton<_i10.IChatService>(() => _i11.GetstreamChatService());
+  gh.lazySingleton<_i10.IChatService>(
+      () => _i11.GetstreamChatService(get<_i8.IAuthService>()));
   gh.factory<_i12.PhoneNumberSignInCubit>(() => _i12.PhoneNumberSignInCubit());
   return get;
 }

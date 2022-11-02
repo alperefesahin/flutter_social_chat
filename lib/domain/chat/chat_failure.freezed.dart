@@ -19,41 +19,32 @@ mixin _$ChatFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() channelErrorWhileCreating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverError,
-    TResult? Function()? channelErrorWhileCreating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? channelErrorWhileCreating,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
-    required TResult Function(ChannelErrorWhileCreating value)
-        channelErrorWhileCreating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerError value)? serverError,
-    TResult? Function(ChannelErrorWhileCreating value)?
-        channelErrorWhileCreating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
-    TResult Function(ChannelErrorWhileCreating value)?
-        channelErrorWhileCreating,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -116,7 +107,6 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() channelErrorWhileCreating,
   }) {
     return serverError();
   }
@@ -125,7 +115,6 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverError,
-    TResult? Function()? channelErrorWhileCreating,
   }) {
     return serverError?.call();
   }
@@ -134,7 +123,6 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? channelErrorWhileCreating,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -147,8 +135,6 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerError value) serverError,
-    required TResult Function(ChannelErrorWhileCreating value)
-        channelErrorWhileCreating,
   }) {
     return serverError(this);
   }
@@ -157,8 +143,6 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerError value)? serverError,
-    TResult? Function(ChannelErrorWhileCreating value)?
-        channelErrorWhileCreating,
   }) {
     return serverError?.call(this);
   }
@@ -167,8 +151,6 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerError value)? serverError,
-    TResult Function(ChannelErrorWhileCreating value)?
-        channelErrorWhileCreating,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -180,111 +162,4 @@ class _$ServerError implements ServerError {
 
 abstract class ServerError implements ChatFailure {
   const factory ServerError() = _$ServerError;
-}
-
-/// @nodoc
-abstract class _$$ChannelErrorWhileCreatingCopyWith<$Res> {
-  factory _$$ChannelErrorWhileCreatingCopyWith(
-          _$ChannelErrorWhileCreating value,
-          $Res Function(_$ChannelErrorWhileCreating) then) =
-      __$$ChannelErrorWhileCreatingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ChannelErrorWhileCreatingCopyWithImpl<$Res>
-    extends _$ChatFailureCopyWithImpl<$Res, _$ChannelErrorWhileCreating>
-    implements _$$ChannelErrorWhileCreatingCopyWith<$Res> {
-  __$$ChannelErrorWhileCreatingCopyWithImpl(_$ChannelErrorWhileCreating _value,
-      $Res Function(_$ChannelErrorWhileCreating) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ChannelErrorWhileCreating implements ChannelErrorWhileCreating {
-  const _$ChannelErrorWhileCreating();
-
-  @override
-  String toString() {
-    return 'ChatFailure.channelErrorWhileCreating()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChannelErrorWhileCreating);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() serverError,
-    required TResult Function() channelErrorWhileCreating,
-  }) {
-    return channelErrorWhileCreating();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? channelErrorWhileCreating,
-  }) {
-    return channelErrorWhileCreating?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? serverError,
-    TResult Function()? channelErrorWhileCreating,
-    required TResult orElse(),
-  }) {
-    if (channelErrorWhileCreating != null) {
-      return channelErrorWhileCreating();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(ChannelErrorWhileCreating value)
-        channelErrorWhileCreating,
-  }) {
-    return channelErrorWhileCreating(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ServerError value)? serverError,
-    TResult? Function(ChannelErrorWhileCreating value)?
-        channelErrorWhileCreating,
-  }) {
-    return channelErrorWhileCreating?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ServerError value)? serverError,
-    TResult Function(ChannelErrorWhileCreating value)?
-        channelErrorWhileCreating,
-    required TResult orElse(),
-  }) {
-    if (channelErrorWhileCreating != null) {
-      return channelErrorWhileCreating(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ChannelErrorWhileCreating implements ChatFailure {
-  const factory ChannelErrorWhileCreating() = _$ChannelErrorWhileCreating;
 }
