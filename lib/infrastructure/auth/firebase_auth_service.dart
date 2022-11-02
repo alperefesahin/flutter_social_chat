@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
 import 'package:flutter_production_app/infrastructure/core/firebase_helpers.dart';
 
@@ -93,7 +92,6 @@ class FirebaseAuthService implements IAuthService {
       await _firebaseAuth.signInWithCredential(phoneAuthCredential).then(
         (userCredential) async {
           final userDoc = await _firestore.userDocument();
-          debugPrint(userCredential.toString());
 
           final user = userCredential.user!;
           return userDoc.set(

@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AuthState {
-  AuthUserModel get userModel => throw _privateConstructorUsedError;
+  AuthUserModel get authUser => throw _privateConstructorUsedError;
+  ChatUserModel get chatUser => throw _privateConstructorUsedError;
   bool get isUserLoggedIn => throw _privateConstructorUsedError;
   bool get isInProgress => throw _privateConstructorUsedError;
 
@@ -30,9 +31,14 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({AuthUserModel userModel, bool isUserLoggedIn, bool isInProgress});
+  $Res call(
+      {AuthUserModel authUser,
+      ChatUserModel chatUser,
+      bool isUserLoggedIn,
+      bool isInProgress});
 
-  $AuthUserModelCopyWith<$Res> get userModel;
+  $AuthUserModelCopyWith<$Res> get authUser;
+  $ChatUserModelCopyWith<$Res> get chatUser;
 }
 
 /// @nodoc
@@ -48,15 +54,20 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userModel = null,
+    Object? authUser = null,
+    Object? chatUser = null,
     Object? isUserLoggedIn = null,
     Object? isInProgress = null,
   }) {
     return _then(_value.copyWith(
-      userModel: null == userModel
-          ? _value.userModel
-          : userModel // ignore: cast_nullable_to_non_nullable
+      authUser: null == authUser
+          ? _value.authUser
+          : authUser // ignore: cast_nullable_to_non_nullable
               as AuthUserModel,
+      chatUser: null == chatUser
+          ? _value.chatUser
+          : chatUser // ignore: cast_nullable_to_non_nullable
+              as ChatUserModel,
       isUserLoggedIn: null == isUserLoggedIn
           ? _value.isUserLoggedIn
           : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
@@ -70,9 +81,17 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 
   @override
   @pragma('vm:prefer-inline')
-  $AuthUserModelCopyWith<$Res> get userModel {
-    return $AuthUserModelCopyWith<$Res>(_value.userModel, (value) {
-      return _then(_value.copyWith(userModel: value) as $Val);
+  $AuthUserModelCopyWith<$Res> get authUser {
+    return $AuthUserModelCopyWith<$Res>(_value.authUser, (value) {
+      return _then(_value.copyWith(authUser: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatUserModelCopyWith<$Res> get chatUser {
+    return $ChatUserModelCopyWith<$Res>(_value.chatUser, (value) {
+      return _then(_value.copyWith(chatUser: value) as $Val);
     });
   }
 }
@@ -84,10 +103,16 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthUserModel userModel, bool isUserLoggedIn, bool isInProgress});
+  $Res call(
+      {AuthUserModel authUser,
+      ChatUserModel chatUser,
+      bool isUserLoggedIn,
+      bool isInProgress});
 
   @override
-  $AuthUserModelCopyWith<$Res> get userModel;
+  $AuthUserModelCopyWith<$Res> get authUser;
+  @override
+  $ChatUserModelCopyWith<$Res> get chatUser;
 }
 
 /// @nodoc
@@ -101,15 +126,20 @@ class __$$_AuthStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userModel = null,
+    Object? authUser = null,
+    Object? chatUser = null,
     Object? isUserLoggedIn = null,
     Object? isInProgress = null,
   }) {
     return _then(_$_AuthState(
-      userModel: null == userModel
-          ? _value.userModel
-          : userModel // ignore: cast_nullable_to_non_nullable
+      authUser: null == authUser
+          ? _value.authUser
+          : authUser // ignore: cast_nullable_to_non_nullable
               as AuthUserModel,
+      chatUser: null == chatUser
+          ? _value.chatUser
+          : chatUser // ignore: cast_nullable_to_non_nullable
+              as ChatUserModel,
       isUserLoggedIn: null == isUserLoggedIn
           ? _value.isUserLoggedIn
           : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
@@ -126,12 +156,15 @@ class __$$_AuthStateCopyWithImpl<$Res>
 
 class _$_AuthState implements _AuthState {
   const _$_AuthState(
-      {required this.userModel,
+      {required this.authUser,
+      required this.chatUser,
       required this.isUserLoggedIn,
       required this.isInProgress});
 
   @override
-  final AuthUserModel userModel;
+  final AuthUserModel authUser;
+  @override
+  final ChatUserModel chatUser;
   @override
   final bool isUserLoggedIn;
   @override
@@ -139,7 +172,7 @@ class _$_AuthState implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(userModel: $userModel, isUserLoggedIn: $isUserLoggedIn, isInProgress: $isInProgress)';
+    return 'AuthState(authUser: $authUser, chatUser: $chatUser, isUserLoggedIn: $isUserLoggedIn, isInProgress: $isInProgress)';
   }
 
   @override
@@ -147,8 +180,10 @@ class _$_AuthState implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthState &&
-            (identical(other.userModel, userModel) ||
-                other.userModel == userModel) &&
+            (identical(other.authUser, authUser) ||
+                other.authUser == authUser) &&
+            (identical(other.chatUser, chatUser) ||
+                other.chatUser == chatUser) &&
             (identical(other.isUserLoggedIn, isUserLoggedIn) ||
                 other.isUserLoggedIn == isUserLoggedIn) &&
             (identical(other.isInProgress, isInProgress) ||
@@ -156,8 +191,8 @@ class _$_AuthState implements _AuthState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userModel, isUserLoggedIn, isInProgress);
+  int get hashCode => Object.hash(
+      runtimeType, authUser, chatUser, isUserLoggedIn, isInProgress);
 
   @JsonKey(ignore: true)
   @override
@@ -168,12 +203,15 @@ class _$_AuthState implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-      {required final AuthUserModel userModel,
+      {required final AuthUserModel authUser,
+      required final ChatUserModel chatUser,
       required final bool isUserLoggedIn,
       required final bool isInProgress}) = _$_AuthState;
 
   @override
-  AuthUserModel get userModel;
+  AuthUserModel get authUser;
+  @override
+  ChatUserModel get chatUser;
   @override
   bool get isUserLoggedIn;
   @override
