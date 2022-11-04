@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
 import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
@@ -47,6 +48,8 @@ class GetstreamChatService implements IChatService {
     final userId = userIdOption.fold(() => null, (user) => user.id);
 
     final devToken = streamChatClient.devToken(userId!).rawValue;
+
+    debugPrint("DEV TOKEN: $devToken");
 
     final signedInUserOption = await _firebaseAuth.getSignedInUser();
     final signedInUser = signedInUserOption.fold(

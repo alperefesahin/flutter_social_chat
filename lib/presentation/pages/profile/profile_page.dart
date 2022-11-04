@@ -15,8 +15,8 @@ class ProfilePage extends StatelessWidget {
         final String userNameAndSurname = state.chatUser.name;
         final String userPhotoUrl = state.chatUser.image;
 
-        final DateTime usersAccountCreatedTime = state.chatUser.createdAt!;
-        final DateTime lastActiveTimeOfTheUser = state.chatUser.lastActive!;
+        final DateTime? usersAccountCreatedTime = state.chatUser.createdAt;
+        final DateTime? lastActiveTimeOfTheUser = state.chatUser.lastActive;
 
         final int numberOfGroupsThatUserInvolved = state.chatUser.teams.length;
         final int totalUnreadCountOfTheUsersChat =
