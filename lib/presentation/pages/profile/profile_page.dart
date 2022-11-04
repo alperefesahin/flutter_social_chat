@@ -8,11 +8,36 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
+      buildWhen: (p, c) => p.chatUser != c.chatUser,
       builder: (context, state) {
-        debugPrint(state.authUser.toString());
-        return const Scaffold(
+        final String userId = state.chatUser.id;
+        final String userPhoneNumber = state.chatUser.phoneNumber;
+        final String userNameAndSurname = state.chatUser.name;
+        final String userPhotoUrl = state.chatUser.image;
+
+        final DateTime usersAccountCreatedTime = state.chatUser.createdAt!;
+        final DateTime lastActiveTimeOfTheUser = state.chatUser.lastActive!;
+
+        final int numberOfGroupsThatUserInvolved = state.chatUser.teams.length;
+        final int totalUnreadCountOfTheUsersChat =
+            state.chatUser.totalUnreadCount;
+
+        return Scaffold(
           body: Center(
-            child: Text("Profile Page"),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("userid: $userId"),
+                Text("users phone number: $userPhoneNumber"),
+                Text("user name: $userNameAndSurname"),
+                Text("users photo's url: $userPhotoUrl"),
+                Text("Created time: $usersAccountCreatedTime"),
+                Text("Last Active: : $lastActiveTimeOfTheUser"),
+                Text(
+                    "Number of groups that user involved: : $numberOfGroupsThatUserInvolved"),
+                Text("Total unread count: $totalUnreadCountOfTheUsersChat"),
+              ],
+            ),
           ),
         );
       },
