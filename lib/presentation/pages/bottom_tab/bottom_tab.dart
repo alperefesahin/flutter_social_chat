@@ -23,8 +23,8 @@ class BottomTabPage extends StatelessWidget {
         onWillPop: () => Future<bool>.value(false),
         child: AutoTabsScaffold(
           routes: const [
-            HomeRoute(),
-            SearchRoute(),
+            ChatsRoute(),
+            GroupsRoute(),
             ProfileRoute(),
           ],
           bottomNavigationBuilder: (_, tabsRouter) {
@@ -33,12 +33,12 @@ class BottomTabPage extends StatelessWidget {
               onTap: tabsRouter.setActiveIndex,
               items: const [
                 BottomNavigationBarItem(
-                  label: 'Home',
-                  icon: Icon(CupertinoIcons.home),
+                  label: 'Chats',
+                  icon: Icon(CupertinoIcons.chat_bubble_2),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Search',
-                  icon: Icon(CupertinoIcons.search),
+                  label: 'Groups',
+                  icon: Icon(CupertinoIcons.person_3),
                 ),
                 BottomNavigationBarItem(
                   label: 'Profile',

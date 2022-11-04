@@ -18,10 +18,10 @@ import 'package:flutter/material.dart' as _i9;
 import '../../application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart'
     as _i11;
 import '../pages/bottom_tab/bottom_tab.dart' as _i4;
-import '../pages/home/home_page.dart' as _i5;
+import '../pages/chats/chats_page.dart' as _i5;
+import '../pages/groups/groups_page.dart' as _i6;
 import '../pages/landing/landing_page.dart' as _i1;
 import '../pages/profile/profile_page.dart' as _i7;
-import '../pages/search/search_page.dart' as _i6;
 import '../pages/sign_in/sign_in_page.dart' as _i2;
 import '../pages/verification_page/sign_in_verification_page.dart' as _i3;
 
@@ -59,16 +59,16 @@ class AppRouter extends _i8.RootStackRouter {
         child: const _i4.BottomTabPage(),
       );
     },
-    HomeRoute.name: (routeData) {
+    ChatsRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.HomePage(),
+        child: const _i5.ChatsPage(),
       );
     },
-    SearchRoute.name: (routeData) {
+    GroupsRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i6.SearchPage(),
+        child: const _i6.GroupsPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -98,13 +98,13 @@ class AppRouter extends _i8.RootStackRouter {
           path: '/bottom-tab-page',
           children: [
             _i8.RouteConfig(
-              HomeRoute.name,
+              ChatsRoute.name,
               path: '',
               parent: BottomTabRoute.name,
             ),
             _i8.RouteConfig(
-              SearchRoute.name,
-              path: 'search-page',
+              GroupsRoute.name,
+              path: 'groups-page',
               parent: BottomTabRoute.name,
             ),
             _i8.RouteConfig(
@@ -190,27 +190,27 @@ class BottomTabRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.HomePage]
-class HomeRoute extends _i8.PageRouteInfo<void> {
-  const HomeRoute()
+/// [_i5.ChatsPage]
+class ChatsRoute extends _i8.PageRouteInfo<void> {
+  const ChatsRoute()
       : super(
-          HomeRoute.name,
+          ChatsRoute.name,
           path: '',
         );
 
-  static const String name = 'HomeRoute';
+  static const String name = 'ChatsRoute';
 }
 
 /// generated route for
-/// [_i6.SearchPage]
-class SearchRoute extends _i8.PageRouteInfo<void> {
-  const SearchRoute()
+/// [_i6.GroupsPage]
+class GroupsRoute extends _i8.PageRouteInfo<void> {
+  const GroupsRoute()
       : super(
-          SearchRoute.name,
-          path: 'search-page',
+          GroupsRoute.name,
+          path: 'groups-page',
         );
 
-  static const String name = 'SearchRoute';
+  static const String name = 'GroupsRoute';
 }
 
 /// generated route for
