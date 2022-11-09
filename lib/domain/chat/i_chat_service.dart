@@ -3,20 +3,18 @@ import 'package:fpdart/fpdart.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 abstract class IChatService {
-  Future<Option<ChatUserModel>> getSignedInUser({
-    required OwnUser user,
-  });
+  Stream<ConnectionStatus> get getstreamWebSocketConnectionChanges;
 
-  Channel channelClient({
-    required String channelType,
-    String? id,
-  });
+  Future<Option<ChatUserModel>> getSignedInUser({required OwnUser user});
 
   Future<void> disconnectUser();
 
-  Future<OwnUser> connectTheCurrentUser();
+  Future<void> connectTheCurrentUser();
 
-  Future<ChannelState> watchChannelUpdates();
-
-  Future<ChannelState> createNewChannel();
+  /// If the channel already exist, then just watch the channel.
+  Future<void> createOrWatchChannel({
+    required String type,
+    required String id,
+    Map<String, Object?>? extraData,
+  });
 }
