@@ -37,7 +37,7 @@ class GetstreamChatService implements IChatService {
       optionOf(user.toDomain());
 
   @override
-  Future<void> createOrWatchChannel({
+  Future<Channel> createOrWatchChannel({
     required String type,
     required String id,
     Map<String, Object?>? extraData,
@@ -46,6 +46,8 @@ class GetstreamChatService implements IChatService {
         streamChatClient.channel(type, id: id, extraData: extraData);
 
     await channel.watch();
+
+    return channel;
   }
 
   @override

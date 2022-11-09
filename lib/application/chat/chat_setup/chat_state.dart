@@ -6,11 +6,13 @@ class ChatSetupState with _$ChatSetupState {
     required ChatUserModel chatUserModel,
     required ConnectionStatus webSocketConnectionStatus,
     required bool isChatUserConnected,
+    required Channel? getstreamChannel,
   }) = _ChatSetupState;
 
   factory ChatSetupState.empty() => ChatSetupState(
         chatUserModel: ChatUserModel.empty(),
         isChatUserConnected: false,
         webSocketConnectionStatus: ConnectionStatus.disconnected,
+        getstreamChannel: null,
       );
 }

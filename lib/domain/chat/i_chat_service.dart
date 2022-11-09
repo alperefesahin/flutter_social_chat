@@ -12,7 +12,7 @@ abstract class IChatService {
   Future<void> connectTheCurrentUser();
 
   /// If the channel already exist, then just watch the channel.
-  Future<void> createOrWatchChannel({
+  Future<Channel> createOrWatchChannel({
     required String type,
     required String id,
     Map<String, Object?>? extraData,

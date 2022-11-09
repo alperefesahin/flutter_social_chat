@@ -64,6 +64,10 @@ class ChatSetup extends Cubit<ChatSetupState> {
     required String type,
     required String id,
   }) async {
-    await _chatService.createOrWatchChannel(type: type, id: id);
+    await _chatService.createOrWatchChannel(type: type, id: id).then(
+      (getstreamChannel) {
+        emit(state.copyWith(getstreamChannel: getstreamChannel));
+      },
+    );
   }
 }
