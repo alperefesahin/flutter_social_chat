@@ -27,6 +27,18 @@ class _BottomTabPageState extends State<BottomTabPage> {
     limit: 20,
   );
 
+  late final StreamUserListController _userListController =
+      StreamUserListController(
+    client: StreamChat.of(context).client,
+    limit: 25,
+    filter: Filter.and(
+      [Filter.notEqual('id', StreamChat.of(context).currentUser!.id)],
+    ),
+    sort: [
+      const SortOption('name', direction: 1),
+    ],
+  );
+
   @override
   void dispose() {
     _listController.dispose();
@@ -59,7 +71,10 @@ class _BottomTabPageState extends State<BottomTabPage> {
             onWillPop: () => Future<bool>.value(false),
             child: AutoTabsScaffold(
               routes: [
-                ChannelsRoute(streamChannelListController: _listController),
+                ChannelsRoute(
+                  streamChannelListController: _listController,
+                  userListController: _userListController,
+                ),
                 const GroupsRoute(),
                 const ProfileRoute(),
               ],

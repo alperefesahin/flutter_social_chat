@@ -37,6 +37,7 @@ dependencies:
   pin_code_fields: ^7.4.0
   bot_toast: ^4.0.3
   progress_indicators: ^1.0.0
+  flutter_expandable_fab: ^1.6.0
   cupertino_icons: ^1.0.5
 
   flutter_bloc: ^8.1.1
