@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatUserModel {
-  String get id => throw _privateConstructorUsedError;
   List<String> get teams => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get lastActive => throw _privateConstructorUsedError;
@@ -32,11 +31,7 @@ abstract class $ChatUserModelCopyWith<$Res> {
           ChatUserModel value, $Res Function(ChatUserModel) then) =
       _$ChatUserModelCopyWithImpl<$Res, ChatUserModel>;
   @useResult
-  $Res call(
-      {String id,
-      List<String> teams,
-      DateTime? createdAt,
-      DateTime? lastActive});
+  $Res call({List<String> teams, DateTime? createdAt, DateTime? lastActive});
 }
 
 /// @nodoc
@@ -52,16 +47,11 @@ class _$ChatUserModelCopyWithImpl<$Res, $Val extends ChatUserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? teams = null,
     Object? createdAt = freezed,
     Object? lastActive = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       teams: null == teams
           ? _value.teams
           : teams // ignore: cast_nullable_to_non_nullable
@@ -86,11 +76,7 @@ abstract class _$$_ChatUserModelCopyWith<$Res>
       __$$_ChatUserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      List<String> teams,
-      DateTime? createdAt,
-      DateTime? lastActive});
+  $Res call({List<String> teams, DateTime? createdAt, DateTime? lastActive});
 }
 
 /// @nodoc
@@ -104,16 +90,11 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? teams = null,
     Object? createdAt = freezed,
     Object? lastActive = freezed,
   }) {
     return _then(_$_ChatUserModel(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       teams: null == teams
           ? _value._teams
           : teams // ignore: cast_nullable_to_non_nullable
@@ -134,15 +115,12 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
 
 class _$_ChatUserModel extends _ChatUserModel {
   const _$_ChatUserModel(
-      {required this.id,
-      required final List<String> teams,
+      {required final List<String> teams,
       required this.createdAt,
       required this.lastActive})
       : _teams = teams,
         super._();
 
-  @override
-  final String id;
   final List<String> _teams;
   @override
   List<String> get teams {
@@ -157,7 +135,7 @@ class _$_ChatUserModel extends _ChatUserModel {
 
   @override
   String toString() {
-    return 'ChatUserModel(id: $id, teams: $teams, createdAt: $createdAt, lastActive: $lastActive)';
+    return 'ChatUserModel(teams: $teams, createdAt: $createdAt, lastActive: $lastActive)';
   }
 
   @override
@@ -165,7 +143,6 @@ class _$_ChatUserModel extends _ChatUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatUserModel &&
-            (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._teams, _teams) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -174,7 +151,7 @@ class _$_ChatUserModel extends _ChatUserModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id,
+  int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_teams), createdAt, lastActive);
 
   @JsonKey(ignore: true)
@@ -186,14 +163,11 @@ class _$_ChatUserModel extends _ChatUserModel {
 
 abstract class _ChatUserModel extends ChatUserModel {
   const factory _ChatUserModel(
-      {required final String id,
-      required final List<String> teams,
+      {required final List<String> teams,
       required final DateTime? createdAt,
       required final DateTime? lastActive}) = _$_ChatUserModel;
   const _ChatUserModel._() : super._();
 
-  @override
-  String get id;
   @override
   List<String> get teams;
   @override

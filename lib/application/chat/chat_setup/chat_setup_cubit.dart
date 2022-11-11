@@ -9,18 +9,19 @@ import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
+import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
-part 'chat_state.dart';
-part 'chat_cubit.freezed.dart';
+part 'chat_setup_state.dart';
+part 'chat_setup_cubit.freezed.dart';
 
-@LazySingleton()
-class ChatSetup extends Cubit<ChatSetupState> {
-  late final IChatService _chatService;
+@lazySingleton
+class ChatSetupCubit extends Cubit<ChatSetupState> {
   late StreamSubscription<ConnectionStatus>?
       _getstreamWebSocketConnectionSubscription;
 
-  ChatSetup() : super(ChatSetupState.empty()) {
+  late final IChatService _chatService;
+
+  ChatSetupCubit() : super(ChatSetupState.empty()) {
     _chatService = getIt<IChatService>();
 
     _getstreamWebSocketConnectionSubscription = _chatService
@@ -31,6 +32,7 @@ class ChatSetup extends Cubit<ChatSetupState> {
   @override
   Future<void> close() async {
     await _getstreamWebSocketConnectionSubscription?.cancel();
+
     super.close();
   }
 
@@ -58,16 +60,5 @@ class ChatSetup extends Cubit<ChatSetupState> {
         ),
       );
     }
-  }
-
-  Future<void> createAndWatchChannel({
-    required String type,
-    required String id,
-  }) async {
-    await _chatService.createOrWatchChannel(type: type, id: id).then(
-      (getstreamChannel) {
-        emit(state.copyWith(getstreamChannel: getstreamChannel));
-      },
-    );
   }
 }

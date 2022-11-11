@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'chat_cubit.dart';
+part of 'chat_setup_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -20,7 +20,6 @@ mixin _$ChatSetupState {
   ConnectionStatus get webSocketConnectionStatus =>
       throw _privateConstructorUsedError;
   bool get isChatUserConnected => throw _privateConstructorUsedError;
-  Channel? get getstreamChannel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatSetupStateCopyWith<ChatSetupState> get copyWith =>
@@ -36,8 +35,7 @@ abstract class $ChatSetupStateCopyWith<$Res> {
   $Res call(
       {ChatUserModel chatUserModel,
       ConnectionStatus webSocketConnectionStatus,
-      bool isChatUserConnected,
-      Channel? getstreamChannel});
+      bool isChatUserConnected});
 
   $ChatUserModelCopyWith<$Res> get chatUserModel;
 }
@@ -58,7 +56,6 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
     Object? chatUserModel = null,
     Object? webSocketConnectionStatus = null,
     Object? isChatUserConnected = null,
-    Object? getstreamChannel = freezed,
   }) {
     return _then(_value.copyWith(
       chatUserModel: null == chatUserModel
@@ -73,10 +70,6 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
           ? _value.isChatUserConnected
           : isChatUserConnected // ignore: cast_nullable_to_non_nullable
               as bool,
-      getstreamChannel: freezed == getstreamChannel
-          ? _value.getstreamChannel
-          : getstreamChannel // ignore: cast_nullable_to_non_nullable
-              as Channel?,
     ) as $Val);
   }
 
@@ -100,8 +93,7 @@ abstract class _$$_ChatSetupStateCopyWith<$Res>
   $Res call(
       {ChatUserModel chatUserModel,
       ConnectionStatus webSocketConnectionStatus,
-      bool isChatUserConnected,
-      Channel? getstreamChannel});
+      bool isChatUserConnected});
 
   @override
   $ChatUserModelCopyWith<$Res> get chatUserModel;
@@ -121,7 +113,6 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
     Object? chatUserModel = null,
     Object? webSocketConnectionStatus = null,
     Object? isChatUserConnected = null,
-    Object? getstreamChannel = freezed,
   }) {
     return _then(_$_ChatSetupState(
       chatUserModel: null == chatUserModel
@@ -136,10 +127,6 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
           ? _value.isChatUserConnected
           : isChatUserConnected // ignore: cast_nullable_to_non_nullable
               as bool,
-      getstreamChannel: freezed == getstreamChannel
-          ? _value.getstreamChannel
-          : getstreamChannel // ignore: cast_nullable_to_non_nullable
-              as Channel?,
     ));
   }
 }
@@ -152,8 +139,7 @@ class _$_ChatSetupState
   const _$_ChatSetupState(
       {required this.chatUserModel,
       required this.webSocketConnectionStatus,
-      required this.isChatUserConnected,
-      required this.getstreamChannel});
+      required this.isChatUserConnected});
 
   @override
   final ChatUserModel chatUserModel;
@@ -161,12 +147,10 @@ class _$_ChatSetupState
   final ConnectionStatus webSocketConnectionStatus;
   @override
   final bool isChatUserConnected;
-  @override
-  final Channel? getstreamChannel;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatSetupState(chatUserModel: $chatUserModel, webSocketConnectionStatus: $webSocketConnectionStatus, isChatUserConnected: $isChatUserConnected, getstreamChannel: $getstreamChannel)';
+    return 'ChatSetupState(chatUserModel: $chatUserModel, webSocketConnectionStatus: $webSocketConnectionStatus, isChatUserConnected: $isChatUserConnected)';
   }
 
   @override
@@ -177,8 +161,7 @@ class _$_ChatSetupState
       ..add(DiagnosticsProperty('chatUserModel', chatUserModel))
       ..add(DiagnosticsProperty(
           'webSocketConnectionStatus', webSocketConnectionStatus))
-      ..add(DiagnosticsProperty('isChatUserConnected', isChatUserConnected))
-      ..add(DiagnosticsProperty('getstreamChannel', getstreamChannel));
+      ..add(DiagnosticsProperty('isChatUserConnected', isChatUserConnected));
   }
 
   @override
@@ -192,14 +175,12 @@ class _$_ChatSetupState
                     webSocketConnectionStatus) ||
                 other.webSocketConnectionStatus == webSocketConnectionStatus) &&
             (identical(other.isChatUserConnected, isChatUserConnected) ||
-                other.isChatUserConnected == isChatUserConnected) &&
-            (identical(other.getstreamChannel, getstreamChannel) ||
-                other.getstreamChannel == getstreamChannel));
+                other.isChatUserConnected == isChatUserConnected));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, chatUserModel,
-      webSocketConnectionStatus, isChatUserConnected, getstreamChannel);
+      webSocketConnectionStatus, isChatUserConnected);
 
   @JsonKey(ignore: true)
   @override
@@ -212,8 +193,7 @@ abstract class _ChatSetupState implements ChatSetupState {
   const factory _ChatSetupState(
       {required final ChatUserModel chatUserModel,
       required final ConnectionStatus webSocketConnectionStatus,
-      required final bool isChatUserConnected,
-      required final Channel? getstreamChannel}) = _$_ChatSetupState;
+      required final bool isChatUserConnected}) = _$_ChatSetupState;
 
   @override
   ChatUserModel get chatUserModel;
@@ -221,8 +201,6 @@ abstract class _ChatSetupState implements ChatSetupState {
   ConnectionStatus get webSocketConnectionStatus;
   @override
   bool get isChatUserConnected;
-  @override
-  Channel? get getstreamChannel;
   @override
   @JsonKey(ignore: true)
   _$$_ChatSetupStateCopyWith<_$_ChatSetupState> get copyWith =>

@@ -11,7 +11,7 @@ import 'package:flutter_production_app/injection.dart';
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
-@LazySingleton()
+@lazySingleton
 class AuthCubit extends Cubit<AuthState> {
   late final IAuthService _authService;
   late final IChatService _chatService;

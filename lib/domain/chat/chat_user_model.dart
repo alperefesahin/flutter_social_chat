@@ -5,7 +5,6 @@ part 'chat_user_model.freezed.dart';
 @freezed
 class ChatUserModel with _$ChatUserModel {
   const factory ChatUserModel({
-    required String id,
     required List<String> teams,
     required DateTime? createdAt,
     required DateTime? lastActive,
@@ -14,7 +13,6 @@ class ChatUserModel with _$ChatUserModel {
   const ChatUserModel._();
 
   factory ChatUserModel.empty() => const ChatUserModel(
-        id: '',
         teams: [],
         createdAt: null,
         lastActive: null,

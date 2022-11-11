@@ -1,12 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/secrets.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
-import 'package:flutter_production_app/infrastructure/core/getstream_helpers.dart';
+import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 @LazySingleton(as: IChatService)
 class GetstreamChatService implements IChatService {
@@ -31,24 +30,10 @@ class GetstreamChatService implements IChatService {
     );
   }
 
-  @override
+/*   @override
   Future<Option<ChatUserModel>> getSignedInUser(
           {required OwnUser user}) async =>
-      optionOf(user.toDomain());
-
-  @override
-  Future<Channel> createOrWatchChannel({
-    required String type,
-    required String id,
-    Map<String, Object?>? extraData,
-  }) async {
-    final channel =
-        streamChatClient.channel(type, id: id, extraData: extraData);
-
-    await channel.watch();
-
-    return channel;
-  }
+      optionOf(user.toDomain()); */
 
   @override
   Future<void> disconnectUser() async {
@@ -63,5 +48,24 @@ class GetstreamChatService implements IChatService {
         () => throw Exception("Not authanticated"), (user) => user);
 
     await streamChatClient.connectUser(User(id: signedInUser.id), devToken);
+  }
+
+  @override
+  Future<void> createNewChannel({
+    required List<String> listOfMemberIDs,
+    required String channelName,
+    required String channelImageUrl,
+  }) async {
+    final randomId = const Uuid().v1();
+
+    await streamChatClient.createChannel(
+      "messaging",
+      channelId: randomId,
+      channelData: {
+        "members": listOfMemberIDs,
+        "name": channelName,
+        "image": channelImageUrl,
+      },
+    );
   }
 }

@@ -1,20 +1,17 @@
-import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
+// ignore_for_file: depend_on_referenced_packages
+
+import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 abstract class IChatService {
   Stream<ConnectionStatus> get getstreamWebSocketConnectionChanges;
-
-  Future<Option<ChatUserModel>> getSignedInUser({required OwnUser user});
 
   Future<void> disconnectUser();
 
   Future<void> connectTheCurrentUser();
 
-  /// If the channel already exist, then just watch the channel.
-  Future<Channel> createOrWatchChannel({
-    required String type,
-    required String id,
-    Map<String, Object?>? extraData,
+  Future<void> createNewChannel({
+    required List<String> listOfMemberIDs,
+    required String channelName,
+    required String channelImageUrl,
   });
 }

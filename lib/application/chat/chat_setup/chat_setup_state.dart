@@ -1,4 +1,4 @@
-part of 'chat_cubit.dart';
+part of 'chat_setup_cubit.dart';
 
 @freezed
 class ChatSetupState with _$ChatSetupState {
@@ -6,13 +6,11 @@ class ChatSetupState with _$ChatSetupState {
     required ChatUserModel chatUserModel,
     required ConnectionStatus webSocketConnectionStatus,
     required bool isChatUserConnected,
-    required Channel? getstreamChannel,
   }) = _ChatSetupState;
 
   factory ChatSetupState.empty() => ChatSetupState(
         chatUserModel: ChatUserModel.empty(),
         isChatUserConnected: false,
         webSocketConnectionStatus: ConnectionStatus.disconnected,
-        getstreamChannel: null,
       );
 }

@@ -11,7 +11,7 @@ import 'package:flutter_production_app/injection.dart';
 part 'phone_number_sign_in_cubit.freezed.dart';
 part 'phone_number_sign_in_state.dart';
 
-@Injectable()
+@injectable
 class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
   StreamSubscription<Either<AuthFailure, Tuple2<String, int?>>>?
       _phoneNumberSignInSubscription;

@@ -11,41 +11,43 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/cupertino.dart' as _i10;
-import 'package:flutter/material.dart' as _i9;
+import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/cupertino.dart' as _i11;
+import 'package:flutter/material.dart' as _i10;
+import 'package:stream_chat_flutter/stream_chat_flutter.dart' as _i13;
 
 import '../../application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart'
-    as _i11;
+    as _i12;
 import '../pages/bottom_tab/bottom_tab.dart' as _i4;
-import '../pages/chats/chats_page.dart' as _i5;
-import '../pages/groups/groups_page.dart' as _i6;
+import '../pages/chats/channels_page.dart' as _i6;
+import '../pages/chats/widgets/chat_page.dart' as _i5;
+import '../pages/groups/groups_page.dart' as _i7;
 import '../pages/landing/landing_page.dart' as _i1;
-import '../pages/profile/profile_page.dart' as _i7;
+import '../pages/profile/profile_page.dart' as _i8;
 import '../pages/sign_in/sign_in_page.dart' as _i2;
 import '../pages/verification_page/sign_in_verification_page.dart' as _i3;
 
-class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+class AppRouter extends _i9.RootStackRouter {
+  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i9.PageFactory> pagesMap = {
     LandingRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.LandingPage(),
       );
     },
     SignInRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.SignInPage(),
       );
     },
     SignInVerificationRoute.name: (routeData) {
       final args = routeData.argsAs<SignInVerificationRouteArgs>();
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i3.SignInVerificationPage(
           key: args.key,
@@ -54,72 +56,90 @@ class AppRouter extends _i8.RootStackRouter {
       );
     },
     BottomTabRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i4.BottomTabPage(),
       );
     },
-    ChatsRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+    ChatRoute.name: (routeData) {
+      final args = routeData.argsAs<ChatRouteArgs>();
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i5.ChatsPage(),
+        child: _i5.ChatPage(
+          key: args.key,
+          channel: args.channel,
+        ),
+      );
+    },
+    ChannelsRoute.name: (routeData) {
+      final args = routeData.argsAs<ChannelsRouteArgs>();
+      return _i9.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: _i6.ChannelsPage(
+          key: args.key,
+          streamChannelListController: args.streamChannelListController,
+        ),
       );
     },
     GroupsRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i6.GroupsPage(),
+        child: const _i7.GroupsPage(),
       );
     },
     ProfileRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i9.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.ProfilePage(),
+        child: const _i8.ProfilePage(),
       );
     },
   };
 
   @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(
+  List<_i9.RouteConfig> get routes => [
+        _i9.RouteConfig(
           LandingRoute.name,
           path: '/',
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           SignInRoute.name,
           path: '/sign-in-page',
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           SignInVerificationRoute.name,
           path: '/sign-in-verification-page',
         ),
-        _i8.RouteConfig(
+        _i9.RouteConfig(
           BottomTabRoute.name,
           path: '/bottom-tab-page',
           children: [
-            _i8.RouteConfig(
-              ChatsRoute.name,
-              path: '',
+            _i9.RouteConfig(
+              ChannelsRoute.name,
+              path: 'channels-page',
               parent: BottomTabRoute.name,
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               GroupsRoute.name,
               path: 'groups-page',
               parent: BottomTabRoute.name,
             ),
-            _i8.RouteConfig(
+            _i9.RouteConfig(
               ProfileRoute.name,
               path: 'profile-page',
               parent: BottomTabRoute.name,
             ),
           ],
         ),
+        _i9.RouteConfig(
+          ChatRoute.name,
+          path: '/chat-page',
+        ),
       ];
 }
 
 /// generated route for
 /// [_i1.LandingPage]
-class LandingRoute extends _i8.PageRouteInfo<void> {
+class LandingRoute extends _i9.PageRouteInfo<void> {
   const LandingRoute()
       : super(
           LandingRoute.name,
@@ -131,7 +151,7 @@ class LandingRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SignInPage]
-class SignInRoute extends _i8.PageRouteInfo<void> {
+class SignInRoute extends _i9.PageRouteInfo<void> {
   const SignInRoute()
       : super(
           SignInRoute.name,
@@ -144,10 +164,10 @@ class SignInRoute extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.SignInVerificationPage]
 class SignInVerificationRoute
-    extends _i8.PageRouteInfo<SignInVerificationRouteArgs> {
+    extends _i9.PageRouteInfo<SignInVerificationRouteArgs> {
   SignInVerificationRoute({
-    _i10.Key? key,
-    required _i11.PhoneNumberSignInState state,
+    _i11.Key? key,
+    required _i12.PhoneNumberSignInState state,
   }) : super(
           SignInVerificationRoute.name,
           path: '/sign-in-verification-page',
@@ -166,9 +186,9 @@ class SignInVerificationRouteArgs {
     required this.state,
   });
 
-  final _i10.Key? key;
+  final _i11.Key? key;
 
-  final _i11.PhoneNumberSignInState state;
+  final _i12.PhoneNumberSignInState state;
 
   @override
   String toString() {
@@ -178,8 +198,8 @@ class SignInVerificationRouteArgs {
 
 /// generated route for
 /// [_i4.BottomTabPage]
-class BottomTabRoute extends _i8.PageRouteInfo<void> {
-  const BottomTabRoute({List<_i8.PageRouteInfo>? children})
+class BottomTabRoute extends _i9.PageRouteInfo<void> {
+  const BottomTabRoute({List<_i9.PageRouteInfo>? children})
       : super(
           BottomTabRoute.name,
           path: '/bottom-tab-page',
@@ -190,20 +210,76 @@ class BottomTabRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.ChatsPage]
-class ChatsRoute extends _i8.PageRouteInfo<void> {
-  const ChatsRoute()
-      : super(
-          ChatsRoute.name,
-          path: '',
+/// [_i5.ChatPage]
+class ChatRoute extends _i9.PageRouteInfo<ChatRouteArgs> {
+  ChatRoute({
+    _i11.Key? key,
+    required _i13.Channel channel,
+  }) : super(
+          ChatRoute.name,
+          path: '/chat-page',
+          args: ChatRouteArgs(
+            key: key,
+            channel: channel,
+          ),
         );
 
-  static const String name = 'ChatsRoute';
+  static const String name = 'ChatRoute';
+}
+
+class ChatRouteArgs {
+  const ChatRouteArgs({
+    this.key,
+    required this.channel,
+  });
+
+  final _i11.Key? key;
+
+  final _i13.Channel channel;
+
+  @override
+  String toString() {
+    return 'ChatRouteArgs{key: $key, channel: $channel}';
+  }
 }
 
 /// generated route for
-/// [_i6.GroupsPage]
-class GroupsRoute extends _i8.PageRouteInfo<void> {
+/// [_i6.ChannelsPage]
+class ChannelsRoute extends _i9.PageRouteInfo<ChannelsRouteArgs> {
+  ChannelsRoute({
+    _i11.Key? key,
+    required _i13.StreamChannelListController streamChannelListController,
+  }) : super(
+          ChannelsRoute.name,
+          path: 'channels-page',
+          args: ChannelsRouteArgs(
+            key: key,
+            streamChannelListController: streamChannelListController,
+          ),
+        );
+
+  static const String name = 'ChannelsRoute';
+}
+
+class ChannelsRouteArgs {
+  const ChannelsRouteArgs({
+    this.key,
+    required this.streamChannelListController,
+  });
+
+  final _i11.Key? key;
+
+  final _i13.StreamChannelListController streamChannelListController;
+
+  @override
+  String toString() {
+    return 'ChannelsRouteArgs{key: $key, streamChannelListController: $streamChannelListController}';
+  }
+}
+
+/// generated route for
+/// [_i7.GroupsPage]
+class GroupsRoute extends _i9.PageRouteInfo<void> {
   const GroupsRoute()
       : super(
           GroupsRoute.name,
@@ -214,8 +290,8 @@ class GroupsRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.ProfilePage]
-class ProfileRoute extends _i8.PageRouteInfo<void> {
+/// [_i8.ProfilePage]
+class ProfileRoute extends _i9.PageRouteInfo<void> {
   const ProfileRoute()
       : super(
           ProfileRoute.name,
