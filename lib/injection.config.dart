@@ -39,7 +39,7 @@ _i1.GetIt $initGetIt(
   final injectableModule = _$InjectableModule();
   gh.singleton<_i3.AppRouter>(injectableModule.appRouter);
   gh.lazySingleton<_i4.AuthCubit>(() => _i4.AuthCubit());
-  gh.lazySingleton<_i5.ChatManagementCubit>(() => _i5.ChatManagementCubit());
+  gh.factory<_i5.ChatManagementCubit>(() => _i5.ChatManagementCubit());
   gh.lazySingleton<_i6.ChatSetupCubit>(() => _i6.ChatSetupCubit());
   gh.lazySingleton<_i7.FirebaseAuth>(() => injectableModule.firebaseAuth);
   gh.lazySingleton<_i8.FirebaseFirestore>(() => injectableModule.firestore);

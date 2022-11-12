@@ -24,7 +24,7 @@ class ChannelsPage extends StatelessWidget {
           FloatingActionButton(
             heroTag: null,
             onPressed: () {
-              context.router.push(CreateNewChatRoute(
+              context.router.replace(CreateNewChatRoute(
                 userListController: userListController,
                 isCreateNewChatPageForCreatingGroup: true,
               ));
@@ -34,7 +34,7 @@ class ChannelsPage extends StatelessWidget {
           FloatingActionButton(
             heroTag: null,
             onPressed: () {
-              context.router.push(CreateNewChatRoute(
+              context.router.replace(CreateNewChatRoute(
                 userListController: userListController,
                 isCreateNewChatPageForCreatingGroup: false,
               ));

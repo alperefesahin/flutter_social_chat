@@ -3,13 +3,17 @@ import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
 import 'package:flutter_production_app/injection.dart';
 
 extension FirestoreX on FirebaseFirestore {
-  Future<DocumentReference> userDocument() async {
+  Future<DocumentReference> currentUserDocument() async {
     final userOption = await getIt<IAuthService>().getSignedInUser();
     final user = userOption.getOrElse(
       () => throw Exception("Not authanticated"),
     );
 
     return FirebaseFirestore.instance.collection('users').doc(user.id);
+  }
+
+  Future<DocumentReference> userDocument({required String userId}) async {
+    return FirebaseFirestore.instance.collection('users').doc(userId);
   }
 }
 

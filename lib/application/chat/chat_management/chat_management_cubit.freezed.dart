@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatManagementState {
-  List<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
   String get channelName => throw _privateConstructorUsedError;
   String get channelImageUrl => throw _privateConstructorUsedError;
+  Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatManagementStateCopyWith<ChatManagementState> get copyWith =>
@@ -32,9 +32,9 @@ abstract class $ChatManagementStateCopyWith<$Res> {
       _$ChatManagementStateCopyWithImpl<$Res, ChatManagementState>;
   @useResult
   $Res call(
-      {List<String> listOfSelectedUserIDs,
-      String channelName,
-      String channelImageUrl});
+      {String channelName,
+      String channelImageUrl,
+      Set<String> listOfSelectedUserIDs});
 }
 
 /// @nodoc
@@ -50,15 +50,11 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listOfSelectedUserIDs = null,
     Object? channelName = null,
     Object? channelImageUrl = null,
+    Object? listOfSelectedUserIDs = null,
   }) {
     return _then(_value.copyWith(
-      listOfSelectedUserIDs: null == listOfSelectedUserIDs
-          ? _value.listOfSelectedUserIDs
-          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       channelName: null == channelName
           ? _value.channelName
           : channelName // ignore: cast_nullable_to_non_nullable
@@ -67,6 +63,10 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
           ? _value.channelImageUrl
           : channelImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      listOfSelectedUserIDs: null == listOfSelectedUserIDs
+          ? _value.listOfSelectedUserIDs
+          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
     ) as $Val);
   }
 }
@@ -80,9 +80,9 @@ abstract class _$$_InitialCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<String> listOfSelectedUserIDs,
-      String channelName,
-      String channelImageUrl});
+      {String channelName,
+      String channelImageUrl,
+      Set<String> listOfSelectedUserIDs});
 }
 
 /// @nodoc
@@ -95,15 +95,11 @@ class __$$_InitialCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listOfSelectedUserIDs = null,
     Object? channelName = null,
     Object? channelImageUrl = null,
+    Object? listOfSelectedUserIDs = null,
   }) {
     return _then(_$_Initial(
-      listOfSelectedUserIDs: null == listOfSelectedUserIDs
-          ? _value._listOfSelectedUserIDs
-          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       channelName: null == channelName
           ? _value.channelName
           : channelName // ignore: cast_nullable_to_non_nullable
@@ -112,34 +108,48 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value.channelImageUrl
           : channelImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      listOfSelectedUserIDs: null == listOfSelectedUserIDs
+          ? _value._listOfSelectedUserIDs
+          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial(
-      {required final List<String> listOfSelectedUserIDs,
-      required this.channelName,
-      required this.channelImageUrl})
+      {required this.channelName,
+      required this.channelImageUrl,
+      required final Set<String> listOfSelectedUserIDs})
       : _listOfSelectedUserIDs = listOfSelectedUserIDs;
-
-  final List<String> _listOfSelectedUserIDs;
-  @override
-  List<String> get listOfSelectedUserIDs {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_listOfSelectedUserIDs);
-  }
 
   @override
   final String channelName;
   @override
   final String channelImageUrl;
+  final Set<String> _listOfSelectedUserIDs;
+  @override
+  Set<String> get listOfSelectedUserIDs {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_listOfSelectedUserIDs);
+  }
 
   @override
-  String toString() {
-    return 'ChatManagementState(listOfSelectedUserIDs: $listOfSelectedUserIDs, channelName: $channelName, channelImageUrl: $channelImageUrl)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ChatManagementState(channelName: $channelName, channelImageUrl: $channelImageUrl, listOfSelectedUserIDs: $listOfSelectedUserIDs)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ChatManagementState'))
+      ..add(DiagnosticsProperty('channelName', channelName))
+      ..add(DiagnosticsProperty('channelImageUrl', channelImageUrl))
+      ..add(
+          DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs));
   }
 
   @override
@@ -147,20 +157,17 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
-            const DeepCollectionEquality()
-                .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs) &&
             (identical(other.channelName, channelName) ||
                 other.channelName == channelName) &&
             (identical(other.channelImageUrl, channelImageUrl) ||
-                other.channelImageUrl == channelImageUrl));
+                other.channelImageUrl == channelImageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
-      channelName,
-      channelImageUrl);
+  int get hashCode => Object.hash(runtimeType, channelName, channelImageUrl,
+      const DeepCollectionEquality().hash(_listOfSelectedUserIDs));
 
   @JsonKey(ignore: true)
   @override
@@ -171,16 +178,16 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements ChatManagementState {
   const factory _Initial(
-      {required final List<String> listOfSelectedUserIDs,
-      required final String channelName,
-      required final String channelImageUrl}) = _$_Initial;
+      {required final String channelName,
+      required final String channelImageUrl,
+      required final Set<String> listOfSelectedUserIDs}) = _$_Initial;
 
-  @override
-  List<String> get listOfSelectedUserIDs;
   @override
   String get channelName;
   @override
   String get channelImageUrl;
+  @override
+  Set<String> get listOfSelectedUserIDs;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
