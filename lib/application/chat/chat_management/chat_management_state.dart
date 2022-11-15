@@ -11,6 +11,6 @@ class ChatManagementState with _$ChatManagementState {
   factory ChatManagementState.empty() => const ChatManagementState(
         listOfSelectedUserIDs: {},
         channelName: "",
-        channelImageUrl: "",
+        channelImageUrl: "https://picsum.photos/200/300",
       );
 }

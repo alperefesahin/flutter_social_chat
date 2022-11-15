@@ -77,8 +77,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
           selectedUserData?["username"] ?? selectedUserData?["userPhone"];
 
       //TODO: Replace picsum link with related constant image
-      channelImageUrl =
-          selectedUserData?["photoUrl"] ?? "https://picsum.photos/200/300";
+      channelImageUrl = selectedUserData?["photoUrl"] ?? state.channelImageUrl;
     }
 
     await _chatService.createNewChannel(
