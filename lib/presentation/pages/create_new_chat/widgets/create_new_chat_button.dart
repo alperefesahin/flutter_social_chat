@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
+import 'package:flutter_production_app/presentation/pages/create_new_chat/constants/texts.dart';
 
 class CreateNewChatButton extends StatelessWidget {
   const CreateNewChatButton({
@@ -21,8 +22,8 @@ class CreateNewChatButton extends StatelessWidget {
       },
       child: Text(
         isCreateNewChatPageForCreatingGroup
-            ? "Create a new group chat"
-            : "Create a new 1-1 chat",
+            ? createNewGroupChat
+            : createNewOneToOneChat,
       ),
     );
   }
