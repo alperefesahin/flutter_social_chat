@@ -1,41 +1,39 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: depend_on_referenced_packages
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/secrets.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
-import 'package:flutter_production_app/infrastructure/core/getstream_helpers.dart';
+import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 @LazySingleton(as: IChatService)
 class GetstreamChatService implements IChatService {
-  GetstreamChatService(this._firebaseAuth);
+  GetstreamChatService(this._firebaseAuth, this.streamChatClient);
 
   final IAuthService _firebaseAuth;
-
-  final streamChatClient = StreamChatClient(
-    getstreamApiKey,
-    logLevel: Level.INFO,
-  );
+  final StreamChatClient streamChatClient;
 
   @override
+  Stream<ConnectionStatus> get getstreamWebSocketConnectionChanges {
+    return streamChatClient.wsConnectionStatusStream.map(
+      (connectionStatus) {
+        debugPrint("Connection Status: ${connectionStatus.name}");
+        if (connectionStatus.name == ConnectionStatus.connecting.name) {
+          return ConnectionStatus.connecting;
+        } else if (connectionStatus.name == ConnectionStatus.connected.name) {
+          return ConnectionStatus.connected;
+        } else {
+          return ConnectionStatus.disconnected;
+        }
+      },
+    );
+  }
+
+/*   @override
   Future<Option<ChatUserModel>> getSignedInUser(
           {required OwnUser user}) async =>
-      optionOf(await user.toDomain());
-
-  @override
-  Channel channelClient({required String channelType, String? id}) =>
-      streamChatClient.channel(channelType, id: id);
-
-  @override
-  Future<ChannelState> createNewChannel() async {
-    final createdChannel =
-        await channelClient(channelType: 'messaging', id: 'flutterdevs')
-            .create();
-
-    return createdChannel;
-  }
+      optionOf(user.toDomain()); */
 
   @override
   Future<void> disconnectUser() async {
@@ -43,30 +41,31 @@ class GetstreamChatService implements IChatService {
   }
 
   @override
-  Future<OwnUser> connectTheCurrentUser() async {
-    final userIdOption = await _firebaseAuth.getSignedInUser();
-    final userId = userIdOption.fold(() => null, (user) => user.id);
-
-    final devToken = streamChatClient.devToken(userId!).rawValue;
-
-    debugPrint("DEV TOKEN: $devToken");
-
+  Future<void> connectTheCurrentUser() async {
     final signedInUserOption = await _firebaseAuth.getSignedInUser();
+
     final signedInUser = signedInUserOption.fold(
         () => throw Exception("Not authanticated"), (user) => user);
 
-    final connectedUser =
-        await streamChatClient.connectUser(User(id: signedInUser.id), devToken);
-
-    return connectedUser;
+    await streamChatClient.connectUser(User(id: signedInUser.id), devToken);
   }
 
   @override
-  Future<ChannelState> watchChannelUpdates() async {
-    final channelUpdates =
-        await channelClient(channelType: 'messaging', id: 'flutterdevs')
-            .watch();
+  Future<void> createNewChannel({
+    required List<String> listOfMemberIDs,
+    required String channelName,
+    required String channelImageUrl,
+  }) async {
+    final randomId = const Uuid().v1();
 
-    return channelUpdates;
+    await streamChatClient.createChannel(
+      "messaging",
+      channelId: randomId,
+      channelData: {
+        "members": listOfMemberIDs,
+        "name": channelName,
+        "image": channelImageUrl,
+      },
+    );
   }
 }

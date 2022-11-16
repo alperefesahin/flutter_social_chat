@@ -16,12 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatUserModel {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
   List<String> get teams => throw _privateConstructorUsedError;
-  int get totalUnreadCount => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get lastActive => throw _privateConstructorUsedError;
 
@@ -36,15 +31,7 @@ abstract class $ChatUserModelCopyWith<$Res> {
           ChatUserModel value, $Res Function(ChatUserModel) then) =
       _$ChatUserModelCopyWithImpl<$Res, ChatUserModel>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String image,
-      String phoneNumber,
-      List<String> teams,
-      int totalUnreadCount,
-      DateTime? createdAt,
-      DateTime? lastActive});
+  $Res call({List<String> teams, DateTime? createdAt, DateTime? lastActive});
 }
 
 /// @nodoc
@@ -60,40 +47,15 @@ class _$ChatUserModelCopyWithImpl<$Res, $Val extends ChatUserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? image = null,
-    Object? phoneNumber = null,
     Object? teams = null,
-    Object? totalUnreadCount = null,
     Object? createdAt = freezed,
     Object? lastActive = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
       teams: null == teams
           ? _value.teams
           : teams // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      totalUnreadCount: null == totalUnreadCount
-          ? _value.totalUnreadCount
-          : totalUnreadCount // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -114,15 +76,7 @@ abstract class _$$_ChatUserModelCopyWith<$Res>
       __$$_ChatUserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String image,
-      String phoneNumber,
-      List<String> teams,
-      int totalUnreadCount,
-      DateTime? createdAt,
-      DateTime? lastActive});
+  $Res call({List<String> teams, DateTime? createdAt, DateTime? lastActive});
 }
 
 /// @nodoc
@@ -136,40 +90,15 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? image = null,
-    Object? phoneNumber = null,
     Object? teams = null,
-    Object? totalUnreadCount = null,
     Object? createdAt = freezed,
     Object? lastActive = freezed,
   }) {
     return _then(_$_ChatUserModel(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
       teams: null == teams
           ? _value._teams
           : teams // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      totalUnreadCount: null == totalUnreadCount
-          ? _value.totalUnreadCount
-          : totalUnreadCount // ignore: cast_nullable_to_non_nullable
-              as int,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -186,25 +115,12 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
 
 class _$_ChatUserModel extends _ChatUserModel {
   const _$_ChatUserModel(
-      {required this.id,
-      required this.name,
-      required this.image,
-      required this.phoneNumber,
-      required final List<String> teams,
-      required this.totalUnreadCount,
+      {required final List<String> teams,
       required this.createdAt,
       required this.lastActive})
       : _teams = teams,
         super._();
 
-  @override
-  final String id;
-  @override
-  final String name;
-  @override
-  final String image;
-  @override
-  final String phoneNumber;
   final List<String> _teams;
   @override
   List<String> get teams {
@@ -213,15 +129,13 @@ class _$_ChatUserModel extends _ChatUserModel {
   }
 
   @override
-  final int totalUnreadCount;
-  @override
   final DateTime? createdAt;
   @override
   final DateTime? lastActive;
 
   @override
   String toString() {
-    return 'ChatUserModel(id: $id, name: $name, image: $image, phoneNumber: $phoneNumber, teams: $teams, totalUnreadCount: $totalUnreadCount, createdAt: $createdAt, lastActive: $lastActive)';
+    return 'ChatUserModel(teams: $teams, createdAt: $createdAt, lastActive: $lastActive)';
   }
 
   @override
@@ -229,14 +143,7 @@ class _$_ChatUserModel extends _ChatUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatUserModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
             const DeepCollectionEquality().equals(other._teams, _teams) &&
-            (identical(other.totalUnreadCount, totalUnreadCount) ||
-                other.totalUnreadCount == totalUnreadCount) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.lastActive, lastActive) ||
@@ -244,16 +151,8 @@ class _$_ChatUserModel extends _ChatUserModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      image,
-      phoneNumber,
-      const DeepCollectionEquality().hash(_teams),
-      totalUnreadCount,
-      createdAt,
-      lastActive);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_teams), createdAt, lastActive);
 
   @JsonKey(ignore: true)
   @override
@@ -264,28 +163,13 @@ class _$_ChatUserModel extends _ChatUserModel {
 
 abstract class _ChatUserModel extends ChatUserModel {
   const factory _ChatUserModel(
-      {required final String id,
-      required final String name,
-      required final String image,
-      required final String phoneNumber,
-      required final List<String> teams,
-      required final int totalUnreadCount,
+      {required final List<String> teams,
       required final DateTime? createdAt,
       required final DateTime? lastActive}) = _$_ChatUserModel;
   const _ChatUserModel._() : super._();
 
   @override
-  String get id;
-  @override
-  String get name;
-  @override
-  String get image;
-  @override
-  String get phoneNumber;
-  @override
   List<String> get teams;
-  @override
-  int get totalUnreadCount;
   @override
   DateTime? get createdAt;
   @override

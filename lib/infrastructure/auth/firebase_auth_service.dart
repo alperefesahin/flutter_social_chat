@@ -91,7 +91,7 @@ class FirebaseAuthService implements IAuthService {
 
       await _firebaseAuth.signInWithCredential(phoneAuthCredential).then(
         (userCredential) async {
-          final userDoc = await _firestore.userDocument();
+          final userDoc = await _firestore.currentUserDocument();
 
           final user = userCredential.user!;
           return userDoc.set(
