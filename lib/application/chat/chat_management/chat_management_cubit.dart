@@ -59,32 +59,37 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       // Channel name will be selected user's name, and the image of the channel
       // will be image of the selected user.
 
-      final String selectedUserId = listOfMemberIDs
-          .where((memberIDs) => memberIDs != currentUserId)
-          .toList()
-          .first;
+      if (listOfMemberIDs.length == 2) {
+        final String selectedUserId = listOfMemberIDs
+            .where((memberIDs) => memberIDs != currentUserId)
+            .toList()
+            .first;
 
-      final selectedUserFromFirestore =
-          await _firebaseFirestore.userDocument(userId: selectedUserId);
+        final selectedUserFromFirestore =
+            await _firebaseFirestore.userDocument(userId: selectedUserId);
 
-      final getSelectedUserDataFromFirestore =
-          await selectedUserFromFirestore.get();
+        final getSelectedUserDataFromFirestore =
+            await selectedUserFromFirestore.get();
 
-      final selectedUserData =
-          getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
+        final selectedUserData =
+            getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
 
-      channelName =
-          selectedUserData?["username"] ?? selectedUserData?["userPhone"];
+        channelName =
+            selectedUserData?["username"] ?? selectedUserData?["userPhone"];
 
-      //TODO: Replace picsum link with related constant image
-      channelImageUrl = selectedUserData?["photoUrl"] ?? state.channelImageUrl;
+        //TODO: Replace picsum link with related constant image
+        channelImageUrl =
+            selectedUserData?["photoUrl"] ?? state.channelImageUrl;
+      }
     }
 
-    await _chatService.createNewChannel(
-      listOfMemberIDs: listOfMemberIDs.toList(),
-      channelName: channelName,
-      channelImageUrl: channelImageUrl,
-    );
+    if (listOfMemberIDs.length >= 2) {
+      await _chatService.createNewChannel(
+        listOfMemberIDs: listOfMemberIDs.toList(),
+        channelName: channelName,
+        channelImageUrl: channelImageUrl,
+      );
+    }
   }
 
   void selectUser({
