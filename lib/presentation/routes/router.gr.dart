@@ -19,8 +19,8 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart' as _i14;
 import '../../application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart'
     as _i13;
 import '../pages/bottom_tab/bottom_tab.dart' as _i4;
-import '../pages/chats/channels_page.dart' as _i7;
-import '../pages/chats/widgets/chat_page.dart' as _i5;
+import '../pages/channels/channels_page.dart' as _i7;
+import '../pages/chat/chat_page.dart' as _i5;
 import '../pages/create_new_chat/create_new_chat_page.dart' as _i6;
 import '../pages/groups/groups_page.dart' as _i8;
 import '../pages/landing/landing_page.dart' as _i1;
