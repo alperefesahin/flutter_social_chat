@@ -108,4 +108,14 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
     }
   }
+
+  List<Channel> searchInsideExistingChannels({
+    required List<Channel> listOfChannels,
+    required String searchedText,
+  }) {
+    final filteredChannels = listOfChannels
+        .where((channel) => channel.name!.contains(searchedText))
+        .toList();
+    return filteredChannels;
+  }
 }

@@ -24,7 +24,8 @@ class _BottomTabPageState extends State<BottomTabPage> {
       'members',
       [StreamChat.of(context).currentUser!.id],
     ),
-    channelStateSort: const [SortOption('last_message_at')],
+    channelStateSort:  const [SortOption('last_message_at',)],
+    
     limit: 20,
   );
 

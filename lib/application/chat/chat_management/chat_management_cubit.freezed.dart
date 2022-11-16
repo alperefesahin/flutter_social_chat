@@ -19,6 +19,7 @@ mixin _$ChatManagementState {
   String get channelName => throw _privateConstructorUsedError;
   String get channelImageUrl => throw _privateConstructorUsedError;
   Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
+  List<Channel> get filteredChannels => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatManagementStateCopyWith<ChatManagementState> get copyWith =>
@@ -34,7 +35,8 @@ abstract class $ChatManagementStateCopyWith<$Res> {
   $Res call(
       {String channelName,
       String channelImageUrl,
-      Set<String> listOfSelectedUserIDs});
+      Set<String> listOfSelectedUserIDs,
+      List<Channel> filteredChannels});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
     Object? channelName = null,
     Object? channelImageUrl = null,
     Object? listOfSelectedUserIDs = null,
+    Object? filteredChannels = null,
   }) {
     return _then(_value.copyWith(
       channelName: null == channelName
@@ -67,6 +70,10 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
           ? _value.listOfSelectedUserIDs
           : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      filteredChannels: null == filteredChannels
+          ? _value.filteredChannels
+          : filteredChannels // ignore: cast_nullable_to_non_nullable
+              as List<Channel>,
     ) as $Val);
   }
 }
@@ -82,7 +89,8 @@ abstract class _$$_InitialCopyWith<$Res>
   $Res call(
       {String channelName,
       String channelImageUrl,
-      Set<String> listOfSelectedUserIDs});
+      Set<String> listOfSelectedUserIDs,
+      List<Channel> filteredChannels});
 }
 
 /// @nodoc
@@ -98,6 +106,7 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? channelName = null,
     Object? channelImageUrl = null,
     Object? listOfSelectedUserIDs = null,
+    Object? filteredChannels = null,
   }) {
     return _then(_$_Initial(
       channelName: null == channelName
@@ -112,6 +121,10 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value._listOfSelectedUserIDs
           : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      filteredChannels: null == filteredChannels
+          ? _value._filteredChannels
+          : filteredChannels // ignore: cast_nullable_to_non_nullable
+              as List<Channel>,
     ));
   }
 }
@@ -122,8 +135,10 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial(
       {required this.channelName,
       required this.channelImageUrl,
-      required final Set<String> listOfSelectedUserIDs})
-      : _listOfSelectedUserIDs = listOfSelectedUserIDs;
+      required final Set<String> listOfSelectedUserIDs,
+      required final List<Channel> filteredChannels})
+      : _listOfSelectedUserIDs = listOfSelectedUserIDs,
+        _filteredChannels = filteredChannels;
 
   @override
   final String channelName;
@@ -136,9 +151,16 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     return EqualUnmodifiableSetView(_listOfSelectedUserIDs);
   }
 
+  final List<Channel> _filteredChannels;
+  @override
+  List<Channel> get filteredChannels {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filteredChannels);
+  }
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatManagementState(channelName: $channelName, channelImageUrl: $channelImageUrl, listOfSelectedUserIDs: $listOfSelectedUserIDs)';
+    return 'ChatManagementState(channelName: $channelName, channelImageUrl: $channelImageUrl, listOfSelectedUserIDs: $listOfSelectedUserIDs, filteredChannels: $filteredChannels)';
   }
 
   @override
@@ -148,8 +170,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
       ..add(DiagnosticsProperty('type', 'ChatManagementState'))
       ..add(DiagnosticsProperty('channelName', channelName))
       ..add(DiagnosticsProperty('channelImageUrl', channelImageUrl))
-      ..add(
-          DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs));
+      ..add(DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs))
+      ..add(DiagnosticsProperty('filteredChannels', filteredChannels));
   }
 
   @override
@@ -162,12 +184,18 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
             (identical(other.channelImageUrl, channelImageUrl) ||
                 other.channelImageUrl == channelImageUrl) &&
             const DeepCollectionEquality()
-                .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs));
+                .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs) &&
+            const DeepCollectionEquality()
+                .equals(other._filteredChannels, _filteredChannels));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, channelName, channelImageUrl,
-      const DeepCollectionEquality().hash(_listOfSelectedUserIDs));
+  int get hashCode => Object.hash(
+      runtimeType,
+      channelName,
+      channelImageUrl,
+      const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
+      const DeepCollectionEquality().hash(_filteredChannels));
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +208,8 @@ abstract class _Initial implements ChatManagementState {
   const factory _Initial(
       {required final String channelName,
       required final String channelImageUrl,
-      required final Set<String> listOfSelectedUserIDs}) = _$_Initial;
+      required final Set<String> listOfSelectedUserIDs,
+      required final List<Channel> filteredChannels}) = _$_Initial;
 
   @override
   String get channelName;
@@ -188,6 +217,8 @@ abstract class _Initial implements ChatManagementState {
   String get channelImageUrl;
   @override
   Set<String> get listOfSelectedUserIDs;
+  @override
+  List<Channel> get filteredChannels;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
