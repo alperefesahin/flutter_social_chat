@@ -6,7 +6,6 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
-// If user logged in first time, user should go about page for the first time.
 class CreateNewProfilePage extends StatefulWidget {
   const CreateNewProfilePage({Key? key}) : super(key: key);
 
@@ -21,9 +20,6 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
       (_) {
         final bool isOnboardingCompleted =
             context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
-
-        debugPrint("INIT STATEYE GELDII");
-        debugPrint("LOGED IN MI BAKALIM $isOnboardingCompleted");
 
         if (isOnboardingCompleted) {
           AutoRouter.of(context).replace(const BottomTabRoute());
