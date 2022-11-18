@@ -7,7 +7,7 @@ class AuthUserModel with _$AuthUserModel {
   const factory AuthUserModel({
     required String id,
     required String phoneNumber,
-    String? displayName,
+    required bool isOnboardingCompleted,
     String? userName,
     String? photoUrl,
   }) = _AuthUserModel;
@@ -17,7 +17,7 @@ class AuthUserModel with _$AuthUserModel {
   factory AuthUserModel.empty() => const AuthUserModel(
         id: '',
         phoneNumber: '',
-        displayName: '',
+        isOnboardingCompleted: false,
         userName: '',
         photoUrl: '',
       );
