@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_production_app/presentation/pages/channels/widgets/animated_create_new_chat_button.dart';
+import 'package:flutter_production_app/presentation/pages/channels/widgets/searched_channel.dart';
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
@@ -49,8 +50,13 @@ class ChannelsPage extends StatelessWidget {
               onChannelTap: (channel) {
                 context.router.push(ChatRoute(channel: channel));
               },
-              itemBuilder: (context, items, index, defaultWidget) {
-                return defaultWidget;
+              itemBuilder: (context, listOfChannels, index, defaultWidget) {
+                return SearchedChannel(
+                  listOfChannels: listOfChannels,
+                  searchedText: searchedText,
+                  index: index,
+                  defaultWidget: defaultWidget,
+                );
               },
             ),
           ),

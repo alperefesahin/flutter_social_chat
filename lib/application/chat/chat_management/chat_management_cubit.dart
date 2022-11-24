@@ -109,13 +109,22 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     }
   }
 
-  List<Channel> searchInsideExistingChannels({
+  /// If there is no a searched channel in the list of channels, then return false. If there is, return true.
+  bool searchInsideExistingChannels({
     required List<Channel> listOfChannels,
     required String searchedText,
+    required int index,
   }) {
     final filteredChannels = listOfChannels
         .where((channel) => channel.name!.contains(searchedText))
         .toList();
-    return filteredChannels;
+
+    final result = filteredChannels.indexOf(listOfChannels[index]);
+
+    if (result == -1) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

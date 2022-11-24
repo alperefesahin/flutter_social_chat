@@ -114,7 +114,6 @@ class AuthCubit extends Cubit<AuthState> {
     final uid = state.authUser.id;
 
     if (state.authUser.userFileImg != null) {
-      debugPrint("userFileImg" + state.authUser.userFileImg.toString());
       await _firebaseStorage.ref(uid).putFile(state.authUser.userFileImg!).then(
         (p0) async {
           await downloadUrl();

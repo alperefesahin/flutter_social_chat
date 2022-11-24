@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
-import 'package:flutter_production_app/injection.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_app_bar.dart';
 import 'package:flutter_production_app/presentation/pages/create_new_chat/widgets/create_new_chat_button.dart';
@@ -23,46 +22,40 @@ class CreateNewChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<ChatManagementCubit>()..reset(),
-      child: Builder(
-        builder: (context) {
-          return WillPopScope(
-            onWillPop: () async => Future.value(false),
-            child: Scaffold(
-              appBar: CustomAppBar(
-                appBarTitle: "",
-                appBarAction: Icons.exit_to_app,
-                actionsOnPressed: () {
-                  context.router.replace(const BottomTabRoute());
-                },
-                appBarBackgroundColor: whiteColor,
-                appBarIconColor: blackColor,
+    return WillPopScope(
+      onWillPop: () async => Future.value(false),
+      child: Scaffold(
+        appBar: CustomAppBar(
+          appBarTitle: "",
+          appBarAction: Icons.exit_to_app,
+          actionsOnPressed: () {
+            context.read<ChatManagementCubit>().reset();
+            context.router.replace(const BottomTabRoute());
+          },
+          appBarBackgroundColor: whiteColor,
+          appBarIconColor: blackColor,
+        ),
+        body: RefreshIndicator(
+          onRefresh: () => userListController.refresh(),
+          child: Column(
+            children: [
+              UserListView(
+                userListController: userListController,
+                isCreateNewChatPageForCreatingGroup:
+                    isCreateNewChatPageForCreatingGroup,
               ),
-              body: RefreshIndicator(
-                onRefresh: () => userListController.refresh(),
-                child: Column(
-                  children: [
-                    UserListView(
-                      userListController: userListController,
+              isCreateNewChatPageForCreatingGroup!
+                  ? CreatingGroupChatPageDetails(
                       isCreateNewChatPageForCreatingGroup:
                           isCreateNewChatPageForCreatingGroup,
+                    )
+                  : CreateNewChatButton(
+                      isCreateNewChatPageForCreatingGroup:
+                          isCreateNewChatPageForCreatingGroup!,
                     ),
-                    isCreateNewChatPageForCreatingGroup!
-                        ? CreatingGroupChatPageDetails(
-                            isCreateNewChatPageForCreatingGroup:
-                                isCreateNewChatPageForCreatingGroup,
-                          )
-                        : CreateNewChatButton(
-                            isCreateNewChatPageForCreatingGroup:
-                                isCreateNewChatPageForCreatingGroup!,
-                          ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
+            ],
+          ),
+        ),
       ),
     );
   }
