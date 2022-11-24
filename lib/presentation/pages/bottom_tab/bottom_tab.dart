@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
 
 import 'package:flutter_production_app/injection.dart';
@@ -24,8 +25,7 @@ class _BottomTabPageState extends State<BottomTabPage> {
       'members',
       [StreamChat.of(context).currentUser!.id],
     ),
-    channelStateSort:  const [SortOption('last_message_at',)],
-    
+    channelStateSort: const [SortOption('last_message_at')],
     limit: 20,
   );
 

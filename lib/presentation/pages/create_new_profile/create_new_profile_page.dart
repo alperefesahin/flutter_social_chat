@@ -24,8 +24,6 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
         final bool isOnboardingCompleted =
             context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
-        debugPrint("asdasdasds:ASDAD: " + context.read<AuthCubit>().state.authUser.toString());
-
         if (isOnboardingCompleted) {
           AutoRouter.of(context).replace(const BottomTabRoute());
         } else if (!isOnboardingCompleted) {
