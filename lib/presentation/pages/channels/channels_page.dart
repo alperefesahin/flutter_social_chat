@@ -49,6 +49,9 @@ class ChannelsPage extends StatelessWidget {
               onChannelTap: (channel) {
                 context.router.push(ChatRoute(channel: channel));
               },
+              itemBuilder: (context, items, index, defaultWidget) {
+                return defaultWidget;
+              },
             ),
           ),
         ],

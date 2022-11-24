@@ -19,4 +19,8 @@ abstract class IAuthService {
     required String smsCode,
     required String verificationId,
   });
+
+  Future<void> updateDisplayName({required String displayName});
+
+  Future<void> updatePhotoURL({required String photoURL});
 }

@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthUserModel {
   String get id => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
-  String? get displayName => throw _privateConstructorUsedError;
+  bool get isOnboardingCompleted => throw _privateConstructorUsedError;
+  File? get userFileImg => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
 
@@ -36,7 +37,8 @@ abstract class $AuthUserModelCopyWith<$Res> {
   $Res call(
       {String id,
       String phoneNumber,
-      String? displayName,
+      bool isOnboardingCompleted,
+      File? userFileImg,
       String? userName,
       String? photoUrl});
 }
@@ -56,7 +58,8 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
   $Res call({
     Object? id = null,
     Object? phoneNumber = null,
-    Object? displayName = freezed,
+    Object? isOnboardingCompleted = null,
+    Object? userFileImg = freezed,
     Object? userName = freezed,
     Object? photoUrl = freezed,
   }) {
@@ -69,10 +72,14 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: freezed == displayName
-          ? _value.displayName
-          : displayName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      isOnboardingCompleted: null == isOnboardingCompleted
+          ? _value.isOnboardingCompleted
+          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userFileImg: freezed == userFileImg
+          ? _value.userFileImg
+          : userFileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -96,7 +103,8 @@ abstract class _$$_AuthUserModelCopyWith<$Res>
   $Res call(
       {String id,
       String phoneNumber,
-      String? displayName,
+      bool isOnboardingCompleted,
+      File? userFileImg,
       String? userName,
       String? photoUrl});
 }
@@ -114,7 +122,8 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? phoneNumber = null,
-    Object? displayName = freezed,
+    Object? isOnboardingCompleted = null,
+    Object? userFileImg = freezed,
     Object? userName = freezed,
     Object? photoUrl = freezed,
   }) {
@@ -127,10 +136,14 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      displayName: freezed == displayName
-          ? _value.displayName
-          : displayName // ignore: cast_nullable_to_non_nullable
-              as String?,
+      isOnboardingCompleted: null == isOnboardingCompleted
+          ? _value.isOnboardingCompleted
+          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userFileImg: freezed == userFileImg
+          ? _value.userFileImg
+          : userFileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -149,7 +162,8 @@ class _$_AuthUserModel extends _AuthUserModel {
   const _$_AuthUserModel(
       {required this.id,
       required this.phoneNumber,
-      this.displayName,
+      required this.isOnboardingCompleted,
+      this.userFileImg,
       this.userName,
       this.photoUrl})
       : super._();
@@ -159,7 +173,9 @@ class _$_AuthUserModel extends _AuthUserModel {
   @override
   final String phoneNumber;
   @override
-  final String? displayName;
+  final bool isOnboardingCompleted;
+  @override
+  final File? userFileImg;
   @override
   final String? userName;
   @override
@@ -167,7 +183,7 @@ class _$_AuthUserModel extends _AuthUserModel {
 
   @override
   String toString() {
-    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber, displayName: $displayName, userName: $userName, photoUrl: $photoUrl)';
+    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber, isOnboardingCompleted: $isOnboardingCompleted, userFileImg: $userFileImg, userName: $userName, photoUrl: $photoUrl)';
   }
 
   @override
@@ -178,8 +194,10 @@ class _$_AuthUserModel extends _AuthUserModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.displayName, displayName) ||
-                other.displayName == displayName) &&
+            (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
+                other.isOnboardingCompleted == isOnboardingCompleted) &&
+            (identical(other.userFileImg, userFileImg) ||
+                other.userFileImg == userFileImg) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.photoUrl, photoUrl) ||
@@ -187,8 +205,8 @@ class _$_AuthUserModel extends _AuthUserModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, phoneNumber, displayName, userName, photoUrl);
+  int get hashCode => Object.hash(runtimeType, id, phoneNumber,
+      isOnboardingCompleted, userFileImg, userName, photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -201,7 +219,8 @@ abstract class _AuthUserModel extends AuthUserModel {
   const factory _AuthUserModel(
       {required final String id,
       required final String phoneNumber,
-      final String? displayName,
+      required final bool isOnboardingCompleted,
+      final File? userFileImg,
       final String? userName,
       final String? photoUrl}) = _$_AuthUserModel;
   const _AuthUserModel._() : super._();
@@ -211,7 +230,9 @@ abstract class _AuthUserModel extends AuthUserModel {
   @override
   String get phoneNumber;
   @override
-  String? get displayName;
+  bool get isOnboardingCompleted;
+  @override
+  File? get userFileImg;
   @override
   String? get userName;
   @override

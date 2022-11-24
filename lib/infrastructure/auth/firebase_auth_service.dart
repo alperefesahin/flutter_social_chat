@@ -78,6 +78,16 @@ class FirebaseAuthService implements IAuthService {
   }
 
   @override
+  Future<void> updateDisplayName({required String displayName}) async {
+    await _firebaseAuth.currentUser!.updateDisplayName(displayName);
+  }
+
+  @override
+  Future<void> updatePhotoURL({required String photoURL}) async {
+    await _firebaseAuth.currentUser!.updatePhotoURL(photoURL);
+  }
+
+  @override
   Future<Either<AuthFailure, Unit>> verifySmsCode({
     required String smsCode,
     required String verificationId,

@@ -15,6 +15,9 @@ class ProfilePage extends StatelessWidget {
         final String userId = state.authUser.id;
         final String userPhoneNumber = state.authUser.phoneNumber;
 
+        final String? userName = state.authUser.userName;
+        final String? userPhotoUrl = state.authUser.photoUrl;
+
         return Scaffold(
           appBar: CustomAppBar(
             appBarTitle: "Chats Page",
@@ -32,6 +35,8 @@ class ProfilePage extends StatelessWidget {
               children: [
                 Text("userid: $userId"),
                 Text("users phone number: $userPhoneNumber"),
+                Text("user name: $userName"),
+                Text("user photo url: $userPhotoUrl"),
               ],
             ),
           ),
