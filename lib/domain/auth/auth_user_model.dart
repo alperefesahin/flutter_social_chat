@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_user_model.freezed.dart';
@@ -8,6 +9,7 @@ class AuthUserModel with _$AuthUserModel {
     required String id,
     required String phoneNumber,
     required bool isOnboardingCompleted,
+    File? userFileImg,
     String? userName,
     String? photoUrl,
   }) = _AuthUserModel;
@@ -18,6 +20,7 @@ class AuthUserModel with _$AuthUserModel {
         id: '',
         phoneNumber: '',
         isOnboardingCompleted: false,
+        userFileImg: null,
         userName: '',
         photoUrl: '',
       );

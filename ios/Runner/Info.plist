@@ -16,6 +16,12 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>flutter_production_app</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Upload images for screen background</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Upload image from camera for screen background</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Post video to someone</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

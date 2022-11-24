@@ -19,6 +19,7 @@ mixin _$AuthUserModel {
   String get id => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   bool get isOnboardingCompleted => throw _privateConstructorUsedError;
+  File? get userFileImg => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
 
@@ -37,6 +38,7 @@ abstract class $AuthUserModelCopyWith<$Res> {
       {String id,
       String phoneNumber,
       bool isOnboardingCompleted,
+      File? userFileImg,
       String? userName,
       String? photoUrl});
 }
@@ -57,6 +59,7 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
     Object? id = null,
     Object? phoneNumber = null,
     Object? isOnboardingCompleted = null,
+    Object? userFileImg = freezed,
     Object? userName = freezed,
     Object? photoUrl = freezed,
   }) {
@@ -73,6 +76,10 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
           ? _value.isOnboardingCompleted
           : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      userFileImg: freezed == userFileImg
+          ? _value.userFileImg
+          : userFileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -97,6 +104,7 @@ abstract class _$$_AuthUserModelCopyWith<$Res>
       {String id,
       String phoneNumber,
       bool isOnboardingCompleted,
+      File? userFileImg,
       String? userName,
       String? photoUrl});
 }
@@ -115,6 +123,7 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
     Object? id = null,
     Object? phoneNumber = null,
     Object? isOnboardingCompleted = null,
+    Object? userFileImg = freezed,
     Object? userName = freezed,
     Object? photoUrl = freezed,
   }) {
@@ -131,6 +140,10 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
           ? _value.isOnboardingCompleted
           : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      userFileImg: freezed == userFileImg
+          ? _value.userFileImg
+          : userFileImg // ignore: cast_nullable_to_non_nullable
+              as File?,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -150,6 +163,7 @@ class _$_AuthUserModel extends _AuthUserModel {
       {required this.id,
       required this.phoneNumber,
       required this.isOnboardingCompleted,
+      this.userFileImg,
       this.userName,
       this.photoUrl})
       : super._();
@@ -161,13 +175,15 @@ class _$_AuthUserModel extends _AuthUserModel {
   @override
   final bool isOnboardingCompleted;
   @override
+  final File? userFileImg;
+  @override
   final String? userName;
   @override
   final String? photoUrl;
 
   @override
   String toString() {
-    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber, isOnboardingCompleted: $isOnboardingCompleted, userName: $userName, photoUrl: $photoUrl)';
+    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber, isOnboardingCompleted: $isOnboardingCompleted, userFileImg: $userFileImg, userName: $userName, photoUrl: $photoUrl)';
   }
 
   @override
@@ -180,6 +196,8 @@ class _$_AuthUserModel extends _AuthUserModel {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
                 other.isOnboardingCompleted == isOnboardingCompleted) &&
+            (identical(other.userFileImg, userFileImg) ||
+                other.userFileImg == userFileImg) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.photoUrl, photoUrl) ||
@@ -187,8 +205,8 @@ class _$_AuthUserModel extends _AuthUserModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, phoneNumber, isOnboardingCompleted, userName, photoUrl);
+  int get hashCode => Object.hash(runtimeType, id, phoneNumber,
+      isOnboardingCompleted, userFileImg, userName, photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -202,6 +220,7 @@ abstract class _AuthUserModel extends AuthUserModel {
       {required final String id,
       required final String phoneNumber,
       required final bool isOnboardingCompleted,
+      final File? userFileImg,
       final String? userName,
       final String? photoUrl}) = _$_AuthUserModel;
   const _AuthUserModel._() : super._();
@@ -212,6 +231,8 @@ abstract class _AuthUserModel extends AuthUserModel {
   String get phoneNumber;
   @override
   bool get isOnboardingCompleted;
+  @override
+  File? get userFileImg;
   @override
   String? get userName;
   @override
