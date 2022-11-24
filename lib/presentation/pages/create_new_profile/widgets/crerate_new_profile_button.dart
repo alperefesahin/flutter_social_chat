@@ -10,8 +10,6 @@ class CreateNewProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final createProfileButtonStatus = true;
-
     final size = MediaQuery.of(context).size;
     return Container(
       width: size.width / 1.7,
@@ -29,32 +27,20 @@ class CreateNewProfileButton extends StatelessWidget {
         splashColor: transparentColor,
         focusColor: transparentColor,
         onTap: () {
-          if (createProfileButtonStatus) {
           context.read<AuthCubit>().createProfile();
-          }
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              CupertinoIcons.plus_app,
-              size: 30,
-              color: createProfileButtonStatus
-                  ? customIndigoColor
-                  : customIndigoColor.withOpacity(0.7),
-            ),
-            const SizedBox(width: 10),
+          children: const [
+            Icon(CupertinoIcons.plus_app, size: 30, color: customIndigoColor),
+            SizedBox(width: 10),
             CustomText(
               text: "createProfileText",
               minFontSize: 21,
               maxFontSize: 25,
               textStyle: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: createProfileButtonStatus
-                    ? customIndigoColor
-                    : customIndigoColor.withOpacity(0.7),
-              ),
-              textPadding: const EdgeInsets.only(),
+                  fontWeight: FontWeight.w600, color: customIndigoColor),
+              textPadding: EdgeInsets.only(),
             ),
           ],
         ),
