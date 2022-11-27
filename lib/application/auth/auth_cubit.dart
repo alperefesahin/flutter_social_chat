@@ -79,6 +79,12 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  void validateUserName({required bool isUserNameValid}) {
+    emit(
+      state.copyWith(isUserNameValid: isUserNameValid),
+    );
+  }
+
   Future<void> changeUserProfileImage({
     required Future<XFile?> userFileImg,
   }) async {
@@ -113,13 +119,14 @@ class AuthCubit extends Cubit<AuthState> {
 
     final uid = state.authUser.id;
 
-    if (state.authUser.userFileImg != null) {
+    if (state.authUser.userFileImg != null && state.isUserNameValid) {
       await _firebaseStorage.ref(uid).putFile(state.authUser.userFileImg!).then(
         (p0) async {
           await downloadUrl();
         },
       );
     }
+    emit(state.copyWith(isInProgress: false));
   }
 
   Future<void> downloadUrl() async {
@@ -141,6 +148,18 @@ class AuthCubit extends Cubit<AuthState> {
                 SetOptions(merge: true),
               ),
             );
+        emit(
+          state.copyWith(
+            authUser: AuthUserModel(
+              id: state.authUser.id,
+              phoneNumber: state.authUser.phoneNumber,
+              userName: state.authUser.userName,
+              photoUrl: state.authUser.photoUrl,
+              userFileImg: state.authUser.userFileImg,
+              isOnboardingCompleted: true,
+            ),
+          ),
+        );
       },
     );
   }

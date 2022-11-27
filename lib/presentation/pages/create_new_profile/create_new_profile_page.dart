@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
-import 'package:flutter_production_app/presentation/pages/create_new_profile/widgets/crerate_new_profile_button.dart';
+import 'package:flutter_production_app/presentation/pages/create_new_profile/constants/texts.dart';
+
 import 'package:flutter_production_app/presentation/pages/create_new_profile/widgets/profile_image.dart';
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
@@ -59,19 +59,56 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
                     body: Column(
                       children: [
                         ProfileImage(authState: state),
-                        TextFormField(
-                          validator: (value) {
-                            //TODO: Do it with 'form_validator' package (userName)
-                          },
-                          autocorrect: false,
-                          onChanged: (userName) =>
-                              context.read<AuthCubit>().changeUserName(userName: userName),
-                          decoration: const InputDecoration(
-                            prefixIcon: Icon(CupertinoIcons.person),
-                            labelText: "User Name",
+                        Expanded(
+                          child: Form(
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            child: ListView(
+                              padding: const EdgeInsets.all(8),
+                              children: [
+                                TextFormField(
+                                  decoration: const InputDecoration(
+                                    prefixIcon: Icon(Icons.email),
+                                    labelText: 'Email',
+                                  ),
+                                  autocorrect: false,
+                                  onChanged: (userName) =>
+                                      context.read<AuthCubit>().changeUserName(userName: userName),
+                                  validator: (userName) {
+                                    if (userName!.length > 10) {
+                                      context
+                                          .read<AuthCubit>()
+                                          .validateUserName(isUserNameValid: false);
+                                      return userNameCanNotBeLongerThanTenCharacters;
+                                    } else if (userName.length < 3) {
+                                      context
+                                          .read<AuthCubit>()
+                                          .validateUserName(isUserNameValid: false);
+                                      return userNameCanNotBeShorterThanThreeCharacters;
+                                    }
+                                    context
+                                        .read<AuthCubit>()
+                                        .validateUserName(isUserNameValid: true);
+                                    return null;
+                                  },
+                                ),
+                                const SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: TextButton(
+                                        onPressed: () {
+                                          debugPrint(state.isUserNameValid.toString());
+                                          context.read<AuthCubit>().createProfile();
+                                        },
+                                        child: const Text('SIGN IN'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const CreateNewProfileButton(),
+                        )
                       ],
                     ),
                   ),

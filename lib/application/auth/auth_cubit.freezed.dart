@@ -19,6 +19,7 @@ mixin _$AuthState {
   AuthUserModel get authUser => throw _privateConstructorUsedError;
   bool get isUserLoggedIn => throw _privateConstructorUsedError;
   bool get isInProgress => throw _privateConstructorUsedError;
+  bool get isUserNameValid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -30,7 +31,11 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({AuthUserModel authUser, bool isUserLoggedIn, bool isInProgress});
+  $Res call(
+      {AuthUserModel authUser,
+      bool isUserLoggedIn,
+      bool isInProgress,
+      bool isUserNameValid});
 
   $AuthUserModelCopyWith<$Res> get authUser;
 }
@@ -51,6 +56,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? authUser = null,
     Object? isUserLoggedIn = null,
     Object? isInProgress = null,
+    Object? isUserNameValid = null,
   }) {
     return _then(_value.copyWith(
       authUser: null == authUser
@@ -64,6 +70,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUserNameValid: null == isUserNameValid
+          ? _value.isUserNameValid
+          : isUserNameValid // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -84,7 +94,11 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthUserModel authUser, bool isUserLoggedIn, bool isInProgress});
+  $Res call(
+      {AuthUserModel authUser,
+      bool isUserLoggedIn,
+      bool isInProgress,
+      bool isUserNameValid});
 
   @override
   $AuthUserModelCopyWith<$Res> get authUser;
@@ -104,6 +118,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? authUser = null,
     Object? isUserLoggedIn = null,
     Object? isInProgress = null,
+    Object? isUserNameValid = null,
   }) {
     return _then(_$_AuthState(
       authUser: null == authUser
@@ -118,6 +133,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
+      isUserNameValid: null == isUserNameValid
+          ? _value.isUserNameValid
+          : isUserNameValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -128,7 +147,8 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
   const _$_AuthState(
       {required this.authUser,
       required this.isUserLoggedIn,
-      required this.isInProgress});
+      required this.isInProgress,
+      required this.isUserNameValid});
 
   @override
   final AuthUserModel authUser;
@@ -136,10 +156,12 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
   final bool isUserLoggedIn;
   @override
   final bool isInProgress;
+  @override
+  final bool isUserNameValid;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState(authUser: $authUser, isUserLoggedIn: $isUserLoggedIn, isInProgress: $isInProgress)';
+    return 'AuthState(authUser: $authUser, isUserLoggedIn: $isUserLoggedIn, isInProgress: $isInProgress, isUserNameValid: $isUserNameValid)';
   }
 
   @override
@@ -149,7 +171,8 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
       ..add(DiagnosticsProperty('type', 'AuthState'))
       ..add(DiagnosticsProperty('authUser', authUser))
       ..add(DiagnosticsProperty('isUserLoggedIn', isUserLoggedIn))
-      ..add(DiagnosticsProperty('isInProgress', isInProgress));
+      ..add(DiagnosticsProperty('isInProgress', isInProgress))
+      ..add(DiagnosticsProperty('isUserNameValid', isUserNameValid));
   }
 
   @override
@@ -162,12 +185,14 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
             (identical(other.isUserLoggedIn, isUserLoggedIn) ||
                 other.isUserLoggedIn == isUserLoggedIn) &&
             (identical(other.isInProgress, isInProgress) ||
-                other.isInProgress == isInProgress));
+                other.isInProgress == isInProgress) &&
+            (identical(other.isUserNameValid, isUserNameValid) ||
+                other.isUserNameValid == isUserNameValid));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, authUser, isUserLoggedIn, isInProgress);
+  int get hashCode => Object.hash(
+      runtimeType, authUser, isUserLoggedIn, isInProgress, isUserNameValid);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +205,8 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {required final AuthUserModel authUser,
       required final bool isUserLoggedIn,
-      required final bool isInProgress}) = _$_AuthState;
+      required final bool isInProgress,
+      required final bool isUserNameValid}) = _$_AuthState;
 
   @override
   AuthUserModel get authUser;
@@ -188,6 +214,8 @@ abstract class _AuthState implements AuthState {
   bool get isUserLoggedIn;
   @override
   bool get isInProgress;
+  @override
+  bool get isUserNameValid;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
