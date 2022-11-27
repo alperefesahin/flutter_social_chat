@@ -6,11 +6,13 @@ class AuthState with _$AuthState {
     required AuthUserModel authUser,
     required bool isUserLoggedIn,
     required bool isInProgress,
+    required bool isUserNameValid,
   }) = _AuthState;
 
   factory AuthState.empty() => AuthState(
         authUser: AuthUserModel.empty(),
         isUserLoggedIn: false,
         isInProgress: false,
+        isUserNameValid: false,
       );
 }
