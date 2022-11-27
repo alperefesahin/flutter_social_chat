@@ -6,9 +6,9 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class AnimatedCreateNewChatButton extends StatelessWidget {
   const AnimatedCreateNewChatButton({
-    Key? key,
+    super.key,
     required this.userListController,
-  }) : super(key: key);
+  });
 
   final StreamUserListController userListController;
 

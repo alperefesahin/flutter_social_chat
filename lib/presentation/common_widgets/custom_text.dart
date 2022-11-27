@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
   const CustomText({
-    Key? key,
+    super.key,
     required this.text,
     required this.minFontSize,
     required this.maxFontSize,
     required this.textPadding,
     this.textStyle,
-  }) : super(key: key);
+  });
 
   final String text;
   final double minFontSize;

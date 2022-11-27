@@ -6,7 +6,7 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
 
 class CreateNewProfileButton extends StatelessWidget {
-  const CreateNewProfileButton({Key? key}) : super(key: key);
+  const CreateNewProfileButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,10 @@ class CreateNewProfileButton extends StatelessWidget {
               minFontSize: 21,
               maxFontSize: 25,
               textStyle: TextStyle(
-                  fontWeight: FontWeight.w600, color: customIndigoColor),
-              textPadding: EdgeInsets.only(),
+                fontWeight: FontWeight.w600,
+                color: customIndigoColor,
+              ),
+              textPadding: EdgeInsets.zero,
             ),
           ],
         ),

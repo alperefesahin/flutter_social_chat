@@ -6,7 +6,7 @@ import 'package:flutter_production_app/presentation/common_widgets/custom_progre
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({Key? key}) : super(key: key);
+  const LandingPage({super.key});
 
   @override
   State<LandingPage> createState() => _LandingPageState();

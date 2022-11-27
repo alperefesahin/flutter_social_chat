@@ -5,10 +5,10 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class UserListView extends StatelessWidget {
   const UserListView({
-    Key? key,
+    super.key,
     required this.userListController,
     this.isCreateNewChatPageForCreatingGroup,
-  }) : super(key: key);
+  });
 
   final StreamUserListController userListController;
   final bool? isCreateNewChatPageForCreatingGroup;

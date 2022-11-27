@@ -1,13 +1,14 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'dart:async';
-import 'package:bloc/bloc.dart';
-import 'package:fpdart/fpdart.dart';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter_production_app/domain/auth/auth_failure.dart';
 import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
 import 'package:flutter_production_app/injection.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+
 part 'phone_number_sign_in_cubit.freezed.dart';
 part 'phone_number_sign_in_state.dart';
 
@@ -85,7 +86,9 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
         );
         final Either<AuthFailure, Unit> failureOrSuccess =
             await _authService.verifySmsCode(
-                smsCode: state.smsCode, verificationId: verificationId);
+          smsCode: state.smsCode,
+          verificationId: verificationId,
+        );
         failureOrSuccess.fold(
           (AuthFailure failure) {
             emit(

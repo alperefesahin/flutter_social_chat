@@ -6,7 +6,7 @@ import 'package:flutter_production_app/presentation/common_widgets/custom_text.d
 import 'package:flutter_production_app/presentation/pages/verification_page/constants/texts.dart';
 
 class ResendCodeButton extends StatelessWidget {
-  const ResendCodeButton({Key? key}) : super(key: key);
+  const ResendCodeButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class ResendCodeButton extends StatelessWidget {
                 textStyle: TextStyle(
                   color: confirmationTextColor,
                 ),
-                textPadding: EdgeInsets.only(),
+                textPadding: EdgeInsets.zero,
               ),
               Padding(
                 padding: EdgeInsets.only(left: 15),

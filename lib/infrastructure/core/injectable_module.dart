@@ -3,9 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 import 'package:flutter_production_app/secrets.dart';
 import 'package:injectable/injectable.dart';
-import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 @module

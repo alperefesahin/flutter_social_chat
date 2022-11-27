@@ -12,10 +12,10 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CreateNewChatPage extends StatelessWidget {
   const CreateNewChatPage({
-    Key? key,
+    super.key,
     required this.userListController,
     this.isCreateNewChatPageForCreatingGroup,
-  }) : super(key: key);
+  });
 
   final StreamUserListController userListController;
   final bool? isCreateNewChatPageForCreatingGroup;
@@ -44,15 +44,16 @@ class CreateNewChatPage extends StatelessWidget {
                 isCreateNewChatPageForCreatingGroup:
                     isCreateNewChatPageForCreatingGroup,
               ),
-              isCreateNewChatPageForCreatingGroup!
-                  ? CreatingGroupChatPageDetails(
-                      isCreateNewChatPageForCreatingGroup:
-                          isCreateNewChatPageForCreatingGroup,
-                    )
-                  : CreateNewChatButton(
-                      isCreateNewChatPageForCreatingGroup:
-                          isCreateNewChatPageForCreatingGroup!,
-                    ),
+              if (isCreateNewChatPageForCreatingGroup!)
+                CreatingGroupChatPageDetails(
+                  isCreateNewChatPageForCreatingGroup:
+                      isCreateNewChatPageForCreatingGroup,
+                )
+              else
+                CreateNewChatButton(
+                  isCreateNewChatPageForCreatingGroup:
+                      isCreateNewChatPageForCreatingGroup!,
+                ),
             ],
           ),
         ),

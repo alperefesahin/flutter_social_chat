@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
-import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
 
 import 'package:flutter_production_app/injection.dart';
@@ -12,7 +11,7 @@ import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class BottomTabPage extends StatefulWidget {
-  const BottomTabPage({Key? key}) : super(key: key);
+  const BottomTabPage({super.key});
 
   @override
   State<BottomTabPage> createState() => _BottomTabPageState();

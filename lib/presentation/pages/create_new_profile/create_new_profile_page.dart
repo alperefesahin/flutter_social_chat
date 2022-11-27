@@ -10,7 +10,7 @@ import 'package:flutter_production_app/presentation/pages/create_new_profile/wid
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
 class CreateNewProfilePage extends StatefulWidget {
-  const CreateNewProfilePage({Key? key}) : super(key: key);
+  const CreateNewProfilePage({super.key});
 
   @override
   State<CreateNewProfilePage> createState() => _CreateNewProfilePageState();

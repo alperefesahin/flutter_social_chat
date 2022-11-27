@@ -10,7 +10,7 @@ import 'package:flutter_production_app/presentation/pages/sign_in/widgets/phone_
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
 class BottomSectionOfThePage extends StatelessWidget {
-  const BottomSectionOfThePage({Key? key, required this.size}) : super(key: key);
+  const BottomSectionOfThePage({super.key, required this.size});
 
   final Size size;
 
@@ -42,7 +42,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                             text: personalInformationText,
                             minFontSize: 20,
                             maxFontSize: 25,
-                            textPadding: EdgeInsets.only(),
+                            textPadding: EdgeInsets.zero,
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w600,
                             ),
@@ -72,7 +72,9 @@ class BottomSectionOfThePage extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         if (state.isPhoneNumberInputValidated) {
-                          context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
+                          context
+                              .read<PhoneNumberSignInCubit>()
+                              .signInWithPhoneNumber();
                           AutoRouter.of(context).navigate(
                             SignInVerificationRoute(state: state),
                           );

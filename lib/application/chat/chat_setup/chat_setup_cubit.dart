@@ -37,7 +37,8 @@ class ChatSetupCubit extends Cubit<ChatSetupState> {
   }
 
   Future<void> _listenChatUserAuthStateChangesStream(
-      ConnectionStatus webSocketConnectionStatus) async {
+    ConnectionStatus webSocketConnectionStatus,
+  ) async {
     if (ConnectionStatus.connected == webSocketConnectionStatus) {
       emit(
         state.copyWith(

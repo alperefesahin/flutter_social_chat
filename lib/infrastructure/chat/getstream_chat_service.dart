@@ -45,7 +45,9 @@ class GetstreamChatService implements IChatService {
     final signedInUserOption = await _firebaseAuth.getSignedInUser();
 
     final signedInUser = signedInUserOption.fold(
-        () => throw Exception("Not authanticated"), (user) => user);
+      () => throw Exception("Not authanticated"),
+      (user) => user,
+    );
 
     await streamChatClient.connectUser(User(id: signedInUser.id), devToken);
   }

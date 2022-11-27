@@ -2,21 +2,21 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bloc/bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:flutter_production_app/domain/auth/auth_user_model.dart';
 import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/injection.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
+import 'package:flutter_production_app/injection.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:injectable/injectable.dart';
 
-part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
+part 'auth_state.dart';
 
 @lazySingleton
 class AuthCubit extends Cubit<AuthState> {
@@ -80,8 +80,9 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> changeUserProfileImage(
-      {required Future<XFile?> userFileImg}) async {
+  Future<void> changeUserProfileImage({
+    required Future<XFile?> userFileImg,
+  }) async {
     final path = await userFileImg;
 
     if (path == null) {
@@ -128,7 +129,8 @@ class AuthCubit extends Cubit<AuthState> {
     await _firebaseStorage.ref(uid).getDownloadURL().then(
       (photoUrl) async {
         await _authService.updateDisplayName(
-            displayName: state.authUser.userName!);
+          displayName: state.authUser.userName!,
+        );
         await _authService.updatePhotoURL(photoURL: photoUrl);
 
         await _firebaseFirestore.currentUserDocument().then(

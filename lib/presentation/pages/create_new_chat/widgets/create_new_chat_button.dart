@@ -5,9 +5,9 @@ import 'package:flutter_production_app/presentation/pages/create_new_chat/consta
 
 class CreateNewChatButton extends StatelessWidget {
   const CreateNewChatButton({
-    Key? key,
+    super.key,
     required this.isCreateNewChatPageForCreatingGroup,
-  }) : super(key: key);
+  });
 
   final bool isCreateNewChatPageForCreatingGroup;
 

@@ -11,7 +11,7 @@ import 'package:flutter_production_app/presentation/pages/sign_in/constants/text
 import 'package:flutter_production_app/presentation/pages/sign_in/widgets/sign_in_body.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+  const SignInPage({super.key});
   static Page page() => const MaterialPage<void>(child: SignInPage());
 
   @override

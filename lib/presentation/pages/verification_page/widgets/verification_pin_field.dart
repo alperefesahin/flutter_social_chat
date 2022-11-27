@@ -5,7 +5,7 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerificationPinField extends StatelessWidget {
-  const VerificationPinField({Key? key}) : super(key: key);
+  const VerificationPinField({super.key});
 
   @override
   Widget build(BuildContext context) {
