@@ -3,9 +3,9 @@ import 'package:progress_indicators/progress_indicators.dart';
 
 class CustomProgressIndicator extends StatelessWidget {
   const CustomProgressIndicator({
-    Key? key,
+    super.key,
     required this.progressIndicatorColor,
-  }) : super(key: key);
+  });
 
   final Color progressIndicatorColor;
 

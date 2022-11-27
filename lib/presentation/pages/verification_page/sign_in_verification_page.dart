@@ -11,9 +11,9 @@ import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
 class SignInVerificationPage extends StatelessWidget {
   const SignInVerificationPage({
-    Key? key,
+    super.key,
     required this.state,
-  }) : super(key: key);
+  });
 
   final PhoneNumberSignInState state;
 

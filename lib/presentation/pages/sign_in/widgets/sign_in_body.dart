@@ -5,7 +5,7 @@ import 'package:flutter_production_app/presentation/pages/sign_in/widgets/bottom
 import 'package:flutter_production_app/presentation/pages/sign_in/widgets/top_section_of_the_page.dart';
 
 class SignInPageBody extends StatelessWidget {
-  const SignInPageBody({Key? key}) : super(key: key);
+  const SignInPageBody({super.key});
 
   @override
   Widget build(BuildContext context) {

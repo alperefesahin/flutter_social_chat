@@ -8,10 +8,10 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChannelsPage extends StatelessWidget {
   const ChannelsPage({
-    Key? key,
+    super.key,
     required this.streamChannelListController,
     required this.userListController,
-  }) : super(key: key);
+  });
 
   final StreamChannelListController streamChannelListController;
   final StreamUserListController userListController;

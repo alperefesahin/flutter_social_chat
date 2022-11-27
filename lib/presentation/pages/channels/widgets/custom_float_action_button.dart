@@ -5,11 +5,11 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CustomFloatActionButton extends StatelessWidget {
   const CustomFloatActionButton({
-    Key? key,
+    super.key,
     required this.buttonIcon,
     required this.userListController,
     required this.isCreateNewChatPageForCreatingGroup,
-  }) : super(key: key);
+  });
 
   final IconData buttonIcon;
   final StreamUserListController userListController;
@@ -19,11 +19,12 @@ class CustomFloatActionButton extends StatelessWidget {
     return FloatingActionButton(
       heroTag: null,
       onPressed: () {
-        context.router.replace(CreateNewChatRoute(
-          userListController: userListController,
-          isCreateNewChatPageForCreatingGroup:
-              isCreateNewChatPageForCreatingGroup,
-        ));
+        context.router.replace(
+          CreateNewChatRoute(
+            userListController: userListController,
+            isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
+          ),
+        );
       },
       child: Icon(buttonIcon),
     );

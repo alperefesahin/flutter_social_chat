@@ -5,10 +5,10 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class UserListView extends StatelessWidget {
   const UserListView({
-    Key? key,
+    super.key,
     required this.userListController,
     this.isCreateNewChatPageForCreatingGroup,
-  }) : super(key: key);
+  });
 
   final StreamUserListController userListController;
   final bool? isCreateNewChatPageForCreatingGroup;
@@ -20,9 +20,7 @@ class UserListView extends StatelessWidget {
 
     return SizedBox(
       width: deviceWidth,
-      height: isCreateNewChatPageForCreatingGroup!
-          ? deviceHeight / 2
-          : deviceHeight / 1.4,
+      height: isCreateNewChatPageForCreatingGroup! ? deviceHeight / 2 : deviceHeight / 1.4,
       child: BlocBuilder<ChatManagementCubit, ChatManagementState>(
         builder: (context, state) {
           return StreamUserListView(
@@ -36,8 +34,7 @@ class UserListView extends StatelessWidget {
             onUserTap: (user) {
               context.read<ChatManagementCubit>().selectUser(
                     user: user,
-                    isCreateNewChatPageForCreatingGroup:
-                        isCreateNewChatPageForCreatingGroup!,
+                    isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
                   );
             },
           );

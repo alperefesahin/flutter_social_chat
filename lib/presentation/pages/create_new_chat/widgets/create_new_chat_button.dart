@@ -5,9 +5,9 @@ import 'package:flutter_production_app/presentation/pages/create_new_chat/consta
 
 class CreateNewChatButton extends StatelessWidget {
   const CreateNewChatButton({
-    Key? key,
+    super.key,
     required this.isCreateNewChatPageForCreatingGroup,
-  }) : super(key: key);
+  });
 
   final bool isCreateNewChatPageForCreatingGroup;
 
@@ -16,14 +16,11 @@ class CreateNewChatButton extends StatelessWidget {
     return TextButton(
       onPressed: () {
         context.read<ChatManagementCubit>().createNewChannel(
-              isCreateNewChatPageForCreatingGroup:
-                  isCreateNewChatPageForCreatingGroup,
+              isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
             );
       },
       child: Text(
-        isCreateNewChatPageForCreatingGroup
-            ? createNewGroupChat
-            : createNewOneToOneChat,
+        isCreateNewChatPageForCreatingGroup ? createNewGroupChat : createNewOneToOneChat,
       ),
     );
   }

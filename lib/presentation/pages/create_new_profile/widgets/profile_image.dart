@@ -10,7 +10,7 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileImage extends StatelessWidget {
-  const ProfileImage({Key? key, required this.authState}) : super(key: key);
+  const ProfileImage({super.key, required this.authState});
 
   final AuthState authState;
 
@@ -22,7 +22,6 @@ class ProfileImage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 50),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
@@ -35,8 +34,7 @@ class ProfileImage extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: newImage == null
-                    ? const AssetImage("assets/images/user.png")
-                        as ImageProvider
+                    ? const AssetImage("assets/images/user.png") as ImageProvider
                     : FileImage(File(newImage.path)),
               ),
             ),

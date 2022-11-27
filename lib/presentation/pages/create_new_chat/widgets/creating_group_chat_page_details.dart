@@ -7,9 +7,9 @@ import 'package:flutter_production_app/presentation/pages/create_new_chat/widget
 
 class CreatingGroupChatPageDetails extends StatelessWidget {
   const CreatingGroupChatPageDetails({
-    Key? key,
+    super.key,
     this.isCreateNewChatPageForCreatingGroup,
-  }) : super(key: key);
+  });
 
   final bool? isCreateNewChatPageForCreatingGroup;
 
@@ -21,12 +21,12 @@ class CreatingGroupChatPageDetails extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: TextFormField(
             validator: (value) {
+              return null;
               //TODO: Do it with 'form_validator' package
             },
             autocorrect: false,
-            onChanged: (channelName) => context
-                .read<ChatManagementCubit>()
-                .channelNameChanged(channelName: channelName),
+            onChanged: (channelName) =>
+                context.read<ChatManagementCubit>().channelNameChanged(channelName: channelName),
             decoration: const InputDecoration(
               prefixIcon: Icon(CupertinoIcons.group_solid),
               labelText: groupName,
@@ -53,8 +53,7 @@ class CreatingGroupChatPageDetails extends StatelessWidget {
           ),
         ),
         CreateNewChatButton(
-          isCreateNewChatPageForCreatingGroup:
-              isCreateNewChatPageForCreatingGroup!,
+          isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
         ),
       ],
     );

@@ -20,7 +20,6 @@ class AuthUserModel with _$AuthUserModel {
         id: '',
         phoneNumber: '',
         isOnboardingCompleted: false,
-        userFileImg: null,
         userName: '',
         photoUrl: '',
       );

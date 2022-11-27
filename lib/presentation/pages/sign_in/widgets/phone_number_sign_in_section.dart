@@ -1,13 +1,13 @@
 // ignore_for_file: no_logic_in_create_state
 import 'package:flutter/material.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/constants/texts.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class PhoneNumberSignInSection extends StatefulWidget {
-  const PhoneNumberSignInSection({Key? key, required this.state}) : super(key: key);
+  const PhoneNumberSignInSection({super.key, required this.state});
 
   final PhoneNumberSignInState state;
   @override
@@ -20,7 +20,9 @@ class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
 
   @override
   void didChangeDependencies() {
-    context.read<PhoneNumberSignInCubit>().phoneNumberChanged(phoneNumber: initialPhone.phoneNumber ?? "");
+    context
+        .read<PhoneNumberSignInCubit>()
+        .phoneNumberChanged(phoneNumber: initialPhone.phoneNumber ?? "");
     super.didChangeDependencies();
   }
 
@@ -43,9 +45,9 @@ class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
                   );
             },
             onInputValidated: (bool isPhoneNumberInputValidated) {
-              context
-                  .read<PhoneNumberSignInCubit>()
-                  .updateNextButtonStatus(isPhoneNumberInputValidated: isPhoneNumberInputValidated);
+              context.read<PhoneNumberSignInCubit>().updateNextButtonStatus(
+                    isPhoneNumberInputValidated: isPhoneNumberInputValidated,
+                  );
             },
             inputDecoration: const InputDecoration(
               hintText: phoneNumberText,
@@ -61,8 +63,6 @@ class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
             autoValidateMode: AutovalidateMode.onUserInteraction,
             initialValue: initialPhone,
             formatInput: false,
-            autoFocus: false,
-            autoFocusSearch: false,
             inputBorder: const OutlineInputBorder(),
           ),
         );

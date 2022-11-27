@@ -10,7 +10,7 @@ import 'package:flutter_production_app/presentation/pages/create_new_profile/wid
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
 class CreateNewProfilePage extends StatefulWidget {
-  const CreateNewProfilePage({Key? key}) : super(key: key);
+  const CreateNewProfilePage({super.key});
 
   @override
   State<CreateNewProfilePage> createState() => _CreateNewProfilePageState();
@@ -64,9 +64,8 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
                             //TODO: Do it with 'form_validator' package (userName)
                           },
                           autocorrect: false,
-                          onChanged: (userName) => context
-                              .read<AuthCubit>()
-                              .changeUserName(userName: userName),
+                          onChanged: (userName) =>
+                              context.read<AuthCubit>().changeUserName(userName: userName),
                           decoration: const InputDecoration(
                             prefixIcon: Icon(CupertinoIcons.person),
                             labelText: "User Name",

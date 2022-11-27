@@ -4,15 +4,15 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
-import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
+import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-part 'chat_management_state.dart';
 part 'chat_management_cubit.freezed.dart';
+part 'chat_management_state.dart';
 
 @injectable
 class ChatManagementCubit extends Cubit<ChatManagementState> {
@@ -40,8 +40,9 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     emit(state.copyWith(channelName: channelName));
   }
 
-  Future<void> createNewChannel(
-      {required bool isCreateNewChatPageForCreatingGroup}) async {
+  Future<void> createNewChannel({
+    required bool isCreateNewChatPageForCreatingGroup,
+  }) async {
     String channelName = state.channelName;
     String channelImageUrl = state.channelImageUrl;
     final listOfMemberIDs = {...state.listOfSelectedUserIDs};
@@ -60,26 +61,20 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       // will be image of the selected user.
 
       if (listOfMemberIDs.length == 2) {
-        final String selectedUserId = listOfMemberIDs
-            .where((memberIDs) => memberIDs != currentUserId)
-            .toList()
-            .first;
+        final String selectedUserId =
+            listOfMemberIDs.where((memberIDs) => memberIDs != currentUserId).toList().first;
 
         final selectedUserFromFirestore =
             await _firebaseFirestore.userDocument(userId: selectedUserId);
 
-        final getSelectedUserDataFromFirestore =
-            await selectedUserFromFirestore.get();
+        final getSelectedUserDataFromFirestore = await selectedUserFromFirestore.get();
 
-        final selectedUserData =
-            getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
+        final selectedUserData = getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
 
-        channelName =
-            selectedUserData?["username"] ?? selectedUserData?["userPhone"];
+        channelName = selectedUserData?["username"] ?? selectedUserData?["userPhone"];
 
         //TODO: Replace picsum link with related constant image
-        channelImageUrl =
-            selectedUserData?["photoUrl"] ?? state.channelImageUrl;
+        channelImageUrl = selectedUserData?["photoUrl"] ?? state.channelImageUrl;
       }
     }
 
@@ -115,9 +110,8 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     required String searchedText,
     required int index,
   }) {
-    final filteredChannels = listOfChannels
-        .where((channel) => channel.name!.contains(searchedText))
-        .toList();
+    final filteredChannels =
+        listOfChannels.where((channel) => channel.name!.contains(searchedText)).toList();
 
     final result = filteredChannels.indexOf(listOfChannels[index]);
 

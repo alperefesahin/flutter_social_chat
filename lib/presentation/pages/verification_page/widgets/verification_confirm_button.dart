@@ -9,9 +9,9 @@ import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
 class VerificationConfirmButton extends StatelessWidget {
   const VerificationConfirmButton({
-    Key? key,
+    super.key,
     required this.state,
-  }) : super(key: key);
+  });
   final PhoneNumberSignInState state;
 
   @override

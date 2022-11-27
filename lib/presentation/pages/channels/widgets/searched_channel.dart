@@ -4,13 +4,13 @@ import 'package:flutter_production_app/application/chat/chat_management/chat_man
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class SearchedChannel extends StatelessWidget {
-  const SearchedChannel(
-      {Key? key,
-      required this.listOfChannels,
-      required this.searchedText,
-      required this.index,
-      required this.defaultWidget})
-      : super(key: key);
+  const SearchedChannel({
+    super.key,
+    required this.listOfChannels,
+    required this.searchedText,
+    required this.index,
+    required this.defaultWidget,
+  });
 
   final List<Channel> listOfChannels;
   final String searchedText;
@@ -27,8 +27,6 @@ class SearchedChannel extends StatelessWidget {
 
     final channel = listOfChannels[index];
 
-    return isTheSearchedChannelExist
-        ? defaultWidget.copyWith(channel: channel)
-        : Container();
+    return isTheSearchedChannelExist ? defaultWidget.copyWith(channel: channel) : Container();
   }
 }

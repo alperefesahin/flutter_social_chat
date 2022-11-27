@@ -3,9 +3,9 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({
-    Key? key,
+    super.key,
     required this.channel,
-  }) : super(key: key);
+  });
   final Channel channel;
 
   @override
