@@ -33,8 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
     _firebaseStorage = getIt<FirebaseStorage>();
     _firebaseFirestore = getIt<FirebaseFirestore>();
 
-    _authUserSubscription =
-        _authService.authStateChanges.listen(_listenAuthStateChangesStream);
+    _authUserSubscription = _authService.authStateChanges.listen(_listenAuthStateChangesStream);
   }
 
   @override

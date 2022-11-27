@@ -20,8 +20,7 @@ class SignInPage extends StatelessWidget {
       builder: (context, state) {
         return state.isInProgress
             ? BlocListener<PhoneNumberSignInCubit, PhoneNumberSignInState>(
-                listenWhen: (p, c) =>
-                    p.failureMessageOption != c.failureMessageOption,
+                listenWhen: (p, c) => p.failureMessageOption != c.failureMessageOption,
                 listener: (context, state) {
                   state.failureMessageOption.fold(
                     () {},
@@ -33,8 +32,7 @@ class SignInPage extends StatelessWidget {
                           deviceNotSupported: () => "Device Not Supported",
                           smsTimeout: () => "Sms Timeout",
                           sessionExpired: () => "Session Expired",
-                          invalidVerificationCode: () =>
-                              "Invalid Verification Code",
+                          invalidVerificationCode: () => "Invalid Verification Code",
                         ),
                       );
                       context.read<PhoneNumberSignInCubit>().reset();

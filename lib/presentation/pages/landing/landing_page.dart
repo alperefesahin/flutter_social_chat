@@ -17,8 +17,7 @@ class _LandingPageState extends State<LandingPage> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        final bool isUserLoggedIn =
-            context.read<AuthCubit>().state.isUserLoggedIn;
+        final bool isUserLoggedIn = context.read<AuthCubit>().state.isUserLoggedIn;
 
         if (isUserLoggedIn) {
           AutoRouter.of(context).replace(const CreateNewProfileRoute());

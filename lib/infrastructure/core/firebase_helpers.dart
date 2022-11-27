@@ -10,8 +10,7 @@ extension FirebaseUserDomainX on User {
       phoneNumber: phoneNumber!,
       photoUrl: photoURL,
       userName: displayName,
-      isOnboardingCompleted:
-          (photoURL == null && displayName == null) ? false : true,
+      isOnboardingCompleted: (photoURL == null && displayName == null) ? false : true,
     );
   }
 }

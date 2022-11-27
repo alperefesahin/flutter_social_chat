@@ -28,8 +28,7 @@ class _BottomTabPageState extends State<BottomTabPage> {
     limit: 20,
   );
 
-  late final StreamUserListController _userListController =
-      StreamUserListController(
+  late final StreamUserListController _userListController = StreamUserListController(
     client: StreamChat.of(context).client,
     limit: 25,
     filter: Filter.and(

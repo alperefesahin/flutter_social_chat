@@ -34,8 +34,7 @@ class ProfileImage extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: newImage == null
-                    ? const AssetImage("assets/images/user.png")
-                        as ImageProvider
+                    ? const AssetImage("assets/images/user.png") as ImageProvider
                     : FileImage(File(newImage.path)),
               ),
             ),
@@ -49,9 +48,7 @@ class ProfileImage extends StatelessWidget {
                 imageQuality: 100,
               );
 
-              context
-                  .read<AuthCubit>()
-                  .changeUserProfileImage(userFileImg: image);
+              context.read<AuthCubit>().changeUserProfileImage(userFileImg: image);
             },
             icon: const Icon(
               CupertinoIcons.chevron_down_square_fill,

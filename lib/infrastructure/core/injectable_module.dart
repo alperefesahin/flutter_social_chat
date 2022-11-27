@@ -24,6 +24,5 @@ abstract class InjectableModule {
 
   //TODO: Check If it's singleton or lazySingleton.
   @singleton
-  StreamChatClient get streamChatClient =>
-      StreamChatClient(getstreamApiKey, logLevel: Level.INFO);
+  StreamChatClient get streamChatClient => StreamChatClient(getstreamApiKey, logLevel: Level.INFO);
 }

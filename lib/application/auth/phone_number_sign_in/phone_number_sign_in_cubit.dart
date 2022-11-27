@@ -14,8 +14,7 @@ part 'phone_number_sign_in_state.dart';
 
 @injectable
 class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
-  StreamSubscription<Either<AuthFailure, Tuple2<String, int?>>>?
-      _phoneNumberSignInSubscription;
+  StreamSubscription<Either<AuthFailure, Tuple2<String, int?>>>? _phoneNumberSignInSubscription;
   late final IAuthService _authService;
   final Duration verificationCodeTimeout = const Duration(seconds: 60);
 
@@ -84,8 +83,7 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
             failureMessageOption: none(),
           ),
         );
-        final Either<AuthFailure, Unit> failureOrSuccess =
-            await _authService.verifySmsCode(
+        final Either<AuthFailure, Unit> failureOrSuccess = await _authService.verifySmsCode(
           smsCode: state.smsCode,
           verificationId: verificationId,
         );
@@ -125,10 +123,9 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
         .signInWithPhoneNumber(
           phoneNumber: state.phoneNumber,
           timeout: verificationCodeTimeout,
-          resendToken:
-              state.phoneNumber != state.phoneNumberAndResendTokenPair.first
-                  ? null
-                  : state.phoneNumberAndResendTokenPair.second,
+          resendToken: state.phoneNumber != state.phoneNumberAndResendTokenPair.first
+              ? null
+              : state.phoneNumberAndResendTokenPair.second,
         )
         .listen(
           (Either<AuthFailure, Tuple2<String, int?>> failureOrVerificationId) =>
@@ -144,8 +141,7 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
             (Tuple2<String, int?> verificationIdResendTokenPair) {
               emit(
                 state.copyWith(
-                  verificationIdOption:
-                      some(verificationIdResendTokenPair.first),
+                  verificationIdOption: some(verificationIdResendTokenPair.first),
                   isInProgress: false,
                   phoneNumberAndResendTokenPair: tuple2(
                     state.phoneNumber,

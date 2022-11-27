@@ -11,8 +11,7 @@ class PhoneNumberSignInSection extends StatefulWidget {
 
   final PhoneNumberSignInState state;
   @override
-  State<PhoneNumberSignInSection> createState() =>
-      _PhoneNumberSignInSectionState(state);
+  State<PhoneNumberSignInSection> createState() => _PhoneNumberSignInSectionState(state);
 }
 
 class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {

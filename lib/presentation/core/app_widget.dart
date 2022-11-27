@@ -16,8 +16,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppRouter appRouter = AppRouter();
     final botToastBuilder = BotToastInit();
-    final BotToastNavigatorObserver botToastNavigatorObserver =
-        BotToastNavigatorObserver();
+    final BotToastNavigatorObserver botToastNavigatorObserver = BotToastNavigatorObserver();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -35,8 +34,7 @@ class AppWidget extends StatelessWidget {
         onPointerUp: (_) {
           if (Platform.isIOS) {
             final FocusScopeNode currentFocus = FocusScope.of(context);
-            if (!currentFocus.hasPrimaryFocus &&
-                currentFocus.focusedChild != null) {
+            if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
               FocusManager.instance.primaryFocus!.unfocus();
             }
           }

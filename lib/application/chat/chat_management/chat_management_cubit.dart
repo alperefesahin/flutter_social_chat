@@ -61,26 +61,20 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       // will be image of the selected user.
 
       if (listOfMemberIDs.length == 2) {
-        final String selectedUserId = listOfMemberIDs
-            .where((memberIDs) => memberIDs != currentUserId)
-            .toList()
-            .first;
+        final String selectedUserId =
+            listOfMemberIDs.where((memberIDs) => memberIDs != currentUserId).toList().first;
 
         final selectedUserFromFirestore =
             await _firebaseFirestore.userDocument(userId: selectedUserId);
 
-        final getSelectedUserDataFromFirestore =
-            await selectedUserFromFirestore.get();
+        final getSelectedUserDataFromFirestore = await selectedUserFromFirestore.get();
 
-        final selectedUserData =
-            getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
+        final selectedUserData = getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
 
-        channelName =
-            selectedUserData?["username"] ?? selectedUserData?["userPhone"];
+        channelName = selectedUserData?["username"] ?? selectedUserData?["userPhone"];
 
         //TODO: Replace picsum link with related constant image
-        channelImageUrl =
-            selectedUserData?["photoUrl"] ?? state.channelImageUrl;
+        channelImageUrl = selectedUserData?["photoUrl"] ?? state.channelImageUrl;
       }
     }
 
@@ -116,9 +110,8 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     required String searchedText,
     required int index,
   }) {
-    final filteredChannels = listOfChannels
-        .where((channel) => channel.name!.contains(searchedText))
-        .toList();
+    final filteredChannels =
+        listOfChannels.where((channel) => channel.name!.contains(searchedText)).toList();
 
     final result = filteredChannels.indexOf(listOfChannels[index]);
 

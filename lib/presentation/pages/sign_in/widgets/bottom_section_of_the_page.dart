@@ -72,9 +72,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         if (state.isPhoneNumberInputValidated) {
-                          context
-                              .read<PhoneNumberSignInCubit>()
-                              .signInWithPhoneNumber();
+                          context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
                           AutoRouter.of(context).navigate(
                             SignInVerificationRoute(state: state),
                           );

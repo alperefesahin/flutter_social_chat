@@ -22,8 +22,7 @@ class CustomFloatActionButton extends StatelessWidget {
         context.router.replace(
           CreateNewChatRoute(
             userListController: userListController,
-            isCreateNewChatPageForCreatingGroup:
-                isCreateNewChatPageForCreatingGroup,
+            isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
           ),
         );
       },

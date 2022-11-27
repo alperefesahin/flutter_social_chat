@@ -64,9 +64,8 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
                             //TODO: Do it with 'form_validator' package (userName)
                           },
                           autocorrect: false,
-                          onChanged: (userName) => context
-                              .read<AuthCubit>()
-                              .changeUserName(userName: userName),
+                          onChanged: (userName) =>
+                              context.read<AuthCubit>().changeUserName(userName: userName),
                           decoration: const InputDecoration(
                             prefixIcon: Icon(CupertinoIcons.person),
                             labelText: "User Name",

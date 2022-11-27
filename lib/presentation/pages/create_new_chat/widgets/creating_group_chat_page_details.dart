@@ -25,9 +25,8 @@ class CreatingGroupChatPageDetails extends StatelessWidget {
               //TODO: Do it with 'form_validator' package
             },
             autocorrect: false,
-            onChanged: (channelName) => context
-                .read<ChatManagementCubit>()
-                .channelNameChanged(channelName: channelName),
+            onChanged: (channelName) =>
+                context.read<ChatManagementCubit>().channelNameChanged(channelName: channelName),
             decoration: const InputDecoration(
               prefixIcon: Icon(CupertinoIcons.group_solid),
               labelText: groupName,
@@ -54,8 +53,7 @@ class CreatingGroupChatPageDetails extends StatelessWidget {
           ),
         ),
         CreateNewChatButton(
-          isCreateNewChatPageForCreatingGroup:
-              isCreateNewChatPageForCreatingGroup!,
+          isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
         ),
       ],
     );

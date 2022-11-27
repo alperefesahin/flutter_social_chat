@@ -27,8 +27,6 @@ class SearchedChannel extends StatelessWidget {
 
     final channel = listOfChannels[index];
 
-    return isTheSearchedChannelExist
-        ? defaultWidget.copyWith(channel: channel)
-        : Container();
+    return isTheSearchedChannelExist ? defaultWidget.copyWith(channel: channel) : Container();
   }
 }

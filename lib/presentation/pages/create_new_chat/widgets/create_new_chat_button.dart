@@ -16,14 +16,11 @@ class CreateNewChatButton extends StatelessWidget {
     return TextButton(
       onPressed: () {
         context.read<ChatManagementCubit>().createNewChannel(
-              isCreateNewChatPageForCreatingGroup:
-                  isCreateNewChatPageForCreatingGroup,
+              isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
             );
       },
       child: Text(
-        isCreateNewChatPageForCreatingGroup
-            ? createNewGroupChat
-            : createNewOneToOneChat,
+        isCreateNewChatPageForCreatingGroup ? createNewGroupChat : createNewOneToOneChat,
       ),
     );
   }

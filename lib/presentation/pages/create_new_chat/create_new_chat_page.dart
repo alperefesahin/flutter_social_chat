@@ -41,18 +41,15 @@ class CreateNewChatPage extends StatelessWidget {
             children: [
               UserListView(
                 userListController: userListController,
-                isCreateNewChatPageForCreatingGroup:
-                    isCreateNewChatPageForCreatingGroup,
+                isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
               ),
               if (isCreateNewChatPageForCreatingGroup!)
                 CreatingGroupChatPageDetails(
-                  isCreateNewChatPageForCreatingGroup:
-                      isCreateNewChatPageForCreatingGroup,
+                  isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
                 )
               else
                 CreateNewChatButton(
-                  isCreateNewChatPageForCreatingGroup:
-                      isCreateNewChatPageForCreatingGroup!,
+                  isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
                 ),
             ],
           ),
