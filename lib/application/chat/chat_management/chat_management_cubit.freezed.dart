@@ -20,6 +20,7 @@ mixin _$ChatManagementState {
   String get channelImageUrl => throw _privateConstructorUsedError;
   Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
   List<Channel> get filteredChannels => throw _privateConstructorUsedError;
+  bool get isChannelNameValid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatManagementStateCopyWith<ChatManagementState> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $ChatManagementStateCopyWith<$Res> {
       {String channelName,
       String channelImageUrl,
       Set<String> listOfSelectedUserIDs,
-      List<Channel> filteredChannels});
+      List<Channel> filteredChannels,
+      bool isChannelNameValid});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
     Object? channelImageUrl = null,
     Object? listOfSelectedUserIDs = null,
     Object? filteredChannels = null,
+    Object? isChannelNameValid = null,
   }) {
     return _then(_value.copyWith(
       channelName: null == channelName
@@ -74,30 +77,36 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
           ? _value.filteredChannels
           : filteredChannels // ignore: cast_nullable_to_non_nullable
               as List<Channel>,
+      isChannelNameValid: null == isChannelNameValid
+          ? _value.isChannelNameValid
+          : isChannelNameValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$_ChatManagementStateCopyWith<$Res>
     implements $ChatManagementStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$_ChatManagementStateCopyWith(_$_ChatManagementState value,
+          $Res Function(_$_ChatManagementState) then) =
+      __$$_ChatManagementStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String channelName,
       String channelImageUrl,
       Set<String> listOfSelectedUserIDs,
-      List<Channel> filteredChannels});
+      List<Channel> filteredChannels,
+      bool isChannelNameValid});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ChatManagementStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_ChatManagementStateCopyWithImpl<$Res>
+    extends _$ChatManagementStateCopyWithImpl<$Res, _$_ChatManagementState>
+    implements _$$_ChatManagementStateCopyWith<$Res> {
+  __$$_ChatManagementStateCopyWithImpl(_$_ChatManagementState _value,
+      $Res Function(_$_ChatManagementState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,8 +116,9 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? channelImageUrl = null,
     Object? listOfSelectedUserIDs = null,
     Object? filteredChannels = null,
+    Object? isChannelNameValid = null,
   }) {
-    return _then(_$_Initial(
+    return _then(_$_ChatManagementState(
       channelName: null == channelName
           ? _value.channelName
           : channelName // ignore: cast_nullable_to_non_nullable
@@ -125,18 +135,23 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value._filteredChannels
           : filteredChannels // ignore: cast_nullable_to_non_nullable
               as List<Channel>,
+      isChannelNameValid: null == isChannelNameValid
+          ? _value.isChannelNameValid
+          : isChannelNameValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
-  const _$_Initial(
+class _$_ChatManagementState implements _ChatManagementState {
+  const _$_ChatManagementState(
       {required this.channelName,
       required this.channelImageUrl,
       required final Set<String> listOfSelectedUserIDs,
-      required final List<Channel> filteredChannels})
+      required final List<Channel> filteredChannels,
+      required this.isChannelNameValid})
       : _listOfSelectedUserIDs = listOfSelectedUserIDs,
         _filteredChannels = filteredChannels;
 
@@ -159,26 +174,18 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatManagementState(channelName: $channelName, channelImageUrl: $channelImageUrl, listOfSelectedUserIDs: $listOfSelectedUserIDs, filteredChannels: $filteredChannels)';
-  }
+  final bool isChannelNameValid;
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ChatManagementState'))
-      ..add(DiagnosticsProperty('channelName', channelName))
-      ..add(DiagnosticsProperty('channelImageUrl', channelImageUrl))
-      ..add(DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs))
-      ..add(DiagnosticsProperty('filteredChannels', filteredChannels));
+  String toString() {
+    return 'ChatManagementState(channelName: $channelName, channelImageUrl: $channelImageUrl, listOfSelectedUserIDs: $listOfSelectedUserIDs, filteredChannels: $filteredChannels, isChannelNameValid: $isChannelNameValid)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$_ChatManagementState &&
             (identical(other.channelName, channelName) ||
                 other.channelName == channelName) &&
             (identical(other.channelImageUrl, channelImageUrl) ||
@@ -186,7 +193,9 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
             const DeepCollectionEquality()
                 .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs) &&
             const DeepCollectionEquality()
-                .equals(other._filteredChannels, _filteredChannels));
+                .equals(other._filteredChannels, _filteredChannels) &&
+            (identical(other.isChannelNameValid, isChannelNameValid) ||
+                other.isChannelNameValid == isChannelNameValid));
   }
 
   @override
@@ -195,21 +204,24 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
       channelName,
       channelImageUrl,
       const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
-      const DeepCollectionEquality().hash(_filteredChannels));
+      const DeepCollectionEquality().hash(_filteredChannels),
+      isChannelNameValid);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$_ChatManagementStateCopyWith<_$_ChatManagementState> get copyWith =>
+      __$$_ChatManagementStateCopyWithImpl<_$_ChatManagementState>(
+          this, _$identity);
 }
 
-abstract class _Initial implements ChatManagementState {
-  const factory _Initial(
+abstract class _ChatManagementState implements ChatManagementState {
+  const factory _ChatManagementState(
       {required final String channelName,
       required final String channelImageUrl,
       required final Set<String> listOfSelectedUserIDs,
-      required final List<Channel> filteredChannels}) = _$_Initial;
+      required final List<Channel> filteredChannels,
+      required final bool isChannelNameValid}) = _$_ChatManagementState;
 
   @override
   String get channelName;
@@ -220,7 +232,9 @@ abstract class _Initial implements ChatManagementState {
   @override
   List<Channel> get filteredChannels;
   @override
+  bool get isChannelNameValid;
+  @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$_ChatManagementStateCopyWith<_$_ChatManagementState> get copyWith =>
       throw _privateConstructorUsedError;
 }

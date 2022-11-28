@@ -2,7 +2,6 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
@@ -38,6 +37,12 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
   void channelNameChanged({required String channelName}) {
     emit(state.copyWith(channelName: channelName));
+  }
+
+  void validateChannelName({required bool isChannelNameValid}) {
+    emit(
+      state.copyWith(isChannelNameValid: isChannelNameValid),
+    );
   }
 
   Future<void> createNewChannel({
@@ -78,7 +83,9 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       }
     }
 
-    if (listOfMemberIDs.length >= 2) {
+    final isChannelNameValid = state.isChannelNameValid;
+
+    if (listOfMemberIDs.length >= 2 && isChannelNameValid) {
       await _chatService.createNewChannel(
         listOfMemberIDs: listOfMemberIDs.toList(),
         channelName: channelName,
