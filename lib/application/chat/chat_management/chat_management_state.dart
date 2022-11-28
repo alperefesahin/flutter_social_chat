@@ -7,12 +7,14 @@ class ChatManagementState with _$ChatManagementState {
     required String channelImageUrl,
     required Set<String> listOfSelectedUserIDs,
     required List<Channel> filteredChannels,
-  }) = _Initial;
+    required bool isChannelNameValid,
+  }) = _ChatManagementState;
 
   factory ChatManagementState.empty() => const ChatManagementState(
         listOfSelectedUserIDs: {},
         channelName: "",
         channelImageUrl: "https://picsum.photos/200/300",
         filteredChannels: [],
+        isChannelNameValid: false,
       );
 }

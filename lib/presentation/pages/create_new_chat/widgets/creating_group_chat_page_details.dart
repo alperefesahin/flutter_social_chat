@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
-import 'package:flutter_production_app/presentation/pages/create_new_chat/constants/texts.dart';
+import 'package:flutter_production_app/presentation/pages/create_new_chat/widgets/channel_name_form_field.dart';
 import 'package:flutter_production_app/presentation/pages/create_new_chat/widgets/create_new_chat_button.dart';
 
 class CreatingGroupChatPageDetails extends StatelessWidget {
@@ -17,22 +14,7 @@ class CreatingGroupChatPageDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: TextFormField(
-            validator: (value) {
-              return null;
-              //TODO: Do it with 'form_validator' package
-            },
-            autocorrect: false,
-            onChanged: (channelName) =>
-                context.read<ChatManagementCubit>().channelNameChanged(channelName: channelName),
-            decoration: const InputDecoration(
-              prefixIcon: Icon(CupertinoIcons.group_solid),
-              labelText: groupName,
-            ),
-          ),
-        ),
+        const ChannelNameFormField(),
         SizedBox(
           width: 200,
           height: 100,
