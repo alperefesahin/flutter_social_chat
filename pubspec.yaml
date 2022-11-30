@@ -40,8 +40,6 @@ dependencies:
   flutter_expandable_fab: ^1.6.0
   cupertino_icons: ^1.0.5
   image_picker: ^0.8.6
-  camerawesome: ^0.3.3
-  image: ^3.2.2
 
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.2.0

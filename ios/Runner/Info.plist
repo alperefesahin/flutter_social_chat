@@ -16,10 +16,6 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>flutter_production_app</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Taking photo to send another user</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Taking photo to send another user</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Upload images for screen background</string>
 	<key>NSCameraUsageDescription</key>

@@ -19,11 +19,11 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart' as _i15;
 import '../../application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart'
     as _i14;
 import '../pages/bottom_tab/bottom_tab.dart' as _i4;
-import '../pages/camera/camera_page.dart' as _i9;
 import '../pages/channels/channels_page.dart' as _i8;
 import '../pages/chat/chat_page.dart' as _i5;
 import '../pages/create_new_chat/create_new_chat_page.dart' as _i6;
 import '../pages/create_new_profile/create_new_profile_page.dart' as _i7;
+import '../pages/groups/groups_page.dart' as _i9;
 import '../pages/landing/landing_page.dart' as _i1;
 import '../pages/profile/profile_page.dart' as _i10;
 import '../pages/sign_in/sign_in_page.dart' as _i2;
@@ -102,10 +102,10 @@ class AppRouter extends _i11.RootStackRouter {
         ),
       );
     },
-    CameraRoute.name: (routeData) {
+    GroupsRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i9.CameraPage(),
+        child: const _i9.GroupsPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -140,8 +140,8 @@ class AppRouter extends _i11.RootStackRouter {
               parent: BottomTabRoute.name,
             ),
             _i11.RouteConfig(
-              CameraRoute.name,
-              path: 'camera-page',
+              GroupsRoute.name,
+              path: 'groups-page',
               parent: BottomTabRoute.name,
             ),
             _i11.RouteConfig(
@@ -364,15 +364,15 @@ class ChannelsRouteArgs {
 }
 
 /// generated route for
-/// [_i9.CameraPage]
-class CameraRoute extends _i11.PageRouteInfo<void> {
-  const CameraRoute()
+/// [_i9.GroupsPage]
+class GroupsRoute extends _i11.PageRouteInfo<void> {
+  const GroupsRoute()
       : super(
-          CameraRoute.name,
-          path: 'camera-page',
+          GroupsRoute.name,
+          path: 'groups-page',
         );
 
-  static const String name = 'CameraRoute';
+  static const String name = 'GroupsRoute';
 }
 
 /// generated route for
