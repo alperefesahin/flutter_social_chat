@@ -602,6 +602,8 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.24):
     - BoringSSL-GRPC/Interface (= 0.0.24)
   - BoringSSL-GRPC/Interface (0.0.24)
+  - camerawesome (0.0.1):
+    - Flutter
   - cloud_firestore (4.0.4):
     - Firebase/Firestore (= 10.2.0)
     - firebase_core
@@ -833,6 +835,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - camerawesome (from `.symlinks/plugins/camerawesome/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
@@ -885,6 +888,8 @@ SPEC REPOS:
     - SwiftyGif
 
 EXTERNAL SOURCES:
+  camerawesome:
+    :path: ".symlinks/plugins/camerawesome/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
   connectivity_plus:
@@ -929,6 +934,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
+  camerawesome: 0f8628efae993cb064ec4f36322e89c237e1064f
   cloud_firestore: 378a0ed41411233763028da2bb7abcb9ad96118a
   connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
   DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
