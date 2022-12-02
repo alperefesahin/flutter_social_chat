@@ -13,8 +13,8 @@ Widget bottomNavigationBuilder(BuildContext _, TabsRouter tabsRouter) {
         icon: Icon(CupertinoIcons.chat_bubble_2),
       ),
       BottomNavigationBarItem(
-        label: groups,
-        icon: Icon(CupertinoIcons.person_3),
+        label: camera,
+        icon: Icon(CupertinoIcons.camera),
       ),
       BottomNavigationBarItem(
         label: profile,

@@ -75,7 +75,7 @@ class _BottomTabPageState extends State<BottomTabPage> {
                   streamChannelListController: _listController,
                   userListController: _userListController,
                 ),
-                const GroupsRoute(),
+                const CameraRoute(),
                 const ProfileRoute(),
               ],
               bottomNavigationBuilder: bottomNavigationBuilder,
