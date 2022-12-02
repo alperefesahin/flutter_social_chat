@@ -1,3 +1,3 @@
 const String chats = "Chats";
-const String groups = "Groups";
+const String camera = "Camera";
 const String profile = "Profile";
