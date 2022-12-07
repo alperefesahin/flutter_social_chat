@@ -6,12 +6,14 @@ Widget cameraPreview(
   CameraController? controller,
 ) {
   if (controller == null || !controller.value.isInitialized) {
-    return const Text(
-      'Give the related permission!',
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 24.0,
-        fontWeight: FontWeight.w900,
+    return const Center(
+      child: Text(
+        'Give the related permission!',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 24.0,
+          fontWeight: FontWeight.w900,
+        ),
       ),
     );
   } else {

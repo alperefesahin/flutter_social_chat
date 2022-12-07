@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,16 +9,16 @@ part 'camera_cubit.freezed.dart';
 
 @lazySingleton
 class CameraCubit extends Cubit<CameraState> {
-  CameraCubit() : super(CameraState.empty()) {
-    getCamerasOfTheDevice();
-  }
+  CameraCubit() : super(CameraState.empty());
 
   Future<void> getCamerasOfTheDevice() async {
+    emit(state.copyWith(isInProgress: true));
+
     final cameras = [...state.cameras];
     final gottenCameras = await availableCameras();
     cameras.addAll(gottenCameras);
 
-    emit(state.copyWith(cameras: cameras));
+    emit(state.copyWith(cameras: cameras,isInProgress: false));
   }
 
   Future<void> takePicture(CameraController? controller) async {
