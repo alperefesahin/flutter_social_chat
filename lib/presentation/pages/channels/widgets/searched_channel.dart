@@ -27,6 +27,15 @@ class SearchedChannel extends StatelessWidget {
 
     final channel = listOfChannels[index];
 
-    return isTheSearchedChannelExist ? defaultWidget.copyWith(channel: channel) : Container();
+    return isTheSearchedChannelExist
+        ? defaultWidget.copyWith(
+            channel: channel,
+            leading: CircleAvatar(
+              radius: 40,
+              backgroundImage: NetworkImage(channel.image!),
+            ),
+            visualDensity: const VisualDensity(vertical: 3),
+          )
+        : Container();
   }
 }

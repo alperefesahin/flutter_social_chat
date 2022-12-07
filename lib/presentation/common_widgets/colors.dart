@@ -9,3 +9,5 @@ const Color confirmationTextColor = Color.fromRGBO(228, 235, 255, 1);
 const Color whiteColor = Colors.white;
 const Color blackColor = Colors.black;
 const Color transparentColor = Colors.transparent;
+
+const Color kiwiColor = Color.fromRGBO(44, 57, 126, 1);

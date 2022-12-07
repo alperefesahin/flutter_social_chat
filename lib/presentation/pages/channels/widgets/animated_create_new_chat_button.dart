@@ -27,7 +27,7 @@ class AnimatedCreateNewChatButton extends StatelessWidget {
           userListController: userListController,
         ),
       ],
-      child: const Icon(Icons.add),
+      child: const Icon(CupertinoIcons.chat_bubble_text),
     );
   }
 }
