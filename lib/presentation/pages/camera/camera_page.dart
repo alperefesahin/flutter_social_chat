@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/camera/camera_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_production_app/presentation/pages/bottom_tab/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_direction_row.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_preview.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/capture_button.dart';
@@ -33,17 +34,15 @@ class _CameraPageState extends State<CameraPage>
   //AppLifecycle
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final CameraController? cameraController = controller;
-
     // App state changed before we got the chance to initialize.
-    if (cameraController == null || !cameraController.value.isInitialized) {
+    if (controller == null || !controller!.value.isInitialized) {
       return;
     }
 
     if (state == AppLifecycleState.inactive) {
-      cameraController.dispose();
+      controller!.dispose();
     } else if (state == AppLifecycleState.resumed) {
-      onNewCameraSelected(cameraController.description);
+      onNewCameraSelected(controller!.description);
     }
   }
   //end of the AppLifecycle
@@ -51,37 +50,53 @@ class _CameraPageState extends State<CameraPage>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<CameraCubit>(),
+      create: (context) => getIt<CameraCubit>()..getCamerasOfTheDevice(),
       child: Builder(
         builder: (context) {
           return BlocBuilder<CameraCubit, CameraState>(
             builder: (context, state) {
               final cameras = state.cameras;
 
-              return Scaffold(
-                body: Column(
-                  children: [
-                    Expanded(
-                      child: Stack(
-                        alignment: AlignmentDirectional.center,
-                        fit: StackFit.expand,
-                        children: [
-                          cameraPreview(controller),
-                          CaptureButton(controller: controller),
-                        ],
+              if (state.isInProgress) {
+                return Center(
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.black,
+                  ),
+                );
+              } else {
+                controller = CameraController(
+                  cameras[0],
+                  ResolutionPreset.veryHigh,
+                );
+                controller!.initialize();
+
+                return Scaffold(
+                  body: Column(
+                    children: [
+                      Expanded(
+                        child: Stack(
+                          alignment: AlignmentDirectional.center,
+                          fit: StackFit.expand,
+                          children: [
+                            cameraPreview(controller),
+                            CaptureButton(controller: controller),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Row(
-                        children: [
-                          cameraDirectionRow(controller, cameras, onNewCameraSelected),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Row(
+                          children: [
+                            cameraDirectionRow(controller, cameras, onNewCameraSelected),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              );
+                    ],
+                  ),
+                );
+              }
             },
           );
         },
@@ -89,17 +104,24 @@ class _CameraPageState extends State<CameraPage>
     );
   }
 
+  Future<void> initCamera(CameraDescription cameraDescription) async {
+    try {
+      controller = CameraController(
+        cameraDescription,
+        ResolutionPreset.veryHigh,
+        imageFormatGroup: ImageFormatGroup.jpeg,
+      );
+      controller!.initialize();
+    } on CameraException catch (e) {
+      debugPrint("DEBUG CAMERA EXCEPTION: $e");
+    }
+  }
+
   Future<void> onNewCameraSelected(CameraDescription cameraDescription) async {
     final CameraController? oldController = controller;
-    if (oldController != null) {
-      // `controller` needs to be set to null before getting disposed,
-      // to avoid a race condition when we use the controller that is being
-      // disposed. This happens when camera permission dialog shows up,
-      // which triggers `didChangeAppLifecycleState`, which disposes and
-      // re-creates the controller.
-      controller = null;
-      await oldController.dispose();
-    }
+
+    controller = null;
+      await oldController?.dispose();
 
     final CameraController cameraController = CameraController(
       cameraDescription,
