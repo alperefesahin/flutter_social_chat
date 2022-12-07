@@ -19,7 +19,7 @@ class ChannelsAppBar extends StatelessWidget with PreferredSizeWidget {
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(15)),
       ),
       shadowColor: transparentColor,
-      backgroundColor: const Color.fromRGBO(198, 206, 247, 0.65),
+      backgroundColor: kiwiBackColor,
       leadingWidth: 200,
       leading: Padding(
         padding: const EdgeInsets.only(left: 20),
