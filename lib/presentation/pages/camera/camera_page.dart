@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/camera/camera_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
-import 'package:flutter_production_app/presentation/pages/bottom_tab/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_direction_row.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_preview.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/capture_button.dart';
@@ -66,12 +65,6 @@ class _CameraPageState extends State<CameraPage>
                   ),
                 );
               } else {
-                controller = CameraController(
-                  cameras[0],
-                  ResolutionPreset.veryHigh,
-                );
-                controller!.initialize();
-
                 return Scaffold(
                   body: Column(
                     children: [
@@ -104,24 +97,11 @@ class _CameraPageState extends State<CameraPage>
     );
   }
 
-  Future<void> initCamera(CameraDescription cameraDescription) async {
-    try {
-      controller = CameraController(
-        cameraDescription,
-        ResolutionPreset.veryHigh,
-        imageFormatGroup: ImageFormatGroup.jpeg,
-      );
-      controller!.initialize();
-    } on CameraException catch (e) {
-      debugPrint("DEBUG CAMERA EXCEPTION: $e");
-    }
-  }
-
   Future<void> onNewCameraSelected(CameraDescription cameraDescription) async {
     final CameraController? oldController = controller;
 
     controller = null;
-      await oldController?.dispose();
+    await oldController?.dispose();
 
     final CameraController cameraController = CameraController(
       cameraDescription,
