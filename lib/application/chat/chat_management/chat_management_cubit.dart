@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, avoid_bool_literals_in_conditional_expressions
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -76,14 +76,15 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
         final selectedUserData = getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
 
-        channelName = selectedUserData?["username"] ?? selectedUserData?["userPhone"];
+        channelName = selectedUserData?["displayName"] ?? selectedUserData?["userPhone"];
 
         //TODO: Replace picsum link with related constant image
         channelImageUrl = selectedUserData?["photoUrl"] ?? state.channelImageUrl;
       }
     }
 
-    final isChannelNameValid = state.isChannelNameValid;
+    final isChannelNameValid =
+        !isCreateNewChatPageForCreatingGroup ? true : state.isChannelNameValid;
 
     if (listOfMemberIDs.length >= 2 && isChannelNameValid) {
       await _chatService.createNewChannel(
