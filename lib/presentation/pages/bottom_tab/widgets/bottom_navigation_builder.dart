@@ -6,22 +6,25 @@ import 'package:flutter_production_app/presentation/pages/bottom_tab/constants/t
 
 Widget bottomNavigationBuilder(BuildContext _, TabsRouter tabsRouter) {
   return BottomNavigationBar(
-    backgroundColor: kiwiBackColor,
+    backgroundColor: kiwiBackColor.withOpacity(1),
     currentIndex: tabsRouter.activeIndex,
     selectedItemColor: bottomNavBarSelectedItemColor,
     onTap: tabsRouter.setActiveIndex,
     items: const [
       BottomNavigationBarItem(
         label: chats,
-        icon: Icon(CupertinoIcons.chat_bubble_2, size: 30),
+        icon: Icon(CupertinoIcons.chat_bubble_2, size: 35),
+        activeIcon: Icon(CupertinoIcons.chat_bubble_2_fill, size: 35),
       ),
       BottomNavigationBarItem(
         label: camera,
-        icon: Icon(CupertinoIcons.camera, size: 30),
+        icon: Icon(CupertinoIcons.camera, size: 35),
+        activeIcon: Icon(CupertinoIcons.camera_fill, size: 35),
       ),
       BottomNavigationBarItem(
         label: profile,
-        icon: Icon(CupertinoIcons.person, size: 30),
+        icon: Icon(CupertinoIcons.person, size: 35),
+        activeIcon: Icon(CupertinoIcons.person_fill, size: 35),
       ),
     ],
   );
