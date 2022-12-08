@@ -6,7 +6,7 @@ import 'package:flutter_production_app/presentation/pages/bottom_tab/constants/t
 
 Widget bottomNavigationBuilder(BuildContext _, TabsRouter tabsRouter) {
   return BottomNavigationBar(
-    backgroundColor: kiwiBackColor.withOpacity(1),
+    backgroundColor: kiwiBackColor,
     currentIndex: tabsRouter.activeIndex,
     selectedItemColor: bottomNavBarSelectedItemColor,
     onTap: tabsRouter.setActiveIndex,

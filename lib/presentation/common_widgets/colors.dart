@@ -11,7 +11,7 @@ const Color blackColor = Colors.black;
 const Color transparentColor = Colors.transparent;
 
 const Color kiwiColor = Color.fromRGBO(44, 57, 126, 1);
-const Color kiwiBackColor = Color.fromRGBO(198, 206, 247, 0.65);
+const Color kiwiBackColor = Color.fromARGB(255, 198, 206, 247);
 
 const Color bottomNavBarSelectedItemColor = Color.fromRGBO(100, 103, 120, 1);
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
+import 'package:flutter_production_app/presentation/pages/channels/constants/texts.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class SearchedChannel extends StatelessWidget {
@@ -16,6 +18,7 @@ class SearchedChannel extends StatelessWidget {
   final String searchedText;
   final int index;
   final StreamChannelListTile defaultWidget;
+
   @override
   Widget build(BuildContext context) {
     final isTheSearchedChannelExist =
@@ -27,12 +30,33 @@ class SearchedChannel extends StatelessWidget {
 
     final channel = listOfChannels[index];
 
+    final channelMembers = channel.state!.members;
+
+    final oneToOneChatMember = channelMembers
+        .where((member) => member.userId != context.read<AuthCubit>().state.authUser.id)
+        .first
+        .user!;
+
+    final lengthOfTheChannelMembers = channelMembers.length;
+
     if (isTheSearchedChannelExist) {
       return defaultWidget.copyWith(
         channel: channel,
         leading: CircleAvatar(
           radius: 40,
-          backgroundImage: NetworkImage(channel.image!),
+          backgroundImage: NetworkImage(
+            lengthOfTheChannelMembers == 2 ? oneToOneChatMember.image! : channel.image!,
+          ),
+        ),
+        title: Text(
+          lengthOfTheChannelMembers == 2 ? oneToOneChatMember.name : channel.name!,
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Text(
+          channel.state!.lastMessage?.text ?? beDeepIntoTheConversation,
+          style: const TextStyle(fontSize: 15),
+          overflow: TextOverflow.ellipsis,
         ),
         visualDensity: const VisualDensity(vertical: 3),
       );

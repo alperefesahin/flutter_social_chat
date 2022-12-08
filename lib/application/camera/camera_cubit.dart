@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';

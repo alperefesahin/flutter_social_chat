@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChatManagementState {
   String get channelName => throw _privateConstructorUsedError;
-  String get channelImageUrl => throw _privateConstructorUsedError;
   Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
   List<Channel> get filteredChannels => throw _privateConstructorUsedError;
   bool get isChannelNameValid => throw _privateConstructorUsedError;
@@ -35,7 +34,6 @@ abstract class $ChatManagementStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String channelName,
-      String channelImageUrl,
       Set<String> listOfSelectedUserIDs,
       List<Channel> filteredChannels,
       bool isChannelNameValid});
@@ -55,7 +53,6 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
   @override
   $Res call({
     Object? channelName = null,
-    Object? channelImageUrl = null,
     Object? listOfSelectedUserIDs = null,
     Object? filteredChannels = null,
     Object? isChannelNameValid = null,
@@ -64,10 +61,6 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
       channelName: null == channelName
           ? _value.channelName
           : channelName // ignore: cast_nullable_to_non_nullable
-              as String,
-      channelImageUrl: null == channelImageUrl
-          ? _value.channelImageUrl
-          : channelImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       listOfSelectedUserIDs: null == listOfSelectedUserIDs
           ? _value.listOfSelectedUserIDs
@@ -95,7 +88,6 @@ abstract class _$$_ChatManagementStateCopyWith<$Res>
   @useResult
   $Res call(
       {String channelName,
-      String channelImageUrl,
       Set<String> listOfSelectedUserIDs,
       List<Channel> filteredChannels,
       bool isChannelNameValid});
@@ -113,7 +105,6 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? channelName = null,
-    Object? channelImageUrl = null,
     Object? listOfSelectedUserIDs = null,
     Object? filteredChannels = null,
     Object? isChannelNameValid = null,
@@ -122,10 +113,6 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
       channelName: null == channelName
           ? _value.channelName
           : channelName // ignore: cast_nullable_to_non_nullable
-              as String,
-      channelImageUrl: null == channelImageUrl
-          ? _value.channelImageUrl
-          : channelImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       listOfSelectedUserIDs: null == listOfSelectedUserIDs
           ? _value._listOfSelectedUserIDs
@@ -145,10 +132,11 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatManagementState implements _ChatManagementState {
+class _$_ChatManagementState
+    with DiagnosticableTreeMixin
+    implements _ChatManagementState {
   const _$_ChatManagementState(
       {required this.channelName,
-      required this.channelImageUrl,
       required final Set<String> listOfSelectedUserIDs,
       required final List<Channel> filteredChannels,
       required this.isChannelNameValid})
@@ -157,8 +145,6 @@ class _$_ChatManagementState implements _ChatManagementState {
 
   @override
   final String channelName;
-  @override
-  final String channelImageUrl;
   final Set<String> _listOfSelectedUserIDs;
   @override
   Set<String> get listOfSelectedUserIDs {
@@ -177,8 +163,19 @@ class _$_ChatManagementState implements _ChatManagementState {
   final bool isChannelNameValid;
 
   @override
-  String toString() {
-    return 'ChatManagementState(channelName: $channelName, channelImageUrl: $channelImageUrl, listOfSelectedUserIDs: $listOfSelectedUserIDs, filteredChannels: $filteredChannels, isChannelNameValid: $isChannelNameValid)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ChatManagementState(channelName: $channelName, listOfSelectedUserIDs: $listOfSelectedUserIDs, filteredChannels: $filteredChannels, isChannelNameValid: $isChannelNameValid)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ChatManagementState'))
+      ..add(DiagnosticsProperty('channelName', channelName))
+      ..add(DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs))
+      ..add(DiagnosticsProperty('filteredChannels', filteredChannels))
+      ..add(DiagnosticsProperty('isChannelNameValid', isChannelNameValid));
   }
 
   @override
@@ -188,8 +185,6 @@ class _$_ChatManagementState implements _ChatManagementState {
             other is _$_ChatManagementState &&
             (identical(other.channelName, channelName) ||
                 other.channelName == channelName) &&
-            (identical(other.channelImageUrl, channelImageUrl) ||
-                other.channelImageUrl == channelImageUrl) &&
             const DeepCollectionEquality()
                 .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs) &&
             const DeepCollectionEquality()
@@ -202,7 +197,6 @@ class _$_ChatManagementState implements _ChatManagementState {
   int get hashCode => Object.hash(
       runtimeType,
       channelName,
-      channelImageUrl,
       const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
       const DeepCollectionEquality().hash(_filteredChannels),
       isChannelNameValid);
@@ -218,15 +212,12 @@ class _$_ChatManagementState implements _ChatManagementState {
 abstract class _ChatManagementState implements ChatManagementState {
   const factory _ChatManagementState(
       {required final String channelName,
-      required final String channelImageUrl,
       required final Set<String> listOfSelectedUserIDs,
       required final List<Channel> filteredChannels,
       required final bool isChannelNameValid}) = _$_ChatManagementState;
 
   @override
   String get channelName;
-  @override
-  String get channelImageUrl;
   @override
   Set<String> get listOfSelectedUserIDs;
   @override
