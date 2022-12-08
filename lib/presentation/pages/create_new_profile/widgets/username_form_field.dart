@@ -20,7 +20,7 @@ class UsernameFormField extends StatelessWidget {
             autocorrect: false,
             onChanged: (userName) => context.read<AuthCubit>().changeUserName(userName: userName),
             validator: (userName) {
-              if (userName!.length > 10) {
+              if (userName!.length > 20) {
                 context.read<AuthCubit>().validateUserName(isUserNameValid: false);
                 return userNameCanNotBeLongerThanTenCharacters;
               } else if (userName.length < 3) {

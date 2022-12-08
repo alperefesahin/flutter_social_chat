@@ -2,6 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
@@ -18,6 +19,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   late final IChatService _chatService;
   late final FirebaseFirestore _firebaseFirestore;
   late final AuthCubit _authCubit;
+  final String randomGroupProfilePhoto = "https://picsum.photos/200/300";
 
   ChatManagementCubit() : super(ChatManagementState.empty()) {
     _chatService = getIt<IChatService>();
@@ -30,7 +32,6 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       state.copyWith(
         listOfSelectedUserIDs: {},
         channelName: "",
-        channelImageUrl: "",
       ),
     );
   }
@@ -48,8 +49,8 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   Future<void> createNewChannel({
     required bool isCreateNewChatPageForCreatingGroup,
   }) async {
+    String channelImageUrl = "";
     String channelName = state.channelName;
-    String channelImageUrl = state.channelImageUrl;
     final listOfMemberIDs = {...state.listOfSelectedUserIDs};
 
     final currentUserId = _authCubit.state.authUser.id;
@@ -59,7 +60,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       // If page opened for creating group case:
       // We can directly enter the group name and upload the image.
       channelName = state.channelName;
-      channelImageUrl = state.channelImageUrl;
+      channelImageUrl = randomGroupProfilePhoto;
     } else if (!isCreateNewChatPageForCreatingGroup) {
       // If page opened for creating [1-1 chat] case:
       // Channel name will be selected user's name, and the image of the channel
@@ -76,10 +77,9 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
         final selectedUserData = getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
 
-        channelName = selectedUserData?["displayName"] ?? selectedUserData?["userPhone"];
+        channelName = selectedUserData?["displayName"];
 
-        //TODO: Replace picsum link with related constant image
-        channelImageUrl = selectedUserData?["photoUrl"] ?? state.channelImageUrl;
+        channelImageUrl = selectedUserData?["photoUrl"];
       }
     }
 

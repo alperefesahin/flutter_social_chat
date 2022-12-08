@@ -49,7 +49,14 @@ class GetstreamChatService implements IChatService {
       (user) => user,
     );
 
-    await streamChatClient.connectUser(User(id: signedInUser.id), devToken);
+    await streamChatClient.connectUser(
+      User(
+        id: signedInUser.id,
+        name: signedInUser.userName,
+        image: signedInUser.photoUrl,
+      ),
+      devToken,
+    );
   }
 
   @override
