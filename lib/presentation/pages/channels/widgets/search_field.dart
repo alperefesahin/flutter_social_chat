@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_production_app/presentation/pages/channels/constants/texts.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
     super.key,
     required this.onChanged,
   });
-  final Function(String)? onChanged;
+  final Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,8 @@ class SearchField extends StatelessWidget {
               color: kiwiColor,
             ),
           ),
-          labelText: "Search",
-          hintText: "Search someone...",
+          labelText: search,
+          hintText: searchSomeone,
           iconColor: kiwiColor,
           hintStyle: TextStyle(color: kiwiColor),
           labelStyle: TextStyle(color: kiwiColor),
