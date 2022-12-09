@@ -117,11 +117,29 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     required List<Channel> listOfChannels,
     required String searchedText,
     required int index,
+    required int lengthOfTheChannelMembers,
+    required User oneToOneChatMember,
   }) {
-    final filteredChannels =
-        listOfChannels.where((channel) => channel.name!.contains(searchedText)).toList();
+    int result;
+    final editedSearchedText = searchedText.toLowerCase().trim();
 
-    final result = filteredChannels.indexOf(listOfChannels[index]);
+    if (lengthOfTheChannelMembers == 2) {
+      final filteredChannels = listOfChannels
+          .where(
+            (channel) => oneToOneChatMember.name.toLowerCase().trim().contains(editedSearchedText),
+          )
+          .toList();
+
+      result = filteredChannels.indexOf(listOfChannels[index]);
+    } else {
+      final filteredChannels = listOfChannels
+          .where(
+            (channel) => channel.name!.toLowerCase().trim().contains(editedSearchedText),
+          )
+          .toList();
+
+      result = filteredChannels.indexOf(listOfChannels[index]);
+    }
 
     if (result == -1) {
       return false;
