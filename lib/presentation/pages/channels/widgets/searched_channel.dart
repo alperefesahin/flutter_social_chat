@@ -21,23 +21,25 @@ class SearchedChannel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isTheSearchedChannelExist =
-        context.read<ChatManagementCubit>().searchInsideExistingChannels(
-              listOfChannels: listOfChannels,
-              searchedText: searchedText,
-              index: index,
-            );
-
     final channel = listOfChannels[index];
 
     final channelMembers = channel.state!.members;
+
+    final lengthOfTheChannelMembers = channelMembers.length;
 
     final oneToOneChatMember = channelMembers
         .where((member) => member.userId != context.read<AuthCubit>().state.authUser.id)
         .first
         .user!;
 
-    final lengthOfTheChannelMembers = channelMembers.length;
+    final isTheSearchedChannelExist =
+        context.read<ChatManagementCubit>().searchInsideExistingChannels(
+              listOfChannels: listOfChannels,
+              searchedText: searchedText,
+              index: index,
+              oneToOneChatMember: oneToOneChatMember,
+              lengthOfTheChannelMembers: lengthOfTheChannelMembers,
+            );
 
     if (isTheSearchedChannelExist) {
       return defaultWidget.copyWith(
