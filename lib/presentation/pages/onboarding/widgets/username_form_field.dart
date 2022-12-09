@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
-import 'package:flutter_production_app/presentation/pages/create_new_profile/constants/texts.dart';
+import 'package:flutter_production_app/presentation/pages/onboarding/constants/texts.dart';
 
 class UsernameFormField extends StatelessWidget {
   const UsernameFormField({super.key});

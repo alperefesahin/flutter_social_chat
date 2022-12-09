@@ -25,7 +25,7 @@ class SignInVerificationPage extends StatelessWidget {
       listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
       listener: (context, state) {
         if (state.isUserLoggedIn) {
-          context.router.replace(const CreateNewProfileRoute());
+          context.router.replace(const OnboardingRoute());
         } else {
           context.router.popUntilRoot();
         }

@@ -23,7 +23,7 @@ import '../pages/camera/camera_page.dart' as _i9;
 import '../pages/channels/channels_page.dart' as _i8;
 import '../pages/chat/chat_page.dart' as _i5;
 import '../pages/create_new_chat/create_new_chat_page.dart' as _i6;
-import '../pages/create_new_profile/create_new_profile_page.dart' as _i7;
+import '../pages/onboarding/onboarding_page.dart' as _i7;
 import '../pages/landing/landing_page.dart' as _i1;
 import '../pages/profile/profile_page.dart' as _i10;
 import '../pages/sign_in/sign_in_page.dart' as _i2;
@@ -85,10 +85,10 @@ class AppRouter extends _i11.RootStackRouter {
         ),
       );
     },
-    CreateNewProfileRoute.name: (routeData) {
+    OnboardingRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i7.CreateNewProfilePage(),
+        child: const _i7.OnboardingPage(),
       );
     },
     ChannelsRoute.name: (routeData) {
@@ -160,8 +160,8 @@ class AppRouter extends _i11.RootStackRouter {
           path: '/create-new-chat-page',
         ),
         _i11.RouteConfig(
-          CreateNewProfileRoute.name,
-          path: '/create-new-profile-page',
+          OnboardingRoute.name,
+          path: '/onboarding-page',
         ),
       ];
 }
@@ -313,15 +313,15 @@ class CreateNewChatRouteArgs {
 }
 
 /// generated route for
-/// [_i7.CreateNewProfilePage]
-class CreateNewProfileRoute extends _i11.PageRouteInfo<void> {
-  const CreateNewProfileRoute()
+/// [_i7.OnboardingPage]
+class OnboardingRoute extends _i11.PageRouteInfo<void> {
+  const OnboardingRoute()
       : super(
-          CreateNewProfileRoute.name,
-          path: '/create-new-profile-page',
+          OnboardingRoute.name,
+          path: '/onboarding-page',
         );
 
-  static const String name = 'CreateNewProfileRoute';
+  static const String name = 'OnboardingRoute';
 }
 
 /// generated route for

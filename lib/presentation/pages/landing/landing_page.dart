@@ -20,7 +20,7 @@ class _LandingPageState extends State<LandingPage> {
         final bool isUserLoggedIn = context.read<AuthCubit>().state.isUserLoggedIn;
 
         if (isUserLoggedIn) {
-          AutoRouter.of(context).replace(const CreateNewProfileRoute());
+          AutoRouter.of(context).replace(const OnboardingRoute());
         } else if (!isUserLoggedIn) {
           AutoRouter.of(context).replace(const SignInRoute());
         }
@@ -36,7 +36,7 @@ class _LandingPageState extends State<LandingPage> {
       listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
       listener: (context, state) {
         if (state.isUserLoggedIn) {
-          context.router.navigate(const CreateNewProfileRoute());
+          context.router.navigate(const OnboardingRoute());
         } else {
           context.router.navigate(const SignInRoute());
         }
