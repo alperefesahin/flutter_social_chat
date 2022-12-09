@@ -4,19 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
-
-import 'package:flutter_production_app/presentation/pages/create_new_profile/widgets/profile_image.dart';
-import 'package:flutter_production_app/presentation/pages/create_new_profile/widgets/username_form_field.dart';
+import 'package:flutter_production_app/presentation/pages/onboarding/widgets/onboarding_page_body.dart';
 import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
-class CreateNewProfilePage extends StatefulWidget {
-  const CreateNewProfilePage({super.key});
+class OnboardingPage extends StatefulWidget {
+  const OnboardingPage({super.key});
 
   @override
-  State<CreateNewProfilePage> createState() => _CreateNewProfilePageState();
+  State<OnboardingPage> createState() => _OnboardingPageState();
 }
 
-class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
+class _OnboardingPageState extends State<OnboardingPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
@@ -27,7 +25,7 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
         if (isOnboardingCompleted) {
           AutoRouter.of(context).replace(const BottomTabRoute());
         } else if (!isOnboardingCompleted) {
-          AutoRouter.of(context).replace(const CreateNewProfileRoute());
+          AutoRouter.of(context).replace(const OnboardingRoute());
         }
       },
     );
@@ -42,7 +40,7 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
         if (state.authUser.isOnboardingCompleted) {
           AutoRouter.of(context).replace(const BottomTabRoute());
         } else if (!state.authUser.isOnboardingCompleted) {
-          AutoRouter.of(context).replace(const CreateNewProfileRoute());
+          AutoRouter.of(context).replace(const OnboardingRoute());
         }
       },
       child: BlocBuilder<AuthCubit, AuthState>(
@@ -57,12 +55,7 @@ class _CreateNewProfilePageState extends State<CreateNewProfilePage> {
             return WillPopScope(
               onWillPop: () => Future<bool>.value(false),
               child: Scaffold(
-                body: Column(
-                  children: [
-                    ProfileImage(authState: state),
-                    const UsernameFormField(),
-                  ],
-                ),
+                body: OnboardingPageBody(authState: state),
               ),
             );
           }

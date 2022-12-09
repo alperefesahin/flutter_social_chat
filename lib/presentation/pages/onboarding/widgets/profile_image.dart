@@ -11,7 +11,6 @@ import 'package:image_picker/image_picker.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({super.key, required this.authState});
-
   final AuthState authState;
 
   @override
@@ -20,7 +19,9 @@ class ProfileImage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(
+        bottom: 10,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -30,6 +31,10 @@ class ProfileImage extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(
                 Radius.circular(80),
+              ),
+              border: Border.all(
+                color: kiwiBackColor,
+                width: 3,
               ),
               image: DecorationImage(
                 fit: BoxFit.fill,
@@ -50,10 +55,10 @@ class ProfileImage extends StatelessWidget {
 
               context.read<AuthCubit>().changeUserProfileImage(userFileImg: image);
             },
-            icon: const Icon(
+            icon: Icon(
               CupertinoIcons.chevron_down_square_fill,
               size: 30,
-              color: customIndigoBackgroundColor,
+              color: kiwiColor.withOpacity(0.8),
             ),
           )
         ],

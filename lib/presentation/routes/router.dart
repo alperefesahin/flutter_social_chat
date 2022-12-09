@@ -5,7 +5,7 @@ import 'package:flutter_production_app/presentation/pages/camera/camera_page.dar
 import 'package:flutter_production_app/presentation/pages/channels/channels_page.dart';
 import 'package:flutter_production_app/presentation/pages/chat/chat_page.dart';
 import 'package:flutter_production_app/presentation/pages/create_new_chat/create_new_chat_page.dart';
-import 'package:flutter_production_app/presentation/pages/create_new_profile/create_new_profile_page.dart';
+import 'package:flutter_production_app/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:flutter_production_app/presentation/pages/landing/landing_page.dart';
 import 'package:flutter_production_app/presentation/pages/profile/profile_page.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/sign_in_page.dart';
@@ -29,7 +29,7 @@ import 'package:flutter_production_app/presentation/pages/verification_page/sign
     ),
     AutoRoute(page: ChatPage),
     AutoRoute(page: CreateNewChatPage),
-    AutoRoute(page: CreateNewProfilePage),
+    AutoRoute(page: OnboardingPage),
   ],
 )
 class $AppRouter {}
