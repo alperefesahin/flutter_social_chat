@@ -41,6 +41,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   image_picker: ^0.8.6
   camera: ^0.10.0+4
+  flutter_svg: ^1.1.6
 
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.2.0
@@ -86,6 +87,8 @@ flutter:
   assets:
     - assets/images/user.png
     - assets/images/kiwi.png
+    - assets/images/chat.svg
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
