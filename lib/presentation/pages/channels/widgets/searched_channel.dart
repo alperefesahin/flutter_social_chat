@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/pages/channels/constants/texts.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
