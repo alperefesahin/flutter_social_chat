@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:flutter_production_app/presentation/pages/onboarding/widgets/onboarding_page_body.dart';
 
 import 'package:flutter_production_app/presentation/pages/onboarding/widgets/profile_image.dart';
 import 'package:flutter_production_app/presentation/pages/onboarding/widgets/username_form_field.dart';
@@ -57,12 +58,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             return WillPopScope(
               onWillPop: () => Future<bool>.value(false),
               child: Scaffold(
-                body: Column(
-                  children: [
-                    ProfileImage(authState: state),
-                    const UsernameFormField(),
-                  ],
-                ),
+                body: OnboardingPageBody(authState: state),
               ),
             );
           }
