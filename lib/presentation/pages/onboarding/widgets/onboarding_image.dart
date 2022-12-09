@@ -7,10 +7,24 @@ class OnboardingImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SvgPicture.asset(
-      "assets/images/chat.svg",
-      width: size.width,
-      height: size.height / 4,
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Image.asset(
+          "assets/images/onboarding_top_corner.png",
+          width: 120,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: SvgPicture.asset(
+            "assets/images/chat.svg",
+            width: size.width,
+            height: size.height / 4,
+          ),
+        ),
+      ],
     );
   }
 }

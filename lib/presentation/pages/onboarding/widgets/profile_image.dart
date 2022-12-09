@@ -11,7 +11,6 @@ import 'package:image_picker/image_picker.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({super.key, required this.authState});
-
   final AuthState authState;
 
   @override
@@ -20,7 +19,9 @@ class ProfileImage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(
+        bottom: 10,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
