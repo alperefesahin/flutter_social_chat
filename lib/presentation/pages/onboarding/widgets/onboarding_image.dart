@@ -6,8 +6,11 @@ class OnboardingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SvgPicture.asset(
       "assets/images/chat.svg",
+      width: size.width,
+      height: size.height / 4,
     );
   }
 }

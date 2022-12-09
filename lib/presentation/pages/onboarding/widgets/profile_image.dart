@@ -31,6 +31,10 @@ class ProfileImage extends StatelessWidget {
               borderRadius: const BorderRadius.all(
                 Radius.circular(80),
               ),
+              border: Border.all(
+                color: kiwiBackColor,
+                width: 3,
+              ),
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: newImage == null
@@ -50,10 +54,10 @@ class ProfileImage extends StatelessWidget {
 
               context.read<AuthCubit>().changeUserProfileImage(userFileImg: image);
             },
-            icon: const Icon(
+            icon: Icon(
               CupertinoIcons.chevron_down_square_fill,
               size: 30,
-              color: customIndigoBackgroundColor,
+              color: kiwiColor.withOpacity(0.8),
             ),
           )
         ],

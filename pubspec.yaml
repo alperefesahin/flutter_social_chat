@@ -88,9 +88,9 @@ flutter:
     - assets/images/user.png
     - assets/images/kiwi.png
     - assets/images/chat.svg
+    - assets/images/onboarding_top_corner.png
 
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
