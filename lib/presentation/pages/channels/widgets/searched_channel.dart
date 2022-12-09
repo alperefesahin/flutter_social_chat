@@ -43,6 +43,7 @@ class SearchedChannel extends StatelessWidget {
 
     if (isTheSearchedChannelExist) {
       return defaultWidget.copyWith(
+        contentPadding: const EdgeInsets.only(left: 15, right: 15, bottom: 8),
         channel: channel,
         leading: CircleAvatar(
           radius: 40,
@@ -52,7 +53,7 @@ class SearchedChannel extends StatelessWidget {
         ),
         title: Text(
           lengthOfTheChannelMembers == 2 ? oneToOneChatMember.name : channel.name!,
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Text(
