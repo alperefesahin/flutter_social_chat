@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 Widget bottomNavigationBuilder(BuildContext context) {
   return BottomNavigationBar(
     backgroundColor: kiwiBackColor,
-    currentIndex: 0,
+    currentIndex: _calculateSelectedIndex(context),
     selectedItemColor: bottomNavBarSelectedItemColor,
     onTap: (index) => _onItemTapped(index, context),
     items: const [
@@ -33,7 +33,6 @@ Widget bottomNavigationBuilder(BuildContext context) {
 
 int _calculateSelectedIndex(BuildContext context) {
   final String location = GoRouterState.of(context).location;
-  print(location);
 
   if (location == "/channels_page") {
     return 0;

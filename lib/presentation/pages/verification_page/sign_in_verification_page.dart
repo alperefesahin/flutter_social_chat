@@ -23,9 +23,9 @@ class SignInVerificationPage extends StatelessWidget {
     return MultiBlocListener(
       listeners: [
         BlocListener<AuthCubit, AuthState>(
-          listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
+          listenWhen: (p, c) => p.isLoggedIn != c.isLoggedIn,
           listener: (context, state) {
-            if (state.isUserLoggedIn) {
+            if (state.isLoggedIn) {
               context.go(context.namedLocation("channels_page"));
             }
           },

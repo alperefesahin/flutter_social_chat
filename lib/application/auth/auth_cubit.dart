@@ -48,23 +48,20 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> _listenAuthStateChangesStream(AuthUserModel authUser) async {
-    emit(state.copyWith(isInProgress: true));
+    emit(
+      state.copyWith(
+        isInProgress: true,
+        authUser: authUser,
+        isUserCheckedFromAuthService: true,
+      ),
+    );
 
-    if (AuthUserModel.empty() == authUser) {
-      emit(
-        state.copyWith(
-          authUser: authUser,
-          isUserLoggedIn: false,
-          isInProgress: false,
-        ),
-      );
-    } else {
+    if (state.isLoggedIn) {
       await _chatService.connectTheCurrentUser();
 
       emit(
         state.copyWith(
           authUser: authUser,
-          isUserLoggedIn: true,
           isInProgress: false,
         ),
       );

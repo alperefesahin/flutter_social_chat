@@ -4,15 +4,18 @@ part of 'auth_cubit.dart';
 class AuthState with _$AuthState {
   const factory AuthState({
     required AuthUserModel authUser,
-    required bool isUserLoggedIn,
+    required bool isUserCheckedFromAuthService,
     required bool isInProgress,
     required bool isUserNameValid,
   }) = _AuthState;
+  const AuthState._();
 
   factory AuthState.empty() => AuthState(
         authUser: AuthUserModel.empty(),
-        isUserLoggedIn: false,
+        isUserCheckedFromAuthService: false,
         isInProgress: false,
         isUserNameValid: false,
       );
+
+  bool get isLoggedIn => authUser != AuthUserModel.empty();
 }

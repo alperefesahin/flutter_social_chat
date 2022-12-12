@@ -14,7 +14,7 @@ class BottomTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
-      listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
+      listenWhen: (p, c) => p.isLoggedIn != c.isLoggedIn,
       listener: (context, state) {
         //Todo:
         /*   if (state.isUserLoggedIn) {
