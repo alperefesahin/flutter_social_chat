@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'chat_management_cubit.dart';
 
@@ -148,6 +148,8 @@ class _$_ChatManagementState
   final Set<String> _listOfSelectedUserIDs;
   @override
   Set<String> get listOfSelectedUserIDs {
+    if (_listOfSelectedUserIDs is EqualUnmodifiableSetView)
+      return _listOfSelectedUserIDs;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableSetView(_listOfSelectedUserIDs);
   }
@@ -155,6 +157,8 @@ class _$_ChatManagementState
   final List<Channel> _filteredChannels;
   @override
   List<Channel> get filteredChannels {
+    if (_filteredChannels is EqualUnmodifiableListView)
+      return _filteredChannels;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_filteredChannels);
   }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'chat_user_model.dart';
 
@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatUserModel {
-  List<String> get teams => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  DateTime? get lastActive => throw _privateConstructorUsedError;
+  String get userRole => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
+  bool? get isUserBanned => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatUserModelCopyWith<ChatUserModel> get copyWith =>
@@ -31,7 +31,7 @@ abstract class $ChatUserModelCopyWith<$Res> {
           ChatUserModel value, $Res Function(ChatUserModel) then) =
       _$ChatUserModelCopyWithImpl<$Res, ChatUserModel>;
   @useResult
-  $Res call({List<String> teams, DateTime? createdAt, DateTime? lastActive});
+  $Res call({String userRole, String createdAt, bool? isUserBanned});
 }
 
 /// @nodoc
@@ -47,23 +47,23 @@ class _$ChatUserModelCopyWithImpl<$Res, $Val extends ChatUserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? teams = null,
-    Object? createdAt = freezed,
-    Object? lastActive = freezed,
+    Object? userRole = null,
+    Object? createdAt = null,
+    Object? isUserBanned = freezed,
   }) {
     return _then(_value.copyWith(
-      teams: null == teams
-          ? _value.teams
-          : teams // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      createdAt: freezed == createdAt
+      userRole: null == userRole
+          ? _value.userRole
+          : userRole // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastActive: freezed == lastActive
-          ? _value.lastActive
-          : lastActive // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String,
+      isUserBanned: freezed == isUserBanned
+          ? _value.isUserBanned
+          : isUserBanned // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -76,7 +76,7 @@ abstract class _$$_ChatUserModelCopyWith<$Res>
       __$$_ChatUserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> teams, DateTime? createdAt, DateTime? lastActive});
+  $Res call({String userRole, String createdAt, bool? isUserBanned});
 }
 
 /// @nodoc
@@ -90,23 +90,23 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? teams = null,
-    Object? createdAt = freezed,
-    Object? lastActive = freezed,
+    Object? userRole = null,
+    Object? createdAt = null,
+    Object? isUserBanned = freezed,
   }) {
     return _then(_$_ChatUserModel(
-      teams: null == teams
-          ? _value._teams
-          : teams // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      createdAt: freezed == createdAt
+      userRole: null == userRole
+          ? _value.userRole
+          : userRole // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastActive: freezed == lastActive
-          ? _value.lastActive
-          : lastActive // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String,
+      isUserBanned: freezed == isUserBanned
+          ? _value.isUserBanned
+          : isUserBanned // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -115,27 +115,21 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
 
 class _$_ChatUserModel extends _ChatUserModel {
   const _$_ChatUserModel(
-      {required final List<String> teams,
+      {required this.userRole,
       required this.createdAt,
-      required this.lastActive})
-      : _teams = teams,
-        super._();
-
-  final List<String> _teams;
-  @override
-  List<String> get teams {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_teams);
-  }
+      required this.isUserBanned})
+      : super._();
 
   @override
-  final DateTime? createdAt;
+  final String userRole;
   @override
-  final DateTime? lastActive;
+  final String createdAt;
+  @override
+  final bool? isUserBanned;
 
   @override
   String toString() {
-    return 'ChatUserModel(teams: $teams, createdAt: $createdAt, lastActive: $lastActive)';
+    return 'ChatUserModel(userRole: $userRole, createdAt: $createdAt, isUserBanned: $isUserBanned)';
   }
 
   @override
@@ -143,16 +137,17 @@ class _$_ChatUserModel extends _ChatUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatUserModel &&
-            const DeepCollectionEquality().equals(other._teams, _teams) &&
+            (identical(other.userRole, userRole) ||
+                other.userRole == userRole) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.lastActive, lastActive) ||
-                other.lastActive == lastActive));
+            (identical(other.isUserBanned, isUserBanned) ||
+                other.isUserBanned == isUserBanned));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_teams), createdAt, lastActive);
+  int get hashCode =>
+      Object.hash(runtimeType, userRole, createdAt, isUserBanned);
 
   @JsonKey(ignore: true)
   @override
@@ -163,17 +158,17 @@ class _$_ChatUserModel extends _ChatUserModel {
 
 abstract class _ChatUserModel extends ChatUserModel {
   const factory _ChatUserModel(
-      {required final List<String> teams,
-      required final DateTime? createdAt,
-      required final DateTime? lastActive}) = _$_ChatUserModel;
+      {required final String userRole,
+      required final String createdAt,
+      required final bool? isUserBanned}) = _$_ChatUserModel;
   const _ChatUserModel._() : super._();
 
   @override
-  List<String> get teams;
+  String get userRole;
   @override
-  DateTime? get createdAt;
+  String get createdAt;
   @override
-  DateTime? get lastActive;
+  bool? get isUserBanned;
   @override
   @JsonKey(ignore: true)
   _$$_ChatUserModelCopyWith<_$_ChatUserModel> get copyWith =>

@@ -17,9 +17,22 @@ class CameraPage extends StatefulWidget {
 class _CameraPageState extends State<CameraPage>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   CameraController? controller;
+  late final CameraCubit _cameraCubit;
+
+  Future<void> initalizeCamera() async {
+    _cameraCubit = getIt<CameraCubit>();
+    final cameras = await _cameraCubit.getCamerasOfTheDevice();
+    //!
+/*     final controller = CameraController(cameras[0], ResolutionPreset.high); */
+    await controller!.initialize();
+  }
 
   @override
   void initState() {
+    initalizeCamera();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) async {},
+    );
     super.initState();
     WidgetsBinding.instance.addObserver(this);
   }
@@ -48,8 +61,8 @@ class _CameraPageState extends State<CameraPage>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<CameraCubit>()..getCamerasOfTheDevice(),
+    return BlocProvider.value(
+      value: _cameraCubit,
       child: Builder(
         builder: (context) {
           return BlocBuilder<CameraCubit, CameraState>(

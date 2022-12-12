@@ -1,9 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
+import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
 
 abstract class IChatService {
-  Stream<ConnectionStatus> get getstreamWebSocketConnectionChanges;
+  Stream<ChatUserModel> get chatAuthStateChanges;
 
   Future<void> disconnectUser();
 
