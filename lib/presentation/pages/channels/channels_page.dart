@@ -22,7 +22,7 @@ class ChannelsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String searchedText = "";
-
+    
     return Scaffold(
       floatingActionButtonLocation: ExpandableFab.location,
       floatingActionButton: AnimatedCreateNewChatButton(

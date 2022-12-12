@@ -15,8 +15,6 @@ import 'package:flutter_production_app/presentation/pages/verification_page/sign
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: LandingPage, initial: true),
-    AutoRoute(page: SignInPage),
-    AutoRoute(page: SignInVerificationPage),
     AutoRoute(
       page: BottomTabPage,
       children: [
@@ -27,6 +25,8 @@ import 'package:flutter_production_app/presentation/pages/verification_page/sign
         AutoRoute(page: ProfilePage),
       ],
     ),
+    AutoRoute(page: SignInPage),
+    AutoRoute(page: SignInVerificationPage),
     AutoRoute(page: ChatPage),
     AutoRoute(page: CreateNewChatPage),
     AutoRoute(page: OnboardingPage),

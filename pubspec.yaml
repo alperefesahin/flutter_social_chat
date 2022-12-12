@@ -46,6 +46,7 @@ dependencies:
   rounded_loading_button: ^2.1.0
   cached_network_image: ^3.2.3
   awesome_icons: ^1.1.0
+  date_format: ^2.0.7
 
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.2.0

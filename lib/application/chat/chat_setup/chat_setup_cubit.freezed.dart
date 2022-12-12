@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'chat_setup_cubit.dart';
 
@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatSetupState {
-  ChatUserModel get chatUserModel => throw _privateConstructorUsedError;
+  ChatUserModel get chatUser => throw _privateConstructorUsedError;
   ConnectionStatus get webSocketConnectionStatus =>
       throw _privateConstructorUsedError;
   bool get isChatUserConnected => throw _privateConstructorUsedError;
@@ -33,11 +33,11 @@ abstract class $ChatSetupStateCopyWith<$Res> {
       _$ChatSetupStateCopyWithImpl<$Res, ChatSetupState>;
   @useResult
   $Res call(
-      {ChatUserModel chatUserModel,
+      {ChatUserModel chatUser,
       ConnectionStatus webSocketConnectionStatus,
       bool isChatUserConnected});
 
-  $ChatUserModelCopyWith<$Res> get chatUserModel;
+  $ChatUserModelCopyWith<$Res> get chatUser;
 }
 
 /// @nodoc
@@ -53,14 +53,14 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? chatUserModel = null,
+    Object? chatUser = null,
     Object? webSocketConnectionStatus = null,
     Object? isChatUserConnected = null,
   }) {
     return _then(_value.copyWith(
-      chatUserModel: null == chatUserModel
-          ? _value.chatUserModel
-          : chatUserModel // ignore: cast_nullable_to_non_nullable
+      chatUser: null == chatUser
+          ? _value.chatUser
+          : chatUser // ignore: cast_nullable_to_non_nullable
               as ChatUserModel,
       webSocketConnectionStatus: null == webSocketConnectionStatus
           ? _value.webSocketConnectionStatus
@@ -75,9 +75,9 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
 
   @override
   @pragma('vm:prefer-inline')
-  $ChatUserModelCopyWith<$Res> get chatUserModel {
-    return $ChatUserModelCopyWith<$Res>(_value.chatUserModel, (value) {
-      return _then(_value.copyWith(chatUserModel: value) as $Val);
+  $ChatUserModelCopyWith<$Res> get chatUser {
+    return $ChatUserModelCopyWith<$Res>(_value.chatUser, (value) {
+      return _then(_value.copyWith(chatUser: value) as $Val);
     });
   }
 }
@@ -91,12 +91,12 @@ abstract class _$$_ChatSetupStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ChatUserModel chatUserModel,
+      {ChatUserModel chatUser,
       ConnectionStatus webSocketConnectionStatus,
       bool isChatUserConnected});
 
   @override
-  $ChatUserModelCopyWith<$Res> get chatUserModel;
+  $ChatUserModelCopyWith<$Res> get chatUser;
 }
 
 /// @nodoc
@@ -110,14 +110,14 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? chatUserModel = null,
+    Object? chatUser = null,
     Object? webSocketConnectionStatus = null,
     Object? isChatUserConnected = null,
   }) {
     return _then(_$_ChatSetupState(
-      chatUserModel: null == chatUserModel
-          ? _value.chatUserModel
-          : chatUserModel // ignore: cast_nullable_to_non_nullable
+      chatUser: null == chatUser
+          ? _value.chatUser
+          : chatUser // ignore: cast_nullable_to_non_nullable
               as ChatUserModel,
       webSocketConnectionStatus: null == webSocketConnectionStatus
           ? _value.webSocketConnectionStatus
@@ -137,12 +137,12 @@ class _$_ChatSetupState
     with DiagnosticableTreeMixin
     implements _ChatSetupState {
   const _$_ChatSetupState(
-      {required this.chatUserModel,
+      {required this.chatUser,
       required this.webSocketConnectionStatus,
       required this.isChatUserConnected});
 
   @override
-  final ChatUserModel chatUserModel;
+  final ChatUserModel chatUser;
   @override
   final ConnectionStatus webSocketConnectionStatus;
   @override
@@ -150,7 +150,7 @@ class _$_ChatSetupState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatSetupState(chatUserModel: $chatUserModel, webSocketConnectionStatus: $webSocketConnectionStatus, isChatUserConnected: $isChatUserConnected)';
+    return 'ChatSetupState(chatUser: $chatUser, webSocketConnectionStatus: $webSocketConnectionStatus, isChatUserConnected: $isChatUserConnected)';
   }
 
   @override
@@ -158,7 +158,7 @@ class _$_ChatSetupState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ChatSetupState'))
-      ..add(DiagnosticsProperty('chatUserModel', chatUserModel))
+      ..add(DiagnosticsProperty('chatUser', chatUser))
       ..add(DiagnosticsProperty(
           'webSocketConnectionStatus', webSocketConnectionStatus))
       ..add(DiagnosticsProperty('isChatUserConnected', isChatUserConnected));
@@ -169,8 +169,8 @@ class _$_ChatSetupState
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatSetupState &&
-            (identical(other.chatUserModel, chatUserModel) ||
-                other.chatUserModel == chatUserModel) &&
+            (identical(other.chatUser, chatUser) ||
+                other.chatUser == chatUser) &&
             (identical(other.webSocketConnectionStatus,
                     webSocketConnectionStatus) ||
                 other.webSocketConnectionStatus == webSocketConnectionStatus) &&
@@ -179,8 +179,8 @@ class _$_ChatSetupState
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chatUserModel,
-      webSocketConnectionStatus, isChatUserConnected);
+  int get hashCode => Object.hash(
+      runtimeType, chatUser, webSocketConnectionStatus, isChatUserConnected);
 
   @JsonKey(ignore: true)
   @override
@@ -191,12 +191,12 @@ class _$_ChatSetupState
 
 abstract class _ChatSetupState implements ChatSetupState {
   const factory _ChatSetupState(
-      {required final ChatUserModel chatUserModel,
+      {required final ChatUserModel chatUser,
       required final ConnectionStatus webSocketConnectionStatus,
       required final bool isChatUserConnected}) = _$_ChatSetupState;
 
   @override
-  ChatUserModel get chatUserModel;
+  ChatUserModel get chatUser;
   @override
   ConnectionStatus get webSocketConnectionStatus;
   @override

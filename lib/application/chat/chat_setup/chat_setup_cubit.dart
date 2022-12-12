@@ -16,46 +16,39 @@ part 'chat_setup_cubit.freezed.dart';
 
 @lazySingleton
 class ChatSetupCubit extends Cubit<ChatSetupState> {
-  late StreamSubscription<ConnectionStatus>? _getstreamWebSocketConnectionSubscription;
+  late StreamSubscription<ChatUserModel>? _chatUserSubscription;
 
   late final IChatService _chatService;
 
   ChatSetupCubit() : super(ChatSetupState.empty()) {
     _chatService = getIt<IChatService>();
 
-    _getstreamWebSocketConnectionSubscription = _chatService.getstreamWebSocketConnectionChanges
-        .listen(_listenChatUserAuthStateChangesStream);
+    _chatUserSubscription =
+        _chatService.chatAuthStateChanges.listen(_listenChatUserAuthStateChangesStream);
   }
 
   @override
   Future<void> close() async {
-    await _getstreamWebSocketConnectionSubscription?.cancel();
+    await _chatUserSubscription?.cancel();
 
     super.close();
   }
 
   Future<void> _listenChatUserAuthStateChangesStream(
-    ConnectionStatus webSocketConnectionStatus,
+    ChatUserModel chatUser,
   ) async {
-    if (ConnectionStatus.connected == webSocketConnectionStatus) {
+    if (ChatUserModel.empty() == chatUser) {
       emit(
         state.copyWith(
-          isChatUserConnected: true,
-          webSocketConnectionStatus: webSocketConnectionStatus,
-        ),
-      );
-    } else if (ConnectionStatus.connecting == webSocketConnectionStatus) {
-      emit(
-        state.copyWith(
+          chatUser: chatUser,
           isChatUserConnected: false,
-          webSocketConnectionStatus: webSocketConnectionStatus,
         ),
       );
     } else {
       emit(
         state.copyWith(
-          isChatUserConnected: false,
-          webSocketConnectionStatus: webSocketConnectionStatus,
+          chatUser: chatUser,
+          isChatUserConnected: true,
         ),
       );
     }
