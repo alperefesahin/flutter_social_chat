@@ -1,16 +1,16 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/pages/bottom_tab/constants/texts.dart';
+import 'package:go_router/go_router.dart';
 
-Widget bottomNavigationBuilder(BuildContext _, TabsRouter tabsRouter) {
+Widget bottomNavigationBuilder(BuildContext context) {
   return BottomNavigationBar(
     backgroundColor: kiwiBackColor,
-    currentIndex: tabsRouter.activeIndex,
+    currentIndex: _calculateSelectedIndex(context),
     selectedItemColor: bottomNavBarSelectedItemColor,
-    onTap: tabsRouter.setActiveIndex,
+    onTap: (index) => _onItemTapped(index, context),
     items: const [
       BottomNavigationBarItem(
         label: chats,
@@ -29,4 +29,32 @@ Widget bottomNavigationBuilder(BuildContext _, TabsRouter tabsRouter) {
       ),
     ],
   );
+}
+
+int _calculateSelectedIndex(BuildContext context) {
+  final String location = GoRouterState.of(context).location;
+  if (location.startsWith('/a')) {
+    return 0;
+  }
+  if (location.startsWith('/b')) {
+    return 1;
+  }
+  if (location.startsWith('/c')) {
+    return 2;
+  }
+  return 0;
+}
+
+void _onItemTapped(int index, BuildContext context) {
+  switch (index) {
+    case 0:
+      GoRouter.of(context).go('/a');
+      break;
+    case 1:
+      GoRouter.of(context).go('/b');
+      break;
+    case 2:
+      GoRouter.of(context).go('/c');
+      break;
+  }
 }

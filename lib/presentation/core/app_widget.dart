@@ -6,7 +6,7 @@ import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
-import 'package:flutter_production_app/presentation/routes/router.gr.dart';
+import 'package:flutter_production_app/presentation/routes/router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class AppWidget extends StatelessWidget {
@@ -14,9 +14,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter appRouter = AppRouter();
     final botToastBuilder = BotToastInit();
-    final BotToastNavigatorObserver botToastNavigatorObserver = BotToastNavigatorObserver();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -42,12 +40,7 @@ class AppWidget extends StatelessWidget {
         child: MaterialApp.router(
           title: 'Phone Number Sign-In',
           debugShowCheckedModeBanner: false,
-          routeInformationParser: appRouter.defaultRouteParser(),
-          routerDelegate: appRouter.delegate(
-            navigatorObservers: () => [
-              botToastNavigatorObserver,
-            ],
-          ),
+          routerConfig: AppRouter(getIt<AuthCubit>()).router,
           builder: (context, child) {
             final client = getIt<StreamChatClient>();
 

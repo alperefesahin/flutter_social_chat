@@ -1,17 +1,15 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
-
 import 'package:flutter_production_app/injection.dart';
 import 'package:flutter_production_app/presentation/pages/bottom_tab/widgets/bottom_navigation_builder.dart';
-import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class BottomTabPage extends StatefulWidget {
-  const BottomTabPage({super.key});
+  const BottomTabPage({super.key, required this.child});
+
+  final Widget child;
 
   @override
   State<BottomTabPage> createState() => _BottomTabPageState();
@@ -69,16 +67,9 @@ class _BottomTabPageState extends State<BottomTabPage> {
           },
           child: WillPopScope(
             onWillPop: () => Future<bool>.value(false),
-            child: AutoTabsScaffold(
-              routes: [
-                ChannelsRoute(
-                  streamChannelListController: _listController,
-                  userListController: _userListController,
-                ),
-                const CameraRoute(),
-                const ProfileRoute(),
-              ],
-              bottomNavigationBuilder: bottomNavigationBuilder,
+            child: Scaffold(
+              body: widget.child,
+              bottomNavigationBar: bottomNavigationBuilder(context),
             ),
           ),
         ),

@@ -1,5 +1,3 @@
-import 'package:auto_route/auto_route.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
@@ -7,7 +5,6 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/widgets/phone_number_sign_in_section.dart';
-import 'package:flutter_production_app/presentation/routes/router.gr.dart';
 
 class BottomSectionOfThePage extends StatelessWidget {
   const BottomSectionOfThePage({super.key, required this.size});
