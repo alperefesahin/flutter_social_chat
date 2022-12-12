@@ -4,6 +4,8 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
+import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
+import 'package:flutter_production_app/domain/auth/auth_failure.dart';
 import 'package:flutter_production_app/presentation/pages/bottom_tab/bottom_tab.dart';
 import 'package:flutter_production_app/presentation/pages/camera/camera_page.dart';
 import 'package:flutter_production_app/presentation/pages/channels/channels_page.dart';
@@ -19,7 +21,9 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class AppRouter {
   final AuthCubit authCubit;
-  AppRouter(this.authCubit);
+  final PhoneNumberSignInCubit phoneNumberSignInCubit;
+
+  AppRouter({required this.authCubit, required this.phoneNumberSignInCubit});
 
   static final GlobalKey<NavigatorState> _rootNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -32,7 +36,29 @@ class AppRouter {
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     observers: [botToastNavigatorObserver],
-    initialLocation: "/landing_page",
+    initialLocation: "/",
+/*     redirect: (context, state) {
+      final isSubLocCorrect = state.subloc == '/sign_in_verification_page';
+      final isUserLoggedIn = authCubit.state.isUserLoggedIn;
+      final isThereFailureError = phoneNumberSignInCubit.state.failureMessageOption.isSome();
+
+/*     final isChatUserConnected = chatSetupCubit.state.isChatUserConnected; */
+
+      print("${phoneNumberSignInCubit.stream.first.then((value) => value)}");
+      print("x: ${phoneNumberSignInCubit.state.failureMessageOption}");
+
+      if (!isUserLoggedIn && !isThereFailureError) {
+        return isSubLocCorrect ? null : "/sign_in_page";
+      }
+      if (isThereFailureError) {
+        return "/sign_in_page";
+      }
+      if (isUserLoggedIn) {
+        return "/channels_page";
+      }
+      return null;
+    }, 
+    refreshListenable: GoRouterRefreshStream(authCubit.stream, phoneNumberSignInCubit.stream), */
     routes: [
       GoRoute(
         path: '/',
@@ -41,24 +67,19 @@ class AppRouter {
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
-          return BottomTabPage(key: state.pageKey, child: child);
+          return BottomTabPage(child: child);
         },
         routes: [
           GoRoute(
-            path: '/channels_page:a',
+            name: "channels_page",
+            path: '/channels_page',
             builder: (context, state) {
-              final streamChannelListController = state.extra as StreamChannelListController?;
-              final userListController = state.extra as StreamUserListController?;
-
-              return ChannelsPage(
-                key: state.pageKey,
-                streamChannelListController: streamChannelListController!,
-                userListController: userListController!,
-              );
+              return const ChannelsPage();
             },
             routes: [
               GoRoute(
-                path: '/chat_page',
+                parentNavigatorKey: _rootNavigatorKey,
+                path: 'chat_page',
                 builder: (context, state) {
                   final channel = state.extra as Channel?;
 
@@ -68,20 +89,24 @@ class AppRouter {
             ],
           ),
           GoRoute(
+            name: 'camera_page',
             path: '/camera_page',
-            builder: (context, state) => CameraPage(key: state.pageKey),
+            builder: (context, state) => const CameraPage(),
           ),
           GoRoute(
+            name: 'profile_page',
             path: '/profile_page',
-            builder: (context, state) => ProfilePage(key: state.pageKey),
+            builder: (context, state) => const ProfilePage(),
           ),
         ],
       ),
       GoRoute(
+        name: "sign_in_page",
         path: '/sign_in_page',
         builder: (context, state) => const SignInPage(),
       ),
       GoRoute(
+        name: "sign_in_verification_page",
         path: '/sign_in_verification_page',
         builder: (context, state) {
           final phoneNumberSignInState = state.extra as PhoneNumberSignInState?;
@@ -102,30 +127,23 @@ class AppRouter {
         builder: (context, state) => const OnboardingPage(),
       ),
     ],
-    redirect: (BuildContext context, GoRouterState state) {
-      final bool isUserLoggedIn = authCubit.state.isUserLoggedIn;
-      final bool isOnboardingCompleted = authCubit.state.authUser.isOnboardingCompleted;
-
-      if (isUserLoggedIn && isOnboardingCompleted) {
-        return '/${state.pageKey}';
-      } else {
-        return "/sign_in_page";
-      }
-    },
-    refreshListenable: GoRouterRefreshStream(authCubit.stream),
   );
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
-  GoRouterRefreshStream(Stream<dynamic> stream) {
+  GoRouterRefreshStream(Stream<dynamic> firstStream, Stream<dynamic> secondStream) {
     notifyListeners();
-    _subscription = stream.asBroadcastStream().listen((dynamic _) => notifyListeners());
+    _subscriptionOne = firstStream.asBroadcastStream().listen((dynamic _) => notifyListeners());
+    _subscriptionTwo = secondStream.asBroadcastStream().listen((dynamic _) => notifyListeners());
   }
-  late final StreamSubscription<dynamic> _subscription;
+  late final StreamSubscription<dynamic> _subscriptionOne;
+  late final StreamSubscription<dynamic> _subscriptionTwo;
 
   @override
   void dispose() {
-    _subscription.cancel();
+    _subscriptionOne.cancel();
+    _subscriptionTwo.cancel();
+
     super.dispose();
   }
 }

@@ -20,11 +20,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
         final bool isOnboardingCompleted =
             context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
-        if (isOnboardingCompleted) {
+   //Todo:
+       /*  if (isOnboardingCompleted) {
           AutoRouter.of(context).replace(const BottomTabRoute());
         } else if (!isOnboardingCompleted) {
           AutoRouter.of(context).replace(const OnboardingRoute());
-        }
+        } */
       },
     );
 
@@ -35,11 +36,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state.authUser.isOnboardingCompleted) {
+           //Todo:
+       /*  if (state.authUser.isOnboardingCompleted) {
           AutoRouter.of(context).replace(const BottomTabRoute());
         } else if (!state.authUser.isOnboardingCompleted) {
           AutoRouter.of(context).replace(const OnboardingRoute());
-        }
+        } */
       },
       child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:go_router/go_router.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -18,9 +19,9 @@ class _LandingPageState extends State<LandingPage> {
         final bool isUserLoggedIn = context.read<AuthCubit>().state.isUserLoggedIn;
 
         if (isUserLoggedIn) {
-          AutoRouter.of(context).replace(const OnboardingRoute());
-        } else if (!isUserLoggedIn) {
-          AutoRouter.of(context).replace(const SignInRoute());
+          context.go(context.namedLocation("channels_page"));
+        } else {
+          context.go(context.namedLocation("sign_in_page"));
         }
       },
     );
@@ -34,9 +35,9 @@ class _LandingPageState extends State<LandingPage> {
       listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
       listener: (context, state) {
         if (state.isUserLoggedIn) {
-          context.router.navigate(const OnboardingRoute());
+          context.go(context.namedLocation("channels_page"));
         } else {
-          context.router.navigate(const SignInRoute());
+          context.go(context.namedLocation("sign_in_page"));
         }
       },
       child: const Scaffold(

@@ -4,71 +4,41 @@ import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:flutter_production_app/presentation/pages/bottom_tab/widgets/bottom_navigation_builder.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-class BottomTabPage extends StatefulWidget {
-  const BottomTabPage({super.key, required this.child});
+class BottomTabPage extends StatelessWidget {
+  const BottomTabPage({super.key, this.child});
+  static Page page() => const MaterialPage<void>(child: BottomTabPage());
 
-  final Widget child;
-
-  @override
-  State<BottomTabPage> createState() => _BottomTabPageState();
-}
-
-class _BottomTabPageState extends State<BottomTabPage> {
-  late final _listController = StreamChannelListController(
-    client: StreamChat.of(context).client,
-    filter: Filter.in_(
-      'members',
-      [StreamChat.of(context).currentUser!.id],
-    ),
-    channelStateSort: const [SortOption('last_message_at')],
-    limit: 20,
-  );
-
-  late final StreamUserListController _userListController = StreamUserListController(
-    client: StreamChat.of(context).client,
-    limit: 25,
-    filter: Filter.and(
-      [Filter.notEqual('id', StreamChat.of(context).currentUser!.id)],
-    ),
-    sort: [
-      const SortOption('name', direction: 1),
-    ],
-  );
-
-  @override
-  void dispose() {
-    _listController.dispose();
-    super.dispose();
-  }
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
       listener: (context, state) {
-        if (state.isUserLoggedIn) {
+        //Todo:
+        /*   if (state.isUserLoggedIn) {
           context.router.replace(const BottomTabRoute());
         } else {
           context.router.popUntilRoot();
-        }
+        } */
       },
       child: BlocProvider(
         create: (context) => getIt<ChatSetupCubit>(),
         child: BlocListener<ChatSetupCubit, ChatSetupState>(
           listenWhen: (p, c) => p.isChatUserConnected != c.isChatUserConnected,
           listener: (context, state) {
-            if (state.isChatUserConnected) {
+            //Todo:
+            /*  if (state.isChatUserConnected) {
               context.router.replace(const BottomTabRoute());
             } else {
               context.router.popUntilRoot();
-            }
+            } */
           },
           child: WillPopScope(
             onWillPop: () => Future<bool>.value(false),
             child: Scaffold(
-              body: widget.child,
+              body: child,
               bottomNavigationBar: bottomNavigationBuilder(context),
             ),
           ),

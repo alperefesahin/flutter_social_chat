@@ -40,7 +40,10 @@ class AppWidget extends StatelessWidget {
         child: MaterialApp.router(
           title: 'Phone Number Sign-In',
           debugShowCheckedModeBanner: false,
-          routerConfig: AppRouter(getIt<AuthCubit>()).router,
+          routerConfig: AppRouter(
+            authCubit: getIt<AuthCubit>(),
+            phoneNumberSignInCubit: getIt<PhoneNumberSignInCubit>(),
+          ).router,
           builder: (context, child) {
             final client = getIt<StreamChatClient>();
 

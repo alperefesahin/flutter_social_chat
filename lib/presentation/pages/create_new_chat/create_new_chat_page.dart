@@ -28,7 +28,8 @@ class CreateNewChatPage extends StatelessWidget {
           appBarAction: Icons.exit_to_app,
           actionsOnPressed: () {
             context.read<ChatManagementCubit>().reset();
-            context.router.replace(const BottomTabRoute());
+               //Todo:
+         /*    context.router.replace(const BottomTabRoute()); */
           },
           appBarBackgroundColor: whiteColor,
           appBarIconColor: blackColor,

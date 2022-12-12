@@ -5,6 +5,7 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/widgets/phone_number_sign_in_section.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomSectionOfThePage extends StatelessWidget {
   const BottomSectionOfThePage({super.key, required this.size});
@@ -70,8 +71,10 @@ class BottomSectionOfThePage extends StatelessWidget {
                       onTap: () {
                         if (state.isPhoneNumberInputValidated) {
                           context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
-                          AutoRouter.of(context).navigate(
-                            SignInVerificationRoute(state: state),
+
+                          context.push(
+                            context.namedLocation("sign_in_verification_page"),
+                            extra: state,
                           );
                         }
                       },

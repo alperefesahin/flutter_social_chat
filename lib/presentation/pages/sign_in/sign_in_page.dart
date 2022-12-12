@@ -12,6 +12,8 @@ import 'package:flutter_production_app/presentation/pages/sign_in/widgets/sign_i
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
 
+  static Page page() => const MaterialPage<void>(child: SignInPage());
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PhoneNumberSignInCubit, PhoneNumberSignInState>(
@@ -34,7 +36,8 @@ class SignInPage extends StatelessWidget {
                         ),
                       );
                       context.read<PhoneNumberSignInCubit>().reset();
-                      context.router.popUntilRoot();
+                      //Todo:
+                      /*   context.router.popUntilRoot(); */
                     },
                   );
                 },

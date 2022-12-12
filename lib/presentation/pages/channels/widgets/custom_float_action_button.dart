@@ -19,12 +19,13 @@ class CustomFloatActionButton extends StatelessWidget {
       backgroundColor: floatingActionButtonColor,
       heroTag: null,
       onPressed: () {
-        context.router.replace(
+           //Todo:
+       /*  context.router.replace(
           CreateNewChatRoute(
             userListController: userListController,
             isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
           ),
-        );
+        ); */
       },
       child: Icon(buttonIcon),
     );
