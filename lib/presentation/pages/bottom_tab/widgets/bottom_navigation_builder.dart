@@ -37,12 +37,12 @@ int _calculateSelectedIndex(BuildContext context) {
   if (location == "/channels_page") {
     return 0;
   }
-  /*  if (location.startsWith('/b')) {
+  if (location == "/camera_page") {
     return 1;
   }
-  if (location.startsWith('/c')) {
+  if (location == "/profile_page") {
     return 2;
-  } */
+  }
   return 0;
 }
 

@@ -12,22 +12,27 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  // we use addPostFrameCallback, because the information, that is coming from the firebase, may not
+  // Note: we use addPostFrameCallback, because the information, that is coming from the firebase, may not
   // come immediately. If it comes, then we navigate the user. If it does not come, then
   // we skip the build part, and show circular progress indicator to the user when the data is not exist.
   // when it comes, we trigger the bloclistener, and navigate the user.
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final bool isUserLoggedIn = context.read<AuthCubit>().state.isLoggedIn;
-      final bool isUserCheckedFromAuthService =
-          context.read<AuthCubit>().state.isUserCheckedFromAuthService;
-      if (isUserLoggedIn) {
-        context.go(context.namedLocation("channels_page"));
-      } else if (!isUserLoggedIn && isUserCheckedFromAuthService) {
-        context.go(context.namedLocation("sign_in_page"));
-      }
-    });
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        if (mounted) {
+          final bool isUserLoggedIn = context.read<AuthCubit>().state.isLoggedIn;
+          final bool isUserCheckedFromAuthService =
+              context.read<AuthCubit>().state.isUserCheckedFromAuthService;
+
+          if (isUserLoggedIn) {
+            context.go(context.namedLocation("channels_page"));
+          } else if (!isUserLoggedIn && isUserCheckedFromAuthService) {
+            context.go(context.namedLocation("sign_in_page"));
+          }
+        }
+      },
+    );
     super.initState();
   }
 

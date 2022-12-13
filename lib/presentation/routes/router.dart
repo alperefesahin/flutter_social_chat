@@ -30,7 +30,8 @@ class AppRouter {
     initialLocation: "/",
     routes: [
       GoRoute(
-        path: '/',
+        name: "/",
+        path: "/",
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return PageTransition(child: child, type: PageTransitionType.fade).child;
@@ -62,8 +63,8 @@ class AppRouter {
             },
             routes: [
               GoRoute(
-                parentNavigatorKey: _rootNavigatorKey,
-                path: 'chat_page',
+                name: "chat_page",
+                path: "chat_page",
                 pageBuilder: (context, state) {
                   final channel = state.extra as Channel?;
 
@@ -78,8 +79,8 @@ class AppRouter {
             ],
           ),
           GoRoute(
-            name: 'camera_page',
-            path: '/camera_page',
+            name: "camera_page",
+            path: "/camera_page",
             pageBuilder: (context, state) => CustomTransitionPage(
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 return PageTransition(child: child, type: PageTransitionType.fade).child;
@@ -88,8 +89,8 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            name: 'profile_page',
-            path: '/profile_page',
+            name: "profile_page",
+            path: "/profile_page",
             pageBuilder: (context, state) => CustomTransitionPage(
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 return PageTransition(child: child, type: PageTransitionType.fade).child;
@@ -101,7 +102,7 @@ class AppRouter {
       ),
       GoRoute(
         name: "sign_in_page",
-        path: '/sign_in_page',
+        path: "/sign_in_page",
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return PageTransition(child: child, type: PageTransitionType.fade).child;
@@ -111,20 +112,16 @@ class AppRouter {
       ),
       GoRoute(
         name: "sign_in_verification_page",
-        path: '/sign_in_verification_page',
-        pageBuilder: (context, state) {
+        path: "/sign_in_verification_page",
+        builder: (context, state) {
           final phoneNumberSignInState = state.extra as PhoneNumberSignInState?;
 
-          return CustomTransitionPage(
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return PageTransition(child: child, type: PageTransitionType.fade).child;
-            },
-            child: SignInVerificationPage(state: phoneNumberSignInState!),
-          );
+          return SignInVerificationPage(state: phoneNumberSignInState!);
         },
       ),
       GoRoute(
-        path: '/create_new_chat_page',
+        name: "create_new_chat_page",
+        path: "/create_new_chat_page",
         pageBuilder: (context, state) {
           final userListController = state.extra as StreamUserListController?;
 
@@ -137,7 +134,8 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: '/onboarding_page',
+        name: "onboarding_page",
+        path: "/onboarding_page",
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return PageTransition(child: child, type: PageTransitionType.fade).child;

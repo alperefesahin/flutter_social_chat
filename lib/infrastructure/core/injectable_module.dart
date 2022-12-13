@@ -22,7 +22,6 @@ abstract class InjectableModule {
   @lazySingleton
   FirebaseStorage get firebaseStorage => FirebaseStorage.instance;
 
-  //TODO: Check If it's singleton or lazySingleton.
   @singleton
   StreamChatClient get streamChatClient => StreamChatClient(getstreamApiKey, logLevel: Level.INFO);
 }

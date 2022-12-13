@@ -30,14 +30,6 @@ class SignInVerificationPage extends StatelessWidget {
             }
           },
         ),
-        BlocListener<PhoneNumberSignInCubit, PhoneNumberSignInState>(
-          listenWhen: (p, c) => p.failureMessageOption != c.failureMessageOption,
-          listener: (context, state) {
-            if (state.failureMessageOption.isSome()) {
-              context.pop();
-            }
-          },
-        ),
       ],
       child: WillPopScope(
         onWillPop: () async => false,
@@ -46,9 +38,6 @@ class SignInVerificationPage extends StatelessWidget {
           appBar: CustomAppBar(
             leadingOnPressed: () {
               context.read<PhoneNumberSignInCubit>().reset();
-              //Todo: Check regularly known issue to update the codes (popUntil)
-              // official popUntil issue: https://github.com/flutter/flutter/issues/99112
-              // waiting for the popUntil method.
               context.pop();
             },
             appBarBackgroundColor: whiteColor,

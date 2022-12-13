@@ -8,6 +8,7 @@ import 'package:flutter_production_app/presentation/common_widgets/custom_app_ba
 import 'package:flutter_production_app/presentation/pages/profile/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/profile/widgets/profile_core.dart';
 import 'package:flutter_production_app/presentation/pages/profile/widgets/user_details.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -16,11 +17,18 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ChatSetupCubit, ChatSetupState>(
       builder: (context, chatSetupState) {
-        return BlocBuilder<AuthCubit, AuthState>(
+        return BlocConsumer<AuthCubit, AuthState>(
+          listenWhen: (p, c) => p.isLoggedIn != c.isLoggedIn,
+          listener: (context, state) {
+            if (!state.isLoggedIn) {
+              context.go(context.namedLocation("sign_in_page"));
+            }
+          },
           builder: (context, authState) {
-            final String userPhoneNumber = authState.authUser.phoneNumber;
             final String? userName = authState.authUser.userName;
             final String? userPhotoUrl = authState.authUser.photoUrl;
+            final String userPhoneNumber = authState.authUser.phoneNumber;
+
             final String createdAt = chatSetupState.chatUser.createdAt;
             final String userRole = chatSetupState.chatUser.userRole;
             final bool isUserBannedStatus = chatSetupState.chatUser.isUserBanned!;
