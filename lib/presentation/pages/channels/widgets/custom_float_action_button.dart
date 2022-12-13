@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CustomFloatActionButton extends StatelessWidget {
@@ -19,13 +20,13 @@ class CustomFloatActionButton extends StatelessWidget {
       backgroundColor: floatingActionButtonColor,
       heroTag: null,
       onPressed: () {
-           //Todo:
-       /*  context.router.replace(
-          CreateNewChatRoute(
-            userListController: userListController,
-            isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
-          ),
-        ); */
+        context.go(
+          context.namedLocation("create_new_chat_page"),
+          extra: {
+            "userListController": userListController,
+            "isCreateNewChatPageForCreatingGroup": isCreateNewChatPageForCreatingGroup
+          },
+        );
       },
       child: Icon(buttonIcon),
     );

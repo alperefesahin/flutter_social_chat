@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChatPage extends StatelessWidget {
@@ -42,6 +43,9 @@ class ChatPage extends StatelessWidget {
               ),
             ),
           ],
+          onBackPressed: () {
+            context.go(context.namedLocation("channels_page"));
+          },
         ),
         body: Column(
           children: [

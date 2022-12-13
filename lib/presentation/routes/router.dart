@@ -61,22 +61,6 @@ class AppRouter {
                 child: const ChannelsPage(),
               );
             },
-            routes: [
-              GoRoute(
-                name: "chat_page",
-                path: "chat_page",
-                pageBuilder: (context, state) {
-                  final channel = state.extra as Channel?;
-
-                  return CustomTransitionPage(
-                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                      return PageTransition(child: child, type: PageTransitionType.fade).child;
-                    },
-                    child: ChatPage(channel: channel!),
-                  );
-                },
-              ),
-            ],
           ),
           GoRoute(
             name: "camera_page",
@@ -101,6 +85,15 @@ class AppRouter {
         ],
       ),
       GoRoute(
+        name: "chat_page",
+        path: "/chat_page",
+        builder: (context, state) {
+          final channel = state.extra as Channel?;
+
+          return ChatPage(channel: channel!);
+        },
+      ),
+      GoRoute(
         name: "sign_in_page",
         path: "/sign_in_page",
         pageBuilder: (context, state) => CustomTransitionPage(
@@ -122,14 +115,22 @@ class AppRouter {
       GoRoute(
         name: "create_new_chat_page",
         path: "/create_new_chat_page",
-        pageBuilder: (context, state) {
-          final userListController = state.extra as StreamUserListController?;
+        builder: (context, state) {
+          final extraParameters = state.extra as Map<String, dynamic>?;
 
-          return CustomTransitionPage(
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return PageTransition(child: child, type: PageTransitionType.fade).child;
-            },
-            child: CreateNewChatPage(userListController: userListController!),
+          final userListController = extraParameters!.entries
+              .where((entries) => entries.key == "userListController")
+              .single
+              .value as StreamUserListController?;
+
+          final isCreateNewChatPageForCreatingGroup = extraParameters.entries
+              .where((entries) => entries.key == "isCreateNewChatPageForCreatingGroup")
+              .single
+              .value as bool;
+
+          return CreateNewChatPage(
+            userListController: userListController!,
+            isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
           );
         },
       ),

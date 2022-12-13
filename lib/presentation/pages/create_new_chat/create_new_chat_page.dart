@@ -6,6 +6,7 @@ import 'package:flutter_production_app/presentation/common_widgets/custom_app_ba
 import 'package:flutter_production_app/presentation/pages/create_new_chat/widgets/create_new_chat_button.dart';
 import 'package:flutter_production_app/presentation/pages/create_new_chat/widgets/creating_group_chat_page_details.dart';
 import 'package:flutter_production_app/presentation/pages/create_new_chat/widgets/user_list_view.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CreateNewChatPage extends StatelessWidget {
@@ -28,8 +29,7 @@ class CreateNewChatPage extends StatelessWidget {
           appBarAction: Icons.exit_to_app,
           actionsOnPressed: () {
             context.read<ChatManagementCubit>().reset();
-               //Todo:
-         /*    context.router.replace(const BottomTabRoute()); */
+            context.go(context.namedLocation("channels_page"));
           },
           appBarBackgroundColor: whiteColor,
           appBarIconColor: blackColor,

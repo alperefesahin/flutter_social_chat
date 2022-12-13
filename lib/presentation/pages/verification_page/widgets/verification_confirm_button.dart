@@ -18,8 +18,6 @@ class VerificationConfirmButton extends StatelessWidget {
       onTap: () {
         if (state.smsCode.isNotEmpty) {
           context.read<PhoneNumberSignInCubit>().verifySmsCode();
-             //Todo:
-       /*    context.router.navigate(const LandingRoute()); */
         }
       },
       splashColor: transparentColor,

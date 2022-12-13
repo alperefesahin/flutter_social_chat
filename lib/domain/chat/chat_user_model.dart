@@ -5,16 +5,16 @@ part 'chat_user_model.freezed.dart';
 @freezed
 class ChatUserModel with _$ChatUserModel {
   const factory ChatUserModel({
-    required String userRole,
     required String createdAt,
+    required String? userRole,
     required bool? isUserBanned,
   }) = _ChatUserModel;
 
   const ChatUserModel._();
 
   factory ChatUserModel.empty() => const ChatUserModel(
-        userRole: "",
         createdAt: "",
+        userRole: null,
         isUserBanned: null,
       );
 }

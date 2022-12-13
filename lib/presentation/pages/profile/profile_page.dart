@@ -31,8 +31,8 @@ class ProfilePage extends StatelessWidget {
               final String? userPhotoUrl = authState.authUser.photoUrl;
               final String userPhoneNumber = authState.authUser.phoneNumber;
 
+              final String? userRole = chatSetupState.chatUser.userRole;
               final String createdAt = chatSetupState.chatUser.createdAt;
-              final String userRole = chatSetupState.chatUser.userRole;
               final bool isUserBannedStatus = chatSetupState.chatUser.isUserBanned!;
 
               return Scaffold(
@@ -59,7 +59,7 @@ class ProfilePage extends StatelessWidget {
                       const Divider(thickness: 1, endIndent: 20, indent: 20),
                       ProfileDetails(
                         createdAt: createdAt,
-                        userRole: userRole,
+                        userRole: userRole!,
                         isUserBannedStatus: isUserBannedStatus,
                       ),
                       const Divider(thickness: 1, endIndent: 20, indent: 20),

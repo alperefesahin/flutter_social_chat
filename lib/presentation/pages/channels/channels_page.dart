@@ -5,6 +5,7 @@ import 'package:flutter_production_app/presentation/pages/channels/constants/tex
 import 'package:flutter_production_app/presentation/pages/channels/widgets/animated_create_new_chat_button.dart';
 import 'package:flutter_production_app/presentation/pages/channels/widgets/channels_app_bar.dart';
 import 'package:flutter_production_app/presentation/pages/channels/widgets/searched_channel.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChannelsPage extends StatefulWidget {
@@ -67,8 +68,7 @@ class _ChannelsPageState extends State<ChannelsPage> {
             child: StreamChannelListView(
               controller: streamChannelListController,
               onChannelTap: (channel) {
-                //Todo:
-                /*    context.router.push(ChatRoute(channel: channel)); */
+                context.go(context.namedLocation("chat_page"), extra: channel);
               },
               itemBuilder: (context, listOfChannels, index, defaultWidget) {
                 return SearchedChannel(
