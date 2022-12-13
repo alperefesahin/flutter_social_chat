@@ -14,7 +14,9 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = getIt<AppRouter>();
     final botToastBuilder = BotToastInit();
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -38,12 +40,8 @@ class AppWidget extends StatelessWidget {
           }
         },
         child: MaterialApp.router(
-          title: 'Phone Number Sign-In',
           debugShowCheckedModeBanner: false,
-          routerConfig: AppRouter(
-            authCubit: getIt<AuthCubit>(),
-            phoneNumberSignInCubit: getIt<PhoneNumberSignInCubit>(),
-          ).router,
+          routerConfig: appRouter.router,
           builder: (context, child) {
             final client = getIt<StreamChatClient>();
 

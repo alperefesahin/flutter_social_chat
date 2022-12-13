@@ -18,11 +18,6 @@ import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class AppRouter {
-  final AuthCubit authCubit;
-  final PhoneNumberSignInCubit phoneNumberSignInCubit;
-
-  AppRouter({required this.authCubit, required this.phoneNumberSignInCubit});
-
   static final GlobalKey<NavigatorState> _rootNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'root');
   static final GlobalKey<NavigatorState> _shellNavigatorKey =
@@ -35,28 +30,6 @@ class AppRouter {
     debugLogDiagnostics: true,
     observers: [botToastNavigatorObserver],
     initialLocation: "/",
-/*     redirect: (context, state) {
-      final isSubLocCorrect = state.subloc == '/sign_in_verification_page';
-      final isUserLoggedIn = authCubit.state.isUserLoggedIn;
-      final isThereFailureError = phoneNumberSignInCubit.state.failureMessageOption.isSome();
-
-/*     final isChatUserConnected = chatSetupCubit.state.isChatUserConnected; */
-
-      print("${phoneNumberSignInCubit.stream.first.then((value) => value)}");
-      print("x: ${phoneNumberSignInCubit.state.failureMessageOption}");
-
-      if (!isUserLoggedIn && !isThereFailureError) {
-        return isSubLocCorrect ? null : "/sign_in_page";
-      }
-      if (isThereFailureError) {
-        return "/sign_in_page";
-      }
-      if (isUserLoggedIn) {
-        return "/channels_page";
-      }
-      return null;
-    }, 
-    refreshListenable: GoRouterRefreshStream(authCubit.stream, phoneNumberSignInCubit.stream), */
     routes: [
       GoRoute(
         path: '/',
@@ -126,22 +99,4 @@ class AppRouter {
       ),
     ],
   );
-}
-
-class GoRouterRefreshStream extends ChangeNotifier {
-  GoRouterRefreshStream(Stream<dynamic> firstStream, Stream<dynamic> secondStream) {
-    notifyListeners();
-    _subscriptionOne = firstStream.asBroadcastStream().listen((dynamic _) => notifyListeners());
-    _subscriptionTwo = secondStream.asBroadcastStream().listen((dynamic _) => notifyListeners());
-  }
-  late final StreamSubscription<dynamic> _subscriptionOne;
-  late final StreamSubscription<dynamic> _subscriptionTwo;
-
-  @override
-  void dispose() {
-    _subscriptionOne.cancel();
-    _subscriptionTwo.cancel();
-
-    super.dispose();
-  }
 }
