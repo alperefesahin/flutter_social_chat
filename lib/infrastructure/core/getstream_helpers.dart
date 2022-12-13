@@ -4,7 +4,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
-extension GetstreamUserDomainX on User {
+extension GetstreamUserDomainX on OwnUser {
   ChatUserModel toDomain() {
     return ChatUserModel(
       createdAt: formatDate(createdAt, [yyyy, '-', mm, '-', dd]),

@@ -17,13 +17,12 @@ class GetstreamChatService implements IChatService {
 
   @override
   Stream<ChatUserModel> get chatAuthStateChanges {
-    return streamChatClient.eventStream.map(
-      (event) {
-        final user = event.user;
-        if (event.user == null) {
+    return streamChatClient.state.currentUserStream.map(
+      (OwnUser? user) {
+        if (user == null) {
           return ChatUserModel.empty();
         } else {
-          return user!.toDomain();
+          return user.toDomain();
         }
       },
     );
