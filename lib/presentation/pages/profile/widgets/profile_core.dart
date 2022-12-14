@@ -12,7 +12,7 @@ class ProfileCore extends StatelessWidget {
 
   final String userName;
   final String userPhoneNumber;
-  final String? userPhotoUrl;
+  final String userPhotoUrl;
 
   @override
   Widget build(BuildContext context) {

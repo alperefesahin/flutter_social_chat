@@ -54,7 +54,7 @@ class ProfilePage extends StatelessWidget {
                       ProfileCore(
                         userName: userName!,
                         userPhoneNumber: userPhoneNumber,
-                        userPhotoUrl: userPhotoUrl,
+                        userPhotoUrl: userPhotoUrl!,
                       ),
                       const Divider(thickness: 1, endIndent: 20, indent: 20),
                       ProfileDetails(

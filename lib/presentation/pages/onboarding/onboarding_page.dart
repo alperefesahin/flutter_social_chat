@@ -4,6 +4,7 @@ import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/pages/onboarding/widgets/onboarding_page_body.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -15,19 +16,18 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        final bool isOnboardingCompleted =
-            context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
+    if (mounted) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) {
+          final bool isOnboardingCompleted =
+              context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
-   //Todo:
-       /*  if (isOnboardingCompleted) {
-          AutoRouter.of(context).replace(const BottomTabRoute());
-        } else if (!isOnboardingCompleted) {
-          AutoRouter.of(context).replace(const OnboardingRoute());
-        } */
-      },
-    );
+          if (isOnboardingCompleted) {
+            context.go(context.namedLocation("channels_page"));
+          }
+        },
+      );
+    }
 
     super.initState();
   }
@@ -36,12 +36,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-           //Todo:
-       /*  if (state.authUser.isOnboardingCompleted) {
-          AutoRouter.of(context).replace(const BottomTabRoute());
-        } else if (!state.authUser.isOnboardingCompleted) {
-          AutoRouter.of(context).replace(const OnboardingRoute());
-        } */
+        if (state.authUser.isOnboardingCompleted) {
+          context.go(context.namedLocation("channels_page"));
+        }
       },
       child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {

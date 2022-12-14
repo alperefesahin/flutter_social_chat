@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,12 +23,14 @@ class _LandingPageState extends State<LandingPage> {
       (_) {
         if (mounted) {
           final bool isUserLoggedIn = context.read<AuthCubit>().state.isLoggedIn;
-          final bool isUserCheckedFromAuthService =
-              context.read<AuthCubit>().state.isUserCheckedFromAuthService;
+          final bool isOnboardingCompleted =
+              context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
-          if (isUserLoggedIn) {
+          if (isUserLoggedIn && !isOnboardingCompleted) {
+            context.go(context.namedLocation("onboarding_page"));
+          } else if (isUserLoggedIn && isOnboardingCompleted) {
             context.go(context.namedLocation("channels_page"));
-          } else if (!isUserLoggedIn && isUserCheckedFromAuthService) {
+          } else {
             context.go(context.namedLocation("sign_in_page"));
           }
         }
@@ -44,8 +47,11 @@ class _LandingPageState extends State<LandingPage> {
           c.isUserCheckedFromAuthService,
       listener: (context, state) {
         final bool isUserLoggedIn = state.isLoggedIn;
+        final bool isOnboardingCompleted = state.authUser.isOnboardingCompleted;
 
-        if (isUserLoggedIn) {
+        if (isUserLoggedIn && !isOnboardingCompleted) {
+          context.go(context.namedLocation("onboarding_page"));
+        } else if (isUserLoggedIn && isOnboardingCompleted) {
           context.go(context.namedLocation("channels_page"));
         } else {
           context.go(context.namedLocation("sign_in_page"));

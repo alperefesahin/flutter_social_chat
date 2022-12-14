@@ -125,12 +125,13 @@ class AuthCubit extends Cubit<AuthState> {
 
     if (state.authUser.userFileImg != null && state.isUserNameValid) {
       await _firebaseStorage.ref(uid).putFile(state.authUser.userFileImg!).then(
-        (p0) async {
-          await downloadUrl();
+        (taskState) async {
+          if (taskState.state.name == TaskState.success.name) {
+            await downloadUrl();
+          }
         },
       );
     }
-    emit(state.copyWith(isInProgress: false));
   }
 
   Future<void> downloadUrl() async {
@@ -152,16 +153,18 @@ class AuthCubit extends Cubit<AuthState> {
                 SetOptions(merge: true),
               ),
             );
+
         emit(
           state.copyWith(
             authUser: AuthUserModel(
               id: state.authUser.id,
               phoneNumber: state.authUser.phoneNumber,
               userName: state.authUser.userName,
-              photoUrl: state.authUser.photoUrl,
+              photoUrl: photoUrl,
               userFileImg: state.authUser.userFileImg,
               isOnboardingCompleted: true,
             ),
+            isInProgress: false,
           ),
         );
       },

@@ -20,7 +20,7 @@ class OnboardingImage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 50),
           child: SvgPicture.asset(
             "assets/images/chat.svg",
-            width: size.width,
+            width: size.width / 2,
             height: size.height / 4,
           ),
         ),

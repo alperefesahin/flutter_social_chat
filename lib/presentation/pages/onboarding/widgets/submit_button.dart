@@ -22,6 +22,7 @@ class SubmitButton extends StatelessWidget {
           btnController.reset();
           context.read<AuthCubit>().createProfile();
         },
+        animateOnTap: false,
         child: const Text(
           createYourProfile,
           style: TextStyle(fontSize: 20),

@@ -4,14 +4,14 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({super.key, required this.userPhotoUrl});
-  final String? userPhotoUrl;
+  final String userPhotoUrl;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     return CachedNetworkImage(
-      imageUrl: userPhotoUrl!,
+      imageUrl: userPhotoUrl,
       imageBuilder: (context, imageProvider) => Container(
         width: size.height / 6,
         height: size.height / 6,
