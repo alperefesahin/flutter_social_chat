@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AuthState {
   AuthUserModel get authUser => throw _privateConstructorUsedError;
-  bool get isUserLoggedIn => throw _privateConstructorUsedError;
+  bool get isUserCheckedFromAuthService => throw _privateConstructorUsedError;
   bool get isInProgress => throw _privateConstructorUsedError;
   bool get isUserNameValid => throw _privateConstructorUsedError;
 
@@ -33,7 +33,7 @@ abstract class $AuthStateCopyWith<$Res> {
   @useResult
   $Res call(
       {AuthUserModel authUser,
-      bool isUserLoggedIn,
+      bool isUserCheckedFromAuthService,
       bool isInProgress,
       bool isUserNameValid});
 
@@ -54,7 +54,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? authUser = null,
-    Object? isUserLoggedIn = null,
+    Object? isUserCheckedFromAuthService = null,
     Object? isInProgress = null,
     Object? isUserNameValid = null,
   }) {
@@ -63,9 +63,9 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.authUser
           : authUser // ignore: cast_nullable_to_non_nullable
               as AuthUserModel,
-      isUserLoggedIn: null == isUserLoggedIn
-          ? _value.isUserLoggedIn
-          : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
+      isUserCheckedFromAuthService: null == isUserCheckedFromAuthService
+          ? _value.isUserCheckedFromAuthService
+          : isUserCheckedFromAuthService // ignore: cast_nullable_to_non_nullable
               as bool,
       isInProgress: null == isInProgress
           ? _value.isInProgress
@@ -96,7 +96,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   @useResult
   $Res call(
       {AuthUserModel authUser,
-      bool isUserLoggedIn,
+      bool isUserCheckedFromAuthService,
       bool isInProgress,
       bool isUserNameValid});
 
@@ -116,7 +116,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authUser = null,
-    Object? isUserLoggedIn = null,
+    Object? isUserCheckedFromAuthService = null,
     Object? isInProgress = null,
     Object? isUserNameValid = null,
   }) {
@@ -125,9 +125,9 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.authUser
           : authUser // ignore: cast_nullable_to_non_nullable
               as AuthUserModel,
-      isUserLoggedIn: null == isUserLoggedIn
-          ? _value.isUserLoggedIn
-          : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
+      isUserCheckedFromAuthService: null == isUserCheckedFromAuthService
+          ? _value.isUserCheckedFromAuthService
+          : isUserCheckedFromAuthService // ignore: cast_nullable_to_non_nullable
               as bool,
       isInProgress: null == isInProgress
           ? _value.isInProgress
@@ -143,17 +143,18 @@ class __$$_AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
+class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
   const _$_AuthState(
       {required this.authUser,
-      required this.isUserLoggedIn,
+      required this.isUserCheckedFromAuthService,
       required this.isInProgress,
-      required this.isUserNameValid});
+      required this.isUserNameValid})
+      : super._();
 
   @override
   final AuthUserModel authUser;
   @override
-  final bool isUserLoggedIn;
+  final bool isUserCheckedFromAuthService;
   @override
   final bool isInProgress;
   @override
@@ -161,7 +162,7 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState(authUser: $authUser, isUserLoggedIn: $isUserLoggedIn, isInProgress: $isInProgress, isUserNameValid: $isUserNameValid)';
+    return 'AuthState(authUser: $authUser, isUserCheckedFromAuthService: $isUserCheckedFromAuthService, isInProgress: $isInProgress, isUserNameValid: $isUserNameValid)';
   }
 
   @override
@@ -170,7 +171,8 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
     properties
       ..add(DiagnosticsProperty('type', 'AuthState'))
       ..add(DiagnosticsProperty('authUser', authUser))
-      ..add(DiagnosticsProperty('isUserLoggedIn', isUserLoggedIn))
+      ..add(DiagnosticsProperty(
+          'isUserCheckedFromAuthService', isUserCheckedFromAuthService))
       ..add(DiagnosticsProperty('isInProgress', isInProgress))
       ..add(DiagnosticsProperty('isUserNameValid', isUserNameValid));
   }
@@ -182,8 +184,10 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
             other is _$_AuthState &&
             (identical(other.authUser, authUser) ||
                 other.authUser == authUser) &&
-            (identical(other.isUserLoggedIn, isUserLoggedIn) ||
-                other.isUserLoggedIn == isUserLoggedIn) &&
+            (identical(other.isUserCheckedFromAuthService,
+                    isUserCheckedFromAuthService) ||
+                other.isUserCheckedFromAuthService ==
+                    isUserCheckedFromAuthService) &&
             (identical(other.isInProgress, isInProgress) ||
                 other.isInProgress == isInProgress) &&
             (identical(other.isUserNameValid, isUserNameValid) ||
@@ -191,8 +195,8 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, authUser, isUserLoggedIn, isInProgress, isUserNameValid);
+  int get hashCode => Object.hash(runtimeType, authUser,
+      isUserCheckedFromAuthService, isInProgress, isUserNameValid);
 
   @JsonKey(ignore: true)
   @override
@@ -201,17 +205,18 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
       __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
 }
 
-abstract class _AuthState implements AuthState {
+abstract class _AuthState extends AuthState {
   const factory _AuthState(
       {required final AuthUserModel authUser,
-      required final bool isUserLoggedIn,
+      required final bool isUserCheckedFromAuthService,
       required final bool isInProgress,
       required final bool isUserNameValid}) = _$_AuthState;
+  const _AuthState._() : super._();
 
   @override
   AuthUserModel get authUser;
   @override
-  bool get isUserLoggedIn;
+  bool get isUserCheckedFromAuthService;
   @override
   bool get isInProgress;
   @override

@@ -37,20 +37,8 @@ class ChatSetupCubit extends Cubit<ChatSetupState> {
   Future<void> _listenChatUserAuthStateChangesStream(
     ChatUserModel chatUser,
   ) async {
-    if (ChatUserModel.empty() == chatUser) {
-      emit(
-        state.copyWith(
-          chatUser: chatUser,
-          isChatUserConnected: false,
-        ),
-      );
-    } else {
-      emit(
-        state.copyWith(
-          chatUser: chatUser,
-          isChatUserConnected: true,
-        ),
-      );
-    }
+    emit(
+      state.copyWith(chatUser: chatUser, isUserCheckedFromChatService: true),
+    );
   }
 }

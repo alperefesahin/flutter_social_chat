@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChatUserModel {
-  String get userRole => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
+  String? get userRole => throw _privateConstructorUsedError;
   bool? get isUserBanned => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $ChatUserModelCopyWith<$Res> {
           ChatUserModel value, $Res Function(ChatUserModel) then) =
       _$ChatUserModelCopyWithImpl<$Res, ChatUserModel>;
   @useResult
-  $Res call({String userRole, String createdAt, bool? isUserBanned});
+  $Res call({String createdAt, String? userRole, bool? isUserBanned});
 }
 
 /// @nodoc
@@ -47,19 +47,19 @@ class _$ChatUserModelCopyWithImpl<$Res, $Val extends ChatUserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userRole = null,
     Object? createdAt = null,
+    Object? userRole = freezed,
     Object? isUserBanned = freezed,
   }) {
     return _then(_value.copyWith(
-      userRole: null == userRole
-          ? _value.userRole
-          : userRole // ignore: cast_nullable_to_non_nullable
-              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      userRole: freezed == userRole
+          ? _value.userRole
+          : userRole // ignore: cast_nullable_to_non_nullable
+              as String?,
       isUserBanned: freezed == isUserBanned
           ? _value.isUserBanned
           : isUserBanned // ignore: cast_nullable_to_non_nullable
@@ -76,7 +76,7 @@ abstract class _$$_ChatUserModelCopyWith<$Res>
       __$$_ChatUserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userRole, String createdAt, bool? isUserBanned});
+  $Res call({String createdAt, String? userRole, bool? isUserBanned});
 }
 
 /// @nodoc
@@ -90,19 +90,19 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userRole = null,
     Object? createdAt = null,
+    Object? userRole = freezed,
     Object? isUserBanned = freezed,
   }) {
     return _then(_$_ChatUserModel(
-      userRole: null == userRole
-          ? _value.userRole
-          : userRole // ignore: cast_nullable_to_non_nullable
-              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      userRole: freezed == userRole
+          ? _value.userRole
+          : userRole // ignore: cast_nullable_to_non_nullable
+              as String?,
       isUserBanned: freezed == isUserBanned
           ? _value.isUserBanned
           : isUserBanned // ignore: cast_nullable_to_non_nullable
@@ -115,21 +115,21 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
 
 class _$_ChatUserModel extends _ChatUserModel {
   const _$_ChatUserModel(
-      {required this.userRole,
-      required this.createdAt,
+      {required this.createdAt,
+      required this.userRole,
       required this.isUserBanned})
       : super._();
 
   @override
-  final String userRole;
-  @override
   final String createdAt;
+  @override
+  final String? userRole;
   @override
   final bool? isUserBanned;
 
   @override
   String toString() {
-    return 'ChatUserModel(userRole: $userRole, createdAt: $createdAt, isUserBanned: $isUserBanned)';
+    return 'ChatUserModel(createdAt: $createdAt, userRole: $userRole, isUserBanned: $isUserBanned)';
   }
 
   @override
@@ -137,17 +137,17 @@ class _$_ChatUserModel extends _ChatUserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatUserModel &&
-            (identical(other.userRole, userRole) ||
-                other.userRole == userRole) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.userRole, userRole) ||
+                other.userRole == userRole) &&
             (identical(other.isUserBanned, isUserBanned) ||
                 other.isUserBanned == isUserBanned));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, userRole, createdAt, isUserBanned);
+      Object.hash(runtimeType, createdAt, userRole, isUserBanned);
 
   @JsonKey(ignore: true)
   @override
@@ -158,15 +158,15 @@ class _$_ChatUserModel extends _ChatUserModel {
 
 abstract class _ChatUserModel extends ChatUserModel {
   const factory _ChatUserModel(
-      {required final String userRole,
-      required final String createdAt,
+      {required final String createdAt,
+      required final String? userRole,
       required final bool? isUserBanned}) = _$_ChatUserModel;
   const _ChatUserModel._() : super._();
 
   @override
-  String get userRole;
-  @override
   String get createdAt;
+  @override
+  String? get userRole;
   @override
   bool? get isUserBanned;
   @override

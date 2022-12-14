@@ -1,87 +1,41 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
-
 import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/pages/bottom_tab/widgets/bottom_navigation_builder.dart';
-import 'package:flutter_production_app/presentation/routes/router.gr.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-class BottomTabPage extends StatefulWidget {
-  const BottomTabPage({super.key});
+class BottomTabPage extends StatelessWidget {
+  const BottomTabPage({super.key, this.child});
+  static Page page() => const MaterialPage<void>(child: BottomTabPage());
 
-  @override
-  State<BottomTabPage> createState() => _BottomTabPageState();
-}
-
-class _BottomTabPageState extends State<BottomTabPage> {
-  late final _listController = StreamChannelListController(
-    client: StreamChat.of(context).client,
-    filter: Filter.in_(
-      'members',
-      [StreamChat.of(context).currentUser!.id],
-    ),
-    channelStateSort: const [SortOption('last_message_at')],
-    limit: 20,
-  );
-
-  late final StreamUserListController _userListController = StreamUserListController(
-    client: StreamChat.of(context).client,
-    limit: 25,
-    filter: Filter.and(
-      [Filter.notEqual('id', StreamChat.of(context).currentUser!.id)],
-    ),
-    sort: [
-      const SortOption('name', direction: 1),
-    ],
-  );
-
-  @override
-  void dispose() {
-    _listController.dispose();
-    super.dispose();
-  }
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
-      listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
-      listener: (context, state) {
-        if (state.isUserLoggedIn) {
-          context.router.replace(const BottomTabRoute());
-        } else {
-          context.router.popUntilRoot();
-        }
-      },
-      child: BlocProvider(
-        create: (context) => getIt<ChatSetupCubit>(),
-        child: BlocListener<ChatSetupCubit, ChatSetupState>(
-          listenWhen: (p, c) => p.isChatUserConnected != c.isChatUserConnected,
-          listener: (context, state) {
-            if (state.isChatUserConnected) {
-              context.router.replace(const BottomTabRoute());
-            } else {
-              context.router.popUntilRoot();
-            }
-          },
-          child: WillPopScope(
-            onWillPop: () => Future<bool>.value(false),
-            child: AutoTabsScaffold(
-              routes: [
-                ChannelsRoute(
-                  streamChannelListController: _listController,
-                  userListController: _userListController,
-                ),
-                const CameraRoute(),
-                const ProfileRoute(),
-              ],
-              bottomNavigationBuilder: bottomNavigationBuilder,
-            ),
-          ),
-        ),
+    return BlocProvider(
+      create: (context) => getIt<ChatSetupCubit>(),
+      child: BlocBuilder<ChatSetupCubit, ChatSetupState>(
+        buildWhen: (p, c) =>
+            p.isChatUserConnected != c.isChatUserConnected && c.isChatUserConnected,
+        builder: (context, state) {
+          final isUserCheckedFromChatService = state.isUserCheckedFromChatService;
+
+          if (isUserCheckedFromChatService) {
+            return WillPopScope(
+              onWillPop: () => Future<bool>.value(false),
+              child: Scaffold(
+                body: child,
+                bottomNavigationBar: bottomNavigationBuilder(context),
+              ),
+            );
+          } else {
+            return const Scaffold(
+              body: CustomProgressIndicator(progressIndicatorColor: blackColor),
+            );
+          }
+        },
       ),
     );
   }

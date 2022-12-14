@@ -25,8 +25,7 @@ import 'package:flutter_production_app/infrastructure/chat/getstream_chat_servic
     as _i16;
 import 'package:flutter_production_app/infrastructure/core/injectable_module.dart'
     as _i17;
-import 'package:flutter_production_app/presentation/routes/router.gr.dart'
-    as _i3;
+import 'package:flutter_production_app/presentation/routes/router.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart' as _i14;

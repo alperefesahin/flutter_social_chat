@@ -48,23 +48,20 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> _listenAuthStateChangesStream(AuthUserModel authUser) async {
-    emit(state.copyWith(isInProgress: true));
+    emit(
+      state.copyWith(
+        isInProgress: true,
+        authUser: authUser,
+        isUserCheckedFromAuthService: true,
+      ),
+    );
 
-    if (AuthUserModel.empty() == authUser) {
-      emit(
-        state.copyWith(
-          authUser: authUser,
-          isUserLoggedIn: false,
-          isInProgress: false,
-        ),
-      );
-    } else {
+    if (state.isLoggedIn) {
       await _chatService.connectTheCurrentUser();
 
       emit(
         state.copyWith(
           authUser: authUser,
-          isUserLoggedIn: true,
           isInProgress: false,
         ),
       );
@@ -128,12 +125,13 @@ class AuthCubit extends Cubit<AuthState> {
 
     if (state.authUser.userFileImg != null && state.isUserNameValid) {
       await _firebaseStorage.ref(uid).putFile(state.authUser.userFileImg!).then(
-        (p0) async {
-          await downloadUrl();
+        (taskState) async {
+          if (taskState.state.name == TaskState.success.name) {
+            await downloadUrl();
+          }
         },
       );
     }
-    emit(state.copyWith(isInProgress: false));
   }
 
   Future<void> downloadUrl() async {
@@ -155,16 +153,18 @@ class AuthCubit extends Cubit<AuthState> {
                 SetOptions(merge: true),
               ),
             );
+
         emit(
           state.copyWith(
             authUser: AuthUserModel(
               id: state.authUser.id,
               phoneNumber: state.authUser.phoneNumber,
               userName: state.authUser.userName,
-              photoUrl: state.authUser.photoUrl,
+              photoUrl: photoUrl,
               userFileImg: state.authUser.userFileImg,
               isOnboardingCompleted: true,
             ),
+            isInProgress: false,
           ),
         );
       },

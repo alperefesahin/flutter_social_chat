@@ -1,9 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
-import 'package:flutter_production_app/presentation/routes/router.gr.dart';
+import 'package:go_router/go_router.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -13,32 +13,48 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  // Note: we use addPostFrameCallback, because the information, that is coming from the firebase, may not
+  // come immediately. If it comes, then we navigate the user. If it does not come, then
+  // we skip the build part, and show circular progress indicator to the user when the data is not exist.
+  // when it comes, we trigger the bloclistener, and navigate the user.
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        final bool isUserLoggedIn = context.read<AuthCubit>().state.isUserLoggedIn;
+        if (mounted) {
+          final bool isUserLoggedIn = context.read<AuthCubit>().state.isLoggedIn;
+          final bool isOnboardingCompleted =
+              context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
-        if (isUserLoggedIn) {
-          AutoRouter.of(context).replace(const OnboardingRoute());
-        } else if (!isUserLoggedIn) {
-          AutoRouter.of(context).replace(const SignInRoute());
+          if (isUserLoggedIn && !isOnboardingCompleted) {
+            context.go(context.namedLocation("onboarding_page"));
+          } else if (isUserLoggedIn && isOnboardingCompleted) {
+            context.go(context.namedLocation("channels_page"));
+          } else {
+            context.go(context.namedLocation("sign_in_page"));
+          }
         }
       },
     );
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
-      listenWhen: (p, c) => p.isUserLoggedIn != c.isUserLoggedIn,
+      listenWhen: (p, c) =>
+          p.isUserCheckedFromAuthService != c.isUserCheckedFromAuthService &&
+          c.isUserCheckedFromAuthService,
       listener: (context, state) {
-        if (state.isUserLoggedIn) {
-          context.router.navigate(const OnboardingRoute());
+        final bool isUserLoggedIn = state.isLoggedIn;
+        final bool isOnboardingCompleted = state.authUser.isOnboardingCompleted;
+
+        if (isUserLoggedIn && !isOnboardingCompleted) {
+          context.go(context.namedLocation("onboarding_page"));
+        } else if (isUserLoggedIn && isOnboardingCompleted) {
+          context.go(context.namedLocation("channels_page"));
         } else {
-          context.router.navigate(const SignInRoute());
+          context.go(context.namedLocation("sign_in_page"));
         }
       },
       child: const Scaffold(

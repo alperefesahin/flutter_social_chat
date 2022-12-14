@@ -9,9 +9,9 @@ class AuthUserModel with _$AuthUserModel {
     required String id,
     required String phoneNumber,
     required bool isOnboardingCompleted,
-    File? userFileImg,
     String? userName,
     String? photoUrl,
+    File? userFileImg,
   }) = _AuthUserModel;
 
   const AuthUserModel._();

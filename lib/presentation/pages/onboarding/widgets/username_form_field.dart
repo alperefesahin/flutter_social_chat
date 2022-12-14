@@ -21,7 +21,7 @@ class UsernameFormField extends StatelessWidget {
           validator: (userName) {
             if (userName!.length > 20) {
               context.read<AuthCubit>().validateUserName(isUserNameValid: false);
-              return userNameCanNotBeLongerThanTenCharacters;
+              return userNameCanNotBeLongerThanTwentyCharacters;
             } else if (userName.length < 3) {
               context.read<AuthCubit>().validateUserName(isUserNameValid: false);
               return userNameCanNotBeShorterThanThreeCharacters;

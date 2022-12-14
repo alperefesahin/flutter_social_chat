@@ -19,7 +19,7 @@ mixin _$ChatSetupState {
   ChatUserModel get chatUser => throw _privateConstructorUsedError;
   ConnectionStatus get webSocketConnectionStatus =>
       throw _privateConstructorUsedError;
-  bool get isChatUserConnected => throw _privateConstructorUsedError;
+  bool get isUserCheckedFromChatService => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatSetupStateCopyWith<ChatSetupState> get copyWith =>
@@ -35,7 +35,7 @@ abstract class $ChatSetupStateCopyWith<$Res> {
   $Res call(
       {ChatUserModel chatUser,
       ConnectionStatus webSocketConnectionStatus,
-      bool isChatUserConnected});
+      bool isUserCheckedFromChatService});
 
   $ChatUserModelCopyWith<$Res> get chatUser;
 }
@@ -55,7 +55,7 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
   $Res call({
     Object? chatUser = null,
     Object? webSocketConnectionStatus = null,
-    Object? isChatUserConnected = null,
+    Object? isUserCheckedFromChatService = null,
   }) {
     return _then(_value.copyWith(
       chatUser: null == chatUser
@@ -66,9 +66,9 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
           ? _value.webSocketConnectionStatus
           : webSocketConnectionStatus // ignore: cast_nullable_to_non_nullable
               as ConnectionStatus,
-      isChatUserConnected: null == isChatUserConnected
-          ? _value.isChatUserConnected
-          : isChatUserConnected // ignore: cast_nullable_to_non_nullable
+      isUserCheckedFromChatService: null == isUserCheckedFromChatService
+          ? _value.isUserCheckedFromChatService
+          : isUserCheckedFromChatService // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -93,7 +93,7 @@ abstract class _$$_ChatSetupStateCopyWith<$Res>
   $Res call(
       {ChatUserModel chatUser,
       ConnectionStatus webSocketConnectionStatus,
-      bool isChatUserConnected});
+      bool isUserCheckedFromChatService});
 
   @override
   $ChatUserModelCopyWith<$Res> get chatUser;
@@ -112,7 +112,7 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
   $Res call({
     Object? chatUser = null,
     Object? webSocketConnectionStatus = null,
-    Object? isChatUserConnected = null,
+    Object? isUserCheckedFromChatService = null,
   }) {
     return _then(_$_ChatSetupState(
       chatUser: null == chatUser
@@ -123,9 +123,9 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
           ? _value.webSocketConnectionStatus
           : webSocketConnectionStatus // ignore: cast_nullable_to_non_nullable
               as ConnectionStatus,
-      isChatUserConnected: null == isChatUserConnected
-          ? _value.isChatUserConnected
-          : isChatUserConnected // ignore: cast_nullable_to_non_nullable
+      isUserCheckedFromChatService: null == isUserCheckedFromChatService
+          ? _value.isUserCheckedFromChatService
+          : isUserCheckedFromChatService // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -133,24 +133,23 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatSetupState
-    with DiagnosticableTreeMixin
-    implements _ChatSetupState {
+class _$_ChatSetupState extends _ChatSetupState with DiagnosticableTreeMixin {
   const _$_ChatSetupState(
       {required this.chatUser,
       required this.webSocketConnectionStatus,
-      required this.isChatUserConnected});
+      required this.isUserCheckedFromChatService})
+      : super._();
 
   @override
   final ChatUserModel chatUser;
   @override
   final ConnectionStatus webSocketConnectionStatus;
   @override
-  final bool isChatUserConnected;
+  final bool isUserCheckedFromChatService;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatSetupState(chatUser: $chatUser, webSocketConnectionStatus: $webSocketConnectionStatus, isChatUserConnected: $isChatUserConnected)';
+    return 'ChatSetupState(chatUser: $chatUser, webSocketConnectionStatus: $webSocketConnectionStatus, isUserCheckedFromChatService: $isUserCheckedFromChatService)';
   }
 
   @override
@@ -161,7 +160,8 @@ class _$_ChatSetupState
       ..add(DiagnosticsProperty('chatUser', chatUser))
       ..add(DiagnosticsProperty(
           'webSocketConnectionStatus', webSocketConnectionStatus))
-      ..add(DiagnosticsProperty('isChatUserConnected', isChatUserConnected));
+      ..add(DiagnosticsProperty(
+          'isUserCheckedFromChatService', isUserCheckedFromChatService));
   }
 
   @override
@@ -174,13 +174,15 @@ class _$_ChatSetupState
             (identical(other.webSocketConnectionStatus,
                     webSocketConnectionStatus) ||
                 other.webSocketConnectionStatus == webSocketConnectionStatus) &&
-            (identical(other.isChatUserConnected, isChatUserConnected) ||
-                other.isChatUserConnected == isChatUserConnected));
+            (identical(other.isUserCheckedFromChatService,
+                    isUserCheckedFromChatService) ||
+                other.isUserCheckedFromChatService ==
+                    isUserCheckedFromChatService));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, chatUser, webSocketConnectionStatus, isChatUserConnected);
+  int get hashCode => Object.hash(runtimeType, chatUser,
+      webSocketConnectionStatus, isUserCheckedFromChatService);
 
   @JsonKey(ignore: true)
   @override
@@ -189,18 +191,19 @@ class _$_ChatSetupState
       __$$_ChatSetupStateCopyWithImpl<_$_ChatSetupState>(this, _$identity);
 }
 
-abstract class _ChatSetupState implements ChatSetupState {
+abstract class _ChatSetupState extends ChatSetupState {
   const factory _ChatSetupState(
       {required final ChatUserModel chatUser,
       required final ConnectionStatus webSocketConnectionStatus,
-      required final bool isChatUserConnected}) = _$_ChatSetupState;
+      required final bool isUserCheckedFromChatService}) = _$_ChatSetupState;
+  const _ChatSetupState._() : super._();
 
   @override
   ChatUserModel get chatUser;
   @override
   ConnectionStatus get webSocketConnectionStatus;
   @override
-  bool get isChatUserConnected;
+  bool get isUserCheckedFromChatService;
   @override
   @JsonKey(ignore: true)
   _$$_ChatSetupStateCopyWith<_$_ChatSetupState> get copyWith =>

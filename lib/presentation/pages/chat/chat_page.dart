@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_production_app/presentation/pages/chat/widgets/chat_page_body.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChatPage extends StatelessWidget {
@@ -34,33 +37,25 @@ class ChatPage extends StatelessWidget {
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 8),
-              child: CircleAvatar(
-                radius: 20,
-                backgroundImage: NetworkImage(
-                  lengthOfTheChannelMembers == 2 ? oneToOneChatMember.image! : channel.image!,
+              child: CachedNetworkImage(
+                imageUrl:
+                    lengthOfTheChannelMembers == 2 ? oneToOneChatMember.image! : channel.image!,
+                imageBuilder: (context, imageProvider) => CircleAvatar(
+                  radius: 20,
+                  backgroundImage: imageProvider,
+                ),
+                placeholder: (context, url) => const CircleAvatar(
+                  radius: 20,
+                  child: CircularProgressIndicator(color: blackColor),
                 ),
               ),
             ),
           ],
+          onBackPressed: () {
+            context.go(context.namedLocation("channels_page"));
+          },
         ),
-        body: Column(
-          children: [
-            const Expanded(
-              child: StreamMessageListView(),
-            ),
-            StreamMessageInput(
-              autoCorrect: false,
-              idleSendButton: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Icon(Icons.send, size: 30, color: customGreyColor),
-              ),
-              activeSendButton: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Icon(Icons.send, size: 30, color: kiwiColor),
-              ),
-            ),
-          ],
-        ),
+        body: const ChatPageBody(),
       ),
     );
   }
