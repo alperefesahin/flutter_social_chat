@@ -17,11 +17,11 @@
 	<key>CFBundleName</key>
 	<string>flutter_production_app</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Upload images for screen background</string>
+	<string>Need to use photo library</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Upload image from camera for screen background</string>
+	<string>Need to use camera</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Post video to someone</string>
+	<string>Need to use the microphone</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
