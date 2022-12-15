@@ -4,6 +4,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 @LazySingleton(as: ICameraHandler)
 class CameraHandler implements ICameraHandler {
+  //Todo: Do microphone permission handler as below (same things should be)
   @override
   Stream<PermissionStatus> get cameraStateChanges {
     const camera = Permission.camera;

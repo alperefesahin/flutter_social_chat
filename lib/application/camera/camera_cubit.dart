@@ -15,7 +15,7 @@ import 'package:permission_handler/permission_handler.dart';
 part 'camera_state.dart';
 part 'camera_cubit.freezed.dart';
 
-@lazySingleton
+@injectable
 class CameraCubit extends Cubit<CameraState> {
   late final ICameraHandler _cameraHandler;
   late StreamSubscription<PermissionStatus>? _cameraPermissionSubscription;

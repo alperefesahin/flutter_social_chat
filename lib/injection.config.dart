@@ -50,8 +50,8 @@ extension GetItInjectableX on _i1.GetIt {
     final injectableModule = _$InjectableModule();
     gh.singleton<_i3.AppRouter>(injectableModule.appRouter);
     gh.lazySingleton<_i4.AuthCubit>(() => _i4.AuthCubit());
-    gh.lazySingleton<_i5.CameraCubit>(() => _i5.CameraCubit());
-    gh.factory<_i6.CameraHandler>(() => injectableModule.cameraHandler);
+    gh.factory<_i5.CameraCubit>(() => _i5.CameraCubit());
+    gh.lazySingleton<_i6.CameraHandler>(() => injectableModule.cameraHandler);
     gh.factory<_i7.ChatManagementCubit>(() => _i7.ChatManagementCubit());
     gh.lazySingleton<_i8.ChatSetupCubit>(() => _i8.ChatSetupCubit());
     gh.lazySingleton<_i9.FirebaseAuth>(() => injectableModule.firebaseAuth);
@@ -62,7 +62,7 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i9.FirebaseAuth>(),
           gh<_i10.FirebaseFirestore>(),
         ));
-    gh.factory<_i14.ICameraHandler>(() => _i6.CameraHandler());
+    gh.lazySingleton<_i14.ICameraHandler>(() => _i6.CameraHandler());
     gh.factory<_i15.PhoneNumberSignInCubit>(
         () => _i15.PhoneNumberSignInCubit());
     gh.singleton<_i16.StreamChatClient>(injectableModule.streamChatClient);
