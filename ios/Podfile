@@ -37,5 +37,33 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+
+     # Start of the permission_handler configuration
+     target.build_configurations.each do |config|
+
+      # You can enable the permissions needed here. For example to enable camera
+      # permission, just remove the `#` character in front so it looks like this:
+      #
+      # ## dart: PermissionGroup.camera
+      # 'PERMISSION_CAMERA=1'
+      #
+      #  Preprocessor definitions can be found in: https://github.com/Baseflow/flutter-permission-handler/blob/master/permission_handler_apple/ios/Classes/PermissionHandlerEnums.h
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+
+        ## dart: PermissionGroup.camera
+         'PERMISSION_CAMERA=1',
+
+        ## dart: PermissionGroup.microphone
+         'PERMISSION_MICROPHONE=1',
+
+        ## dart: PermissionGroup.photos
+         'PERMISSION_PHOTOS=1',
+
+        ## dart: PermissionGroup.mediaLibrary
+         'PERMISSION_MEDIA_LIBRARY=1',
+      ]
+    end 
+    # End of the permission_handler configuration
   end
 end

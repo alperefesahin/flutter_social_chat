@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
 
 abstract class IChatService {

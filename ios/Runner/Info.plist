@@ -16,12 +16,6 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>flutter_production_app</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Upload images for screen background</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Upload image from camera for screen background</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Post video to someone</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -43,6 +37,12 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to use camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Need to use the microphone</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to use photo library</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
