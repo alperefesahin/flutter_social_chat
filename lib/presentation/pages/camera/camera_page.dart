@@ -5,8 +5,8 @@ import 'package:flutter_production_app/application/camera/camera_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:flutter_production_app/presentation/pages/camera/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_direction_row.dart';
-import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_preview.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/capture_button.dart';
 
 class CameraPage extends StatefulWidget {
@@ -20,23 +20,30 @@ class _CameraPageState extends State<CameraPage>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   CameraController? controller;
   late final CameraCubit _cameraCubit;
+  List<CameraDescription>? cameras;
 
   @override
   void initState() {
+    _cameraCubit = getIt<CameraCubit>();
     if (mounted) {
       WidgetsBinding.instance.addPostFrameCallback(
         (timeStamp) async {
-          _cameraCubit = getIt<CameraCubit>();
-          final cameras = await _cameraCubit.getCamerasOfTheDevice();
+          cameras = await _cameraCubit.getCamerasOfTheDevice();
 
-          final controller = CameraController(cameras[0], ResolutionPreset.high);
-          await controller.initialize();
+          controller = CameraController(cameras![0], ResolutionPreset.high);
+
+          await controller!.initialize();
+
+          controller!.addListener(() {
+            if (mounted) {
+              setState(() {});
+            }
+          });
         },
       );
     }
 
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -69,9 +76,19 @@ class _CameraPageState extends State<CameraPage>
         builder: (context) {
           return BlocBuilder<CameraCubit, CameraState>(
             builder: (context, state) {
-              final cameras = state.cameras;
-
               if (!state.isCameraPermissionGranted) {
+                return const Center(
+                  child: Text(
+                    giveCameraPermission,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                );
+              }
+              if (cameras == null) {
                 return const Scaffold(
                   body: CustomProgressIndicator(progressIndicatorColor: blackColor),
                 );
@@ -84,7 +101,7 @@ class _CameraPageState extends State<CameraPage>
                           alignment: AlignmentDirectional.center,
                           fit: StackFit.expand,
                           children: [
-                            cameraPreview(controller),
+                            CameraPreview(controller!),
                             CaptureButton(controller: controller),
                           ],
                         ),
@@ -93,7 +110,7 @@ class _CameraPageState extends State<CameraPage>
                         padding: const EdgeInsets.all(5.0),
                         child: Row(
                           children: [
-                            cameraDirectionRow(controller, cameras, onNewCameraSelected),
+                            cameraDirectionRow(controller, cameras!, onNewCameraSelected),
                           ],
                         ),
                       ),
@@ -126,9 +143,6 @@ class _CameraPageState extends State<CameraPage>
     cameraController.addListener(() {
       if (mounted) {
         setState(() {});
-      }
-      if (cameraController.value.hasError) {
-        print('Camera error ${cameraController.value.errorDescription}');
       }
     });
 

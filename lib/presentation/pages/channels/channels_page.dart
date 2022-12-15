@@ -38,12 +38,6 @@ class _ChannelsPageState extends State<ChannelsPage> {
   );
 
   @override
-  void dispose() {
-    streamChannelListController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     String searchedText = "";
 
