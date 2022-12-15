@@ -146,24 +146,6 @@ class _CameraPageState extends State<CameraPage>
       }
     });
 
-    try {
-      await cameraController.initialize();
-    } on CameraException catch (e) {
-      switch (e.code) {
-        case 'CameraAccessDenied':
-          print('You have denied camera access.');
-          break;
-        case 'CameraAccessDeniedWithoutPrompt':
-          // iOS only
-          print('Please go to Settings app to enable camera access.');
-          break;
-        case 'CameraAccessRestricted':
-          // iOS only
-          print('Camera access is restricted.');
-          break;
-        default:
-          break;
-      }
-    }
+    await cameraController.initialize();
   }
 }

@@ -68,11 +68,7 @@ class CameraCubit extends Cubit<CameraState> {
       return;
     }
 
-    try {
-      final XFile file = await controller.takePicture();
-      emit(state.copyWith(pathOfTheTakenPhoto: file.path));
-    } on CameraException catch (e) {
-      print("CAMERA ERROR: " + e.toString());
-    }
+    final XFile file = await controller.takePicture();
+    emit(state.copyWith(pathOfTheTakenPhoto: file.path));
   }
 }
