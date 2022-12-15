@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/camera/camera_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_direction_row.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_preview.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/capture_button.dart';
@@ -19,27 +21,27 @@ class _CameraPageState extends State<CameraPage>
   CameraController? controller;
   late final CameraCubit _cameraCubit;
 
-  Future<void> initalizeCamera() async {
-    _cameraCubit = getIt<CameraCubit>();
-    final cameras = await _cameraCubit.getCamerasOfTheDevice();
-    //!
-/*     final controller = CameraController(cameras[0], ResolutionPreset.high); */
-    await controller!.initialize();
-  }
-
   @override
   void initState() {
-    initalizeCamera();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) async {},
-    );
+    if (mounted) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (timeStamp) async {
+          _cameraCubit = getIt<CameraCubit>();
+          final cameras = await _cameraCubit.getCamerasOfTheDevice();
+
+          final controller = CameraController(cameras[0], ResolutionPreset.high);
+          await controller.initialize();
+        },
+      );
+    }
+
     super.initState();
     WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    controller!.dispose();
     super.dispose();
   }
 
@@ -69,13 +71,9 @@ class _CameraPageState extends State<CameraPage>
             builder: (context, state) {
               final cameras = state.cameras;
 
-              if (state.isInProgress) {
-                return Center(
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.black,
-                  ),
+              if (!state.isCameraPermissionGranted) {
+                return const Scaffold(
+                  body: CustomProgressIndicator(progressIndicatorColor: blackColor),
                 );
               } else {
                 return Scaffold(

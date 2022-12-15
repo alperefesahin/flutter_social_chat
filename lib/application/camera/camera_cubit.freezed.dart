@@ -19,6 +19,7 @@ mixin _$CameraState {
   List<CameraDescription> get cameras => throw _privateConstructorUsedError;
   String get pathOfTheTakenPhoto => throw _privateConstructorUsedError;
   bool get isInProgress => throw _privateConstructorUsedError;
+  bool get isCameraPermissionGranted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CameraStateCopyWith<CameraState> get copyWith =>
@@ -34,7 +35,8 @@ abstract class $CameraStateCopyWith<$Res> {
   $Res call(
       {List<CameraDescription> cameras,
       String pathOfTheTakenPhoto,
-      bool isInProgress});
+      bool isInProgress,
+      bool isCameraPermissionGranted});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$CameraStateCopyWithImpl<$Res, $Val extends CameraState>
     Object? cameras = null,
     Object? pathOfTheTakenPhoto = null,
     Object? isInProgress = null,
+    Object? isCameraPermissionGranted = null,
   }) {
     return _then(_value.copyWith(
       cameras: null == cameras
@@ -66,6 +69,10 @@ class _$CameraStateCopyWithImpl<$Res, $Val extends CameraState>
       isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCameraPermissionGranted: null == isCameraPermissionGranted
+          ? _value.isCameraPermissionGranted
+          : isCameraPermissionGranted // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -82,7 +89,8 @@ abstract class _$$_CameraStateCopyWith<$Res>
   $Res call(
       {List<CameraDescription> cameras,
       String pathOfTheTakenPhoto,
-      bool isInProgress});
+      bool isInProgress,
+      bool isCameraPermissionGranted});
 }
 
 /// @nodoc
@@ -99,6 +107,7 @@ class __$$_CameraStateCopyWithImpl<$Res>
     Object? cameras = null,
     Object? pathOfTheTakenPhoto = null,
     Object? isInProgress = null,
+    Object? isCameraPermissionGranted = null,
   }) {
     return _then(_$_CameraState(
       cameras: null == cameras
@@ -113,6 +122,10 @@ class __$$_CameraStateCopyWithImpl<$Res>
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
+      isCameraPermissionGranted: null == isCameraPermissionGranted
+          ? _value.isCameraPermissionGranted
+          : isCameraPermissionGranted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -123,7 +136,8 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
   const _$_CameraState(
       {required final List<CameraDescription> cameras,
       required this.pathOfTheTakenPhoto,
-      required this.isInProgress})
+      required this.isInProgress,
+      required this.isCameraPermissionGranted})
       : _cameras = cameras;
 
   final List<CameraDescription> _cameras;
@@ -138,10 +152,12 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
   final String pathOfTheTakenPhoto;
   @override
   final bool isInProgress;
+  @override
+  final bool isCameraPermissionGranted;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CameraState(cameras: $cameras, pathOfTheTakenPhoto: $pathOfTheTakenPhoto, isInProgress: $isInProgress)';
+    return 'CameraState(cameras: $cameras, pathOfTheTakenPhoto: $pathOfTheTakenPhoto, isInProgress: $isInProgress, isCameraPermissionGranted: $isCameraPermissionGranted)';
   }
 
   @override
@@ -151,7 +167,9 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
       ..add(DiagnosticsProperty('type', 'CameraState'))
       ..add(DiagnosticsProperty('cameras', cameras))
       ..add(DiagnosticsProperty('pathOfTheTakenPhoto', pathOfTheTakenPhoto))
-      ..add(DiagnosticsProperty('isInProgress', isInProgress));
+      ..add(DiagnosticsProperty('isInProgress', isInProgress))
+      ..add(DiagnosticsProperty(
+          'isCameraPermissionGranted', isCameraPermissionGranted));
   }
 
   @override
@@ -163,7 +181,10 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
             (identical(other.pathOfTheTakenPhoto, pathOfTheTakenPhoto) ||
                 other.pathOfTheTakenPhoto == pathOfTheTakenPhoto) &&
             (identical(other.isInProgress, isInProgress) ||
-                other.isInProgress == isInProgress));
+                other.isInProgress == isInProgress) &&
+            (identical(other.isCameraPermissionGranted,
+                    isCameraPermissionGranted) ||
+                other.isCameraPermissionGranted == isCameraPermissionGranted));
   }
 
   @override
@@ -171,7 +192,8 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
       runtimeType,
       const DeepCollectionEquality().hash(_cameras),
       pathOfTheTakenPhoto,
-      isInProgress);
+      isInProgress,
+      isCameraPermissionGranted);
 
   @JsonKey(ignore: true)
   @override
@@ -184,7 +206,8 @@ abstract class _CameraState implements CameraState {
   const factory _CameraState(
       {required final List<CameraDescription> cameras,
       required final String pathOfTheTakenPhoto,
-      required final bool isInProgress}) = _$_CameraState;
+      required final bool isInProgress,
+      required final bool isCameraPermissionGranted}) = _$_CameraState;
 
   @override
   List<CameraDescription> get cameras;
@@ -192,6 +215,8 @@ abstract class _CameraState implements CameraState {
   String get pathOfTheTakenPhoto;
   @override
   bool get isInProgress;
+  @override
+  bool get isCameraPermissionGranted;
   @override
   @JsonKey(ignore: true)
   _$$_CameraStateCopyWith<_$_CameraState> get copyWith =>
