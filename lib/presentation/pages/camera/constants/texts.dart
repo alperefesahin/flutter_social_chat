@@ -1,1 +1,1 @@
-const String giveCameraPermission = 'Give the related permission!';
+const String giveRelatedPermission = 'Give the related permission!';

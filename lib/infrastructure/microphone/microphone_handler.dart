@@ -1,14 +1,14 @@
-import 'package:flutter_production_app/domain/camera/i_camera_handler.dart';
+import 'package:flutter_production_app/domain/microphone/i_microphone_handler.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-@LazySingleton(as: ICameraHandler)
-class CameraHandler implements ICameraHandler {
+@LazySingleton(as: IMicrophoneHandler)
+class MicrophoneHandler implements IMicrophoneHandler {
   @override
-  Stream<PermissionStatus> get cameraStateChanges {
-    const camera = Permission.camera;
+  Stream<PermissionStatus> get microphoneStateChanges {
+    const microphone = Permission.microphone;
 
-    return camera.status.asStream().map(
+    return microphone.status.asStream().map(
       (permissionStatus) {
         if (permissionStatus.isGranted) {
           return PermissionStatus.granted;
@@ -27,15 +27,15 @@ class CameraHandler implements ICameraHandler {
 
   @override
   Future<PermissionStatus> requestPermission() async {
-    const camera = Permission.camera;
+    const microphone = Permission.microphone;
 
-    final permissionStatus = await camera.request();
+    final permissionStatus = await microphone.request();
 
     return permissionStatus;
   }
 
   @override
-  Future<void> openAppSettingsForTheCameraPermission() async {
+  Future<void> openAppSettingsForTheMicrophonePermission() async {
     await openAppSettings();
   }
 }
