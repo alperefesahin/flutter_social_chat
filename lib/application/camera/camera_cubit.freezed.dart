@@ -132,7 +132,7 @@ class __$$_CameraStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
+class _$_CameraState implements _CameraState {
   const _$_CameraState(
       {required final List<CameraDescription> cameras,
       required this.pathOfTheTakenPhoto,
@@ -156,20 +156,8 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
   final bool isCameraPermissionGranted;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CameraState(cameras: $cameras, pathOfTheTakenPhoto: $pathOfTheTakenPhoto, isInProgress: $isInProgress, isCameraPermissionGranted: $isCameraPermissionGranted)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CameraState'))
-      ..add(DiagnosticsProperty('cameras', cameras))
-      ..add(DiagnosticsProperty('pathOfTheTakenPhoto', pathOfTheTakenPhoto))
-      ..add(DiagnosticsProperty('isInProgress', isInProgress))
-      ..add(DiagnosticsProperty(
-          'isCameraPermissionGranted', isCameraPermissionGranted));
   }
 
   @override

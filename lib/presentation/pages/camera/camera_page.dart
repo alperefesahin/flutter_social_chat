@@ -16,9 +16,9 @@ class CameraPage extends StatefulWidget {
 class _CameraPageState extends State<CameraPage>
     with WidgetsBindingObserver, TickerProviderStateMixin {
   late final CameraCubit _cameraCubit;
-
   CameraController? controller;
   List<CameraDescription>? cameras;
+  bool isInProgress = false;
 
   @override
   void initState() {
@@ -28,7 +28,6 @@ class _CameraPageState extends State<CameraPage>
       WidgetsBinding.instance.addPostFrameCallback(
         (timeStamp) async {
           cameras = await _cameraCubit.getCamerasOfTheDevice();
-
           controller = CameraController(cameras![0], ResolutionPreset.high);
 
           await controller!.initialize();
@@ -57,11 +56,10 @@ class _CameraPageState extends State<CameraPage>
     if (controller == null || !controller!.value.isInitialized) {
       return;
     }
-
     if (state == AppLifecycleState.inactive) {
       controller!.dispose();
     } else if (state == AppLifecycleState.resumed) {
-      onNewCameraSelected(controller!.description);
+      onNewCameraSelected();
     }
   }
 
@@ -79,19 +77,27 @@ class _CameraPageState extends State<CameraPage>
       child: CameraPageBody(
         controller: controller,
         cameras: cameras,
-        onNewCameraSelected: onNewCameraSelected,
+        onNewCameraSelected: () async => onNewCameraSelected(),
       ),
     );
   }
 
-  Future<void> onNewCameraSelected(CameraDescription cameraDescription) async {
+  Future<void> onNewCameraSelected() async {
+    if (isInProgress) {
+      return;
+    }
+
+    isInProgress = true;
+    controller!.value.copyWith(isPreviewPaused: true);
+
     final CameraController? oldController = controller;
+    final oldControllersLens = oldController?.description.lensDirection;
 
     controller = null;
     await oldController?.dispose();
 
     final CameraController cameraController = CameraController(
-      cameraDescription,
+      oldControllersLens == CameraLensDirection.back ? cameras![1] : cameras![0],
       ResolutionPreset.veryHigh,
       imageFormatGroup: ImageFormatGroup.jpeg,
     );
@@ -106,5 +112,6 @@ class _CameraPageState extends State<CameraPage>
     });
 
     await cameraController.initialize();
+    isInProgress = false;
   }
 }

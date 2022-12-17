@@ -18,7 +18,7 @@ class CameraPageBody extends StatelessWidget {
 
   final CameraController? controller;
   final List<CameraDescription>? cameras;
-  final Future<void> Function(CameraDescription cameraDescription) onNewCameraSelected;
+  final Future<void> Function() onNewCameraSelected;
 
   @override
   Widget build(BuildContext context) {
