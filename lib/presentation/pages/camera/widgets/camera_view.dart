@@ -78,7 +78,7 @@ class CameraView extends StatelessWidget {
                       context.read<CameraCubit>().refresh();
                     },
                     icon: const Icon(
-                      CupertinoIcons.back,
+                      CupertinoIcons.clear,
                       color: whiteColor,
                       size: 30,
                     ),
