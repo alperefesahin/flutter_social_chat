@@ -32,7 +32,7 @@ class UserListView extends StatelessWidget {
               );
             },
             onUserTap: (user) {
-              context.read<ChatManagementCubit>().selectUser(
+              context.read<ChatManagementCubit>().selectUserWhenCreatingAGroup(
                     user: user,
                     isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
                   );

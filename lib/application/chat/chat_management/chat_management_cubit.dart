@@ -46,6 +46,8 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     );
   }
 
+  Future<void> sendCapturedPhotoToSelectedUsers() async {}
+
   Future<void> createNewChannel({
     required bool isCreateNewChatPageForCreatingGroup,
   }) async {
@@ -95,7 +97,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     }
   }
 
-  void selectUser({
+  void selectUserWhenCreatingAGroup({
     required User user,
     required bool isCreateNewChatPageForCreatingGroup,
   }) {
@@ -110,6 +112,16 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       listOfSelectedUserIDs.add(user.id);
       emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
     }
+  }
+
+  void selectUserToSendCapturedPhoto({
+    required User user,
+  }) {
+    final listOfSelectedUserIDs = {...state.listOfSelectedUserIDs};
+
+    listOfSelectedUserIDs.add(user.id);
+
+    emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
   }
 
   /// If there is no a searched channel in the list of channels, then return false. If there is, return true.

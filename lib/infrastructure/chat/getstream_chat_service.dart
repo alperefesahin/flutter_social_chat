@@ -70,4 +70,7 @@ class GetstreamChatService implements IChatService {
       },
     );
   }
+
+  @override
+  Future<void> sendMessageToSelectedUsers() async {}
 }

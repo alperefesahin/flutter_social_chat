@@ -13,8 +13,6 @@ import 'package:go_router/go_router.dart';
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
 
-  static Page page() => const MaterialPage<void>(child: SignInPage());
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PhoneNumberSignInCubit, PhoneNumberSignInState>(

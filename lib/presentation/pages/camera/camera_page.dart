@@ -5,6 +5,7 @@ import 'package:flutter_production_app/application/camera/camera_cubit.dart';
 import 'package:flutter_production_app/application/microphone/microphone_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_page_body.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -19,6 +20,17 @@ class _CameraPageState extends State<CameraPage>
   CameraController? controller;
   List<CameraDescription>? cameras;
   bool isInProgress = false;
+
+  late final StreamUserListController userListController = StreamUserListController(
+    client: StreamChat.of(context).client,
+    limit: 25,
+    filter: Filter.and(
+      [Filter.notEqual('id', StreamChat.of(context).currentUser!.id)],
+    ),
+    sort: [
+      const SortOption('name', direction: 1),
+    ],
+  );
 
   @override
   void initState() {
@@ -78,6 +90,7 @@ class _CameraPageState extends State<CameraPage>
         controller: controller,
         cameras: cameras,
         onNewCameraSelected: () async => onNewCameraSelected(),
+        userListController: userListController,
       ),
     );
   }

@@ -12,4 +12,6 @@ abstract class IChatService {
     required String channelName,
     required String channelImageUrl,
   });
+
+  Future<void> sendMessageToSelectedUsers();
 }

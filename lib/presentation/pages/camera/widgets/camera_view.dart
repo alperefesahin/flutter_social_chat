@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/camera/camera_cubit.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_output_widget.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_preview_widget.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CameraView extends StatelessWidget {
   const CameraView({
@@ -12,11 +13,13 @@ class CameraView extends StatelessWidget {
     required this.controller,
     required this.cameras,
     required this.onNewCameraSelected,
+    required this.userListController,
   });
 
   final CameraController controller;
   final List<CameraDescription> cameras;
   final Future<void> Function() onNewCameraSelected;
+  final StreamUserListController userListController;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,10 @@ class CameraView extends StatelessWidget {
             onNewCameraSelected: onNewCameraSelected,
           );
         } else {
-          return CameraOutputWidget(pathOfTheTakenPhoto: state.pathOfTheTakenPhoto);
+          return CameraOutputWidget(
+            pathOfTheTakenPhoto: state.pathOfTheTakenPhoto,
+            userListController: userListController,
+          );
         }
       },
     );
