@@ -1,7 +1,10 @@
 import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 abstract class IChatService {
   Stream<ChatUserModel> get chatAuthStateChanges;
+
+  Stream<List<Channel>> get channelsThatTheUserIsIncluded;
 
   Future<void> disconnectUser();
 
@@ -13,5 +16,9 @@ abstract class IChatService {
     required String channelImageUrl,
   });
 
-  Future<void> sendMessageToSelectedUsers();
+  Future<void> sendPhotoAsMessageToTheSelectedUser({
+    required int sizeOfTheTakenPhoto,
+    required String channelId,
+    required String pathOfTheTakenPhoto,
+  });
 }

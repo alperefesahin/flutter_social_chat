@@ -6,13 +6,31 @@ import 'package:flutter_production_app/presentation/common_widgets/custom_app_ba
 import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-class CaptureAndSendPhotoPage extends StatelessWidget {
+class CaptureAndSendPhotoPage extends StatefulWidget {
   const CaptureAndSendPhotoPage({
     super.key,
-    required this.userListController,
+    required this.pathOfTheTakenPhoto,
+    required this.sizeOfTheTakenPhoto,
   });
 
-  final StreamUserListController userListController;
+  final String pathOfTheTakenPhoto;
+  final int sizeOfTheTakenPhoto;
+
+  @override
+  State<CaptureAndSendPhotoPage> createState() => _CaptureAndSendPhotoPageState();
+}
+
+class _CaptureAndSendPhotoPageState extends State<CaptureAndSendPhotoPage> {
+  late final StreamUserListController userListController = StreamUserListController(
+    client: StreamChat.of(context).client,
+    limit: 25,
+    filter: Filter.and(
+      [Filter.notEqual('id', StreamChat.of(context).currentUser!.id)],
+    ),
+    sort: [
+      const SortOption('name', direction: 1),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +42,10 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            
+            context.read<ChatManagementCubit>().sendCapturedPhotoToSelectedUsers(
+                  pathOfTheTakenPhoto: widget.pathOfTheTakenPhoto,
+                  sizeOfTheTakenPhoto: widget.sizeOfTheTakenPhoto,
+                );
           },
           child: const Icon(Icons.send),
         ),

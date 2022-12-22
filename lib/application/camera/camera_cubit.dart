@@ -68,6 +68,9 @@ class CameraCubit extends Cubit<CameraState> {
     required Future<XFile?> xfile,
     required CameraLensDirection? cameraLensDirection,
   }) async {
+    String pathOfTheTakenPhoto;
+    int sizeOfTheTakenPhoto;
+
     if (state.isInProgress) {
       return;
     }
@@ -78,24 +81,42 @@ class CameraCubit extends Cubit<CameraState> {
 
     if (file == null) {
       emit(state.copyWith(pathOfTheTakenPhoto: "", isInProgress: false));
-    }
+    } else {
+      sizeOfTheTakenPhoto = await file.length();
 
-    // It's for the mirror image when the cameralens is front.
-    if (cameraLensDirection == CameraLensDirection.front) {
-      final List<int> imageBytes = await file!.readAsBytes();
+      // It's for the mirror image when the cameralens is front.
+      if (cameraLensDirection == CameraLensDirection.front) {
+        final List<int> imageBytes = await file.readAsBytes();
 
-      final img.Image? originalImage = img.decodeImage(imageBytes);
-      final img.Image fixedImage = img.flipHorizontal(originalImage!);
+        final img.Image? originalImage = img.decodeImage(imageBytes);
+        final img.Image fixedImage = img.flipHorizontal(originalImage!);
 
-      final File temporaryFile = File(file.path);
-      final File fixedFile = await temporaryFile.writeAsBytes(
-        img.encodeJpg(fixedImage),
-        flush: true,
-      );
-      emit(state.copyWith(pathOfTheTakenPhoto: fixedFile.path, isInProgress: false));
-    }
-    if (cameraLensDirection == CameraLensDirection.back) {
-      emit(state.copyWith(pathOfTheTakenPhoto: file!.path, isInProgress: false));
+        final File temporaryFile = File(file.path);
+        final File fixedFile = await temporaryFile.writeAsBytes(
+          img.encodeJpg(fixedImage),
+          flush: true,
+        );
+
+        pathOfTheTakenPhoto = fixedFile.path;
+
+        emit(
+          state.copyWith(
+            pathOfTheTakenPhoto: pathOfTheTakenPhoto,
+            sizeOfTheTakenPhoto: sizeOfTheTakenPhoto,
+            isInProgress: false,
+          ),
+        );
+      }
+      if (cameraLensDirection == CameraLensDirection.back) {
+        pathOfTheTakenPhoto = file.path;
+        emit(
+          state.copyWith(
+            pathOfTheTakenPhoto: pathOfTheTakenPhoto,
+            sizeOfTheTakenPhoto: sizeOfTheTakenPhoto,
+            isInProgress: false,
+          ),
+        );
+      }
     }
   }
 }

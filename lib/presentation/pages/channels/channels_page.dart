@@ -10,7 +10,7 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChannelsPage extends StatefulWidget {
   const ChannelsPage({super.key});
-  static Page page() => const MaterialPage<void>(child: ChannelsPage());
+
   @override
   State<ChannelsPage> createState() => _ChannelsPageState();
 }

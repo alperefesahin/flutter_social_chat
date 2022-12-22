@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CameraState {
   List<CameraDescription> get cameras => throw _privateConstructorUsedError;
+  int get sizeOfTheTakenPhoto => throw _privateConstructorUsedError;
   String get pathOfTheTakenPhoto => throw _privateConstructorUsedError;
   bool get isInProgress => throw _privateConstructorUsedError;
   bool get isCameraPermissionGranted => throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ abstract class $CameraStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<CameraDescription> cameras,
+      int sizeOfTheTakenPhoto,
       String pathOfTheTakenPhoto,
       bool isInProgress,
       bool isCameraPermissionGranted});
@@ -53,6 +55,7 @@ class _$CameraStateCopyWithImpl<$Res, $Val extends CameraState>
   @override
   $Res call({
     Object? cameras = null,
+    Object? sizeOfTheTakenPhoto = null,
     Object? pathOfTheTakenPhoto = null,
     Object? isInProgress = null,
     Object? isCameraPermissionGranted = null,
@@ -62,6 +65,10 @@ class _$CameraStateCopyWithImpl<$Res, $Val extends CameraState>
           ? _value.cameras
           : cameras // ignore: cast_nullable_to_non_nullable
               as List<CameraDescription>,
+      sizeOfTheTakenPhoto: null == sizeOfTheTakenPhoto
+          ? _value.sizeOfTheTakenPhoto
+          : sizeOfTheTakenPhoto // ignore: cast_nullable_to_non_nullable
+              as int,
       pathOfTheTakenPhoto: null == pathOfTheTakenPhoto
           ? _value.pathOfTheTakenPhoto
           : pathOfTheTakenPhoto // ignore: cast_nullable_to_non_nullable
@@ -88,6 +95,7 @@ abstract class _$$_CameraStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<CameraDescription> cameras,
+      int sizeOfTheTakenPhoto,
       String pathOfTheTakenPhoto,
       bool isInProgress,
       bool isCameraPermissionGranted});
@@ -105,6 +113,7 @@ class __$$_CameraStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cameras = null,
+    Object? sizeOfTheTakenPhoto = null,
     Object? pathOfTheTakenPhoto = null,
     Object? isInProgress = null,
     Object? isCameraPermissionGranted = null,
@@ -114,6 +123,10 @@ class __$$_CameraStateCopyWithImpl<$Res>
           ? _value._cameras
           : cameras // ignore: cast_nullable_to_non_nullable
               as List<CameraDescription>,
+      sizeOfTheTakenPhoto: null == sizeOfTheTakenPhoto
+          ? _value.sizeOfTheTakenPhoto
+          : sizeOfTheTakenPhoto // ignore: cast_nullable_to_non_nullable
+              as int,
       pathOfTheTakenPhoto: null == pathOfTheTakenPhoto
           ? _value.pathOfTheTakenPhoto
           : pathOfTheTakenPhoto // ignore: cast_nullable_to_non_nullable
@@ -135,6 +148,7 @@ class __$$_CameraStateCopyWithImpl<$Res>
 class _$_CameraState implements _CameraState {
   const _$_CameraState(
       {required final List<CameraDescription> cameras,
+      required this.sizeOfTheTakenPhoto,
       required this.pathOfTheTakenPhoto,
       required this.isInProgress,
       required this.isCameraPermissionGranted})
@@ -149,6 +163,8 @@ class _$_CameraState implements _CameraState {
   }
 
   @override
+  final int sizeOfTheTakenPhoto;
+  @override
   final String pathOfTheTakenPhoto;
   @override
   final bool isInProgress;
@@ -157,7 +173,7 @@ class _$_CameraState implements _CameraState {
 
   @override
   String toString() {
-    return 'CameraState(cameras: $cameras, pathOfTheTakenPhoto: $pathOfTheTakenPhoto, isInProgress: $isInProgress, isCameraPermissionGranted: $isCameraPermissionGranted)';
+    return 'CameraState(cameras: $cameras, sizeOfTheTakenPhoto: $sizeOfTheTakenPhoto, pathOfTheTakenPhoto: $pathOfTheTakenPhoto, isInProgress: $isInProgress, isCameraPermissionGranted: $isCameraPermissionGranted)';
   }
 
   @override
@@ -166,6 +182,8 @@ class _$_CameraState implements _CameraState {
         (other.runtimeType == runtimeType &&
             other is _$_CameraState &&
             const DeepCollectionEquality().equals(other._cameras, _cameras) &&
+            (identical(other.sizeOfTheTakenPhoto, sizeOfTheTakenPhoto) ||
+                other.sizeOfTheTakenPhoto == sizeOfTheTakenPhoto) &&
             (identical(other.pathOfTheTakenPhoto, pathOfTheTakenPhoto) ||
                 other.pathOfTheTakenPhoto == pathOfTheTakenPhoto) &&
             (identical(other.isInProgress, isInProgress) ||
@@ -179,6 +197,7 @@ class _$_CameraState implements _CameraState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_cameras),
+      sizeOfTheTakenPhoto,
       pathOfTheTakenPhoto,
       isInProgress,
       isCameraPermissionGranted);
@@ -193,12 +212,15 @@ class _$_CameraState implements _CameraState {
 abstract class _CameraState implements CameraState {
   const factory _CameraState(
       {required final List<CameraDescription> cameras,
+      required final int sizeOfTheTakenPhoto,
       required final String pathOfTheTakenPhoto,
       required final bool isInProgress,
       required final bool isCameraPermissionGranted}) = _$_CameraState;
 
   @override
   List<CameraDescription> get cameras;
+  @override
+  int get sizeOfTheTakenPhoto;
   @override
   String get pathOfTheTakenPhoto;
   @override

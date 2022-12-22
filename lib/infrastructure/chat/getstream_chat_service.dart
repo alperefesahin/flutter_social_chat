@@ -6,6 +6,7 @@ import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/infrastructure/core/getstream_helpers.dart';
 import 'package:flutter_production_app/secrets.dart';
 import 'package:injectable/injectable.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
 @LazySingleton(as: IChatService)
@@ -31,6 +32,20 @@ class GetstreamChatService implements IChatService {
   @override
   Future<void> disconnectUser() async {
     await streamChatClient.disconnectUser();
+  }
+
+  @override
+  Stream<List<Channel>> get channelsThatTheUserIsIncluded {
+    return streamChatClient
+        .queryChannels(
+      filter: Filter.in_(
+        'members',
+        [streamChatClient.state.currentUser!.id],
+      ),
+    )
+        .map((listOfChannels) {
+      return listOfChannels;
+    });
   }
 
   @override
@@ -72,5 +87,46 @@ class GetstreamChatService implements IChatService {
   }
 
   @override
-  Future<void> sendMessageToSelectedUsers() async {}
+  Future<void> sendPhotoAsMessageToTheSelectedUser({
+    required String channelId,
+    required int sizeOfTheTakenPhoto,
+    required String pathOfTheTakenPhoto,
+  }) async {
+    final randomMessageId = const Uuid().v1();
+
+    final signedInUserOption = await _firebaseAuth.getSignedInUser();
+    final signedInUser = signedInUserOption.fold(
+      () => throw Exception("Not authanticated"),
+      (user) => user,
+    );
+    final user = User(id: signedInUser.id);
+
+    streamChatClient
+        .sendImage(
+      AttachmentFile(
+        size: sizeOfTheTakenPhoto,
+        path: pathOfTheTakenPhoto,
+      ),
+      channelId,
+      "messaging",
+    )
+        .then((response) {
+      // Successful upload, you can now attach this image
+      // to an message that you then send to a channel
+      final imageUrl = response.file;
+      final image = Attachment(
+        type: 'image',
+        imageUrl: imageUrl,
+      );
+
+      final message = Message(
+        user: user,
+        id: randomMessageId,
+        createdAt: DateTime.now(),
+        attachments: [image],
+      );
+
+      streamChatClient.sendMessage(message, channelId, "messaging");
+    });
+  }
 }

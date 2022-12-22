@@ -98,9 +98,22 @@ class AppRouter {
         name: "capture_and_send_photo_page",
         path: "/capture_and_send_photo_page",
         builder: (context, state) {
-          final userListController = state.extra as StreamUserListController?;
+          final extraParameters = state.extra as Map<String, dynamic>?;
 
-          return CaptureAndSendPhotoPage(userListController: userListController!);
+          final pathOfTheTakenPhoto = extraParameters!.entries
+              .where((entries) => entries.key == "pathOfTheTakenPhoto")
+              .single
+              .value as String;
+
+          final sizeOfTheTakenPhoto = extraParameters.entries
+              .where((entries) => entries.key == "sizeOfTheTakenPhoto")
+              .single
+              .value as int;
+
+          return CaptureAndSendPhotoPage(
+            pathOfTheTakenPhoto: pathOfTheTakenPhoto,
+            sizeOfTheTakenPhoto: sizeOfTheTakenPhoto,
+          );
         },
       ),
       GoRoute(

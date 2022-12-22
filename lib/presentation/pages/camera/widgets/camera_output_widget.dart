@@ -11,9 +11,12 @@ class CameraOutputWidget extends StatelessWidget {
     super.key,
     required this.pathOfTheTakenPhoto,
     required this.userListController,
+    required this.sizeOfTheTakenPhoto,
   });
 
   final String pathOfTheTakenPhoto;
+  final int sizeOfTheTakenPhoto;
+
   final StreamUserListController userListController;
 
   @override
@@ -25,7 +28,11 @@ class CameraOutputWidget extends StatelessWidget {
           onPressed: () {
             context.go(
               context.namedLocation("capture_and_send_photo_page"),
-              extra: userListController,
+              extra: {
+                "userListController": userListController,
+                "pathOfTheTakenPhoto": pathOfTheTakenPhoto,
+                "sizeOfTheTakenPhoto": sizeOfTheTakenPhoto,
+              },
             );
           },
           child: const Icon(Icons.send),

@@ -1,5 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages, avoid_bool_literals_in_conditional_expressions
 
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -16,15 +18,27 @@ part 'chat_management_state.dart';
 
 @injectable
 class ChatManagementCubit extends Cubit<ChatManagementState> {
+  final String randomGroupProfilePhoto = "https://picsum.photos/200/300";
+
   late final IChatService _chatService;
   late final FirebaseFirestore _firebaseFirestore;
   late final AuthCubit _authCubit;
-  final String randomGroupProfilePhoto = "https://picsum.photos/200/300";
+
+  late StreamSubscription<List<Channel>>? _currentUserChannelsSubscription;
 
   ChatManagementCubit() : super(ChatManagementState.empty()) {
     _chatService = getIt<IChatService>();
     _firebaseFirestore = getIt<FirebaseFirestore>();
     _authCubit = getIt<AuthCubit>();
+
+    _currentUserChannelsSubscription =
+        _chatService.channelsThatTheUserIsIncluded.listen(_listenCurrentUserChannelsChangeStream);
+  }
+
+  @override
+  Future<void> close() async {
+    await _currentUserChannelsSubscription?.cancel();
+    super.close();
   }
 
   void reset() {
@@ -46,7 +60,47 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     );
   }
 
-  Future<void> sendCapturedPhotoToSelectedUsers() async {}
+  Future<void> _listenCurrentUserChannelsChangeStream(List<Channel> currentUserChannels) async {
+    emit(state.copyWith(currentUserChannels: currentUserChannels));
+  }
+
+  Future<void> sendCapturedPhotoToSelectedUsers({
+    required String pathOfTheTakenPhoto,
+    required int sizeOfTheTakenPhoto,
+  }) async {
+    if (state.isInProgress) {
+      return;
+    }
+
+    emit(state.copyWith(isInProgress: true));
+
+    final selectedUserId = state.listOfSelectedUserIDs.single;
+
+    // we use .first command since there will be only 1 user, it can be single, last or first.
+    // here we just want to be sure about it.
+    final selectedMemberUserId = await state.currentUserChannels.map(
+      (channel) async {
+        final queryResponse = await channel.queryMembers(
+          filter: Filter.equal('id', selectedUserId),
+        );
+
+        final member = queryResponse.members.single;
+        return member.userId;
+      },
+    ).first;
+
+    final channelId = state.currentUserChannels.firstWhere((channel) {
+      return channel.state!.members.map((member) => member.userId).contains(selectedMemberUserId);
+    }).id;
+
+    await _chatService.sendPhotoAsMessageToTheSelectedUser(
+      channelId: channelId!,
+      pathOfTheTakenPhoto: pathOfTheTakenPhoto,
+      sizeOfTheTakenPhoto: sizeOfTheTakenPhoto,
+    );
+
+    emit(state.copyWith(isInProgress: false));
+  }
 
   Future<void> createNewChannel({
     required bool isCreateNewChatPageForCreatingGroup,

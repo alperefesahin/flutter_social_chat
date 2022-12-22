@@ -35,8 +35,9 @@ class CameraView extends StatelessWidget {
           );
         } else {
           return CameraOutputWidget(
-            pathOfTheTakenPhoto: state.pathOfTheTakenPhoto,
             userListController: userListController,
+            pathOfTheTakenPhoto: state.pathOfTheTakenPhoto,
+            sizeOfTheTakenPhoto: state.sizeOfTheTakenPhoto,
           );
         }
       },
