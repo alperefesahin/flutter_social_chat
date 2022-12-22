@@ -4,9 +4,8 @@ import 'package:flutter_production_app/application/chat/chat_management/chat_man
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_app_bar.dart';
 import 'package:go_router/go_router.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-class CaptureAndSendPhotoPage extends StatefulWidget {
+class CaptureAndSendPhotoPage extends StatelessWidget {
   const CaptureAndSendPhotoPage({
     super.key,
     required this.pathOfTheTakenPhoto,
@@ -15,22 +14,6 @@ class CaptureAndSendPhotoPage extends StatefulWidget {
 
   final String pathOfTheTakenPhoto;
   final int sizeOfTheTakenPhoto;
-
-  @override
-  State<CaptureAndSendPhotoPage> createState() => _CaptureAndSendPhotoPageState();
-}
-
-class _CaptureAndSendPhotoPageState extends State<CaptureAndSendPhotoPage> {
-  late final StreamUserListController userListController = StreamUserListController(
-    client: StreamChat.of(context).client,
-    limit: 25,
-    filter: Filter.and(
-      [Filter.notEqual('id', StreamChat.of(context).currentUser!.id)],
-    ),
-    sort: [
-      const SortOption('name', direction: 1),
-    ],
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +26,8 @@ class _CaptureAndSendPhotoPageState extends State<CaptureAndSendPhotoPage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             context.read<ChatManagementCubit>().sendCapturedPhotoToSelectedUsers(
-                  pathOfTheTakenPhoto: widget.pathOfTheTakenPhoto,
-                  sizeOfTheTakenPhoto: widget.sizeOfTheTakenPhoto,
+                  pathOfTheTakenPhoto: pathOfTheTakenPhoto,
+                  sizeOfTheTakenPhoto: sizeOfTheTakenPhoto,
                 );
           },
           child: const Icon(Icons.send),
@@ -59,14 +42,44 @@ class _CaptureAndSendPhotoPageState extends State<CaptureAndSendPhotoPage> {
           appBarBackgroundColor: whiteColor,
           appBarIconColor: blackColor,
         ),
-        body: RefreshIndicator(
-          onRefresh: () => userListController.refresh(),
-          child: BlocBuilder<ChatManagementCubit, ChatManagementState>(
-            builder: (context, state) {
-              return SizedBox(
+        body: BlocBuilder<ChatManagementCubit, ChatManagementState>(
+          builder: (context, state) {
+            return RefreshIndicator(
+              onRefresh: () async => context.read<ChatManagementCubit>().reset(),
+              child: SizedBox(
                 width: deviceWidth,
                 height: deviceHeight,
-                child: StreamUserListView(
+                child: ListView.builder(
+                  itemCount: state.currentUserChannels.length,
+                  itemBuilder: (context, index) {
+                    final memberName = state.currentUserChannels[index].name;
+                    final memberImage = state.currentUserChannels[index].image;
+                    final memberlastMessageAt =
+                        state.currentUserChannels[index].lastMessageAt.toString();
+
+                    return Center(
+                      child: Column(
+                        children: [
+                          Text(memberName!),
+                          Text(memberImage!),
+                          Text(memberlastMessageAt),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+/* 
+Previous streamUserListView
+StreamUserListView(
                   shrinkWrap: true,
                   controller: userListController,
                   itemBuilder: (context, users, index, defaultWidget) {
@@ -78,11 +91,4 @@ class _CaptureAndSendPhotoPageState extends State<CaptureAndSendPhotoPage> {
                     context.read<ChatManagementCubit>().selectUserToSendCapturedPhoto(user: user);
                   },
                 ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
+ */
