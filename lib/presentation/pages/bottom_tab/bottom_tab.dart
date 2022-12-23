@@ -8,7 +8,6 @@ import 'package:flutter_production_app/presentation/pages/bottom_tab/widgets/bot
 
 class BottomTabPage extends StatelessWidget {
   const BottomTabPage({super.key, this.child});
-  static Page page() => const MaterialPage<void>(child: BottomTabPage());
 
   final Widget? child;
 

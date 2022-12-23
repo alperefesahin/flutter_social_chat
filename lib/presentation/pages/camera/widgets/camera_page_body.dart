@@ -7,6 +7,7 @@ import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_view.dart';
 import 'package:flutter_production_app/presentation/pages/camera/widgets/no_permission_widget.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CameraPageBody extends StatelessWidget {
   const CameraPageBody({
@@ -14,11 +15,13 @@ class CameraPageBody extends StatelessWidget {
     required this.controller,
     required this.cameras,
     required this.onNewCameraSelected,
+    required this.userListController,
   });
 
   final CameraController? controller;
   final List<CameraDescription>? cameras;
-  final Future<void> Function(CameraDescription cameraDescription) onNewCameraSelected;
+  final Future<void> Function() onNewCameraSelected;
+  final StreamUserListController userListController;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,7 @@ class CameraPageBody extends StatelessWidget {
                 controller: controller!,
                 cameras: cameras!,
                 onNewCameraSelected: onNewCameraSelected,
+                userListController: userListController,
               );
             }
           },

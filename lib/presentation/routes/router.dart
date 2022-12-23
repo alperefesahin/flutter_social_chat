@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/pages/bottom_tab/bottom_tab.dart';
 import 'package:flutter_production_app/presentation/pages/camera/camera_page.dart';
+import 'package:flutter_production_app/presentation/pages/capture_and_send_photo/capture_and_send_photo_page.dart';
 import 'package:flutter_production_app/presentation/pages/channels/channels_page.dart';
 import 'package:flutter_production_app/presentation/pages/chat/chat_page.dart';
 import 'package:flutter_production_app/presentation/pages/create_new_chat/create_new_chat_page.dart';
@@ -91,6 +92,28 @@ class AppRouter {
           final channel = state.extra as Channel?;
 
           return ChatPage(channel: channel!);
+        },
+      ),
+      GoRoute(
+        name: "capture_and_send_photo_page",
+        path: "/capture_and_send_photo_page",
+        builder: (context, state) {
+          final extraParameters = state.extra as Map<String, dynamic>?;
+
+          final pathOfTheTakenPhoto = extraParameters!.entries
+              .where((entries) => entries.key == "pathOfTheTakenPhoto")
+              .single
+              .value as String;
+
+          final sizeOfTheTakenPhoto = extraParameters.entries
+              .where((entries) => entries.key == "sizeOfTheTakenPhoto")
+              .single
+              .value as int;
+
+          return CaptureAndSendPhotoPage(
+            pathOfTheTakenPhoto: pathOfTheTakenPhoto,
+            sizeOfTheTakenPhoto: sizeOfTheTakenPhoto,
+          );
         },
       ),
       GoRoute(

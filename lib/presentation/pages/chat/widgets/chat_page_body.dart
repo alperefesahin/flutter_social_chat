@@ -16,7 +16,7 @@ class ChatPageBody extends StatelessWidget {
           autoCorrect: false,
           idleSendButton: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Icon(Icons.send, size: 30, color: customGreyColor),
+            child: Icon(Icons.send, size: 30, color: customGreyColor600),
           ),
           activeSendButton: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),

@@ -32,12 +32,13 @@ import 'package:flutter_production_app/infrastructure/camera/camera_handler.dart
 import 'package:flutter_production_app/infrastructure/chat/getstream_chat_service.dart'
     as _i21;
 import 'package:flutter_production_app/infrastructure/core/injectable_module.dart'
-    as _i22;
+    as _i23;
 import 'package:flutter_production_app/infrastructure/microphone/microphone_handler.dart'
     as _i16;
 import 'package:flutter_production_app/presentation/routes/router.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
+import 'package:stream_chat_flutter/stream_chat_flutter.dart' as _i22;
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart' as _i19;
 
 /// ignore_for_file: unnecessary_lambdas
@@ -78,10 +79,10 @@ extension GetItInjectableX on _i1.GetIt {
     gh.singleton<_i19.StreamChatClient>(injectableModule.streamChatClient);
     gh.lazySingleton<_i20.IChatService>(() => _i21.GetstreamChatService(
           gh<_i12.IAuthService>(),
-          gh<_i19.StreamChatClient>(),
+          gh<_i22.StreamChatClient>(),
         ));
     return this;
   }
 }
 
-class _$InjectableModule extends _i22.InjectableModule {}
+class _$InjectableModule extends _i23.InjectableModule {}

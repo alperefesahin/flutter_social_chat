@@ -6,7 +6,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     super.key,
     required this.appBarTitle,
     required this.appBarAction,
-    required this.appBarBackgroundColor,
+    this.appBarBackgroundColor,
     required this.appBarIconColor,
     this.appBarLeading,
     this.appBarTitleTextStyle,
@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String appBarTitle;
   final IconData? appBarLeading;
   final IconData appBarAction;
-  final Color appBarBackgroundColor;
+  final Color? appBarBackgroundColor;
   final Color appBarIconColor;
   final TextStyle? appBarTitleTextStyle;
   final Function()? leadingOnPressed;
@@ -27,8 +27,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
+
     return AppBar(
-      backgroundColor: appBarBackgroundColor,
+      backgroundColor: appBarBackgroundColor ?? scaffoldBackgroundColor,
       toolbarHeight: 80,
       elevation: 0,
       title: AutoSizeText(

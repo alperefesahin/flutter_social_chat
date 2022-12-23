@@ -48,6 +48,7 @@ dependencies:
   date_format: ^2.0.7
   page_transition: ^2.0.9
   permission_handler: ^10.2.0
+  image: ^3.2.2
 
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.2.0

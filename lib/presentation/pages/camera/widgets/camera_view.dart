@@ -1,7 +1,11 @@
 import 'package:camera/camera.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_direction_row.dart';
-import 'package:flutter_production_app/presentation/pages/camera/widgets/capture_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_production_app/application/camera/camera_cubit.dart';
+import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_output_widget.dart';
+import 'package:flutter_production_app/presentation/pages/camera/widgets/camera_preview_widget.dart';
+import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CameraView extends StatelessWidget {
   const CameraView({
@@ -9,41 +13,34 @@ class CameraView extends StatelessWidget {
     required this.controller,
     required this.cameras,
     required this.onNewCameraSelected,
+    required this.userListController,
   });
 
   final CameraController controller;
   final List<CameraDescription> cameras;
-  final Future<void> Function(CameraDescription cameraDescription) onNewCameraSelected;
+  final Future<void> Function() onNewCameraSelected;
+  final StreamUserListController userListController;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Stack(
-              alignment: AlignmentDirectional.center,
-              fit: StackFit.expand,
-              children: [
-                CameraPreview(controller),
-                CaptureButton(controller: controller),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              children: [
-                cameraDirectionRow(
-                  controller,
-                  cameras,
-                  onNewCameraSelected,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+    return BlocBuilder<CameraCubit, CameraState>(
+      builder: (context, state) {
+        final isPathOfTheTakenPhotoEmpty = state.pathOfTheTakenPhoto == "";
+
+        if (isPathOfTheTakenPhotoEmpty) {
+          return CameraPreviewWidget(
+            controller: controller,
+            cameras: cameras,
+            onNewCameraSelected: onNewCameraSelected,
+          );
+        } else {
+          return CameraOutputWidget(
+            userListController: userListController,
+            pathOfTheTakenPhoto: state.pathOfTheTakenPhoto,
+            sizeOfTheTakenPhoto: state.sizeOfTheTakenPhoto,
+          );
+        }
+      },
     );
   }
 }
