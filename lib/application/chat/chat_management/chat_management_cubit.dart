@@ -84,14 +84,25 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
           filter: Filter.equal('id', selectedUserId),
         );
 
+        print("queryResponse: $queryResponse");
+
+        if (queryResponse.members.isEmpty) {
+          print("empty suanda");
+          return selectedUserId;
+        }
+
         final member = queryResponse.members.single;
         return member.userId;
       },
     ).first;
 
+    print("selectedUserId: $selectedUserId");
+
     final channelId = state.currentUserChannels.firstWhere((channel) {
       return channel.state!.members.map((member) => member.userId).contains(selectedMemberUserId);
     }).id;
+
+    print("channelId: $channelId");
 
     await _chatService.sendPhotoAsMessageToTheSelectedUser(
       channelId: channelId!,
@@ -173,7 +184,19 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   }) {
     final listOfSelectedUserIDs = {...state.listOfSelectedUserIDs};
 
-    listOfSelectedUserIDs.add(user.id);
+    if (listOfSelectedUserIDs.isEmpty) {
+      listOfSelectedUserIDs.add(user.id);
+    }
+
+    emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
+  }
+
+  void removeUserToSendCapturedPhoto({
+    required User user,
+  }) {
+    final listOfSelectedUserIDs = {...state.listOfSelectedUserIDs};
+
+    listOfSelectedUserIDs.remove(user.id);
 
     emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
   }
