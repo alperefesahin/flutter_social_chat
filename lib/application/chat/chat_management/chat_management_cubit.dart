@@ -74,35 +74,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
     emit(state.copyWith(isInProgress: true));
 
-    final selectedUserId = state.listOfSelectedUserIDs.single;
-
-    // we use .first command since there will be only 1 user, it can be single, last or first.
-    // here we just want to be sure about it.
-    final selectedMemberUserId = await state.currentUserChannels.map(
-      (channel) async {
-        final queryResponse = await channel.queryMembers(
-          filter: Filter.equal('id', selectedUserId),
-        );
-
-        print("queryResponse: $queryResponse");
-
-        if (queryResponse.members.isEmpty) {
-          print("empty suanda");
-          return selectedUserId;
-        }
-
-        final member = queryResponse.members.single;
-        return member.userId;
-      },
-    ).first;
-
-    print("selectedUserId: $selectedUserId");
-
-    final channelId = state.currentUserChannels.firstWhere((channel) {
-      return channel.state!.members.map((member) => member.userId).contains(selectedMemberUserId);
-    }).id;
-
-    print("channelId: $channelId");
+    final channelId = state.currentUserChannels[state.userIndex].id;
 
     await _chatService.sendPhotoAsMessageToTheSelectedUser(
       channelId: channelId!,
@@ -181,6 +153,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
   void selectUserToSendCapturedPhoto({
     required User user,
+    required int userIndex,
   }) {
     final listOfSelectedUserIDs = {...state.listOfSelectedUserIDs};
 
@@ -188,7 +161,9 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       listOfSelectedUserIDs.add(user.id);
     }
 
-    emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
+    emit(
+      state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs, userIndex: userIndex),
+    );
   }
 
   void removeUserToSendCapturedPhoto({
@@ -198,7 +173,9 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
     listOfSelectedUserIDs.remove(user.id);
 
-    emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
+    emit(
+      state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs, userIndex: 0),
+    );
   }
 
   /// If there is no a searched channel in the list of channels, then return false. If there is, return true.

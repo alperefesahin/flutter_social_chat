@@ -6,6 +6,7 @@ class ChatManagementState with _$ChatManagementState {
     required bool isInProgress,
     required bool isChannelNameValid,
     required String channelName,
+    required int userIndex,
     required Set<String> listOfSelectedUserIDs,
     required List<Channel> currentUserChannels,
   }) = _ChatManagementState;
@@ -14,6 +15,7 @@ class ChatManagementState with _$ChatManagementState {
         isInProgress: false,
         isChannelNameValid: false,
         channelName: "",
+        userIndex: 0,
         listOfSelectedUserIDs: {},
         currentUserChannels: [],
       );
