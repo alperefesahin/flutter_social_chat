@@ -31,7 +31,7 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
             final channelCreatedTime =
                 formatDate(state.currentUserChannels[index].createdAt!, [yyyy, '-', mm, '-', dd]);
 
-            final user = state.currentUserChannels
+            final listOfMembers = state.currentUserChannels
                 .map((channel) => channel)
                 .toList()[index]
                 .state!
@@ -39,22 +39,20 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
                 .where(
                   (member) => member.userId != currentUid,
                 )
-                .toList()
-                .map((e) => e.user)
-                .first;
+                .toList();
+
+            final user = listOfMembers.map((e) => e.user).first;
 
             final isUserSelected = state.listOfSelectedUserIDs.contains(user!.id);
 
             return InkWell(
               onTap: () {
                 if (isUserSelected) {
-                  context.read<ChatManagementCubit>().removeUserToSendCapturedPhoto(
-                        user: user,
-                      );
+                  context.read<ChatManagementCubit>().removeUserToSendCapturedPhoto(user: user);
                 } else {
-                  context.read<ChatManagementCubit>().selectUserToSendCapturedPhoto(
-                        user: user,
-                      );
+                  context
+                      .read<ChatManagementCubit>()
+                      .selectUserToSendCapturedPhoto(user: user, userIndex: index);
                 }
               },
               child: UserCard(

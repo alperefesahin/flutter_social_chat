@@ -17,9 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChatManagementState {
   bool get isInProgress => throw _privateConstructorUsedError;
-  String get channelName => throw _privateConstructorUsedError;
-  Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
   bool get isChannelNameValid => throw _privateConstructorUsedError;
+  String get channelName => throw _privateConstructorUsedError;
+  int get userIndex => throw _privateConstructorUsedError;
+  Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
   List<Channel> get currentUserChannels => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,9 +36,10 @@ abstract class $ChatManagementStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isInProgress,
-      String channelName,
-      Set<String> listOfSelectedUserIDs,
       bool isChannelNameValid,
+      String channelName,
+      int userIndex,
+      Set<String> listOfSelectedUserIDs,
       List<Channel> currentUserChannels});
 }
 
@@ -55,9 +57,10 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
   @override
   $Res call({
     Object? isInProgress = null,
-    Object? channelName = null,
-    Object? listOfSelectedUserIDs = null,
     Object? isChannelNameValid = null,
+    Object? channelName = null,
+    Object? userIndex = null,
+    Object? listOfSelectedUserIDs = null,
     Object? currentUserChannels = null,
   }) {
     return _then(_value.copyWith(
@@ -65,18 +68,22 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-      channelName: null == channelName
-          ? _value.channelName
-          : channelName // ignore: cast_nullable_to_non_nullable
-              as String,
-      listOfSelectedUserIDs: null == listOfSelectedUserIDs
-          ? _value.listOfSelectedUserIDs
-          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
       isChannelNameValid: null == isChannelNameValid
           ? _value.isChannelNameValid
           : isChannelNameValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      channelName: null == channelName
+          ? _value.channelName
+          : channelName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userIndex: null == userIndex
+          ? _value.userIndex
+          : userIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      listOfSelectedUserIDs: null == listOfSelectedUserIDs
+          ? _value.listOfSelectedUserIDs
+          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
       currentUserChannels: null == currentUserChannels
           ? _value.currentUserChannels
           : currentUserChannels // ignore: cast_nullable_to_non_nullable
@@ -95,9 +102,10 @@ abstract class _$$_ChatManagementStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isInProgress,
-      String channelName,
-      Set<String> listOfSelectedUserIDs,
       bool isChannelNameValid,
+      String channelName,
+      int userIndex,
+      Set<String> listOfSelectedUserIDs,
       List<Channel> currentUserChannels});
 }
 
@@ -113,9 +121,10 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isInProgress = null,
-    Object? channelName = null,
-    Object? listOfSelectedUserIDs = null,
     Object? isChannelNameValid = null,
+    Object? channelName = null,
+    Object? userIndex = null,
+    Object? listOfSelectedUserIDs = null,
     Object? currentUserChannels = null,
   }) {
     return _then(_$_ChatManagementState(
@@ -123,18 +132,22 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-      channelName: null == channelName
-          ? _value.channelName
-          : channelName // ignore: cast_nullable_to_non_nullable
-              as String,
-      listOfSelectedUserIDs: null == listOfSelectedUserIDs
-          ? _value._listOfSelectedUserIDs
-          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
       isChannelNameValid: null == isChannelNameValid
           ? _value.isChannelNameValid
           : isChannelNameValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      channelName: null == channelName
+          ? _value.channelName
+          : channelName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userIndex: null == userIndex
+          ? _value.userIndex
+          : userIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      listOfSelectedUserIDs: null == listOfSelectedUserIDs
+          ? _value._listOfSelectedUserIDs
+          : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
       currentUserChannels: null == currentUserChannels
           ? _value._currentUserChannels
           : currentUserChannels // ignore: cast_nullable_to_non_nullable
@@ -150,9 +163,10 @@ class _$_ChatManagementState
     implements _ChatManagementState {
   const _$_ChatManagementState(
       {required this.isInProgress,
-      required this.channelName,
-      required final Set<String> listOfSelectedUserIDs,
       required this.isChannelNameValid,
+      required this.channelName,
+      required this.userIndex,
+      required final Set<String> listOfSelectedUserIDs,
       required final List<Channel> currentUserChannels})
       : _listOfSelectedUserIDs = listOfSelectedUserIDs,
         _currentUserChannels = currentUserChannels;
@@ -160,7 +174,11 @@ class _$_ChatManagementState
   @override
   final bool isInProgress;
   @override
+  final bool isChannelNameValid;
+  @override
   final String channelName;
+  @override
+  final int userIndex;
   final Set<String> _listOfSelectedUserIDs;
   @override
   Set<String> get listOfSelectedUserIDs {
@@ -170,8 +188,6 @@ class _$_ChatManagementState
     return EqualUnmodifiableSetView(_listOfSelectedUserIDs);
   }
 
-  @override
-  final bool isChannelNameValid;
   final List<Channel> _currentUserChannels;
   @override
   List<Channel> get currentUserChannels {
@@ -183,7 +199,7 @@ class _$_ChatManagementState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatManagementState(isInProgress: $isInProgress, channelName: $channelName, listOfSelectedUserIDs: $listOfSelectedUserIDs, isChannelNameValid: $isChannelNameValid, currentUserChannels: $currentUserChannels)';
+    return 'ChatManagementState(isInProgress: $isInProgress, isChannelNameValid: $isChannelNameValid, channelName: $channelName, userIndex: $userIndex, listOfSelectedUserIDs: $listOfSelectedUserIDs, currentUserChannels: $currentUserChannels)';
   }
 
   @override
@@ -192,9 +208,10 @@ class _$_ChatManagementState
     properties
       ..add(DiagnosticsProperty('type', 'ChatManagementState'))
       ..add(DiagnosticsProperty('isInProgress', isInProgress))
-      ..add(DiagnosticsProperty('channelName', channelName))
-      ..add(DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs))
       ..add(DiagnosticsProperty('isChannelNameValid', isChannelNameValid))
+      ..add(DiagnosticsProperty('channelName', channelName))
+      ..add(DiagnosticsProperty('userIndex', userIndex))
+      ..add(DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs))
       ..add(DiagnosticsProperty('currentUserChannels', currentUserChannels));
   }
 
@@ -205,12 +222,14 @@ class _$_ChatManagementState
             other is _$_ChatManagementState &&
             (identical(other.isInProgress, isInProgress) ||
                 other.isInProgress == isInProgress) &&
-            (identical(other.channelName, channelName) ||
-                other.channelName == channelName) &&
-            const DeepCollectionEquality()
-                .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs) &&
             (identical(other.isChannelNameValid, isChannelNameValid) ||
                 other.isChannelNameValid == isChannelNameValid) &&
+            (identical(other.channelName, channelName) ||
+                other.channelName == channelName) &&
+            (identical(other.userIndex, userIndex) ||
+                other.userIndex == userIndex) &&
+            const DeepCollectionEquality()
+                .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs) &&
             const DeepCollectionEquality()
                 .equals(other._currentUserChannels, _currentUserChannels));
   }
@@ -219,9 +238,10 @@ class _$_ChatManagementState
   int get hashCode => Object.hash(
       runtimeType,
       isInProgress,
-      channelName,
-      const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
       isChannelNameValid,
+      channelName,
+      userIndex,
+      const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
       const DeepCollectionEquality().hash(_currentUserChannels));
 
   @JsonKey(ignore: true)
@@ -235,20 +255,23 @@ class _$_ChatManagementState
 abstract class _ChatManagementState implements ChatManagementState {
   const factory _ChatManagementState(
           {required final bool isInProgress,
-          required final String channelName,
-          required final Set<String> listOfSelectedUserIDs,
           required final bool isChannelNameValid,
+          required final String channelName,
+          required final int userIndex,
+          required final Set<String> listOfSelectedUserIDs,
           required final List<Channel> currentUserChannels}) =
       _$_ChatManagementState;
 
   @override
   bool get isInProgress;
   @override
+  bool get isChannelNameValid;
+  @override
   String get channelName;
   @override
-  Set<String> get listOfSelectedUserIDs;
+  int get userIndex;
   @override
-  bool get isChannelNameValid;
+  Set<String> get listOfSelectedUserIDs;
   @override
   List<Channel> get currentUserChannels;
   @override
