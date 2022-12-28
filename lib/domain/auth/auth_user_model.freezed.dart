@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AuthUserModel _$AuthUserModelFromJson(Map<String, dynamic> json) {
+  return _AuthUserModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AuthUserModel {
   String get id => throw _privateConstructorUsedError;
@@ -21,8 +25,9 @@ mixin _$AuthUserModel {
   bool get isOnboardingCompleted => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
-  File? get userFileImg => throw _privateConstructorUsedError;
+  String? get userFileImg => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AuthUserModelCopyWith<AuthUserModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -40,7 +45,7 @@ abstract class $AuthUserModelCopyWith<$Res> {
       bool isOnboardingCompleted,
       String? userName,
       String? photoUrl,
-      File? userFileImg});
+      String? userFileImg});
 }
 
 /// @nodoc
@@ -87,7 +92,7 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
       userFileImg: freezed == userFileImg
           ? _value.userFileImg
           : userFileImg // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as String?,
     ) as $Val);
   }
 }
@@ -106,7 +111,7 @@ abstract class _$$_AuthUserModelCopyWith<$Res>
       bool isOnboardingCompleted,
       String? userName,
       String? photoUrl,
-      File? userFileImg});
+      String? userFileImg});
 }
 
 /// @nodoc
@@ -151,13 +156,13 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
       userFileImg: freezed == userFileImg
           ? _value.userFileImg
           : userFileImg // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AuthUserModel extends _AuthUserModel {
   const _$_AuthUserModel(
       {required this.id,
@@ -167,6 +172,9 @@ class _$_AuthUserModel extends _AuthUserModel {
       this.photoUrl,
       this.userFileImg})
       : super._();
+
+  factory _$_AuthUserModel.fromJson(Map<String, dynamic> json) =>
+      _$$_AuthUserModelFromJson(json);
 
   @override
   final String id;
@@ -179,7 +187,7 @@ class _$_AuthUserModel extends _AuthUserModel {
   @override
   final String? photoUrl;
   @override
-  final File? userFileImg;
+  final String? userFileImg;
 
   @override
   String toString() {
@@ -204,6 +212,7 @@ class _$_AuthUserModel extends _AuthUserModel {
                 other.userFileImg == userFileImg));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, phoneNumber,
       isOnboardingCompleted, userName, photoUrl, userFileImg);
@@ -213,6 +222,13 @@ class _$_AuthUserModel extends _AuthUserModel {
   @pragma('vm:prefer-inline')
   _$$_AuthUserModelCopyWith<_$_AuthUserModel> get copyWith =>
       __$$_AuthUserModelCopyWithImpl<_$_AuthUserModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AuthUserModelToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AuthUserModel extends AuthUserModel {
@@ -222,8 +238,11 @@ abstract class _AuthUserModel extends AuthUserModel {
       required final bool isOnboardingCompleted,
       final String? userName,
       final String? photoUrl,
-      final File? userFileImg}) = _$_AuthUserModel;
+      final String? userFileImg}) = _$_AuthUserModel;
   const _AuthUserModel._() : super._();
+
+  factory _AuthUserModel.fromJson(Map<String, dynamic> json) =
+      _$_AuthUserModel.fromJson;
 
   @override
   String get id;
@@ -236,7 +255,7 @@ abstract class _AuthUserModel extends AuthUserModel {
   @override
   String? get photoUrl;
   @override
-  File? get userFileImg;
+  String? get userFileImg;
   @override
   @JsonKey(ignore: true)
   _$$_AuthUserModelCopyWith<_$_AuthUserModel> get copyWith =>

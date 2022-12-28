@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ChatUserModel _$ChatUserModelFromJson(Map<String, dynamic> json) {
+  return _ChatUserModel.fromJson(json);
+}
+
 /// @nodoc
 mixin _$ChatUserModel {
   String get createdAt => throw _privateConstructorUsedError;
-  String? get userRole => throw _privateConstructorUsedError;
-  bool? get isUserBanned => throw _privateConstructorUsedError;
+  String get userRole => throw _privateConstructorUsedError;
+  bool get isUserBanned => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ChatUserModelCopyWith<ChatUserModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -31,7 +36,7 @@ abstract class $ChatUserModelCopyWith<$Res> {
           ChatUserModel value, $Res Function(ChatUserModel) then) =
       _$ChatUserModelCopyWithImpl<$Res, ChatUserModel>;
   @useResult
-  $Res call({String createdAt, String? userRole, bool? isUserBanned});
+  $Res call({String createdAt, String userRole, bool isUserBanned});
 }
 
 /// @nodoc
@@ -48,22 +53,22 @@ class _$ChatUserModelCopyWithImpl<$Res, $Val extends ChatUserModel>
   @override
   $Res call({
     Object? createdAt = null,
-    Object? userRole = freezed,
-    Object? isUserBanned = freezed,
+    Object? userRole = null,
+    Object? isUserBanned = null,
   }) {
     return _then(_value.copyWith(
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
-      userRole: freezed == userRole
+      userRole: null == userRole
           ? _value.userRole
           : userRole // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isUserBanned: freezed == isUserBanned
+              as String,
+      isUserBanned: null == isUserBanned
           ? _value.isUserBanned
           : isUserBanned // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ) as $Val);
   }
 }
@@ -76,7 +81,7 @@ abstract class _$$_ChatUserModelCopyWith<$Res>
       __$$_ChatUserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String createdAt, String? userRole, bool? isUserBanned});
+  $Res call({String createdAt, String userRole, bool isUserBanned});
 }
 
 /// @nodoc
@@ -91,28 +96,28 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? createdAt = null,
-    Object? userRole = freezed,
-    Object? isUserBanned = freezed,
+    Object? userRole = null,
+    Object? isUserBanned = null,
   }) {
     return _then(_$_ChatUserModel(
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
-      userRole: freezed == userRole
+      userRole: null == userRole
           ? _value.userRole
           : userRole // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isUserBanned: freezed == isUserBanned
+              as String,
+      isUserBanned: null == isUserBanned
           ? _value.isUserBanned
           : isUserBanned // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_ChatUserModel extends _ChatUserModel {
   const _$_ChatUserModel(
       {required this.createdAt,
@@ -120,12 +125,15 @@ class _$_ChatUserModel extends _ChatUserModel {
       required this.isUserBanned})
       : super._();
 
+  factory _$_ChatUserModel.fromJson(Map<String, dynamic> json) =>
+      _$$_ChatUserModelFromJson(json);
+
   @override
   final String createdAt;
   @override
-  final String? userRole;
+  final String userRole;
   @override
-  final bool? isUserBanned;
+  final bool isUserBanned;
 
   @override
   String toString() {
@@ -145,6 +153,7 @@ class _$_ChatUserModel extends _ChatUserModel {
                 other.isUserBanned == isUserBanned));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, createdAt, userRole, isUserBanned);
@@ -154,21 +163,31 @@ class _$_ChatUserModel extends _ChatUserModel {
   @pragma('vm:prefer-inline')
   _$$_ChatUserModelCopyWith<_$_ChatUserModel> get copyWith =>
       __$$_ChatUserModelCopyWithImpl<_$_ChatUserModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ChatUserModelToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ChatUserModel extends ChatUserModel {
   const factory _ChatUserModel(
       {required final String createdAt,
-      required final String? userRole,
-      required final bool? isUserBanned}) = _$_ChatUserModel;
+      required final String userRole,
+      required final bool isUserBanned}) = _$_ChatUserModel;
   const _ChatUserModel._() : super._();
+
+  factory _ChatUserModel.fromJson(Map<String, dynamic> json) =
+      _$_ChatUserModel.fromJson;
 
   @override
   String get createdAt;
   @override
-  String? get userRole;
+  String get userRole;
   @override
-  bool? get isUserBanned;
+  bool get isUserBanned;
   @override
   @JsonKey(ignore: true)
   _$$_ChatUserModelCopyWith<_$_ChatUserModel> get copyWith =>

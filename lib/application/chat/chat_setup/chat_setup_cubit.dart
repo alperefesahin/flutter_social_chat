@@ -2,12 +2,12 @@
 
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
@@ -15,7 +15,7 @@ part 'chat_setup_state.dart';
 part 'chat_setup_cubit.freezed.dart';
 
 @lazySingleton
-class ChatSetupCubit extends Cubit<ChatSetupState> {
+class ChatSetupCubit extends HydratedCubit<ChatSetupState> {
   late StreamSubscription<ChatUserModel>? _chatUserSubscription;
 
   late final IChatService _chatService;
@@ -40,5 +40,20 @@ class ChatSetupCubit extends Cubit<ChatSetupState> {
     emit(
       state.copyWith(chatUser: chatUser, isUserCheckedFromChatService: true),
     );
+  }
+
+  @override
+  ChatSetupState? fromJson(Map<String, dynamic> json) {
+    return ChatSetupState.empty().copyWith(
+      chatUser: json["chatUser"],
+    );
+  }
+
+  @override
+  Map<String, dynamic>? toJson(ChatSetupState state) {
+    print(state);
+    return {
+      "chatUser": state.chatUser.toJson(),
+    };
   }
 }

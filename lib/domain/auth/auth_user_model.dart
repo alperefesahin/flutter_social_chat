@@ -1,7 +1,7 @@
-import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_user_model.freezed.dart';
+part 'auth_user_model.g.dart';
 
 @freezed
 class AuthUserModel with _$AuthUserModel {
@@ -11,7 +11,7 @@ class AuthUserModel with _$AuthUserModel {
     required bool isOnboardingCompleted,
     String? userName,
     String? photoUrl,
-    File? userFileImg,
+    String? userFileImg,
   }) = _AuthUserModel;
 
   const AuthUserModel._();
@@ -23,4 +23,6 @@ class AuthUserModel with _$AuthUserModel {
         userName: '',
         photoUrl: '',
       );
+
+  factory AuthUserModel.fromJson(Map<String, dynamic> json) => _$AuthUserModelFromJson(json);
 }
