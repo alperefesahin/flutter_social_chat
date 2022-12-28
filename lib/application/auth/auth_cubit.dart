@@ -2,7 +2,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -12,6 +11,7 @@ import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,7 +19,7 @@ part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 
 @lazySingleton
-class AuthCubit extends Cubit<AuthState> {
+class AuthCubit extends HydratedCubit<AuthState> {
   late final IAuthService _authService;
   late final IChatService _chatService;
   late final FirebaseStorage _firebaseStorage;
@@ -98,7 +98,7 @@ class AuthCubit extends Cubit<AuthState> {
       return;
     }
 
-    final temporaryFile = File(path.path);
+    final temporaryFilePath = File(path.path).path;
 
     emit(
       state.copyWith(
@@ -106,7 +106,7 @@ class AuthCubit extends Cubit<AuthState> {
           id: state.authUser.id,
           phoneNumber: state.authUser.phoneNumber,
           isOnboardingCompleted: state.authUser.isOnboardingCompleted,
-          userFileImg: temporaryFile,
+          userFileImg: temporaryFilePath,
           photoUrl: state.authUser.photoUrl,
           userName: state.authUser.userName,
         ),
@@ -124,7 +124,7 @@ class AuthCubit extends Cubit<AuthState> {
     final uid = state.authUser.id;
 
     if (state.authUser.userFileImg != null && state.isUserNameValid) {
-      await _firebaseStorage.ref(uid).putFile(state.authUser.userFileImg!).then(
+      await _firebaseStorage.ref(uid).putFile(File(state.authUser.userFileImg!)).then(
         (taskState) async {
           if (taskState.state.name == TaskState.success.name) {
             await downloadUrl();
@@ -169,5 +169,15 @@ class AuthCubit extends Cubit<AuthState> {
         );
       },
     );
+  }
+
+  @override
+  AuthState? fromJson(Map<String, dynamic> json) {
+    return AuthState.empty().copyWith(authUser: json["authUser"]);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(AuthState state) {
+    return {"authUser": state.authUser.toJson()};
   }
 }

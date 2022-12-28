@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +13,7 @@ class ProfileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final newImage = authState.authUser.userFileImg;
+    final newImagePath = authState.authUser.userFileImg;
     final size = MediaQuery.of(context).size;
 
     return Padding(
@@ -38,9 +36,9 @@ class ProfileImage extends StatelessWidget {
               ),
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: newImage == null
+                image: newImagePath == null
                     ? const AssetImage("assets/images/user.png") as ImageProvider
-                    : FileImage(File(newImage.path)),
+                    : FileImage(File(newImagePath)),
               ),
             ),
           ),

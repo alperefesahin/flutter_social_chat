@@ -8,7 +8,7 @@ extension GetstreamUserDomainX on OwnUser {
   ChatUserModel toDomain() {
     return ChatUserModel(
       createdAt: formatDate(createdAt, [yyyy, '-', mm, '-', dd]),
-      userRole: role?.toUpperCase(),
+      userRole: role?.toUpperCase() ?? "?",
       isUserBanned: banned,
     );
   }
