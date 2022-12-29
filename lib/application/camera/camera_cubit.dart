@@ -5,8 +5,8 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
-import 'package:flutter_production_app/domain/camera/i_camera_handler.dart';
-import 'package:flutter_production_app/infrastructure/camera/camera_handler.dart';
+import 'package:flutter_production_app/domain/camera/i_camera_service.dart';
+import 'package:flutter_production_app/infrastructure/camera/camera_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart' as img;
 import 'package:injectable/injectable.dart';
@@ -17,7 +17,7 @@ part 'camera_state.dart';
 
 @injectable
 class CameraCubit extends Cubit<CameraState> {
-  late final ICameraHandler _cameraHandler;
+  late final ICameraService _cameraHandler;
   late StreamSubscription<PermissionStatus>? _cameraPermissionSubscription;
 
   CameraCubit() : super(CameraState.empty()) {

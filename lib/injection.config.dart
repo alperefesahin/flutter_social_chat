@@ -22,7 +22,7 @@ import 'package:flutter_production_app/application/connectivity/connectivity_cub
 import 'package:flutter_production_app/application/microphone/microphone_cubit.dart'
     as _i21;
 import 'package:flutter_production_app/domain/auth/i_auth_service.dart' as _i13;
-import 'package:flutter_production_app/domain/camera/i_camera_handler.dart'
+import 'package:flutter_production_app/domain/camera/i_camera_service.dart'
     as _i15;
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart' as _i23;
 import 'package:flutter_production_app/domain/connectivity/i_connectivity_service.dart'
@@ -31,7 +31,7 @@ import 'package:flutter_production_app/domain/microphone/i_microphone_handler.da
     as _i19;
 import 'package:flutter_production_app/infrastructure/auth/firebase_auth_service.dart'
     as _i14;
-import 'package:flutter_production_app/infrastructure/camera/camera_handler.dart'
+import 'package:flutter_production_app/infrastructure/camera/camera_service.dart'
     as _i16;
 import 'package:flutter_production_app/infrastructure/chat/getstream_chat_service.dart'
     as _i24;
@@ -76,7 +76,7 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i10.FirebaseAuth>(),
           gh<_i11.FirebaseFirestore>(),
         ));
-    gh.lazySingleton<_i15.ICameraHandler>(() => _i16.CameraHandler());
+    gh.lazySingleton<_i15.ICameraService>(() => _i16.CameraHandler());
     gh.lazySingleton<_i17.IConnectivityService>(
         () => _i18.ConnectivityHandler());
     gh.lazySingleton<_i19.IMicrophoneHandler>(() => _i20.MicrophoneHandler());

@@ -1,6 +1,6 @@
 import 'package:permission_handler/permission_handler.dart';
 
-abstract class ICameraHandler {
+abstract class ICameraService {
   Stream<PermissionStatus> get cameraStateChanges;
 
   Future<PermissionStatus> requestPermission();
