@@ -50,6 +50,7 @@ dependencies:
   permission_handler: ^10.2.0
   image: ^3.2.2
   path_provider: ^2.0.11
+  connectivity_plus: ^3.0.2
 
   flutter_bloc: ^8.1.1
   hydrated_bloc: ^9.0.0

@@ -7,7 +7,6 @@ import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_production_app/domain/camera/i_camera_handler.dart';
 import 'package:flutter_production_app/infrastructure/camera/camera_handler.dart';
-import 'package:flutter_production_app/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart' as img;
 import 'package:injectable/injectable.dart';
@@ -22,7 +21,7 @@ class CameraCubit extends Cubit<CameraState> {
   late StreamSubscription<PermissionStatus>? _cameraPermissionSubscription;
 
   CameraCubit() : super(CameraState.empty()) {
-    _cameraHandler = getIt<CameraHandler>();
+    _cameraHandler = CameraHandler();
 
     _cameraPermissionSubscription =
         _cameraHandler.cameraStateChanges.listen(_listenCameraStateChangesStream);

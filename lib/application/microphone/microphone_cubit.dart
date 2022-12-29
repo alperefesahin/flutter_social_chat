@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_production_app/domain/microphone/i_microphone_handler.dart';
 import 'package:flutter_production_app/infrastructure/microphone/microphone_handler.dart';
-import 'package:flutter_production_app/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -19,7 +18,7 @@ class MicrophoneCubit extends Cubit<MicrophoneState> {
   late StreamSubscription<PermissionStatus>? _microphonePermissionSubscription;
 
   MicrophoneCubit() : super(MicrophoneState.empty()) {
-    _microphoneHandler = getIt<MicrophoneHandler>();
+    _microphoneHandler = MicrophoneHandler();
 
     _microphonePermissionSubscription =
         _microphoneHandler.microphoneStateChanges.listen(_listenMicrophoneStateChangesStream);
