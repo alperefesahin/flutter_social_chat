@@ -1,9 +1,9 @@
-import 'package:flutter_production_app/domain/microphone/i_microphone_handler.dart';
+import 'package:flutter_production_app/domain/microphone/i_microphone_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-@LazySingleton(as: IMicrophoneHandler)
-class MicrophoneHandler implements IMicrophoneHandler {
+@LazySingleton(as: IMicrophoneService)
+class MicrophoneService implements IMicrophoneService {
   @override
   Stream<PermissionStatus> get microphoneStateChanges {
     const microphone = Permission.microphone;
