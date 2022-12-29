@@ -17,14 +17,14 @@ part 'camera_state.dart';
 
 @injectable
 class CameraCubit extends Cubit<CameraState> {
-  late final ICameraService _cameraHandler;
+  late final ICameraService _cameraService;
   late StreamSubscription<PermissionStatus>? _cameraPermissionSubscription;
 
   CameraCubit() : super(CameraState.empty()) {
-    _cameraHandler = CameraHandler();
+    _cameraService = CameraService();
 
     _cameraPermissionSubscription =
-        _cameraHandler.cameraStateChanges.listen(_listenCameraStateChangesStream);
+        _cameraService.cameraStateChanges.listen(_listenCameraStateChangesStream);
   }
 
   @override
@@ -41,7 +41,7 @@ class CameraCubit extends Cubit<CameraState> {
     if (cameraPermission.isGranted || cameraPermission.isLimited) {
       emit(state.copyWith(isCameraPermissionGranted: true));
     } else if (cameraPermission.isDenied || cameraPermission.isRestricted) {
-      final requestPermission = await _cameraHandler.requestPermission();
+      final requestPermission = await _cameraService.requestPermission();
 
       if (requestPermission.isGranted || requestPermission.isLimited) {
         emit(state.copyWith(isCameraPermissionGranted: true));
@@ -49,7 +49,7 @@ class CameraCubit extends Cubit<CameraState> {
         emit(state.copyWith(isCameraPermissionGranted: false));
       }
     } else {
-      _cameraHandler.openAppSettingsForTheCameraPermission();
+      _cameraService.openAppSettingsForTheCameraPermission();
     }
   }
 

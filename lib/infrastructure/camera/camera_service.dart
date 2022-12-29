@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 @LazySingleton(as: ICameraService)
-class CameraHandler implements ICameraService {
+class CameraService implements ICameraService {
   @override
   Stream<PermissionStatus> get cameraStateChanges {
     const camera = Permission.camera;
