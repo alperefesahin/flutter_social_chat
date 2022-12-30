@@ -44,6 +44,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   void reset() {
     emit(
       state.copyWith(
+        listOfSelectedUsers: {},
         listOfSelectedUserIDs: {},
         channelName: "",
       ),
@@ -139,15 +140,29 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     required bool isCreateNewChatPageForCreatingGroup,
   }) {
     final listOfSelectedUserIDs = {...state.listOfSelectedUserIDs};
+    final listOfSelectedUsers = {...state.listOfSelectedUsers};
 
     if (!isCreateNewChatPageForCreatingGroup) {
       if (listOfSelectedUserIDs.isEmpty) {
         listOfSelectedUserIDs.add(user.id);
+        listOfSelectedUsers.add(user);
       }
-      emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
+      emit(
+        state.copyWith(
+          listOfSelectedUserIDs: listOfSelectedUserIDs,
+          listOfSelectedUsers: listOfSelectedUsers,
+        ),
+      );
     } else if (isCreateNewChatPageForCreatingGroup) {
       listOfSelectedUserIDs.add(user.id);
-      emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs));
+      listOfSelectedUsers.add(user);
+
+      emit(
+        state.copyWith(
+          listOfSelectedUserIDs: listOfSelectedUserIDs,
+          listOfSelectedUsers: listOfSelectedUsers,
+        ),
+      );
     }
   }
 

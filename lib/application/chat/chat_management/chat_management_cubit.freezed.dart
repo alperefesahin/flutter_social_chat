@@ -21,6 +21,7 @@ mixin _$ChatManagementState {
   String get channelName => throw _privateConstructorUsedError;
   int get userIndex => throw _privateConstructorUsedError;
   Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
+  Set<User> get listOfSelectedUsers => throw _privateConstructorUsedError;
   List<Channel> get currentUserChannels => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,6 +41,7 @@ abstract class $ChatManagementStateCopyWith<$Res> {
       String channelName,
       int userIndex,
       Set<String> listOfSelectedUserIDs,
+      Set<User> listOfSelectedUsers,
       List<Channel> currentUserChannels});
 }
 
@@ -61,6 +63,7 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
     Object? channelName = null,
     Object? userIndex = null,
     Object? listOfSelectedUserIDs = null,
+    Object? listOfSelectedUsers = null,
     Object? currentUserChannels = null,
   }) {
     return _then(_value.copyWith(
@@ -84,6 +87,10 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
           ? _value.listOfSelectedUserIDs
           : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      listOfSelectedUsers: null == listOfSelectedUsers
+          ? _value.listOfSelectedUsers
+          : listOfSelectedUsers // ignore: cast_nullable_to_non_nullable
+              as Set<User>,
       currentUserChannels: null == currentUserChannels
           ? _value.currentUserChannels
           : currentUserChannels // ignore: cast_nullable_to_non_nullable
@@ -106,6 +113,7 @@ abstract class _$$_ChatManagementStateCopyWith<$Res>
       String channelName,
       int userIndex,
       Set<String> listOfSelectedUserIDs,
+      Set<User> listOfSelectedUsers,
       List<Channel> currentUserChannels});
 }
 
@@ -125,6 +133,7 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
     Object? channelName = null,
     Object? userIndex = null,
     Object? listOfSelectedUserIDs = null,
+    Object? listOfSelectedUsers = null,
     Object? currentUserChannels = null,
   }) {
     return _then(_$_ChatManagementState(
@@ -148,6 +157,10 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
           ? _value._listOfSelectedUserIDs
           : listOfSelectedUserIDs // ignore: cast_nullable_to_non_nullable
               as Set<String>,
+      listOfSelectedUsers: null == listOfSelectedUsers
+          ? _value._listOfSelectedUsers
+          : listOfSelectedUsers // ignore: cast_nullable_to_non_nullable
+              as Set<User>,
       currentUserChannels: null == currentUserChannels
           ? _value._currentUserChannels
           : currentUserChannels // ignore: cast_nullable_to_non_nullable
@@ -167,8 +180,10 @@ class _$_ChatManagementState
       required this.channelName,
       required this.userIndex,
       required final Set<String> listOfSelectedUserIDs,
+      required final Set<User> listOfSelectedUsers,
       required final List<Channel> currentUserChannels})
       : _listOfSelectedUserIDs = listOfSelectedUserIDs,
+        _listOfSelectedUsers = listOfSelectedUsers,
         _currentUserChannels = currentUserChannels;
 
   @override
@@ -188,6 +203,15 @@ class _$_ChatManagementState
     return EqualUnmodifiableSetView(_listOfSelectedUserIDs);
   }
 
+  final Set<User> _listOfSelectedUsers;
+  @override
+  Set<User> get listOfSelectedUsers {
+    if (_listOfSelectedUsers is EqualUnmodifiableSetView)
+      return _listOfSelectedUsers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_listOfSelectedUsers);
+  }
+
   final List<Channel> _currentUserChannels;
   @override
   List<Channel> get currentUserChannels {
@@ -199,7 +223,7 @@ class _$_ChatManagementState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatManagementState(isInProgress: $isInProgress, isChannelNameValid: $isChannelNameValid, channelName: $channelName, userIndex: $userIndex, listOfSelectedUserIDs: $listOfSelectedUserIDs, currentUserChannels: $currentUserChannels)';
+    return 'ChatManagementState(isInProgress: $isInProgress, isChannelNameValid: $isChannelNameValid, channelName: $channelName, userIndex: $userIndex, listOfSelectedUserIDs: $listOfSelectedUserIDs, listOfSelectedUsers: $listOfSelectedUsers, currentUserChannels: $currentUserChannels)';
   }
 
   @override
@@ -212,6 +236,7 @@ class _$_ChatManagementState
       ..add(DiagnosticsProperty('channelName', channelName))
       ..add(DiagnosticsProperty('userIndex', userIndex))
       ..add(DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs))
+      ..add(DiagnosticsProperty('listOfSelectedUsers', listOfSelectedUsers))
       ..add(DiagnosticsProperty('currentUserChannels', currentUserChannels));
   }
 
@@ -231,6 +256,8 @@ class _$_ChatManagementState
             const DeepCollectionEquality()
                 .equals(other._listOfSelectedUserIDs, _listOfSelectedUserIDs) &&
             const DeepCollectionEquality()
+                .equals(other._listOfSelectedUsers, _listOfSelectedUsers) &&
+            const DeepCollectionEquality()
                 .equals(other._currentUserChannels, _currentUserChannels));
   }
 
@@ -242,6 +269,7 @@ class _$_ChatManagementState
       channelName,
       userIndex,
       const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
+      const DeepCollectionEquality().hash(_listOfSelectedUsers),
       const DeepCollectionEquality().hash(_currentUserChannels));
 
   @JsonKey(ignore: true)
@@ -259,6 +287,7 @@ abstract class _ChatManagementState implements ChatManagementState {
           required final String channelName,
           required final int userIndex,
           required final Set<String> listOfSelectedUserIDs,
+          required final Set<User> listOfSelectedUsers,
           required final List<Channel> currentUserChannels}) =
       _$_ChatManagementState;
 
@@ -272,6 +301,8 @@ abstract class _ChatManagementState implements ChatManagementState {
   int get userIndex;
   @override
   Set<String> get listOfSelectedUserIDs;
+  @override
+  Set<User> get listOfSelectedUsers;
   @override
   List<Channel> get currentUserChannels;
   @override

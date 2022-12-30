@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
@@ -26,31 +27,33 @@ class CreateNewChatPage extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           appBarTitle: "",
-          appBarAction: Icons.exit_to_app,
-          actionsOnPressed: () {
+          appBarAction: CupertinoIcons.line_horizontal_3_decrease,
+          appBarLeading: CupertinoIcons.back,
+          leadingOnPressed: () {
             context.read<ChatManagementCubit>().reset();
             context.go(context.namedLocation("channels_page"));
           },
-          appBarBackgroundColor: whiteColor,
           appBarIconColor: blackColor,
         ),
-        body: RefreshIndicator(
-          onRefresh: () => userListController.refresh(),
-          child: Column(
-            children: [
-              UserListView(
-                userListController: userListController,
-                isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
-              ),
-              if (isCreateNewChatPageForCreatingGroup!)
-                CreatingGroupChatPageDetails(
+        body: SingleChildScrollView(
+          child: RefreshIndicator(
+            onRefresh: () => userListController.refresh(),
+            child: Column(
+              children: [
+                UserListView(
+                  userListController: userListController,
                   isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
-                )
-              else
-                CreateNewChatButton(
-                  isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
                 ),
-            ],
+                if (isCreateNewChatPageForCreatingGroup!)
+                  CreatingGroupChatPageDetails(
+                    isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
+                  )
+                else
+                  CreateNewChatButton(
+                    isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
+                  ),
+              ],
+            ),
           ),
         ),
       ),
