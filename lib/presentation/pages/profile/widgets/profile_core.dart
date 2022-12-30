@@ -8,38 +8,44 @@ class ProfileCore extends StatelessWidget {
     required this.userName,
     required this.userPhoneNumber,
     required this.userPhotoUrl,
+    required this.userId,
   });
 
   final String userName;
   final String userPhoneNumber;
   final String userPhotoUrl;
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 50, bottom: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ProfileImage(
-            userPhotoUrl: userPhotoUrl,
+    return Row(
+      children: [
+        ProfileImage(
+          userPhotoUrl: userPhotoUrl,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 80, left: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomText(
+                text: "@$userName",
+                minFontSize: 25,
+                maxFontSize: 30,
+                textStyle: const TextStyle(fontWeight: FontWeight.w700),
+                textPadding: const EdgeInsets.only(top: 12),
+              ),
+              CustomText(
+                text: userId,
+                minFontSize: 13,
+                maxFontSize: 14,
+                textStyle: const TextStyle(fontWeight: FontWeight.w400),
+                textPadding: const EdgeInsets.only(top: 5),
+              ),
+            ],
           ),
-          CustomText(
-            text: "@$userName",
-            minFontSize: 22,
-            maxFontSize: 25,
-            textStyle: const TextStyle(fontWeight: FontWeight.w700),
-            textPadding: const EdgeInsets.only(top: 12),
-          ),
-          CustomText(
-            text: userPhoneNumber,
-            minFontSize: 17,
-            maxFontSize: 20,
-            textStyle: const TextStyle(fontWeight: FontWeight.w400),
-            textPadding: const EdgeInsets.only(top: 5),
-          ),
-        ],
-      ),
+        )
+      ],
     );
   }
 }

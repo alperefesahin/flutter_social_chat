@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
-import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/common_widgets/custom_app_bar.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
-import 'package:flutter_production_app/presentation/pages/profile/constants/texts.dart';
+import 'package:flutter_production_app/presentation/pages/profile/widgets/custom_profile_button.dart';
 import 'package:flutter_production_app/presentation/pages/profile/widgets/profile_core.dart';
 import 'package:flutter_production_app/presentation/pages/profile/widgets/user_details.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +27,7 @@ class ProfilePage extends StatelessWidget {
             builder: (context, authState) {
               final String? userName = authState.authUser.userName;
               final String? userPhotoUrl = authState.authUser.photoUrl;
+              final String userId = authState.authUser.id.replaceRange(8, 25, "*****");
               final String userPhoneNumber = authState.authUser.phoneNumber;
 
               final String userRole = chatSetupState.chatUser.userRole;
@@ -36,33 +35,52 @@ class ProfilePage extends StatelessWidget {
               final bool isUserBannedStatus = chatSetupState.chatUser.isUserBanned;
 
               return Scaffold(
-                appBar: CustomAppBar(
-                  appBarTitle: profilePage,
-                  appBarTitleTextStyle:
-                      const TextStyle(color: kiwiColor, fontWeight: FontWeight.w700),
-                  appBarAction: Icons.exit_to_app,
-                  actionsOnPressed: () {
-                    context.read<AuthCubit>().signOut();
-                    context.read<PhoneNumberSignInCubit>().reset();
-                  },
-                  appBarBackgroundColor: kiwiBackColor,
-                  appBarIconColor: kiwiColor,
-                ),
-                body: Center(
+                body: Padding(
+                  padding: const EdgeInsets.only(top: 50),
                   child: Column(
                     children: [
-                      ProfileCore(
-                        userName: userName!,
-                        userPhoneNumber: userPhoneNumber,
-                        userPhotoUrl: userPhotoUrl!,
+                      Stack(
+                        alignment: Alignment.bottomLeft,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 15,
+                              right: 15,
+                              left: 15,
+                              bottom: 100,
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height / 2.5,
+                              decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                    "assets/images/flutter.png",
+                                  ),
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
+                                ),
+                              ),
+                            ),
+                          ),
+                          ProfileCore(
+                            userName: userName!,
+                            userPhoneNumber: userPhoneNumber,
+                            userPhotoUrl: userPhotoUrl!,
+                            userId: userId,
+                          ),
+                        ],
                       ),
-                      const Divider(thickness: 1, endIndent: 20, indent: 20),
                       ProfileDetails(
                         createdAt: createdAt,
                         userRole: userRole,
                         isUserBannedStatus: isUserBannedStatus,
                       ),
-                      const Divider(thickness: 1, endIndent: 20, indent: 20),
+                      const CustomProfileButton(),
                     ],
                   ),
                 ),

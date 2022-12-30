@@ -17,13 +17,21 @@ class ProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      padding: const EdgeInsets.symmetric(vertical: 35),
+      child: Column(
         children: [
-          TitleTextPair(title: createdAtText, text: createdAt),
-          TitleTextPair(title: role, text: userRole),
-          TitleTextPair(title: banStatus, text: isUserBannedStatus ? "Banned" : "None"),
+          const Divider(thickness: 1, endIndent: 20, indent: 20),
+          const SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TitleTextPair(title: createdAtText, text: createdAt),
+              TitleTextPair(title: role, text: userRole),
+              TitleTextPair(title: banStatus, text: isUserBannedStatus ? "Banned" : "None"),
+            ],
+          ),
+          const SizedBox(height: 20),
+          const Divider(thickness: 1, endIndent: 20, indent: 20),
         ],
       ),
     );
