@@ -23,45 +23,30 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         validator: validator,
         autocorrect: false,
-        cursorColor: kiwiColor,
+        cursorColor: blackColor,
         onChanged: onChanged,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(25.0)),
-            borderSide: BorderSide(
-              color: kiwiColor,
-            ),
           ),
           focusedBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(25.0)),
-            borderSide: BorderSide(
-              color: kiwiColor,
-            ),
           ),
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(25.0)),
-            borderSide: BorderSide(
-              color: kiwiColor,
-            ),
           ),
           focusedErrorBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(25.0)),
-            borderSide: BorderSide(
-              color: kiwiColor,
-            ),
           ),
           errorBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(25.0)),
-            borderSide: BorderSide(
-              color: kiwiColor,
-            ),
           ),
           labelText: labelText,
           hintText: hintText,
-          iconColor: kiwiColor,
-          hintStyle: const TextStyle(color: kiwiColor),
-          labelStyle: const TextStyle(color: kiwiColor),
-          prefixIcon: Icon(icon, color: kiwiColor),
+          iconColor: blackColor,
+          hintStyle: const TextStyle(color: blackColor),
+          labelStyle: const TextStyle(color: blackColor),
+          prefixIcon: Icon(icon, color: blackColor),
         ),
       ),
     );
