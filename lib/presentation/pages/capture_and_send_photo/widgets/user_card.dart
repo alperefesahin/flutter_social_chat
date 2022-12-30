@@ -66,7 +66,9 @@ class UserCard extends StatelessWidget {
                       textStyle: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                     CustomText(
-                      text: "$lastMessageOn $memberlastMessageTime.",
+                      text: memberlastMessageTime == startNewConversation
+                          ? startNewConversation
+                          : "$lastMessageOn $memberlastMessageTime.",
                       minFontSize: 15,
                       maxFontSize: 20,
                       textPadding: const EdgeInsets.only(left: 10, bottom: 20),
