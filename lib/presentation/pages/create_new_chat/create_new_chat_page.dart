@@ -35,23 +35,25 @@ class CreateNewChatPage extends StatelessWidget {
           },
           appBarIconColor: blackColor,
         ),
-        body: RefreshIndicator(
-          onRefresh: () => userListController.refresh(),
-          child: Column(
-            children: [
-              UserListView(
-                userListController: userListController,
-                isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
-              ),
-              if (isCreateNewChatPageForCreatingGroup!)
-                CreatingGroupChatPageDetails(
+        body: SingleChildScrollView(
+          child: RefreshIndicator(
+            onRefresh: () => userListController.refresh(),
+            child: Column(
+              children: [
+                UserListView(
+                  userListController: userListController,
                   isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
-                )
-              else
-                CreateNewChatButton(
-                  isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
                 ),
-            ],
+                if (isCreateNewChatPageForCreatingGroup!)
+                  CreatingGroupChatPageDetails(
+                    isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
+                  )
+                else
+                  CreateNewChatButton(
+                    isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
+                  ),
+              ],
+            ),
           ),
         ),
       ),

@@ -8,6 +8,7 @@ class ChatManagementState with _$ChatManagementState {
     required String channelName,
     required int userIndex,
     required Set<String> listOfSelectedUserIDs,
+    required Set<User> listOfSelectedUsers,
     required List<Channel> currentUserChannels,
   }) = _ChatManagementState;
 
@@ -17,6 +18,7 @@ class ChatManagementState with _$ChatManagementState {
         channelName: "",
         userIndex: 0,
         listOfSelectedUserIDs: {},
+        listOfSelectedUsers: {},
         currentUserChannels: [],
       );
 }

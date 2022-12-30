@@ -14,18 +14,21 @@ class CreateNewChatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: const ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(customIndigoColor),
-        padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
-      ),
-      onPressed: () {
-        context.read<ChatManagementCubit>().createNewChannel(
-              isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
-            );
-      },
-      child: Text(
-        isCreateNewChatPageForCreatingGroup ? createNewGroupChat : createNewOneToOneChat,
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: ElevatedButton(
+        style: const ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(customIndigoColor),
+          padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
+        ),
+        onPressed: () {
+          context.read<ChatManagementCubit>().createNewChannel(
+                isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
+              );
+        },
+        child: Text(
+          isCreateNewChatPageForCreatingGroup ? createNewGroupChat : createNewOneToOneChat,
+        ),
       ),
     );
   }

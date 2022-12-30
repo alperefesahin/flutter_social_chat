@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
+import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/pages/create_new_chat/constants/texts.dart';
 
 class ChannelNameFormField extends StatelessWidget {
@@ -10,7 +11,7 @@ class ChannelNameFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       child: Form(
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: TextFormField(
@@ -35,8 +36,27 @@ class ChannelNameFormField extends StatelessWidget {
           onChanged: (channelName) =>
               context.read<ChatManagementCubit>().channelNameChanged(channelName: channelName),
           decoration: const InputDecoration(
-            prefixIcon: Icon(CupertinoIcons.group_solid),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            ),
             labelText: groupName,
+            hintText: yourInspirationalGroupName,
+            iconColor: blackColor,
+            hintStyle: TextStyle(color: blackColor),
+            labelStyle: TextStyle(color: blackColor),
+            prefixIcon: Icon(CupertinoIcons.group, color: blackColor),
           ),
         ),
       ),
