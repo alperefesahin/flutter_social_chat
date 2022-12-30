@@ -43,6 +43,12 @@ class SearchedChannel extends StatelessWidget {
               lengthOfTheChannelMembers: lengthOfTheChannelMembers,
             );
 
+    final lastMessage = channel.state!.lastMessage == null
+        ? beDeepIntoTheConversation
+        : channel.state!.lastMessage!.attachments.isNotEmpty
+            ? attachmentText
+            : channel.state!.lastMessage!.text;
+
     if (isTheSearchedChannelExist) {
       return defaultWidget.copyWith(
         contentPadding: const EdgeInsets.only(left: 15, right: 15, bottom: 8),
@@ -64,7 +70,7 @@ class SearchedChannel extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Text(
-          channel.state!.lastMessage?.text ?? beDeepIntoTheConversation,
+          lastMessage!,
           style: const TextStyle(fontSize: 15),
           overflow: TextOverflow.ellipsis,
         ),

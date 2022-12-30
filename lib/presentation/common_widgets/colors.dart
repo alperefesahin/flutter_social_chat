@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color customIndigoColor = Color.fromRGBO(52, 54, 211, 1);
+const Color customIndigoColor = Color.fromRGBO(35, 105, 255, 1);
 const Color customIndigoBackgroundColor = Color.fromRGBO(104, 108, 228, 1);
 
 final Color customGreyColor600 = Colors.grey[600]!;

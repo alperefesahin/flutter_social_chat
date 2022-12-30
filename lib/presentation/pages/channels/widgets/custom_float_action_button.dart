@@ -17,7 +17,7 @@ class CustomFloatActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: floatingActionButtonColor,
+      backgroundColor: customIndigoColor,
       heroTag: null,
       onPressed: () {
         context.go(
