@@ -15,9 +15,8 @@ class AnimatedCreateNewChatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpandableFab(
-      backgroundColor: floatingActionButtonColor,
-      closeButtonStyle:
-          const ExpandableFabCloseButtonStyle(backgroundColor: floatingActionButtonColor),
+      backgroundColor: customIndigoColor,
+      closeButtonStyle: const ExpandableFabCloseButtonStyle(backgroundColor: customIndigoColor),
       children: [
         CustomFloatActionButton(
           buttonIcon: CupertinoIcons.group_solid,
