@@ -5,9 +5,8 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
-import 'package:flutter_production_app/domain/camera/i_camera_handler.dart';
-import 'package:flutter_production_app/infrastructure/camera/camera_handler.dart';
-import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_production_app/domain/camera/i_camera_service.dart';
+import 'package:flutter_production_app/infrastructure/camera/camera_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart' as img;
 import 'package:injectable/injectable.dart';
@@ -18,14 +17,14 @@ part 'camera_state.dart';
 
 @injectable
 class CameraCubit extends Cubit<CameraState> {
-  late final ICameraHandler _cameraHandler;
+  late final ICameraService _cameraService;
   late StreamSubscription<PermissionStatus>? _cameraPermissionSubscription;
 
   CameraCubit() : super(CameraState.empty()) {
-    _cameraHandler = getIt<CameraHandler>();
+    _cameraService = CameraService();
 
     _cameraPermissionSubscription =
-        _cameraHandler.cameraStateChanges.listen(_listenCameraStateChangesStream);
+        _cameraService.cameraStateChanges.listen(_listenCameraStateChangesStream);
   }
 
   @override
@@ -42,7 +41,7 @@ class CameraCubit extends Cubit<CameraState> {
     if (cameraPermission.isGranted || cameraPermission.isLimited) {
       emit(state.copyWith(isCameraPermissionGranted: true));
     } else if (cameraPermission.isDenied || cameraPermission.isRestricted) {
-      final requestPermission = await _cameraHandler.requestPermission();
+      final requestPermission = await _cameraService.requestPermission();
 
       if (requestPermission.isGranted || requestPermission.isLimited) {
         emit(state.copyWith(isCameraPermissionGranted: true));
@@ -50,7 +49,7 @@ class CameraCubit extends Cubit<CameraState> {
         emit(state.copyWith(isCameraPermissionGranted: false));
       }
     } else {
-      _cameraHandler.openAppSettingsForTheCameraPermission();
+      _cameraService.openAppSettingsForTheCameraPermission();
     }
   }
 

@@ -1,6 +1,6 @@
 import 'package:permission_handler/permission_handler.dart';
 
-abstract class IMicrophoneHandler {
+abstract class IMicrophoneService {
   Stream<PermissionStatus> get microphoneStateChanges;
 
   Future<PermissionStatus> requestPermission();

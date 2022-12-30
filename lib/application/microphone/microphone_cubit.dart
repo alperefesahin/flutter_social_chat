@@ -3,9 +3,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_production_app/domain/microphone/i_microphone_handler.dart';
-import 'package:flutter_production_app/infrastructure/microphone/microphone_handler.dart';
-import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_production_app/domain/microphone/i_microphone_service.dart';
+import 'package:flutter_production_app/infrastructure/microphone/microphone_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -15,21 +14,21 @@ part 'microphone_cubit.freezed.dart';
 
 @injectable
 class MicrophoneCubit extends Cubit<MicrophoneState> {
-  late final IMicrophoneHandler _microphoneHandler;
+  late final IMicrophoneService _microphoneService;
   late StreamSubscription<PermissionStatus>? _microphonePermissionSubscription;
 
   MicrophoneCubit() : super(MicrophoneState.empty()) {
-    _microphoneHandler = getIt<MicrophoneHandler>();
+    _microphoneService = MicrophoneService();
 
     _microphonePermissionSubscription =
-        _microphoneHandler.microphoneStateChanges.listen(_listenMicrophoneStateChangesStream);
+        _microphoneService.microphoneStateChanges.listen(_listenMicrophoneStateChangesStream);
   }
 
   Future<void> _listenMicrophoneStateChangesStream(PermissionStatus microphonePermission) async {
     if (microphonePermission.isGranted || microphonePermission.isLimited) {
       emit(state.copyWith(isMicrophonePermissionGranted: true));
     } else if (microphonePermission.isDenied || microphonePermission.isRestricted) {
-      final requestPermission = await _microphoneHandler.requestPermission();
+      final requestPermission = await _microphoneService.requestPermission();
 
       if (requestPermission.isGranted || requestPermission.isLimited) {
         emit(state.copyWith(isMicrophonePermissionGranted: true));
@@ -37,7 +36,7 @@ class MicrophoneCubit extends Cubit<MicrophoneState> {
         emit(state.copyWith(isMicrophonePermissionGranted: false));
       }
     } else {
-      _microphoneHandler.openAppSettingsForTheMicrophonePermission();
+      _microphoneService.openAppSettingsForTheMicrophonePermission();
     }
   }
 

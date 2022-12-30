@@ -51,7 +51,6 @@ class ChatSetupCubit extends HydratedCubit<ChatSetupState> {
 
   @override
   Map<String, dynamic>? toJson(ChatSetupState state) {
-    print(state);
     return {
       "chatUser": state.chatUser.toJson(),
     };

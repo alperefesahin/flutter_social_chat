@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
+import 'package:flutter_production_app/application/connectivity/connectivity_cubit.dart';
 import 'package:flutter_production_app/injection.dart';
 import 'package:flutter_production_app/presentation/routes/router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
@@ -24,6 +25,10 @@ class AppWidget extends StatelessWidget {
           create: (context) => getIt<AuthCubit>(),
         ),
         BlocProvider(
+          lazy: false,
+          create: (context) => getIt<ConnectivityCubit>(),
+        ),
+        BlocProvider(
           create: (context) => getIt<PhoneNumberSignInCubit>(),
         ),
         BlocProvider(
@@ -39,20 +44,32 @@ class AppWidget extends StatelessWidget {
             }
           }
         },
-        child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerConfig: appRouter.router,
-          builder: (context, child) {
-            final client = getIt<StreamChatClient>();
-
-            child = StreamChat(
-              client: client,
-              child: child,
-            );
-            child = botToastBuilder(context, child);
-
-            return child;
+        child: BlocListener<ConnectivityCubit, ConnectivityState>(
+          listener: (context, state) {
+            if (!state.isUserConnectedToTheInternet) {
+              BotToast.showText(
+                text: "Connection Failed",
+                duration: const Duration(days: 365),
+              );
+            } else if (state.isUserConnectedToTheInternet) {
+              BotToast.cleanAll();
+            }
           },
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routerConfig: appRouter.router,
+            builder: (context, child) {
+              final client = getIt<StreamChatClient>();
+
+              child = StreamChat(
+                client: client,
+                child: child,
+              );
+              child = botToastBuilder(context, child);
+
+              return child;
+            },
+          ),
         ),
       ),
     );
