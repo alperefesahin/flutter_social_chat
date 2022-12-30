@@ -2,6 +2,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
+import 'package:flutter_production_app/presentation/pages/capture_and_send_photo/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/capture_and_send_photo/widgets/user_card.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
@@ -25,8 +26,9 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
           itemBuilder: (context, index) {
             final memberName = state.currentUserChannels[index].name;
             final memberImage = state.currentUserChannels[index].image;
-            final memberlastMessageTime =
-                formatDate(state.currentUserChannels[index].lastMessageAt!, [D]);
+            final memberlastMessageTime = state.currentUserChannels[index].lastMessageAt == null
+                ? startNewConversation
+                : formatDate(state.currentUserChannels[index].lastMessageAt!, [D]);
 
             final channelCreatedTime =
                 formatDate(state.currentUserChannels[index].createdAt!, [yyyy, '-', mm, '-', dd]);
