@@ -10,46 +10,51 @@ class ProfileImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return CachedNetworkImage(
-      imageUrl: userPhotoUrl,
-      imageBuilder: (context, imageProvider) => Container(
-        width: size.height / 6,
-        height: size.height / 6,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(80),
-          ),
-          border: Border.all(
-            color: kiwiBackColor,
-            width: 4,
-          ),
-          image: DecorationImage(
-            image: imageProvider,
-            fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.only(left: 35, top: 50),
+      child: CachedNetworkImage(
+        imageUrl: userPhotoUrl,
+        imageBuilder: (context, imageProvider) => Container(
+          width: size.height / 6,
+          height: size.height / 6,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            border: Border.all(
+              color: customGreyColor600,
+              width: 4,
+            ),
+            image: DecorationImage(
+              image: imageProvider,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
+        placeholder: (context, url) => Container(
+          width: size.height / 6,
+          height: size.height / 6,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            border: Border.all(
+              color: whiteColor,
+              width: 4,
+            ),
+          ),
+          child: const Center(
+            child: CircularProgressIndicator(
+              color: blackColor,
+            ),
+          ),
+        ),
+        errorWidget: (context, url, error) {
+          return Container();
+        },
       ),
-      placeholder: (context, url) => Container(
-        width: size.height / 6,
-        height: size.height / 6,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(80),
-          ),
-          border: Border.all(
-            color: kiwiBackColor,
-            width: 3,
-          ),
-        ),
-        child: const Center(
-          child: CircularProgressIndicator(
-            color: blackColor,
-          ),
-        ),
-      ),
-      errorWidget: (context, url, error) {
-        return Container();
-      },
     );
   }
 }
