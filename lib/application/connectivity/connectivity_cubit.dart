@@ -14,19 +14,19 @@ part 'connectivity_cubit.freezed.dart';
 
 @lazySingleton
 class ConnectivityCubit extends Cubit<ConnectivityState> {
-  late StreamSubscription? _connectivityStateChanges;
-  late final IConnectivityService _connectivityHandler;
+  late StreamSubscription? _connectivitySubscription;
+  late final IConnectivityService _connectivityService;
 
   ConnectivityCubit() : super(ConnectivityState.empty()) {
-    _connectivityHandler = getIt<IConnectivityService>();
+    _connectivityService = getIt<IConnectivityService>();
 
-    _connectivityStateChanges =
-        _connectivityHandler.connectivityStateChanges.listen(_listenConnectivityStateChangesStream);
+    _connectivitySubscription =
+        _connectivityService.connectivityStateChanges.listen(_listenConnectivityStateChangesStream);
   }
 
   @override
   Future<void> close() async {
-    await _connectivityStateChanges?.cancel();
+    await _connectivitySubscription?.cancel();
     super.close();
   }
 
@@ -34,7 +34,7 @@ class ConnectivityCubit extends Cubit<ConnectivityState> {
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       emit(state.copyWith(isUserConnectedToTheInternet: true));
-    } else if (connectivityResult == ConnectivityResult.none) {
+    } else {
       emit(state.copyWith(isUserConnectedToTheInternet: false));
     }
   }

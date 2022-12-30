@@ -45,13 +45,6 @@ class AppWidget extends StatelessWidget {
           }
         },
         child: BlocListener<ConnectivityCubit, ConnectivityState>(
-          // With the connectivity_plus: ^3.0.2 package and version, there is a bug about connection.
-          // Sometimes it returns no connection although there is.
-          // So, implemented, but waiting for the package updates. Implementation is totally correct.
-          listenWhen: (p, c) {
-            return p.isUserConnectedToTheInternet != c.isUserConnectedToTheInternet &&
-                !c.isUserConnectedToTheInternet;
-          },
           listener: (context, state) {
             if (!state.isUserConnectedToTheInternet) {
               BotToast.showText(
@@ -59,7 +52,7 @@ class AppWidget extends StatelessWidget {
                 duration: const Duration(days: 365),
               );
             } else if (state.isUserConnectedToTheInternet) {
-              BotToast.removeAll();
+              BotToast.cleanAll();
             }
           },
           child: MaterialApp.router(

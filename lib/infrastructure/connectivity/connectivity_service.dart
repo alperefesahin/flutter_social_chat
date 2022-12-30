@@ -5,6 +5,12 @@ import 'package:flutter_production_app/domain/connectivity/i_connectivity_servic
 import 'package:flutter_production_app/injection.dart';
 import 'package:injectable/injectable.dart';
 
+// It works well on the real devices, but
+// there is a known issue that the package is not working properly in the simulators.
+
+// "On iOS, the connectivity status might not update when WiFi status changes, this is a known issue that only affects simulators
+// For details see https://github.com/fluttercommunity/plus_plugins/issues/479."
+
 @LazySingleton(as: IConnectivityService)
 class ConnectivityHandler implements IConnectivityService {
   final connectivity = getIt<Connectivity>();
