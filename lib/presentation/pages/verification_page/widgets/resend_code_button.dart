@@ -27,7 +27,7 @@ class ResendCodeButton extends StatelessWidget {
                 minFontSize: 15,
                 maxFontSize: 20,
                 textStyle: TextStyle(
-                  color: confirmationTextColor,
+                  color: whiteColor,
                 ),
                 textPadding: EdgeInsets.zero,
               ),
