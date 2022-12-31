@@ -28,7 +28,7 @@ class ChatPage extends StatelessWidget {
       channel: channel,
       child: Scaffold(
         appBar: StreamChannelHeader(
-          backgroundColor: kiwiBackColor,
+          backgroundColor: whiteColor,
           title: Text(
             lengthOfTheChannelMembers == 2 ? oneToOneChatMember.name : channel.name!,
             style: const TextStyle(fontWeight: FontWeight.w600),

@@ -20,7 +20,7 @@ class ChatPageBody extends StatelessWidget {
           ),
           activeSendButton: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Icon(Icons.send, size: 30, color: kiwiColor),
+            child: Icon(Icons.send, size: 30, color: customIndigoColor),
           ),
         ),
       ],
