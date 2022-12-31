@@ -29,7 +29,7 @@ class CreatingGroupChatPageDetails extends StatelessWidget {
               height: 100,
               width: MediaQuery.of(context).size.width,
               child: listOfSelectedUsers.isEmpty
-                  ? const Divider(thickness: 2, endIndent: 20, indent: 20)
+                  ? const Divider(thickness: 2, endIndent: 60, indent: 60)
                   : SingleChildScrollView(
                       physics: const AlwaysScrollableScrollPhysics(),
                       scrollDirection: Axis.horizontal,
