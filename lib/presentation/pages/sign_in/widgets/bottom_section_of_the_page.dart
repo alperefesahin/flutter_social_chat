@@ -37,7 +37,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                       child: Row(
                         children: const [
                           CustomText(
-                            text: personalInformationText,
+                            text: signInWithPhoneNumber,
                             minFontSize: 20,
                             maxFontSize: 25,
                             textPadding: EdgeInsets.zero,
@@ -48,8 +48,8 @@ class BottomSectionOfThePage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(left: 10),
                             child: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 15,
+                              Icons.keyboard_arrow_down , 
+                              size: 20,
                             ),
                           ),
                         ],
@@ -88,7 +88,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: customIndigoColor.withOpacity(0.5),
+                              color: customIndigoColor.withOpacity(0.8),
                               spreadRadius: 4,
                               blurRadius: 30,
                               // changes position of shadow
