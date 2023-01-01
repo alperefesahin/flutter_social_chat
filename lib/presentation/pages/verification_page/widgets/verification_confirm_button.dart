@@ -27,7 +27,7 @@ class VerificationConfirmButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width / 1.15,
         height: MediaQuery.of(context).size.height / 13,
         decoration: BoxDecoration(
-          color: blackColor.withOpacity(0.5),
+          color: blackColor.withOpacity(0.25),
           borderRadius: const BorderRadius.all(
             Radius.circular(10),
           ),

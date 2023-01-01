@@ -31,7 +31,7 @@ class ProfileImage extends StatelessWidget {
                 Radius.circular(80),
               ),
               border: Border.all(
-                color: kiwiBackColor,
+                color: customIndigoColor.withOpacity(0.5),
                 width: 3,
               ),
               image: DecorationImage(
@@ -56,7 +56,7 @@ class ProfileImage extends StatelessWidget {
             icon: Icon(
               CupertinoIcons.chevron_down_square_fill,
               size: 30,
-              color: kiwiColor.withOpacity(0.8),
+              color: customIndigoColor.withBlue(200),
             ),
           )
         ],
