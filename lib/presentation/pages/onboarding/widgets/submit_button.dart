@@ -14,7 +14,7 @@ class SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: RoundedLoadingButton(
-        color: kiwiColor.withOpacity(0.8),
+        color: customIndigoColor.withBlue(200),
         failedIcon: CupertinoIcons.xmark,
         successIcon: CupertinoIcons.checkmark,
         controller: btnController,
