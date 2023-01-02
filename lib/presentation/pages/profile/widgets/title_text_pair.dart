@@ -12,8 +12,8 @@ class TitleTextPair extends StatelessWidget {
       children: [
         CustomText(
           text: title,
-          minFontSize: 17,
-          maxFontSize: 23,
+          minFontSize: 20,
+          maxFontSize: 21,
           textStyle: const TextStyle(fontWeight: FontWeight.w600),
           textPadding: EdgeInsets.zero,
         ),
