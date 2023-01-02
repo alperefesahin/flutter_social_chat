@@ -38,47 +38,54 @@ class ProfilePage extends StatelessWidget {
                 body: Padding(
                   padding: const EdgeInsets.only(top: 50),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Stack(
-                        alignment: Alignment.bottomLeft,
+                      Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 15,
-                              right: 15,
-                              left: 15,
-                              bottom: 100,
-                            ),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height / 2.5,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                    "assets/images/flutter.png",
+                          Stack(
+                            alignment: Alignment.bottomLeft,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 15,
+                                  right: 15,
+                                  left: 15,
+                                  bottom: 100,
+                                ),
+                                child: Container(
+                                  constraints: BoxConstraints(
+                                    maxHeight: MediaQuery.of(context).size.height / 2.8,
+                                    maxWidth: MediaQuery.of(context).size.width,
+                                  ),
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                        "assets/images/flutter.png",
+                                      ),
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    ),
                                   ),
                                 ),
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20),
-                                  bottomRight: Radius.circular(20),
-                                ),
                               ),
-                            ),
+                              ProfileCore(
+                                userName: userName!,
+                                userPhoneNumber: userPhoneNumber,
+                                userPhotoUrl: userPhotoUrl!,
+                                userId: userId,
+                              ),
+                            ],
                           ),
-                          ProfileCore(
-                            userName: userName!,
-                            userPhoneNumber: userPhoneNumber,
-                            userPhotoUrl: userPhotoUrl!,
-                            userId: userId,
+                          ProfileDetails(
+                            createdAt: createdAt,
+                            userRole: userRole,
+                            isUserBannedStatus: isUserBannedStatus,
                           ),
                         ],
-                      ),
-                      ProfileDetails(
-                        createdAt: createdAt,
-                        userRole: userRole,
-                        isUserBannedStatus: isUserBannedStatus,
                       ),
                       const CustomProfileButton(),
                     ],

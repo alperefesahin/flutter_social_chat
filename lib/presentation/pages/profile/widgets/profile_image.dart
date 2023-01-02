@@ -11,12 +11,14 @@ class ProfileImage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 35, top: 50),
+      padding: const EdgeInsets.only(left: 35, bottom: 10),
       child: CachedNetworkImage(
         imageUrl: userPhotoUrl,
         imageBuilder: (context, imageProvider) => Container(
-          width: size.height / 6,
-          height: size.height / 6,
+          constraints: BoxConstraints(
+            maxWidth: size.height / 6.5,
+            maxHeight: size.height / 6.5,
+          ),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),
@@ -33,8 +35,10 @@ class ProfileImage extends StatelessWidget {
           ),
         ),
         placeholder: (context, url) => Container(
-          width: size.height / 6,
-          height: size.height / 6,
+           constraints: BoxConstraints(
+            maxWidth: size.height / 6.5,
+            maxHeight: size.height / 6.5,
+          ),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),

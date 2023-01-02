@@ -13,13 +13,13 @@ class TitleTextPair extends StatelessWidget {
         CustomText(
           text: title,
           minFontSize: 20,
-          maxFontSize: 23,
+          maxFontSize: 21,
           textStyle: const TextStyle(fontWeight: FontWeight.w600),
           textPadding: EdgeInsets.zero,
         ),
         CustomText(
           text: text,
-          minFontSize: 18,
+          minFontSize: 15,
           maxFontSize: 20,
           textStyle: const TextStyle(fontWeight: FontWeight.w500),
           textPadding: const EdgeInsets.only(top: 6),

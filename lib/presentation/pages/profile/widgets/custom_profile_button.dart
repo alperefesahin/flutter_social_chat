@@ -10,36 +10,42 @@ class CustomProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        context.read<AuthCubit>().signOut();
-        context.read<PhoneNumberSignInCubit>().reset();
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width / 2,
-        height: 60,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(15),
-            topLeft: Radius.circular(15),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: InkWell(
+        onTap: () {
+          context.read<AuthCubit>().signOut();
+          context.read<PhoneNumberSignInCubit>().reset();
+        },
+        child: Container(
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width / 2,
+            maxHeight: MediaQuery.of(context).size.height / 6.5,
+            minHeight: MediaQuery.of(context).size.height / 12,
           ),
-          border: Border.all(
-            color: customGreyColor400,
-            width: 4,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(15),
+              topLeft: Radius.circular(15),
+            ),
+            border: Border.all(
+              color: customGreyColor400,
+              width: 4,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Row(
-            children: const [
-              Icon(Icons.exit_to_app, size: 30),
-              CustomText(
-                text: "Sign Out",
-                minFontSize: 17,
-                maxFontSize: 20,
-                textPadding: EdgeInsets.only(left: 10),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: Row(
+              children: const [
+                Icon(Icons.exit_to_app, size: 30),
+                CustomText(
+                  text: "Sign Out",
+                  minFontSize: 17,
+                  maxFontSize: 20,
+                  textPadding: EdgeInsets.only(left: 10),
+                ),
+              ],
+            ),
           ),
         ),
       ),

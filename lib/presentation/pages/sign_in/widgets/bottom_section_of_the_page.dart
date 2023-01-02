@@ -24,9 +24,13 @@ class BottomSectionOfThePage extends StatelessWidget {
               left: 25,
               bottom: 25,
             ),
-            child: SizedBox(
-              height: size.height / 2,
-              width: size.width,
+            child: Container(
+              constraints: BoxConstraints(
+                maxHeight: size.height / 2,
+                maxWidth: size.width,
+                minHeight: size.height / 2.5,
+                minWidth: size.width,
+              ),
               child: Card(
                 color: whiteColor,
                 elevation: 4.0,
@@ -38,7 +42,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                         children: const [
                           CustomText(
                             text: signInWithPhoneNumber,
-                            minFontSize: 20,
+                            minFontSize: 17,
                             maxFontSize: 25,
                             textPadding: EdgeInsets.zero,
                             textStyle: TextStyle(
@@ -48,7 +52,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(left: 10),
                             child: Icon(
-                              Icons.keyboard_arrow_down , 
+                              Icons.keyboard_arrow_down,
                               size: 20,
                             ),
                           ),
@@ -79,8 +83,10 @@ class BottomSectionOfThePage extends StatelessWidget {
                         }
                       },
                       child: Container(
-                        width: 85,
-                        height: 85,
+                        constraints: BoxConstraints(
+                          minHeight: size.height / 10,
+                          minWidth: size.width / 4.7,
+                        ),
                         decoration: BoxDecoration(
                           color: customIndigoColor,
                           borderRadius: const BorderRadius.all(
@@ -97,7 +103,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                         ),
                         child: const Icon(
                           Icons.arrow_forward,
-                          size: 40,
+                          size: 35,
                           color: whiteColor,
                         ),
                       ),
