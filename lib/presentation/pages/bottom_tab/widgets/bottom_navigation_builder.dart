@@ -24,8 +24,8 @@ Widget bottomNavigationBuilder(BuildContext context) {
       ),
       BottomNavigationBarItem(
         label: profile,
-        icon: Icon(FontAwesomeIcons.user, size: 30),
-        activeIcon: Icon(FontAwesomeIcons.userAlt, size: 30),
+        icon: Icon(FontAwesomeIcons.user, size: 29),
+        activeIcon: Icon(FontAwesomeIcons.userAlt, size: 29),
       ),
     ],
   );
