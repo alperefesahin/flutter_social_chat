@@ -17,7 +17,7 @@ class ProfileDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 35),
+      padding: const EdgeInsets.only(bottom: 20),
       child: Column(
         children: [
           const Divider(thickness: 1, endIndent: 20, indent: 20),
