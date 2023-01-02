@@ -36,7 +36,7 @@ class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
           padding: const EdgeInsets.only(
             left: 30,
             right: 30,
-            top: 30,
+            top: 20,
           ),
           child: InternationalPhoneNumberInput(
             onInputChanged: (PhoneNumber phoneNumber) {
