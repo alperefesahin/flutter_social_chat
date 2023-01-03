@@ -34,14 +34,22 @@ class CreateNewChatPage extends StatelessWidget {
         onWillPop: () async => Future.value(false),
         child: Scaffold(
           appBar: CustomAppBar(
+            centerTitle: false,
             appBarTitle: "",
             appBarAction: CupertinoIcons.line_horizontal_3_decrease,
-            appBarLeading: CupertinoIcons.back,
-            leadingOnPressed: () {
-              context.read<ChatManagementCubit>().reset();
-              context.go(context.namedLocation("channels_page"));
-            },
-            appBarIconColor: blackColor,
+            leading: IconButton(
+              onPressed: () {
+                context.read<ChatManagementCubit>().reset();
+                context.go(context.namedLocation("channels_page"));
+              },
+              icon: const Icon(
+                CupertinoIcons.back,
+                color: blackColor,
+              ),
+            ),
+            maxFontSize: 23,
+            minFontSize: 19,
+            textPadding: EdgeInsets.zero,
           ),
           body: BlocBuilder<ChatManagementCubit, ChatManagementState>(
             builder: (context, state) {
