@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_production_app/presentation/pages/profile/constants/texts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/presentation/pages/profile/widgets/title_text_pair.dart';
 
 class ProfileDetails extends StatelessWidget {
@@ -25,9 +25,12 @@ class ProfileDetails extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              TitleTextPair(title: createdAtText, text: createdAt),
-              TitleTextPair(title: role, text: userRole),
-              TitleTextPair(title: banStatus, text: isUserBannedStatus ? "Banned" : "None"),
+              TitleTextPair(title: AppLocalizations.of(context).createdAtText, text: createdAt),
+              TitleTextPair(title: AppLocalizations.of(context).role, text: userRole),
+              TitleTextPair(
+                title: AppLocalizations.of(context).banStatus,
+                text: isUserBannedStatus ? "Banned" : "None",
+              ),
             ],
           ),
           const SizedBox(height: 20),
