@@ -9,7 +9,12 @@
 
     "giveRelatedPermission": "Please give related permission to use this feature.",
 
-    "lastMessageOn": "Last message on",
+    "lastMessageOn": "Last message on {memberlastMessageTime}",
+     "@lastMessageOn": {
+      "placeholders": {
+        "memberlastMessageTime": {}
+      }
+    },
 
     "startNewConversation": "Start a new conversation...",
 
@@ -74,6 +79,6 @@
     "confirmationInfo": "Please enter the 6-digit code we just sent to",
 
     "confirm": "Confirm",
-    
+
     "resendCode": "RESEND CODE"
 }

@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
-import 'package:flutter_production_app/presentation/pages/capture_and_send_photo/constants/texts.dart';
 
 class UserCard extends StatelessWidget {
   const UserCard({
@@ -66,9 +66,10 @@ class UserCard extends StatelessWidget {
                       textStyle: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                     CustomText(
-                      text: memberlastMessageTime == startNewConversation
-                          ? startNewConversation
-                          : "$lastMessageOn $memberlastMessageTime.",
+                      text:
+                          memberlastMessageTime == AppLocalizations.of(context).startNewConversation
+                              ? AppLocalizations.of(context).startNewConversation
+                              : AppLocalizations.of(context).lastMessageOn(memberlastMessageTime),
                       minFontSize: 15,
                       maxFontSize: 20,
                       textPadding: const EdgeInsets.only(left: 10, bottom: 20),
