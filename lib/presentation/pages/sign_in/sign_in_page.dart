@@ -53,10 +53,14 @@ class SignInPage extends StatelessWidget {
             onWillPop: () async => false,
             child: Scaffold(
               appBar: CustomAppBar(
+                centerTitle: true,
                 appBarIconColor: whiteColor,
                 appBarBackgroundColor: customIndigoColor,
                 appBarTitle: signInText,
                 appBarAction: CupertinoIcons.line_horizontal_3_decrease,
+                maxFontSize: 23,
+                minFontSize: 19,
+                textPadding: EdgeInsets.zero,
               ),
               body: const SignInPageBody(),
             ),

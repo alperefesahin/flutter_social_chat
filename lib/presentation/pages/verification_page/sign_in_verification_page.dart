@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
@@ -36,19 +37,28 @@ class SignInVerificationPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: whiteColor,
           appBar: CustomAppBar(
-            leadingOnPressed: () {
-              context.read<PhoneNumberSignInCubit>().reset();
-              context.pop();
-            },
+            centerTitle: true,
+            leading: IconButton(
+              onPressed: () {
+                context.read<PhoneNumberSignInCubit>().reset();
+                context.pop();
+              },
+              icon: const Icon(
+                CupertinoIcons.back,
+                color: blackColor,
+              ),
+            ),
             appBarBackgroundColor: whiteColor,
             appBarTitle: verificationText,
             appBarAction: Icons.lock,
-            appBarLeading: Icons.arrow_back_ios,
             appBarTitleTextStyle: const TextStyle(
               color: blackColor,
               fontWeight: FontWeight.w500,
             ),
             appBarIconColor: blackColor,
+            maxFontSize: 23,
+            minFontSize: 19,
+            textPadding: EdgeInsets.zero,
           ),
           body: VerificationPageBody(
             phoneNumber: phoneNumber,
