@@ -44,6 +44,8 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   void reset() {
     emit(
       state.copyWith(
+        isInProgress: false,
+        isChannelCreated: false,
         listOfSelectedUsers: {},
         listOfSelectedUserIDs: {},
         channelName: "",
@@ -58,7 +60,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   void validateChannelName({required bool isChannelNameValid}) {
     emit(
       state.copyWith(isChannelNameValid: isChannelNameValid),
-    );
+    ); 
   }
 
   Future<void> _listenCurrentUserChannelsChangeStream(List<Channel> currentUserChannels) async {
@@ -89,6 +91,10 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   Future<void> createNewChannel({
     required bool isCreateNewChatPageForCreatingGroup,
   }) async {
+    if (state.isInProgress) {
+      return;
+    }
+
     String channelImageUrl = "";
     String channelName = state.channelName;
     final listOfMemberIDs = {...state.listOfSelectedUserIDs};
@@ -127,11 +133,15 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
         !isCreateNewChatPageForCreatingGroup ? true : state.isChannelNameValid;
 
     if (listOfMemberIDs.length >= 2 && isChannelNameValid) {
+      emit(state.copyWith(isInProgress: true, isChannelCreated: false));
+
       await _chatService.createNewChannel(
         listOfMemberIDs: listOfMemberIDs.toList(),
         channelName: channelName,
         channelImageUrl: channelImageUrl,
       );
+
+      emit(state.copyWith(isInProgress: false, isChannelCreated: true));
     }
   }
 
