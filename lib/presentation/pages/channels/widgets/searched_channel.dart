@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/pages/channels/constants/texts.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class SearchedChannel extends StatelessWidget {
@@ -44,9 +44,9 @@ class SearchedChannel extends StatelessWidget {
             );
 
     final lastMessage = channel.state!.lastMessage == null
-        ? beDeepIntoTheConversation
+        ? AppLocalizations.of(context).beDeepIntoTheConversation
         : channel.state!.lastMessage!.attachments.isNotEmpty
-            ? attachmentText
+            ? AppLocalizations.of(context).attachment
             : channel.state!.lastMessage!.text;
 
     if (isTheSearchedChannelExist) {
