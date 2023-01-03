@@ -43,6 +43,7 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
             centerTitle: false,
             appBarTitle: "",
             appBarAction: CupertinoIcons.line_horizontal_3_decrease,
+            appBarIconColor: blackColor,
             leading: IconButton(
               onPressed: () {
                 context.read<ChatManagementCubit>().reset();
