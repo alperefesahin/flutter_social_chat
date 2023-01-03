@@ -1,7 +1,10 @@
 import 'dart:io';
+
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
@@ -48,7 +51,7 @@ class AppWidget extends StatelessWidget {
           listener: (context, state) {
             if (!state.isUserConnectedToTheInternet) {
               BotToast.showText(
-                text: "Connection Failed",
+                text: AppLocalizations.of(context).connectionFailed,
                 duration: const Duration(days: 365),
               );
             } else if (state.isUserConnectedToTheInternet) {
@@ -58,6 +61,17 @@ class AppWidget extends StatelessWidget {
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
             routerConfig: appRouter.router,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            // you can add more locales below
+            // ignore: avoid_redundant_argument_values
+            supportedLocales: const [
+              Locale('en', 'US'),
+            ],
             builder: (context, child) {
               final client = getIt<StreamChatClient>();
 

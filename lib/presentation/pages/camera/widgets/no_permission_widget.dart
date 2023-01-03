@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
-import 'package:flutter_production_app/presentation/pages/camera/constants/texts.dart';
 
 class NoPermissionWidget extends StatelessWidget {
   const NoPermissionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: CustomText(
-        text: giveRelatedPermission,
-        textStyle: TextStyle(
+        text: AppLocalizations.of(context).giveRelatedPermission,
+        textStyle: const TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.w900,
         ),
         minFontSize: 24,
         maxFontSize: 25,
-        textPadding: EdgeInsets.all(8),
+        textPadding: const EdgeInsets.all(8),
       ),
     );
   }

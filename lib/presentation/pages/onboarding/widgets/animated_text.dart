@@ -1,6 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_production_app/presentation/pages/onboarding/constants/texts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AnimatedText extends StatelessWidget {
   const AnimatedText({super.key});
@@ -17,21 +17,21 @@ class AnimatedText extends StatelessWidget {
         repeatForever: true,
         animatedTexts: [
           TypewriterAnimatedText(
-            animatedText1,
+            AppLocalizations.of(context).animatedText1,
             textStyle: const TextStyle(
               fontFamily: 'Agne',
               fontSize: 22,
             ),
           ),
           TypewriterAnimatedText(
-            animatedText2,
+            AppLocalizations.of(context).animatedText2,
             textStyle: const TextStyle(
               fontFamily: 'Agne',
               fontSize: 22,
             ),
           ),
           TypewriterAnimatedText(
-            animatedText3,
+            AppLocalizations.of(context).animatedText3,
             textStyle: const TextStyle(
               fontFamily: 'Agne',
               fontSize: 22,

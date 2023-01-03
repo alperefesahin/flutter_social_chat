@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
-import 'package:flutter_production_app/presentation/pages/verification_page/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/verification_page/widgets/resend_code_button.dart';
 import 'package:flutter_production_app/presentation/pages/verification_page/widgets/verification_confirm_button.dart';
 import 'package:flutter_production_app/presentation/pages/verification_page/widgets/verification_pin_field.dart';
@@ -35,8 +35,8 @@ class VerificationPageBody extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Row(
-                          children: const [
-                            Padding(
+                          children: [
+                            const Padding(
                               padding: EdgeInsets.only(
                                 right: 20,
                                 top: 5,
@@ -48,11 +48,11 @@ class VerificationPageBody extends StatelessWidget {
                               ),
                             ),
                             CustomText(
-                              text: confirmationText,
+                              text: AppLocalizations.of(context).confirmation,
                               minFontSize: 30,
                               maxFontSize: 35,
                               textPadding: EdgeInsets.zero,
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                 color: whiteColor,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -79,9 +79,9 @@ class VerificationPageBody extends StatelessWidget {
                                 child: RichText(
                                   text: TextSpan(
                                     children: [
-                                      const TextSpan(
-                                        text: confirmationInfoText,
-                                        style: TextStyle(
+                                      TextSpan(
+                                        text: AppLocalizations.of(context).confirmationInfo,
+                                        style: const TextStyle(
                                           fontSize: 18,
                                           color: whiteColor,
                                           fontWeight: FontWeight.w500,

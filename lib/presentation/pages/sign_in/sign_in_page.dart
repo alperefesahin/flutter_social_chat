@@ -2,11 +2,11 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_app_bar.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
-import 'package:flutter_production_app/presentation/pages/sign_in/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/widgets/sign_in_body.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,12 +26,13 @@ class SignInPage extends StatelessWidget {
                 (authFailure) {
                   BotToast.showText(
                     text: authFailure.when(
-                      serverError: () => "Server Error",
-                      tooManyRequests: () => "Too Many Requests",
-                      deviceNotSupported: () => "Device Not Supported",
-                      smsTimeout: () => "Sms Timeout",
-                      sessionExpired: () => "Session Expired",
-                      invalidVerificationCode: () => "Invalid Verification Code",
+                      serverError: () => AppLocalizations.of(context).serverError,
+                      tooManyRequests: () => AppLocalizations.of(context).tooManyRequests,
+                      deviceNotSupported: () => AppLocalizations.of(context).deviceNotSupported,
+                      smsTimeout: () => AppLocalizations.of(context).smsTimeout,
+                      sessionExpired: () => AppLocalizations.of(context).sessionExpired,
+                      invalidVerificationCode: () =>
+                          AppLocalizations.of(context).invalidVerificationCode,
                     ),
                   );
                   context.read<PhoneNumberSignInCubit>().reset();
@@ -56,7 +57,7 @@ class SignInPage extends StatelessWidget {
                 centerTitle: true,
                 appBarIconColor: whiteColor,
                 appBarBackgroundColor: customIndigoColor,
-                appBarTitle: signInText,
+                appBarTitle: AppLocalizations.of(context).signIn,
                 appBarAction: CupertinoIcons.line_horizontal_3_decrease,
                 maxFontSize: 23,
                 minFontSize: 19,

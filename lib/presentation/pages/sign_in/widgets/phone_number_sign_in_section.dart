@@ -1,9 +1,9 @@
 // ignore_for_file: no_logic_in_create_state
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/pages/sign_in/constants/texts.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class PhoneNumberSignInSection extends StatefulWidget {
@@ -49,9 +49,9 @@ class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
                     isPhoneNumberInputValidated: isPhoneNumberInputValidated,
                   );
             },
-            inputDecoration: const InputDecoration(
-              hintText: phoneNumberText,
-              focusedBorder: UnderlineInputBorder(
+            inputDecoration: InputDecoration(
+              hintText: AppLocalizations.of(context).phoneNumber,
+              focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
                   color: customIndigoColor,
                 ),
