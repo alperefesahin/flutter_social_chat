@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
-import 'package:flutter_production_app/presentation/pages/sign_in/constants/texts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/presentation/pages/sign_in/widgets/phone_number_sign_in_section.dart';
 import 'package:go_router/go_router.dart';
 
@@ -39,17 +39,17 @@ class BottomSectionOfThePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 30, left: 30),
                       child: Row(
-                        children: const [
+                        children: [
                           CustomText(
-                            text: signInWithPhoneNumber,
+                            text: AppLocalizations.of(context).signInWithPhoneNumber,
                             minFontSize: 17,
                             maxFontSize: 25,
                             textPadding: EdgeInsets.zero,
-                            textStyle: TextStyle(
+                            textStyle: const TextStyle(
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 10),
                             child: Icon(
                               Icons.keyboard_arrow_down,
@@ -62,11 +62,11 @@ class BottomSectionOfThePage extends StatelessWidget {
                     PhoneNumberSignInSection(
                       state: state,
                     ),
-                    const CustomText(
-                      text: smsInformationMessage,
+                    CustomText(
+                      text: AppLocalizations.of(context).smsInformationMessage,
                       minFontSize: 15,
                       maxFontSize: 20,
-                      textPadding: EdgeInsets.symmetric(
+                      textPadding: const EdgeInsets.symmetric(
                         horizontal: 25,
                         vertical: 45,
                       ),

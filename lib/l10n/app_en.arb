@@ -84,5 +84,17 @@
     
     "username": "Username",
 
-    "tellUsWhatsYourName": "Tell us what's your name?"
+    "tellUsWhatsYourName": "Tell us what's your name?",
+
+    "serverError": "Server Error!",
+
+    "tooManyRequests": "Too Many Requests!",
+
+    "deviceNotSupported": "Device Not Supported!",
+
+    "smsTimeout": "SMS Timeout!",
+
+    "sessionExpired": "Session Expired!",
+
+    "invalidVerificationCode": "Invalid Verification Code!"
 }
