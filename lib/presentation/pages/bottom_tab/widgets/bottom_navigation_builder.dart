@@ -1,8 +1,8 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/pages/bottom_tab/constants/texts.dart';
 import 'package:go_router/go_router.dart';
 
 Widget bottomNavigationBuilder(BuildContext context) {
@@ -11,21 +11,21 @@ Widget bottomNavigationBuilder(BuildContext context) {
     currentIndex: _calculateSelectedIndex(context),
     selectedItemColor: customIndigoColor,
     onTap: (index) => _onItemTapped(index, context),
-    items: const [
+    items: [
       BottomNavigationBarItem(
-        label: chats,
-        icon: Icon(CupertinoIcons.chat_bubble_2, size: 31),
-        activeIcon: Icon(CupertinoIcons.chat_bubble_2_fill, size: 31),
+        label: AppLocalizations.of(context).chats,
+        icon: const Icon(CupertinoIcons.chat_bubble_2, size: 31),
+        activeIcon: const Icon(CupertinoIcons.chat_bubble_2_fill, size: 31),
       ),
       BottomNavigationBarItem(
-        label: camera,
-        icon: Icon(CupertinoIcons.camera, size: 30),
-        activeIcon: Icon(CupertinoIcons.camera_fill, size: 30),
+        label: AppLocalizations.of(context).camera,
+        icon: const Icon(CupertinoIcons.camera, size: 30),
+        activeIcon: const Icon(CupertinoIcons.camera_fill, size: 30),
       ),
       BottomNavigationBarItem(
-        label: profile,
-        icon: Icon(FontAwesomeIcons.user, size: 29),
-        activeIcon: Icon(FontAwesomeIcons.userAlt, size: 29),
+        label: AppLocalizations.of(context).profile,
+        icon: const Icon(FontAwesomeIcons.user, size: 29),
+        activeIcon: const Icon(FontAwesomeIcons.userAlt, size: 29),
       ),
     ],
   );
