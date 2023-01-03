@@ -5,6 +5,7 @@ class ChatManagementState with _$ChatManagementState {
   const factory ChatManagementState({
     required bool isInProgress,
     required bool isChannelNameValid,
+    required bool isChannelCreated,
     required String channelName,
     required int userIndex,
     required Set<String> listOfSelectedUserIDs,
@@ -15,6 +16,7 @@ class ChatManagementState with _$ChatManagementState {
   factory ChatManagementState.empty() => const ChatManagementState(
         isInProgress: false,
         isChannelNameValid: false,
+        isChannelCreated: false,
         channelName: "",
         userIndex: 0,
         listOfSelectedUserIDs: {},

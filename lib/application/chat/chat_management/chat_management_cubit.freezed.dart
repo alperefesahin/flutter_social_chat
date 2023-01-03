@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatManagementState {
   bool get isInProgress => throw _privateConstructorUsedError;
   bool get isChannelNameValid => throw _privateConstructorUsedError;
+  bool get isChannelCreated => throw _privateConstructorUsedError;
   String get channelName => throw _privateConstructorUsedError;
   int get userIndex => throw _privateConstructorUsedError;
   Set<String> get listOfSelectedUserIDs => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $ChatManagementStateCopyWith<$Res> {
   $Res call(
       {bool isInProgress,
       bool isChannelNameValid,
+      bool isChannelCreated,
       String channelName,
       int userIndex,
       Set<String> listOfSelectedUserIDs,
@@ -60,6 +62,7 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
   $Res call({
     Object? isInProgress = null,
     Object? isChannelNameValid = null,
+    Object? isChannelCreated = null,
     Object? channelName = null,
     Object? userIndex = null,
     Object? listOfSelectedUserIDs = null,
@@ -74,6 +77,10 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
       isChannelNameValid: null == isChannelNameValid
           ? _value.isChannelNameValid
           : isChannelNameValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isChannelCreated: null == isChannelCreated
+          ? _value.isChannelCreated
+          : isChannelCreated // ignore: cast_nullable_to_non_nullable
               as bool,
       channelName: null == channelName
           ? _value.channelName
@@ -110,6 +117,7 @@ abstract class _$$_ChatManagementStateCopyWith<$Res>
   $Res call(
       {bool isInProgress,
       bool isChannelNameValid,
+      bool isChannelCreated,
       String channelName,
       int userIndex,
       Set<String> listOfSelectedUserIDs,
@@ -130,6 +138,7 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
   $Res call({
     Object? isInProgress = null,
     Object? isChannelNameValid = null,
+    Object? isChannelCreated = null,
     Object? channelName = null,
     Object? userIndex = null,
     Object? listOfSelectedUserIDs = null,
@@ -144,6 +153,10 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
       isChannelNameValid: null == isChannelNameValid
           ? _value.isChannelNameValid
           : isChannelNameValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isChannelCreated: null == isChannelCreated
+          ? _value.isChannelCreated
+          : isChannelCreated // ignore: cast_nullable_to_non_nullable
               as bool,
       channelName: null == channelName
           ? _value.channelName
@@ -177,6 +190,7 @@ class _$_ChatManagementState
   const _$_ChatManagementState(
       {required this.isInProgress,
       required this.isChannelNameValid,
+      required this.isChannelCreated,
       required this.channelName,
       required this.userIndex,
       required final Set<String> listOfSelectedUserIDs,
@@ -190,6 +204,8 @@ class _$_ChatManagementState
   final bool isInProgress;
   @override
   final bool isChannelNameValid;
+  @override
+  final bool isChannelCreated;
   @override
   final String channelName;
   @override
@@ -223,7 +239,7 @@ class _$_ChatManagementState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatManagementState(isInProgress: $isInProgress, isChannelNameValid: $isChannelNameValid, channelName: $channelName, userIndex: $userIndex, listOfSelectedUserIDs: $listOfSelectedUserIDs, listOfSelectedUsers: $listOfSelectedUsers, currentUserChannels: $currentUserChannels)';
+    return 'ChatManagementState(isInProgress: $isInProgress, isChannelNameValid: $isChannelNameValid, isChannelCreated: $isChannelCreated, channelName: $channelName, userIndex: $userIndex, listOfSelectedUserIDs: $listOfSelectedUserIDs, listOfSelectedUsers: $listOfSelectedUsers, currentUserChannels: $currentUserChannels)';
   }
 
   @override
@@ -233,6 +249,7 @@ class _$_ChatManagementState
       ..add(DiagnosticsProperty('type', 'ChatManagementState'))
       ..add(DiagnosticsProperty('isInProgress', isInProgress))
       ..add(DiagnosticsProperty('isChannelNameValid', isChannelNameValid))
+      ..add(DiagnosticsProperty('isChannelCreated', isChannelCreated))
       ..add(DiagnosticsProperty('channelName', channelName))
       ..add(DiagnosticsProperty('userIndex', userIndex))
       ..add(DiagnosticsProperty('listOfSelectedUserIDs', listOfSelectedUserIDs))
@@ -249,6 +266,8 @@ class _$_ChatManagementState
                 other.isInProgress == isInProgress) &&
             (identical(other.isChannelNameValid, isChannelNameValid) ||
                 other.isChannelNameValid == isChannelNameValid) &&
+            (identical(other.isChannelCreated, isChannelCreated) ||
+                other.isChannelCreated == isChannelCreated) &&
             (identical(other.channelName, channelName) ||
                 other.channelName == channelName) &&
             (identical(other.userIndex, userIndex) ||
@@ -266,6 +285,7 @@ class _$_ChatManagementState
       runtimeType,
       isInProgress,
       isChannelNameValid,
+      isChannelCreated,
       channelName,
       userIndex,
       const DeepCollectionEquality().hash(_listOfSelectedUserIDs),
@@ -284,6 +304,7 @@ abstract class _ChatManagementState implements ChatManagementState {
   const factory _ChatManagementState(
           {required final bool isInProgress,
           required final bool isChannelNameValid,
+          required final bool isChannelCreated,
           required final String channelName,
           required final int userIndex,
           required final Set<String> listOfSelectedUserIDs,
@@ -295,6 +316,8 @@ abstract class _ChatManagementState implements ChatManagementState {
   bool get isInProgress;
   @override
   bool get isChannelNameValid;
+  @override
+  bool get isChannelCreated;
   @override
   String get channelName;
   @override
