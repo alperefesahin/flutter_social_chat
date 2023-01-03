@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
-import 'package:flutter_production_app/presentation/pages/create_new_chat/constants/texts.dart';
 
 class CreateNewChatButton extends StatelessWidget {
   const CreateNewChatButton({
@@ -28,7 +28,9 @@ class CreateNewChatButton extends StatelessWidget {
               );
         },
         child: CustomText(
-          text: isCreateNewChatPageForCreatingGroup ? createNewGroupChat : createNewOneToOneChat,
+          text: isCreateNewChatPageForCreatingGroup
+              ? AppLocalizations.of(context).createNewGroupChat
+              : AppLocalizations.of(context).createNewOneToOneChat,
           minFontSize: 15,
           maxFontSize: 17,
           textPadding: EdgeInsets.zero,
