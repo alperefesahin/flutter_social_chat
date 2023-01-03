@@ -46,6 +46,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       state.copyWith(
         isInProgress: false,
         isChannelCreated: false,
+        isCapturedPhotoSent: false,
         listOfSelectedUsers: {},
         listOfSelectedUserIDs: {},
         channelName: "",
@@ -60,7 +61,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
   void validateChannelName({required bool isChannelNameValid}) {
     emit(
       state.copyWith(isChannelNameValid: isChannelNameValid),
-    ); 
+    );
   }
 
   Future<void> _listenCurrentUserChannelsChangeStream(List<Channel> currentUserChannels) async {
@@ -79,13 +80,16 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
     final channelId = state.currentUserChannels[state.userIndex].id;
 
+    // For showing the progress indicator, and well UX.
+    await Future.delayed(const Duration(seconds: 1));
+
     await _chatService.sendPhotoAsMessageToTheSelectedUser(
       channelId: channelId!,
       pathOfTheTakenPhoto: pathOfTheTakenPhoto,
       sizeOfTheTakenPhoto: sizeOfTheTakenPhoto,
     );
 
-    emit(state.copyWith(isInProgress: false));
+    emit(state.copyWith(isInProgress: false, isCapturedPhotoSent: true));
   }
 
   Future<void> createNewChannel({
