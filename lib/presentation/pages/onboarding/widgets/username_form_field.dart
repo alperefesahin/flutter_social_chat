@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text_field.dart';
-import 'package:flutter_production_app/presentation/pages/onboarding/constants/texts.dart';
 
 class UsernameFormField extends StatelessWidget {
   const UsernameFormField({super.key});
@@ -21,17 +21,17 @@ class UsernameFormField extends StatelessWidget {
           validator: (userName) {
             if (userName!.length > 20) {
               context.read<AuthCubit>().validateUserName(isUserNameValid: false);
-              return userNameCanNotBeLongerThanTwentyCharacters;
+              return AppLocalizations.of(context).userNameCanNotBeLongerThanTwentyCharacters;
             } else if (userName.length < 3) {
               context.read<AuthCubit>().validateUserName(isUserNameValid: false);
-              return userNameCanNotBeShorterThanThreeCharacters;
+              return AppLocalizations.of(context).userNameCanNotBeShorterThanThreeCharacters;
             }
             context.read<AuthCubit>().validateUserName(isUserNameValid: true);
             return null;
           },
           icon: Icons.person,
-          labelText: "Username",
-          hintText: "Tell us, what's your name?",
+          labelText: AppLocalizations.of(context).username,
+          hintText: AppLocalizations.of(context).tellUsWhatsYourName,
         ),
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/pages/onboarding/constants/texts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -23,9 +23,9 @@ class SubmitButton extends StatelessWidget {
           context.read<AuthCubit>().createProfile();
         },
         animateOnTap: false,
-        child: const Text(
-          createYourProfile,
-          style: TextStyle(fontSize: 20),
+        child: Text(
+          AppLocalizations.of(context).createYourProfile,
+          style: const TextStyle(fontSize: 20),
         ),
       ),
     );

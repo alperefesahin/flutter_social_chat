@@ -80,5 +80,9 @@
 
     "confirm": "Confirm",
 
-    "resendCode": "RESEND CODE"
+    "resendCode": "RESEND CODE",
+    
+    "username": "Username",
+
+    "tellUsWhatsYourName": "Tell us what's your name?"
 }
