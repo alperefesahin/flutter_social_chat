@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/auth_cubit.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_app_bar.dart';
-import 'package:flutter_production_app/presentation/pages/verification_page/constants/texts.dart';
 import 'package:flutter_production_app/presentation/pages/verification_page/widgets/verification_page_body.dart';
 import 'package:go_router/go_router.dart';
 
@@ -49,7 +49,7 @@ class SignInVerificationPage extends StatelessWidget {
               ),
             ),
             appBarBackgroundColor: whiteColor,
-            appBarTitle: verificationText,
+            appBarTitle: AppLocalizations.of(context).verification,
             appBarAction: Icons.lock,
             appBarTitleTextStyle: const TextStyle(
               color: blackColor,

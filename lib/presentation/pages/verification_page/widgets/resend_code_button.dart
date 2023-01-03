@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
-import 'package:flutter_production_app/presentation/pages/verification_page/constants/texts.dart';
 
 class ResendCodeButton extends StatelessWidget {
   const ResendCodeButton({super.key});
@@ -21,17 +21,17 @@ class ResendCodeButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Row(
-            children: const [
+            children: [
               CustomText(
-                text: resendCodeText,
+                text: AppLocalizations.of(context).resendCode,
                 minFontSize: 15,
                 maxFontSize: 20,
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                   color: whiteColor,
                 ),
                 textPadding: EdgeInsets.zero,
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Icon(
                   Icons.arrow_forward_ios,
