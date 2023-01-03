@@ -1,0 +1,79 @@
+{
+    "connectionFailed": "Connection Failed!",
+
+    "chats": "Chats",
+
+    "camera": "Camera",
+
+    "profile": "Profile",
+
+    "giveRelatedPermission": "Please give related permission to use this feature.",
+
+    "lastMessageOn": "Last message on",
+
+    "startNewConversation": "Start a new conversation...",
+
+    "search": "Search",
+
+    "searchSomeone": "Search someone...",
+
+    "beDeepIntoTheConversation": "Be deep into the conversation!..",
+
+    "attachment": "Attachment",
+
+    "createNewGroupChat": "Create a new group chat!",
+
+    "createNewOneToOneChat": "Create a new one to one chat!",
+
+    "groupName": "Group Name",
+
+    "yourInspirationalGroupName": "My inspirational group name is...",
+
+    "channelNameCanNotBeAnEmpty": "Channel name can not be an empty!",
+
+    "channelNameCanNotBeLongerThanTenCharacters": "Channel name can not be longer than ten characters!",
+
+    "channelNameCanNotBeShorterThanThreeCharacters": "Channel name can not be shorter than three characters!",
+
+    "userNameRequired": "Please enter a valid username!",
+
+    "userNameCanNotBeAnEmpty": "Username can not be an empty!",
+
+    "userNameCanNotBeLongerThanTwentyCharacters": "Username can not be longer than twenty characters!",
+
+    "userNameCanNotBeShorterThanThreeCharacters": "Username can not be shorter than three characters!",
+
+    "createYourProfile": "Create your profile!",
+
+    "animatedText1": "Say goodbye to long distance relationships and hello to easy, instant communication with our chat app!",
+
+    "animatedText2": "Connect with friends and family like never before with our chat app!",
+
+    "animatedText3": "Stay in touch with the people you care about, no matter where you are!",
+
+    "createdAtText": "Created at",
+
+    "role": "Role",
+
+    "banStatus": "Ban Status",
+
+    "profilePage": "Profile Page",
+
+    "signIn": "Sign In",
+
+    "signInWithPhoneNumber": "Sign In With Phone Number",
+    
+    "phoneNumber": "Phone Number",
+
+    "smsInformationMessage": "We will send you an SMS message to verify your phone number. Message and data rates may apply.",
+
+    "verification": "Verification",
+
+    "confirmation": "Confirmation",
+
+    "confirmationInfo": "Please enter the 6-digit code we just sent to",
+
+    "confirm": "Confirm",
+    
+    "resendCode": "RESEND CODE"
+}
