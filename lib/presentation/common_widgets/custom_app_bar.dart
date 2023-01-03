@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_production_app/presentation/common_widgets/custom_text.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   CustomAppBar({
@@ -46,14 +47,11 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       toolbarHeight: 80,
       elevation: 0,
       shadowColor: shadowColor ?? transparentColor,
-      title: Padding(
-        padding: textPadding,
-        child: AutoSizeText(
-          appBarTitle,
-          minFontSize: minFontSize,
-          maxFontSize: maxFontSize,
-          maxLines: 1,
-        ),
+      title: CustomText(
+        maxFontSize: maxFontSize,
+        minFontSize: minFontSize,
+        text: appBarTitle,
+        textPadding: textPadding,
       ),
       titleTextStyle: appBarTitleTextStyle,
       leadingWidth: leadingWidth ?? 90,
