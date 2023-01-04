@@ -18,9 +18,9 @@ part 'auth_state.dart';
 class AuthCubit extends HydratedCubit<AuthState> {
   late final IAuthService _authService;
   late final IChatService _chatService;
-  late final AuthManagementCubit _authManagementCubit;
-
   late StreamSubscription<AuthUserModel>? _authUserSubscription;
+
+  late final AuthManagementCubit _authManagementCubit = getIt<AuthManagementCubit>();
 
   AuthCubit() : super(AuthState.empty()) {
     _authService = getIt<IAuthService>();
@@ -61,10 +61,9 @@ class AuthCubit extends HydratedCubit<AuthState> {
   }
 
   Future<void> createProfile() async {
-    _authManagementCubit = getIt<AuthManagementCubit>();
     final userProfilePhotoUrl = await _authManagementCubit.createProfile();
 
-    if (userProfilePhotoUrl == null) {
+    if (userProfilePhotoUrl == "") {
       return;
     }
 

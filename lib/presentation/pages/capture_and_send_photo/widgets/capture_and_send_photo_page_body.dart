@@ -24,8 +24,6 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
         child: ListView.builder(
           itemCount: state.currentUserChannels.length,
           itemBuilder: (context, index) {
-            final memberName = state.currentUserChannels[index].name;
-            final memberImage = state.currentUserChannels[index].image;
             final memberlastMessageTime = state.currentUserChannels[index].lastMessageAt == null
                 ? AppLocalizations.of(context).startNewConversation
                 : formatDate(state.currentUserChannels[index].lastMessageAt!, [D]);
@@ -43,7 +41,17 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
                 )
                 .toList();
 
-            final user = listOfMembers.map((e) => e.user).first;
+            final groupMemberCount = state.currentUserChannels[index].state!.members.length;
+
+            final user = listOfMembers.map((e) => e.user).last;
+
+            // To determine if the channel is group or not we need to check the count of members, and then
+            // show the related name and image of the channel.
+            final memberName =
+                groupMemberCount <= 2 ? user!.name : state.currentUserChannels[index].name;
+
+            final memberImage =
+                groupMemberCount <= 2 ? user!.image : state.currentUserChannels[index].image;
 
             final isUserSelected = state.listOfSelectedUserIDs.contains(user!.id);
 

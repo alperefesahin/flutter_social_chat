@@ -47,7 +47,7 @@ class AuthManagementCubit extends Cubit<AuthManagementState> {
     emit(state.copyWith(selectedImagePath: selectedImagePath));
   }
 
-  Future<String?> createProfile() async {
+  Future<String> createProfile() async {
     if (state.isInProgress) {
       return "";
     }
@@ -66,8 +66,11 @@ class AuthManagementCubit extends Cubit<AuthManagementState> {
       );
 
       return state.userProfilePhotoUrl;
+    } else {
+      emit(state.copyWith(isInProgress: false, userProfilePhotoUrl: ""));
+
+      return "";
     }
-    return null;
   }
 
   Future<void> downloadUrl() async {
