@@ -56,7 +56,7 @@ class AppWidget extends StatelessWidget {
           listener: (context, state) {
             if (!state.isUserConnectedToTheInternet) {
               BotToast.showText(
-                text: AppLocalizations.of(context).connectionFailed,
+                text: "Connection Failed!",
                 duration: const Duration(days: 365),
               );
             } else if (state.isUserConnectedToTheInternet) {
