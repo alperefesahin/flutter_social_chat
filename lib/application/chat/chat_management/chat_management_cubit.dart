@@ -193,8 +193,6 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
     emit(
       state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs, userIndex: userIndex),
     );
-
-    print(state.listOfSelectedUserIDs);
   }
 
   void removeUserToSendCapturedPhoto({
