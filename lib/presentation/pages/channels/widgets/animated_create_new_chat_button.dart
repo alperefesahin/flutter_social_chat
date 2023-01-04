@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
-import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/pages/channels/widgets/custom_float_action_button.dart';
+import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/presentation/pages/channels/widgets/custom_float_action_button.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class AnimatedCreateNewChatButton extends StatelessWidget {

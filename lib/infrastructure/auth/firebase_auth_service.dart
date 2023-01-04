@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_production_app/domain/auth/auth_failure.dart';
-import 'package:flutter_production_app/domain/auth/auth_user_model.dart';
-import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/infrastructure/core/firebase_helpers.dart';
-import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
+import 'package:flutter_social_chat/domain/auth/auth_failure.dart';
+import 'package:flutter_social_chat/domain/auth/auth_user_model.dart';
+import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
+import 'package:flutter_social_chat/infrastructure/core/firebase_helpers.dart';
+import 'package:flutter_social_chat/infrastructure/core/firestore_helpers.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 

@@ -1,5 +1,5 @@
-import 'package:flutter_production_app/domain/auth/auth_failure.dart';
-import 'package:flutter_production_app/domain/auth/auth_user_model.dart';
+import 'package:flutter_social_chat/domain/auth/auth_failure.dart';
+import 'package:flutter_social_chat/domain/auth/auth_user_model.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract class IAuthService {

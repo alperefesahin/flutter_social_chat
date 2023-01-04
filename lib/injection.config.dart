@@ -8,43 +8,43 @@
 import 'package:cloud_firestore/cloud_firestore.dart' as _i12;
 import 'package:firebase_auth/firebase_auth.dart' as _i11;
 import 'package:firebase_storage/firebase_storage.dart' as _i13;
-import 'package:flutter_production_app/application/auth/auth_management/auth_management_cubit.dart'
+import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart'
     as _i5;
-import 'package:flutter_production_app/application/auth/auth_setup/auth_cubit.dart'
+import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart'
     as _i4;
-import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart'
+import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart'
     as _i23;
-import 'package:flutter_production_app/application/camera/camera_cubit.dart'
+import 'package:flutter_social_chat/application/camera/camera_cubit.dart'
     as _i6;
-import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart'
+import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart'
     as _i7;
-import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart'
+import 'package:flutter_social_chat/application/chat/chat_setup/chat_setup_cubit.dart'
     as _i8;
-import 'package:flutter_production_app/application/connectivity/connectivity_cubit.dart'
+import 'package:flutter_social_chat/application/connectivity/connectivity_cubit.dart'
     as _i10;
-import 'package:flutter_production_app/application/microphone/microphone_cubit.dart'
+import 'package:flutter_social_chat/application/microphone/microphone_cubit.dart'
     as _i22;
-import 'package:flutter_production_app/domain/auth/i_auth_service.dart' as _i14;
-import 'package:flutter_production_app/domain/camera/i_camera_service.dart'
+import 'package:flutter_social_chat/domain/auth/i_auth_service.dart' as _i14;
+import 'package:flutter_social_chat/domain/camera/i_camera_service.dart'
     as _i16;
-import 'package:flutter_production_app/domain/chat/i_chat_service.dart' as _i24;
-import 'package:flutter_production_app/domain/connectivity/i_connectivity_service.dart'
+import 'package:flutter_social_chat/domain/chat/i_chat_service.dart' as _i24;
+import 'package:flutter_social_chat/domain/connectivity/i_connectivity_service.dart'
     as _i18;
-import 'package:flutter_production_app/domain/microphone/i_microphone_service.dart'
+import 'package:flutter_social_chat/domain/microphone/i_microphone_service.dart'
     as _i20;
-import 'package:flutter_production_app/infrastructure/auth/firebase_auth_service.dart'
+import 'package:flutter_social_chat/infrastructure/auth/firebase_auth_service.dart'
     as _i15;
-import 'package:flutter_production_app/infrastructure/camera/camera_service.dart'
+import 'package:flutter_social_chat/infrastructure/camera/camera_service.dart'
     as _i17;
-import 'package:flutter_production_app/infrastructure/chat/getstream_chat_service.dart'
+import 'package:flutter_social_chat/infrastructure/chat/getstream_chat_service.dart'
     as _i25;
-import 'package:flutter_production_app/infrastructure/connectivity/connectivity_service.dart'
+import 'package:flutter_social_chat/infrastructure/connectivity/connectivity_service.dart'
     as _i19;
-import 'package:flutter_production_app/infrastructure/core/injectable_module.dart'
+import 'package:flutter_social_chat/infrastructure/core/injectable_module.dart'
     as _i27;
-import 'package:flutter_production_app/infrastructure/microphone/microphone_service.dart'
+import 'package:flutter_social_chat/infrastructure/microphone/microphone_service.dart'
     as _i21;
-import 'package:flutter_production_app/presentation/routes/router.dart' as _i3;
+import 'package:flutter_social_chat/presentation/routes/router.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:stream_chat_flutter/stream_chat_flutter.dart' as _i26;

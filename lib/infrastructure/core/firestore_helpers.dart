@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
+import 'package:flutter_social_chat/injection.dart';
 
 extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> currentUserDocument() async {

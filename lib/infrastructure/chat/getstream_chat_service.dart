@@ -1,10 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/domain/chat/chat_user_model.dart';
-import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
-import 'package:flutter_production_app/infrastructure/core/getstream_helpers.dart';
-import 'package:flutter_production_app/secrets.dart';
+import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
+import 'package:flutter_social_chat/domain/chat/chat_user_model.dart';
+import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';
+import 'package:flutter_social_chat/infrastructure/core/getstream_helpers.dart';
+import 'package:flutter_social_chat/secrets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';

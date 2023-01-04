@@ -2,11 +2,11 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_production_app/application/auth/auth_management/auth_management_cubit.dart';
-import 'package:flutter_production_app/domain/auth/auth_user_model.dart';
-import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
-import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
+import 'package:flutter_social_chat/domain/auth/auth_user_model.dart';
+import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
+import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';
+import 'package:flutter_social_chat/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';

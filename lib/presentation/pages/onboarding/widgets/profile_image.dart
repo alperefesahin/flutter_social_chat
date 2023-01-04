@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_production_app/application/auth/auth_management/auth_management_cubit.dart';
-import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
+import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
 
 import 'package:image_picker/image_picker.dart';
 

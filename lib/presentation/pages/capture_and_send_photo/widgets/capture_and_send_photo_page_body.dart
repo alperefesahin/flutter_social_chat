@@ -2,8 +2,8 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
-import 'package:flutter_production_app/presentation/pages/capture_and_send_photo/widgets/user_card.dart';
+import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
+import 'package:flutter_social_chat/presentation/pages/capture_and_send_photo/widgets/user_card.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class CaptureAndSendPhotoPageBody extends StatelessWidget {

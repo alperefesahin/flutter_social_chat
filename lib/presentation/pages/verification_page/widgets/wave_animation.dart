@@ -1,7 +1,7 @@
 // ignore_for_file: use_named_constants
 
 import 'package:flutter/material.dart';
-import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 

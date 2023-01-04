@@ -1,8 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/pages/camera/widgets/capture_button.dart';
+import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/presentation/pages/camera/widgets/capture_button.dart';
 
 class CameraPreviewWidget extends StatelessWidget {
   const CameraPreviewWidget({

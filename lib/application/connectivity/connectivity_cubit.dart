@@ -4,8 +4,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_production_app/domain/connectivity/i_connectivity_service.dart';
-import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_social_chat/domain/connectivity/i_connectivity_service.dart';
+import 'package:flutter_social_chat/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

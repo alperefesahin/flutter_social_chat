@@ -1,4 +1,4 @@
-import 'package:flutter_production_app/domain/camera/i_camera_service.dart';
+import 'package:flutter_social_chat/domain/camera/i_camera_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
