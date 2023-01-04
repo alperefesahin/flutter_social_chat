@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_management/auth_management_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
 import 'package:flutter_production_app/presentation/pages/onboarding/widgets/onboarding_page_body.dart';
@@ -40,7 +41,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           context.go(context.namedLocation("channels_page"));
         }
       },
-      child: BlocBuilder<AuthCubit, AuthState>(
+      child: BlocBuilder<AuthManagementCubit, AuthManagementState>(
         builder: (context, state) {
           if (state.isInProgress) {
             return const Scaffold(
@@ -52,7 +53,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             return WillPopScope(
               onWillPop: () => Future<bool>.value(false),
               child: Scaffold(
-                body: OnboardingPageBody(authState: state),
+                body: OnboardingPageBody(selectedImagePath: state.selectedImagePath),
               ),
             );
           }

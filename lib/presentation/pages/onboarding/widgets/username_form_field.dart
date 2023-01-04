@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_management/auth_management_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/custom_text_field.dart';
 
 class UsernameFormField extends StatelessWidget {
@@ -20,13 +21,13 @@ class UsernameFormField extends StatelessWidget {
           onChanged: (userName) => context.read<AuthCubit>().changeUserName(userName: userName),
           validator: (userName) {
             if (userName!.length > 20) {
-              context.read<AuthCubit>().validateUserName(isUserNameValid: false);
+              context.read<AuthManagementCubit>().validateUserName(isUserNameValid: false);
               return AppLocalizations.of(context).userNameCanNotBeLongerThanTwentyCharacters;
             } else if (userName.length < 3) {
-              context.read<AuthCubit>().validateUserName(isUserNameValid: false);
+              context.read<AuthManagementCubit>().validateUserName(isUserNameValid: false);
               return AppLocalizations.of(context).userNameCanNotBeShorterThanThreeCharacters;
             }
-            context.read<AuthCubit>().validateUserName(isUserNameValid: true);
+            context.read<AuthManagementCubit>().validateUserName(isUserNameValid: true);
             return null;
           },
           icon: Icons.person,

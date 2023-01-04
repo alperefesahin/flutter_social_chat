@@ -19,7 +19,6 @@ mixin _$AuthState {
   AuthUserModel get authUser => throw _privateConstructorUsedError;
   bool get isUserCheckedFromAuthService => throw _privateConstructorUsedError;
   bool get isInProgress => throw _privateConstructorUsedError;
-  bool get isUserNameValid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -34,8 +33,7 @@ abstract class $AuthStateCopyWith<$Res> {
   $Res call(
       {AuthUserModel authUser,
       bool isUserCheckedFromAuthService,
-      bool isInProgress,
-      bool isUserNameValid});
+      bool isInProgress});
 
   $AuthUserModelCopyWith<$Res> get authUser;
 }
@@ -56,7 +54,6 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? authUser = null,
     Object? isUserCheckedFromAuthService = null,
     Object? isInProgress = null,
-    Object? isUserNameValid = null,
   }) {
     return _then(_value.copyWith(
       authUser: null == authUser
@@ -70,10 +67,6 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUserNameValid: null == isUserNameValid
-          ? _value.isUserNameValid
-          : isUserNameValid // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -97,8 +90,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   $Res call(
       {AuthUserModel authUser,
       bool isUserCheckedFromAuthService,
-      bool isInProgress,
-      bool isUserNameValid});
+      bool isInProgress});
 
   @override
   $AuthUserModelCopyWith<$Res> get authUser;
@@ -118,7 +110,6 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? authUser = null,
     Object? isUserCheckedFromAuthService = null,
     Object? isInProgress = null,
-    Object? isUserNameValid = null,
   }) {
     return _then(_$_AuthState(
       authUser: null == authUser
@@ -133,10 +124,6 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
               as bool,
-      isUserNameValid: null == isUserNameValid
-          ? _value.isUserNameValid
-          : isUserNameValid // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -147,8 +134,7 @@ class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
   const _$_AuthState(
       {required this.authUser,
       required this.isUserCheckedFromAuthService,
-      required this.isInProgress,
-      required this.isUserNameValid})
+      required this.isInProgress})
       : super._();
 
   @override
@@ -157,12 +143,10 @@ class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
   final bool isUserCheckedFromAuthService;
   @override
   final bool isInProgress;
-  @override
-  final bool isUserNameValid;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState(authUser: $authUser, isUserCheckedFromAuthService: $isUserCheckedFromAuthService, isInProgress: $isInProgress, isUserNameValid: $isUserNameValid)';
+    return 'AuthState(authUser: $authUser, isUserCheckedFromAuthService: $isUserCheckedFromAuthService, isInProgress: $isInProgress)';
   }
 
   @override
@@ -173,8 +157,7 @@ class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('authUser', authUser))
       ..add(DiagnosticsProperty(
           'isUserCheckedFromAuthService', isUserCheckedFromAuthService))
-      ..add(DiagnosticsProperty('isInProgress', isInProgress))
-      ..add(DiagnosticsProperty('isUserNameValid', isUserNameValid));
+      ..add(DiagnosticsProperty('isInProgress', isInProgress));
   }
 
   @override
@@ -189,14 +172,12 @@ class _$_AuthState extends _AuthState with DiagnosticableTreeMixin {
                 other.isUserCheckedFromAuthService ==
                     isUserCheckedFromAuthService) &&
             (identical(other.isInProgress, isInProgress) ||
-                other.isInProgress == isInProgress) &&
-            (identical(other.isUserNameValid, isUserNameValid) ||
-                other.isUserNameValid == isUserNameValid));
+                other.isInProgress == isInProgress));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, authUser,
-      isUserCheckedFromAuthService, isInProgress, isUserNameValid);
+  int get hashCode => Object.hash(
+      runtimeType, authUser, isUserCheckedFromAuthService, isInProgress);
 
   @JsonKey(ignore: true)
   @override
@@ -209,8 +190,7 @@ abstract class _AuthState extends AuthState {
   const factory _AuthState(
       {required final AuthUserModel authUser,
       required final bool isUserCheckedFromAuthService,
-      required final bool isInProgress,
-      required final bool isUserNameValid}) = _$_AuthState;
+      required final bool isInProgress}) = _$_AuthState;
   const _AuthState._() : super._();
 
   @override
@@ -219,8 +199,6 @@ abstract class _AuthState extends AuthState {
   bool get isUserCheckedFromAuthService;
   @override
   bool get isInProgress;
-  @override
-  bool get isUserNameValid;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

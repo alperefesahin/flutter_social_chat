@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_production_app/domain/chat/i_chat_service.dart';
 import 'package:flutter_production_app/infrastructure/core/firestore_helpers.dart';
 import 'package:flutter_production_app/injection.dart';

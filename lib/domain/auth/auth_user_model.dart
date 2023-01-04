@@ -11,7 +11,6 @@ class AuthUserModel with _$AuthUserModel {
     required bool isOnboardingCompleted,
     String? userName,
     String? photoUrl,
-    String? userFileImg,
   }) = _AuthUserModel;
 
   const AuthUserModel._();
