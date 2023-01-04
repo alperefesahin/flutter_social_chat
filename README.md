@@ -23,7 +23,7 @@
 
 ## Before Beginning: READ BEFORE USING!
 
--- Since the firebase project keys are private, I did not share them. If you want to use this application, first you must complete the necessary setups for the "GetStream" and "Firebase". You can not run the application directly If you fork, you will need appKey and devtoken for the "GetStream" section, and "firebase_options.dart" file that is coming from the Firebase itself.
+-- Since the firebase project keys are private, I do not share them generally, but for the tutorial purpose, I share "firebase.options.dart" file as an example for you. If you want to use this application, first you must complete the necessary setups for the "GetStream" and "Firebase". You can not run the application directly If you fork, you will need appKey and devtoken for the "GetStream" section, and "firebase_options.dart" file that is coming from the Firebase itself.
 
 * For the GetStream, you can register for free: https://getstream.io/try-for-free/
 
