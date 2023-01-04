@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_management/auth_management_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_production_app/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_production_app/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_production_app/application/connectivity/connectivity_cubit.dart';
@@ -23,6 +24,10 @@ class AppWidget extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          lazy: false,
+          create: (context) => getIt<AuthManagementCubit>(),
+        ),
         BlocProvider(
           lazy: false,
           create: (context) => getIt<AuthCubit>(),
@@ -51,7 +56,7 @@ class AppWidget extends StatelessWidget {
           listener: (context, state) {
             if (!state.isUserConnectedToTheInternet) {
               BotToast.showText(
-                text: AppLocalizations.of(context).connectionFailed,
+                text: "Connection Failed!",
                 duration: const Duration(days: 365),
               );
             } else if (state.isUserConnectedToTheInternet) {

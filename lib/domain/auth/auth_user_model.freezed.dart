@@ -25,7 +25,6 @@ mixin _$AuthUserModel {
   bool get isOnboardingCompleted => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
-  String? get userFileImg => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,8 +43,7 @@ abstract class $AuthUserModelCopyWith<$Res> {
       String phoneNumber,
       bool isOnboardingCompleted,
       String? userName,
-      String? photoUrl,
-      String? userFileImg});
+      String? photoUrl});
 }
 
 /// @nodoc
@@ -66,7 +64,6 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
     Object? isOnboardingCompleted = null,
     Object? userName = freezed,
     Object? photoUrl = freezed,
-    Object? userFileImg = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -89,10 +86,6 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      userFileImg: freezed == userFileImg
-          ? _value.userFileImg
-          : userFileImg // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -110,8 +103,7 @@ abstract class _$$_AuthUserModelCopyWith<$Res>
       String phoneNumber,
       bool isOnboardingCompleted,
       String? userName,
-      String? photoUrl,
-      String? userFileImg});
+      String? photoUrl});
 }
 
 /// @nodoc
@@ -130,7 +122,6 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
     Object? isOnboardingCompleted = null,
     Object? userName = freezed,
     Object? photoUrl = freezed,
-    Object? userFileImg = freezed,
   }) {
     return _then(_$_AuthUserModel(
       id: null == id
@@ -153,10 +144,6 @@ class __$$_AuthUserModelCopyWithImpl<$Res>
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      userFileImg: freezed == userFileImg
-          ? _value.userFileImg
-          : userFileImg // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -169,8 +156,7 @@ class _$_AuthUserModel extends _AuthUserModel {
       required this.phoneNumber,
       required this.isOnboardingCompleted,
       this.userName,
-      this.photoUrl,
-      this.userFileImg})
+      this.photoUrl})
       : super._();
 
   factory _$_AuthUserModel.fromJson(Map<String, dynamic> json) =>
@@ -186,12 +172,10 @@ class _$_AuthUserModel extends _AuthUserModel {
   final String? userName;
   @override
   final String? photoUrl;
-  @override
-  final String? userFileImg;
 
   @override
   String toString() {
-    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber, isOnboardingCompleted: $isOnboardingCompleted, userName: $userName, photoUrl: $photoUrl, userFileImg: $userFileImg)';
+    return 'AuthUserModel(id: $id, phoneNumber: $phoneNumber, isOnboardingCompleted: $isOnboardingCompleted, userName: $userName, photoUrl: $photoUrl)';
   }
 
   @override
@@ -207,15 +191,13 @@ class _$_AuthUserModel extends _AuthUserModel {
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
-            (identical(other.userFileImg, userFileImg) ||
-                other.userFileImg == userFileImg));
+                other.photoUrl == photoUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, phoneNumber,
-      isOnboardingCompleted, userName, photoUrl, userFileImg);
+  int get hashCode => Object.hash(
+      runtimeType, id, phoneNumber, isOnboardingCompleted, userName, photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -237,8 +219,7 @@ abstract class _AuthUserModel extends AuthUserModel {
       required final String phoneNumber,
       required final bool isOnboardingCompleted,
       final String? userName,
-      final String? photoUrl,
-      final String? userFileImg}) = _$_AuthUserModel;
+      final String? photoUrl}) = _$_AuthUserModel;
   const _AuthUserModel._() : super._();
 
   factory _AuthUserModel.fromJson(Map<String, dynamic> json) =
@@ -254,8 +235,6 @@ abstract class _AuthUserModel extends AuthUserModel {
   String? get userName;
   @override
   String? get photoUrl;
-  @override
-  String? get userFileImg;
   @override
   @JsonKey(ignore: true)
   _$$_AuthUserModelCopyWith<_$_AuthUserModel> get copyWith =>

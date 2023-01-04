@@ -6,7 +6,6 @@ class AuthState with _$AuthState {
     required AuthUserModel authUser,
     required bool isUserCheckedFromAuthService,
     required bool isInProgress,
-    required bool isUserNameValid,
   }) = _AuthState;
   const AuthState._();
 
@@ -14,7 +13,6 @@ class AuthState with _$AuthState {
         authUser: AuthUserModel.empty(),
         isUserCheckedFromAuthService: false,
         isInProgress: false,
-        isUserNameValid: false,
       );
 
   bool get isLoggedIn => authUser != AuthUserModel.empty();

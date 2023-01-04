@@ -2,18 +2,17 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_production_app/application/auth/auth_cubit.dart';
+import 'package:flutter_production_app/application/auth/auth_management/auth_management_cubit.dart';
 import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
 
 import 'package:image_picker/image_picker.dart';
 
 class ProfileImage extends StatelessWidget {
-  const ProfileImage({super.key, required this.authState});
-  final AuthState authState;
+  const ProfileImage({super.key, required this.selectedImagePath});
+  final String selectedImagePath;
 
   @override
   Widget build(BuildContext context) {
-    final newImagePath = authState.authUser.userFileImg;
     final size = MediaQuery.of(context).size;
 
     return Padding(
@@ -36,9 +35,9 @@ class ProfileImage extends StatelessWidget {
               ),
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: newImagePath == null
+                image: selectedImagePath == ""
                     ? const AssetImage("assets/images/user.png") as ImageProvider
-                    : FileImage(File(newImagePath)),
+                    : FileImage(File(selectedImagePath)),
               ),
             ),
           ),
@@ -51,7 +50,7 @@ class ProfileImage extends StatelessWidget {
                 imageQuality: 100,
               );
 
-              context.read<AuthCubit>().changeUserProfileImage(userFileImg: image);
+              context.read<AuthManagementCubit>().selectProfileImage(userFileImg: image);
             },
             icon: Icon(
               CupertinoIcons.chevron_down_square_fill,

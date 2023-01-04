@@ -13,7 +13,6 @@ _$_AuthUserModel _$$_AuthUserModelFromJson(Map<String, dynamic> json) =>
       isOnboardingCompleted: json['isOnboardingCompleted'] as bool,
       userName: json['userName'] as String?,
       photoUrl: json['photoUrl'] as String?,
-      userFileImg: json['userFileImg'] as String?,
     );
 
 Map<String, dynamic> _$$_AuthUserModelToJson(_$_AuthUserModel instance) =>
@@ -23,5 +22,4 @@ Map<String, dynamic> _$$_AuthUserModelToJson(_$_AuthUserModel instance) =>
       'isOnboardingCompleted': instance.isOnboardingCompleted,
       'userName': instance.userName,
       'photoUrl': instance.photoUrl,
-      'userFileImg': instance.userFileImg,
     };
