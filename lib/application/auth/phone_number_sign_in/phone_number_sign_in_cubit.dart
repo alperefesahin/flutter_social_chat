@@ -2,9 +2,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_production_app/domain/auth/auth_failure.dart';
-import 'package:flutter_production_app/domain/auth/i_auth_service.dart';
-import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_social_chat/domain/auth/auth_failure.dart';
+import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
+import 'package:flutter_social_chat/injection.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

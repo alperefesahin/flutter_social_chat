@@ -3,8 +3,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_production_app/domain/microphone/i_microphone_service.dart';
-import 'package:flutter_production_app/infrastructure/microphone/microphone_service.dart';
+import 'package:flutter_social_chat/domain/microphone/i_microphone_service.dart';
+import 'package:flutter_social_chat/infrastructure/microphone/microphone_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';

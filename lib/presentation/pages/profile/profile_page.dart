@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_production_app/application/auth/auth_setup/auth_cubit.dart';
-import 'package:flutter_production_app/application/chat/chat_setup/chat_setup_cubit.dart';
-import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
-import 'package:flutter_production_app/presentation/common_widgets/custom_progress_indicator.dart';
-import 'package:flutter_production_app/presentation/pages/profile/widgets/custom_profile_button.dart';
-import 'package:flutter_production_app/presentation/pages/profile/widgets/profile_core.dart';
-import 'package:flutter_production_app/presentation/pages/profile/widgets/user_details.dart';
+import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
+import 'package:flutter_social_chat/application/chat/chat_setup/chat_setup_cubit.dart';
+import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:flutter_social_chat/presentation/pages/profile/widgets/custom_profile_button.dart';
+import 'package:flutter_social_chat/presentation/pages/profile/widgets/profile_core.dart';
+import 'package:flutter_social_chat/presentation/pages/profile/widgets/user_details.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfilePage extends StatelessWidget {

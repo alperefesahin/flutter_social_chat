@@ -1,8 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_production_app/domain/connectivity/i_connectivity_service.dart';
-import 'package:flutter_production_app/injection.dart';
+import 'package:flutter_social_chat/domain/connectivity/i_connectivity_service.dart';
+import 'package:flutter_social_chat/injection.dart';
 import 'package:injectable/injectable.dart';
 
 // It works well on the real devices, but

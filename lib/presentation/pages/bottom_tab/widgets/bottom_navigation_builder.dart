@@ -2,7 +2,7 @@ import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_production_app/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
 import 'package:go_router/go_router.dart';
 
 Widget bottomNavigationBuilder(BuildContext context) {
