@@ -1,5 +1,24 @@
 # Hybrid, Functional, and Nice Designed Chat App: Flutter Social Chat
 
+## Distinctive features gathered in a Single App
+* BLoC for state management
+
+* DDD Architecture
+
+* Dependency Injection
+
+* 2 Different, popular services (Firebase & GetStream)
+
+* 2 Different presentations of the GetStream usage (Prepared UI which is coming from the GetStream Package and Manuel UI that's combined with the core package)
+
+* Localization from official Flutter docs
+
+* Official Camera Plugin from the Flutter itself
+
+* Local Storage (Hydrated Bloc)
+
+* Internet Connection Checker
+
 ## Images from the App
 
 <img width="327" alt="1" src="https://user-images.githubusercontent.com/67283777/210593207-3976e7da-d1f9-4f97-8e9d-4daf42dd216b.png"> <img width="319" alt="2" src="https://user-images.githubusercontent.com/67283777/210593216-6750ef71-d24c-4d77-9714-7021459ffa1b.png">
