@@ -33,7 +33,7 @@ dependencies:
     sdk: flutter
   auto_size_text: ^3.0.0
   intl_phone_number_input: ^0.7.1
-  go_router: ^5.2.4
+  go_router: ^6.0.1
   wave: ^0.2.2
   pin_code_fields: ^7.4.0
   bot_toast: ^4.0.3
@@ -41,7 +41,7 @@ dependencies:
   flutter_expandable_fab: ^1.6.1
   cupertino_icons: ^1.0.5
   image_picker: ^0.8.6
-  camera: ^0.10.0+4
+  camera: ^0.10.1
   flutter_svg: ^1.1.6
   animated_text_kit: ^4.2.2
   rounded_loading_button: ^2.1.0
@@ -50,7 +50,7 @@ dependencies:
   date_format: ^2.0.7
   page_transition: ^2.0.9
   permission_handler: ^10.2.0
-  image: ^3.2.2
+  image: ^4.0.8
   path_provider: ^2.0.11
   connectivity_plus: ^3.0.2
 
@@ -60,21 +60,21 @@ dependencies:
   json_annotation: ^4.7.0
   injectable: ^2.1.0
   get_it: ^7.2.0
-  fpdart: ^0.3.0
+  fpdart: ^0.4.0
   uuid: ^3.0.7
 
-  firebase_core: ^2.4.0
-  firebase_auth: ^4.2.0
-  firebase_storage: ^11.0.7
-  cloud_firestore: ^4.2.0
+  firebase_core: ^2.4.1
+  firebase_auth: ^4.2.5
+  firebase_storage: ^11.0.10
+  cloud_firestore: ^4.3.1
 
-  stream_chat_flutter: ^5.1.0
+  stream_chat_flutter: ^5.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^2.0.1
-  build_runner: ^2.3.2
+  build_runner: ^2.3.3
   freezed: ^2.3.2
   injectable_generator: ^2.1.3
   json_serializable: ^6.5.4
