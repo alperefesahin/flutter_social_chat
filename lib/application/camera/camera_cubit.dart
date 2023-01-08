@@ -85,7 +85,7 @@ class CameraCubit extends Cubit<CameraState> {
 
       // It's for the mirror image when the cameralens is front.
       if (cameraLensDirection == CameraLensDirection.front) {
-        final List<int> imageBytes = await file.readAsBytes();
+        final imageBytes = await file.readAsBytes();
 
         final img.Image? originalImage = img.decodeImage(imageBytes);
         final img.Image fixedImage = img.flipHorizontal(originalImage!);
