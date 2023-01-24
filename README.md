@@ -1,5 +1,8 @@
 # Hybrid, Functional, and Nice Designed Chat App: Flutter Social Chat
 
+## Sponsored by GetStream!
+If you want to read an article about this project, there is an aritcle that is written by me and sponsored by GetStream. Here is the link: https://getstream.io/blog/build-a-flutter-social-chat/
+
 ## Distinctive features gathered in a Single App
 * BLoC for state management
 
