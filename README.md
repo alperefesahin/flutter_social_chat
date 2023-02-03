@@ -1,7 +1,7 @@
 # Hybrid, Functional, and Nice Designed Chat App: Flutter Social Chat
 
 ## Sponsored by Stream!
-If you want to read an article about this project, there is an aritcle that is written by me and sponsored by Stream. Here is the link: https://getstream.io/blog/build-a-flutter-social-chat/
+If you want to read an article about this project, there is an aritcle that is written by me and sponsored by Stream. Here is the link: https://gstrm.io/sahinefe
 
 <img width="500" height="250" alt="r1" src="https://user-images.githubusercontent.com/67283777/214430512-e987c9ba-f6e6-4b43-abe9-efe0c375ef7c.png"> <img width="500" height="250" alt="2" src="https://user-images.githubusercontent.com/67283777/214430646-a7165df6-467b-4ecf-b9ed-14f3daa126c8.jpeg">
 
