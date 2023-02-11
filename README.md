@@ -26,6 +26,12 @@ If you want to read an article about this project, there is an aritcle that is w
 
 * Internet Connection Checker
 
+## Video Tutorial (YouTube)
+
+You can also watch the playlist which is related to Flutter Social Chat via YouTube: https://www.youtube.com/watch?v=r9MtCK33J78&list=PL3PvZdDvJcMIixstKkuvLWQleqJ1VhLrf
+
+![maxresdefault](https://user-images.githubusercontent.com/67283777/218279967-7a51ba48-0434-44c4-afe7-b79dbb4ab880.jpg)
+
 ## Images from the App
 
 <img width="327" alt="1" src="https://user-images.githubusercontent.com/67283777/210593207-3976e7da-d1f9-4f97-8e9d-4daf42dd216b.png"> <img width="319" alt="2" src="https://user-images.githubusercontent.com/67283777/210593216-6750ef71-d24c-4d77-9714-7021459ffa1b.png">
