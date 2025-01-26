@@ -22,15 +22,14 @@ class _LandingPageState extends State<LandingPage> {
       (_) {
         if (mounted) {
           final bool isUserLoggedIn = context.read<AuthCubit>().state.isLoggedIn;
-          final bool isOnboardingCompleted =
-              context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
+          final bool isOnboardingCompleted = context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
           if (isUserLoggedIn && !isOnboardingCompleted) {
-            context.go(context.namedLocation("onboarding_page"));
+            context.go(context.namedLocation('onboarding_page'));
           } else if (isUserLoggedIn && isOnboardingCompleted) {
-            context.go(context.namedLocation("channels_page"));
+            context.go(context.namedLocation('channels_page'));
           } else {
-            context.go(context.namedLocation("sign_in_page"));
+            context.go(context.namedLocation('sign_in_page'));
           }
         }
       },
@@ -42,18 +41,17 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listenWhen: (p, c) =>
-          p.isUserCheckedFromAuthService != c.isUserCheckedFromAuthService &&
-          c.isUserCheckedFromAuthService,
+          p.isUserCheckedFromAuthService != c.isUserCheckedFromAuthService && c.isUserCheckedFromAuthService,
       listener: (context, state) {
         final bool isUserLoggedIn = state.isLoggedIn;
         final bool isOnboardingCompleted = state.authUser.isOnboardingCompleted;
 
         if (isUserLoggedIn && !isOnboardingCompleted) {
-          context.go(context.namedLocation("onboarding_page"));
+          context.go(context.namedLocation('onboarding_page'));
         } else if (isUserLoggedIn && isOnboardingCompleted) {
-          context.go(context.namedLocation("channels_page"));
+          context.go(context.namedLocation('channels_page'));
         } else {
-          context.go(context.namedLocation("sign_in_page"));
+          context.go(context.namedLocation('sign_in_page'));
         }
       },
       child: const Scaffold(

@@ -12,13 +12,15 @@ part of 'connectivity_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ConnectivityState {
   bool get isUserConnectedToTheInternet => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConnectivityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConnectivityStateCopyWith<ConnectivityState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$ConnectivityStateCopyWithImpl<$Res, $Val extends ConnectivityState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConnectivityState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -57,30 +61,32 @@ class _$ConnectivityStateCopyWithImpl<$Res, $Val extends ConnectivityState>
 }
 
 /// @nodoc
-abstract class _$$_ConnectivityStateCopyWith<$Res>
+abstract class _$$ConnectivityStateImplCopyWith<$Res>
     implements $ConnectivityStateCopyWith<$Res> {
-  factory _$$_ConnectivityStateCopyWith(_$_ConnectivityState value,
-          $Res Function(_$_ConnectivityState) then) =
-      __$$_ConnectivityStateCopyWithImpl<$Res>;
+  factory _$$ConnectivityStateImplCopyWith(_$ConnectivityStateImpl value,
+          $Res Function(_$ConnectivityStateImpl) then) =
+      __$$ConnectivityStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isUserConnectedToTheInternet});
 }
 
 /// @nodoc
-class __$$_ConnectivityStateCopyWithImpl<$Res>
-    extends _$ConnectivityStateCopyWithImpl<$Res, _$_ConnectivityState>
-    implements _$$_ConnectivityStateCopyWith<$Res> {
-  __$$_ConnectivityStateCopyWithImpl(
-      _$_ConnectivityState _value, $Res Function(_$_ConnectivityState) _then)
+class __$$ConnectivityStateImplCopyWithImpl<$Res>
+    extends _$ConnectivityStateCopyWithImpl<$Res, _$ConnectivityStateImpl>
+    implements _$$ConnectivityStateImplCopyWith<$Res> {
+  __$$ConnectivityStateImplCopyWithImpl(_$ConnectivityStateImpl _value,
+      $Res Function(_$ConnectivityStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConnectivityState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isUserConnectedToTheInternet = null,
   }) {
-    return _then(_$_ConnectivityState(
+    return _then(_$ConnectivityStateImpl(
       isUserConnectedToTheInternet: null == isUserConnectedToTheInternet
           ? _value.isUserConnectedToTheInternet
           : isUserConnectedToTheInternet // ignore: cast_nullable_to_non_nullable
@@ -91,8 +97,8 @@ class __$$_ConnectivityStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ConnectivityState implements _ConnectivityState {
-  const _$_ConnectivityState({required this.isUserConnectedToTheInternet});
+class _$ConnectivityStateImpl implements _ConnectivityState {
+  const _$ConnectivityStateImpl({required this.isUserConnectedToTheInternet});
 
   @override
   final bool isUserConnectedToTheInternet;
@@ -103,10 +109,10 @@ class _$_ConnectivityState implements _ConnectivityState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConnectivityState &&
+            other is _$ConnectivityStateImpl &&
             (identical(other.isUserConnectedToTheInternet,
                     isUserConnectedToTheInternet) ||
                 other.isUserConnectedToTheInternet ==
@@ -116,23 +122,28 @@ class _$_ConnectivityState implements _ConnectivityState {
   @override
   int get hashCode => Object.hash(runtimeType, isUserConnectedToTheInternet);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConnectivityState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConnectivityStateCopyWith<_$_ConnectivityState> get copyWith =>
-      __$$_ConnectivityStateCopyWithImpl<_$_ConnectivityState>(
+  _$$ConnectivityStateImplCopyWith<_$ConnectivityStateImpl> get copyWith =>
+      __$$ConnectivityStateImplCopyWithImpl<_$ConnectivityStateImpl>(
           this, _$identity);
 }
 
 abstract class _ConnectivityState implements ConnectivityState {
   const factory _ConnectivityState(
           {required final bool isUserConnectedToTheInternet}) =
-      _$_ConnectivityState;
+      _$ConnectivityStateImpl;
 
   @override
   bool get isUserConnectedToTheInternet;
+
+  /// Create a copy of ConnectivityState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ConnectivityStateCopyWith<_$_ConnectivityState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ConnectivityStateImplCopyWith<_$ConnectivityStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

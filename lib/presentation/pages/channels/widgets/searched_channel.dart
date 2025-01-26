@@ -29,24 +29,21 @@ class SearchedChannel extends StatelessWidget {
 
     final lengthOfTheChannelMembers = channelMembers.length;
 
-    final oneToOneChatMember = channelMembers
-        .where((member) => member.userId != context.read<AuthCubit>().state.authUser.id)
-        .first
-        .user!;
+    final oneToOneChatMember =
+        channelMembers.where((member) => member.userId != context.read<AuthCubit>().state.authUser.id).first.user!;
 
-    final isTheSearchedChannelExist =
-        context.read<ChatManagementCubit>().searchInsideExistingChannels(
-              listOfChannels: listOfChannels,
-              searchedText: searchedText,
-              index: index,
-              oneToOneChatMember: oneToOneChatMember,
-              lengthOfTheChannelMembers: lengthOfTheChannelMembers,
-            );
+    final isTheSearchedChannelExist = context.read<ChatManagementCubit>().searchInsideExistingChannels(
+          listOfChannels: listOfChannels,
+          searchedText: searchedText,
+          index: index,
+          oneToOneChatMember: oneToOneChatMember,
+          lengthOfTheChannelMembers: lengthOfTheChannelMembers,
+        );
 
     final lastMessage = channel.state!.lastMessage == null
-        ? AppLocalizations.of(context).beDeepIntoTheConversation
+        ? AppLocalizations.of(context)?.beDeepIntoTheConversation
         : channel.state!.lastMessage!.attachments.isNotEmpty
-            ? AppLocalizations.of(context).attachment
+            ? AppLocalizations.of(context)?.attachment
             : channel.state!.lastMessage!.text;
 
     if (isTheSearchedChannelExist) {

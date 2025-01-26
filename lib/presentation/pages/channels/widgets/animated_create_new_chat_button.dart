@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
 import 'package:flutter_social_chat/presentation/pages/channels/widgets/custom_float_action_button.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
@@ -15,8 +14,6 @@ class AnimatedCreateNewChatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpandableFab(
-      backgroundColor: customIndigoColor,
-      closeButtonStyle: const ExpandableFabCloseButtonStyle(backgroundColor: customIndigoColor),
       children: [
         CustomFloatActionButton(
           buttonIcon: CupertinoIcons.group_solid,
@@ -29,7 +26,6 @@ class AnimatedCreateNewChatButton extends StatelessWidget {
           userListController: userListController,
         ),
       ],
-      child: const Icon(CupertinoIcons.chat_bubble_text),
     );
   }
 }

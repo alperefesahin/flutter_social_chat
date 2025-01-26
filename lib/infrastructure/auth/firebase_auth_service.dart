@@ -31,8 +31,7 @@ class FirebaseAuthService implements IAuthService {
   }
 
   @override
-  Future<Option<AuthUserModel>> getSignedInUser() async =>
-      optionOf(_firebaseAuth.currentUser?.toDomain());
+  Future<Option<AuthUserModel>> getSignedInUser() async => optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<void> signOut() async {
@@ -40,13 +39,13 @@ class FirebaseAuthService implements IAuthService {
   }
 
   @override
-  Stream<Either<AuthFailure, Tuple2<String, int?>>> signInWithPhoneNumber({
+  Stream<Either<AuthFailure, (String, int?)>> signInWithPhoneNumber({
     required String phoneNumber,
     required Duration timeout,
     required int? resendToken,
   }) async* {
-    final StreamController<Either<AuthFailure, Tuple2<String, int?>>> streamController =
-        StreamController<Either<AuthFailure, Tuple2<String, int?>>>();
+    final StreamController<Either<AuthFailure, (String, int?)>> streamController =
+        StreamController<Either<AuthFailure, (String, int?)>>();
 
     await _firebaseAuth.verifyPhoneNumber(
       forceResendingToken: resendToken,
@@ -58,11 +57,11 @@ class FirebaseAuthService implements IAuthService {
       },
       codeSent: (String verificationId, int? resendToken) async {
         // Wait for the user to enter the SMS code
-        streamController.add(right(tuple2(verificationId, resendToken)));
+        streamController.add(right((verificationId, resendToken)));
       },
       codeAutoRetrievalTimeout: (String verificationId) {},
       verificationFailed: (FirebaseAuthException e) {
-        late final Either<AuthFailure, Tuple2<String, int?>> result;
+        late final Either<AuthFailure, (String, int?)> result;
         if (e.code == 'too-many-requests') {
           result = left(const AuthFailure.tooManyRequests());
         } else if (e.code == 'app-not-authorized') {
@@ -105,8 +104,8 @@ class FirebaseAuthService implements IAuthService {
           final user = userCredential.user!;
           return userDoc.set(
             {
-              "userPhone": user.phoneNumber!,
-              "uid": user.uid,
+              'userPhone': user.phoneNumber!,
+              'uid': user.uid,
             },
             SetOptions(merge: true),
           );
@@ -115,9 +114,9 @@ class FirebaseAuthService implements IAuthService {
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == "session-expired") {
+      if (e.code == 'session-expired') {
         return left(const AuthFailure.sessionExpired());
-      } else if (e.code == "ınvalıd-verıfıcatıon-code" || e.code == "invalid-verification-code") {
+      } else if (e.code == 'ınvalıd-verıfıcatıon-code' || e.code == 'invalid-verification-code') {
         return left(const AuthFailure.invalidVerificationCode());
       }
       return left(const AuthFailure.serverError());

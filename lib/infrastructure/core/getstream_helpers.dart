@@ -7,8 +7,8 @@ import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 extension GetstreamUserDomainX on OwnUser {
   ChatUserModel toDomain() {
     return ChatUserModel(
-      createdAt: formatDate(createdAt, [yyyy, '-', mm, '-', dd]),
-      userRole: role?.toUpperCase() ?? "?",
+      createdAt: formatDate(createdAt ?? DateTime.now(), [yyyy, '-', mm, '-', dd]),
+      userRole: role?.toUpperCase() ?? '?',
       isUserBanned: banned,
     );
   }

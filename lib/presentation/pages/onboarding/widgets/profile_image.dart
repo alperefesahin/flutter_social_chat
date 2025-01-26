@@ -30,13 +30,13 @@ class ProfileImage extends StatelessWidget {
                 Radius.circular(80),
               ),
               border: Border.all(
-                color: customIndigoColor.withOpacity(0.5),
+                color: customIndigoColor.withValues(alpha: 0.5),
                 width: 3,
               ),
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: selectedImagePath == ""
-                    ? const AssetImage("assets/images/user.png") as ImageProvider
+                image: selectedImagePath == ''
+                    ? const AssetImage('assets/images/user.png') as ImageProvider
                     : FileImage(File(selectedImagePath)),
               ),
             ),
@@ -57,7 +57,7 @@ class ProfileImage extends StatelessWidget {
               size: 30,
               color: customIndigoColor.withBlue(200),
             ),
-          )
+          ),
         ],
       ),
     );

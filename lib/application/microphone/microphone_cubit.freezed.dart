@@ -12,13 +12,15 @@ part of 'microphone_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MicrophoneState {
   bool get isMicrophonePermissionGranted => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MicrophoneState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MicrophoneStateCopyWith<MicrophoneState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$MicrophoneStateCopyWithImpl<$Res, $Val extends MicrophoneState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MicrophoneState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -57,30 +61,32 @@ class _$MicrophoneStateCopyWithImpl<$Res, $Val extends MicrophoneState>
 }
 
 /// @nodoc
-abstract class _$$_MicrophoneStateCopyWith<$Res>
+abstract class _$$MicrophoneStateImplCopyWith<$Res>
     implements $MicrophoneStateCopyWith<$Res> {
-  factory _$$_MicrophoneStateCopyWith(
-          _$_MicrophoneState value, $Res Function(_$_MicrophoneState) then) =
-      __$$_MicrophoneStateCopyWithImpl<$Res>;
+  factory _$$MicrophoneStateImplCopyWith(_$MicrophoneStateImpl value,
+          $Res Function(_$MicrophoneStateImpl) then) =
+      __$$MicrophoneStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isMicrophonePermissionGranted});
 }
 
 /// @nodoc
-class __$$_MicrophoneStateCopyWithImpl<$Res>
-    extends _$MicrophoneStateCopyWithImpl<$Res, _$_MicrophoneState>
-    implements _$$_MicrophoneStateCopyWith<$Res> {
-  __$$_MicrophoneStateCopyWithImpl(
-      _$_MicrophoneState _value, $Res Function(_$_MicrophoneState) _then)
+class __$$MicrophoneStateImplCopyWithImpl<$Res>
+    extends _$MicrophoneStateCopyWithImpl<$Res, _$MicrophoneStateImpl>
+    implements _$$MicrophoneStateImplCopyWith<$Res> {
+  __$$MicrophoneStateImplCopyWithImpl(
+      _$MicrophoneStateImpl _value, $Res Function(_$MicrophoneStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MicrophoneState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isMicrophonePermissionGranted = null,
   }) {
-    return _then(_$_MicrophoneState(
+    return _then(_$MicrophoneStateImpl(
       isMicrophonePermissionGranted: null == isMicrophonePermissionGranted
           ? _value.isMicrophonePermissionGranted
           : isMicrophonePermissionGranted // ignore: cast_nullable_to_non_nullable
@@ -91,8 +97,8 @@ class __$$_MicrophoneStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MicrophoneState implements _MicrophoneState {
-  const _$_MicrophoneState({required this.isMicrophonePermissionGranted});
+class _$MicrophoneStateImpl implements _MicrophoneState {
+  const _$MicrophoneStateImpl({required this.isMicrophonePermissionGranted});
 
   @override
   final bool isMicrophonePermissionGranted;
@@ -103,10 +109,10 @@ class _$_MicrophoneState implements _MicrophoneState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MicrophoneState &&
+            other is _$MicrophoneStateImpl &&
             (identical(other.isMicrophonePermissionGranted,
                     isMicrophonePermissionGranted) ||
                 other.isMicrophonePermissionGranted ==
@@ -116,21 +122,28 @@ class _$_MicrophoneState implements _MicrophoneState {
   @override
   int get hashCode => Object.hash(runtimeType, isMicrophonePermissionGranted);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MicrophoneState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MicrophoneStateCopyWith<_$_MicrophoneState> get copyWith =>
-      __$$_MicrophoneStateCopyWithImpl<_$_MicrophoneState>(this, _$identity);
+  _$$MicrophoneStateImplCopyWith<_$MicrophoneStateImpl> get copyWith =>
+      __$$MicrophoneStateImplCopyWithImpl<_$MicrophoneStateImpl>(
+          this, _$identity);
 }
 
 abstract class _MicrophoneState implements MicrophoneState {
   const factory _MicrophoneState(
-      {required final bool isMicrophonePermissionGranted}) = _$_MicrophoneState;
+          {required final bool isMicrophonePermissionGranted}) =
+      _$MicrophoneStateImpl;
 
   @override
   bool get isMicrophonePermissionGranted;
+
+  /// Create a copy of MicrophoneState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_MicrophoneStateCopyWith<_$_MicrophoneState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MicrophoneStateImplCopyWith<_$MicrophoneStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

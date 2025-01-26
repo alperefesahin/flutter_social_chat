@@ -4,7 +4,6 @@ import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:flutter_social_chat/domain/chat/chat_user_model.dart';
 import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';
 import 'package:flutter_social_chat/infrastructure/core/getstream_helpers.dart';
-import 'package:flutter_social_chat/secrets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
@@ -53,9 +52,13 @@ class GetstreamChatService implements IChatService {
     final signedInUserOption = await _firebaseAuth.getSignedInUser();
 
     final signedInUser = signedInUserOption.fold(
-      () => throw Exception("Not authanticated"),
+      () => throw Exception('Not authanticated'),
       (user) => user,
     );
+
+    // devToken, get info from readme.md file
+    final String devToken =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZWZlIn0.WfcPNsvL16TFOc0ced5eIrjzCukZBHIVyCz3DHBSWKI';
 
     await streamChatClient.connectUser(
       User(
@@ -76,12 +79,12 @@ class GetstreamChatService implements IChatService {
     final randomId = const Uuid().v1();
 
     await streamChatClient.createChannel(
-      "messaging",
+      'messaging',
       channelId: randomId,
       channelData: {
-        "members": listOfMemberIDs,
-        "name": channelName,
-        "image": channelImageUrl,
+        'members': listOfMemberIDs,
+        'name': channelName,
+        'image': channelImageUrl,
       },
     );
   }
@@ -96,7 +99,7 @@ class GetstreamChatService implements IChatService {
 
     final signedInUserOption = await _firebaseAuth.getSignedInUser();
     final signedInUser = signedInUserOption.fold(
-      () => throw Exception("Not authanticated"),
+      () => throw Exception('Not authanticated'),
       (user) => user,
     );
     final user = User(id: signedInUser.id);
@@ -108,7 +111,7 @@ class GetstreamChatService implements IChatService {
         path: pathOfTheTakenPhoto,
       ),
       channelId,
-      "messaging",
+      'messaging',
     )
         .then((response) {
       // Successful upload, you can now attach this image
@@ -126,7 +129,7 @@ class GetstreamChatService implements IChatService {
         attachments: [image],
       );
 
-      streamChatClient.sendMessage(message, channelId, "messaging");
+      streamChatClient.sendMessage(message, channelId, 'messaging');
     });
   }
 }

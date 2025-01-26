@@ -18,10 +18,10 @@ class CustomWaveAnimation extends StatelessWidget {
       child: WaveWidget(
         config: CustomConfig(
           gradients: const [
-            [customIndigoColor, customIndigoColor]
+            [customIndigoColor, customIndigoColor],
           ],
           durations: [25000],
-          heightPercentages: [(0.005)],
+          heightPercentages: [0.005],
           blur: const MaskFilter.blur(BlurStyle.solid, 12),
         ),
         size: const Size(double.infinity, double.infinity),

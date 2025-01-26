@@ -4,7 +4,6 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
@@ -41,7 +40,7 @@ class AppWidget extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<ChatManagementCubit>()..reset(),
-        )
+        ),
       ],
       child: Listener(
         onPointerUp: (_) {
@@ -56,7 +55,7 @@ class AppWidget extends StatelessWidget {
           listener: (context, state) {
             if (!state.isUserConnectedToTheInternet) {
               BotToast.showText(
-                text: "Connection Failed!",
+                text: 'Connection Failed!',
                 duration: const Duration(days: 365),
               );
             } else if (state.isUserConnectedToTheInternet) {
@@ -66,17 +65,8 @@ class AppWidget extends StatelessWidget {
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
             routerConfig: appRouter.router,
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            // you can add more locales below
-            // ignore: avoid_redundant_argument_values
-            supportedLocales: const [
-              Locale('en', 'US'),
-            ],
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
             builder: (context, child) {
               final client = getIt<StreamChatClient>();
 

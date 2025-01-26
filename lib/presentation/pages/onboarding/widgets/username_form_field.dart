@@ -22,17 +22,17 @@ class UsernameFormField extends StatelessWidget {
           validator: (userName) {
             if (userName!.length > 20) {
               context.read<AuthManagementCubit>().validateUserName(isUserNameValid: false);
-              return AppLocalizations.of(context).userNameCanNotBeLongerThanTwentyCharacters;
+              return AppLocalizations.of(context)?.userNameCanNotBeLongerThanTwentyCharacters;
             } else if (userName.length < 3) {
               context.read<AuthManagementCubit>().validateUserName(isUserNameValid: false);
-              return AppLocalizations.of(context).userNameCanNotBeShorterThanThreeCharacters;
+              return AppLocalizations.of(context)?.userNameCanNotBeShorterThanThreeCharacters;
             }
             context.read<AuthManagementCubit>().validateUserName(isUserNameValid: true);
             return null;
           },
           icon: Icons.person,
-          labelText: AppLocalizations.of(context).username,
-          hintText: AppLocalizations.of(context).tellUsWhatsYourName,
+          labelText: AppLocalizations.of(context)?.username ?? '',
+          hintText: AppLocalizations.of(context)?.tellUsWhatsYourName ?? '',
         ),
       ),
     );

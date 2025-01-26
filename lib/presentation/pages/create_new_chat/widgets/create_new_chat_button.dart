@@ -19,8 +19,8 @@ class CreateNewChatButton extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8),
       child: ElevatedButton(
         style: const ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(customIndigoColor),
-          padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
+          backgroundColor: WidgetStatePropertyAll(customIndigoColor),
+          padding: WidgetStatePropertyAll(EdgeInsets.all(16)),
         ),
         onPressed: () {
           context.read<ChatManagementCubit>().createNewChannel(
@@ -29,10 +29,9 @@ class CreateNewChatButton extends StatelessWidget {
         },
         child: CustomText(
           text: isCreateNewChatPageForCreatingGroup
-              ? AppLocalizations.of(context).createNewGroupChat
-              : AppLocalizations.of(context).createNewOneToOneChat,
-          minFontSize: 15,
-          maxFontSize: 17,
+              ? AppLocalizations.of(context)?.createNewGroupChat ?? ''
+              : AppLocalizations.of(context)?.createNewOneToOneChat ?? '',
+          textStyle: const TextStyle(fontSize: 16),
           textPadding: EdgeInsets.zero,
         ),
       ),

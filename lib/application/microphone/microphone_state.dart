@@ -6,7 +6,5 @@ class MicrophoneState with _$MicrophoneState {
     required bool isMicrophonePermissionGranted,
   }) = _MicrophoneState;
 
-  factory MicrophoneState.empty() => const MicrophoneState(
-        isMicrophonePermissionGranted: false,
-      );
+  factory MicrophoneState.empty() => const MicrophoneState(isMicrophonePermissionGranted: false);
 }

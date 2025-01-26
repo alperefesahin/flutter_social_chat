@@ -12,7 +12,7 @@ part of 'chat_setup_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChatSetupState {
@@ -21,7 +21,9 @@ mixin _$ChatSetupState {
       throw _privateConstructorUsedError;
   bool get isUserCheckedFromChatService => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatSetupStateCopyWith<ChatSetupState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +52,8 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -73,6 +77,8 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
     ) as $Val);
   }
 
+  /// Create a copy of ChatSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ChatUserModelCopyWith<$Res> get chatUser {
@@ -83,11 +89,11 @@ class _$ChatSetupStateCopyWithImpl<$Res, $Val extends ChatSetupState>
 }
 
 /// @nodoc
-abstract class _$$_ChatSetupStateCopyWith<$Res>
+abstract class _$$ChatSetupStateImplCopyWith<$Res>
     implements $ChatSetupStateCopyWith<$Res> {
-  factory _$$_ChatSetupStateCopyWith(
-          _$_ChatSetupState value, $Res Function(_$_ChatSetupState) then) =
-      __$$_ChatSetupStateCopyWithImpl<$Res>;
+  factory _$$ChatSetupStateImplCopyWith(_$ChatSetupStateImpl value,
+          $Res Function(_$ChatSetupStateImpl) then) =
+      __$$ChatSetupStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,13 +106,15 @@ abstract class _$$_ChatSetupStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChatSetupStateCopyWithImpl<$Res>
-    extends _$ChatSetupStateCopyWithImpl<$Res, _$_ChatSetupState>
-    implements _$$_ChatSetupStateCopyWith<$Res> {
-  __$$_ChatSetupStateCopyWithImpl(
-      _$_ChatSetupState _value, $Res Function(_$_ChatSetupState) _then)
+class __$$ChatSetupStateImplCopyWithImpl<$Res>
+    extends _$ChatSetupStateCopyWithImpl<$Res, _$ChatSetupStateImpl>
+    implements _$$ChatSetupStateImplCopyWith<$Res> {
+  __$$ChatSetupStateImplCopyWithImpl(
+      _$ChatSetupStateImpl _value, $Res Function(_$ChatSetupStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +122,7 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
     Object? webSocketConnectionStatus = null,
     Object? isUserCheckedFromChatService = null,
   }) {
-    return _then(_$_ChatSetupState(
+    return _then(_$ChatSetupStateImpl(
       chatUser: null == chatUser
           ? _value.chatUser
           : chatUser // ignore: cast_nullable_to_non_nullable
@@ -133,8 +141,9 @@ class __$$_ChatSetupStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatSetupState extends _ChatSetupState with DiagnosticableTreeMixin {
-  const _$_ChatSetupState(
+class _$ChatSetupStateImpl extends _ChatSetupState
+    with DiagnosticableTreeMixin {
+  const _$ChatSetupStateImpl(
       {required this.chatUser,
       required this.webSocketConnectionStatus,
       required this.isUserCheckedFromChatService})
@@ -165,10 +174,10 @@ class _$_ChatSetupState extends _ChatSetupState with DiagnosticableTreeMixin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatSetupState &&
+            other is _$ChatSetupStateImpl &&
             (identical(other.chatUser, chatUser) ||
                 other.chatUser == chatUser) &&
             (identical(other.webSocketConnectionStatus,
@@ -184,18 +193,21 @@ class _$_ChatSetupState extends _ChatSetupState with DiagnosticableTreeMixin {
   int get hashCode => Object.hash(runtimeType, chatUser,
       webSocketConnectionStatus, isUserCheckedFromChatService);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatSetupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatSetupStateCopyWith<_$_ChatSetupState> get copyWith =>
-      __$$_ChatSetupStateCopyWithImpl<_$_ChatSetupState>(this, _$identity);
+  _$$ChatSetupStateImplCopyWith<_$ChatSetupStateImpl> get copyWith =>
+      __$$ChatSetupStateImplCopyWithImpl<_$ChatSetupStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ChatSetupState extends ChatSetupState {
   const factory _ChatSetupState(
       {required final ChatUserModel chatUser,
       required final ConnectionStatus webSocketConnectionStatus,
-      required final bool isUserCheckedFromChatService}) = _$_ChatSetupState;
+      required final bool isUserCheckedFromChatService}) = _$ChatSetupStateImpl;
   const _ChatSetupState._() : super._();
 
   @override
@@ -204,8 +216,11 @@ abstract class _ChatSetupState extends ChatSetupState {
   ConnectionStatus get webSocketConnectionStatus;
   @override
   bool get isUserCheckedFromChatService;
+
+  /// Create a copy of ChatSetupState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ChatSetupStateCopyWith<_$_ChatSetupState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatSetupStateImplCopyWith<_$ChatSetupStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

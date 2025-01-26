@@ -1,9 +1,7 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/domain/connectivity/i_connectivity_service.dart';
 import 'package:flutter_social_chat/injection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,8 +29,7 @@ class ConnectivityCubit extends Cubit<ConnectivityState> {
   }
 
   Future<void> _listenConnectivityStateChangesStream(ConnectivityResult connectivityResult) async {
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
+    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
       emit(state.copyWith(isUserConnectedToTheInternet: true));
     } else {
       emit(state.copyWith(isUserConnectedToTheInternet: false));

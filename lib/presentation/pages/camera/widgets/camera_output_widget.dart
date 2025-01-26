@@ -27,11 +27,11 @@ class CameraOutputWidget extends StatelessWidget {
         child: FloatingActionButton(
           onPressed: () {
             context.go(
-              context.namedLocation("capture_and_send_photo_page"),
+              context.namedLocation('capture_and_send_photo_page'),
               extra: {
-                "userListController": userListController,
-                "pathOfTheTakenPhoto": pathOfTheTakenPhoto,
-                "sizeOfTheTakenPhoto": sizeOfTheTakenPhoto,
+                'userListController': userListController,
+                'pathOfTheTakenPhoto': pathOfTheTakenPhoto,
+                'sizeOfTheTakenPhoto': sizeOfTheTakenPhoto,
               },
             );
           },

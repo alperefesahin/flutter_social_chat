@@ -1,22 +1,48 @@
-include: package:lint/analysis_options.yaml
-
-linter:
-  rules:
-    always_declare_return_types: true
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  
-  exclude: 
-    - '**/*.freezed.dart'
-    - '**/*.config.dart'
-    - '**/*.g.dart'
+ exclude:
+  — “build/**”
+  — “**/*.g.dart”
+  — “**/*.gen.dart”
+  — “**/*.freezed.dart”
+
+linter:
+ rules:
+  avoid_redundant_argument_values: true
+  avoid_init_to_null: true
+  avoid_print: true
+  control_flow_in_finally: true
+  constant_identifier_names: true
+  curly_braces_in_flow_control_structures: true
+  exhaustive_cases: true
+  file_names: true
+  library_prefixes: true
+  non_constant_identifier_names: true
+  null_check_on_nullable_type_parameter: true
+  prefer_const_constructors: true
+  prefer_contains: true
+  prefer_final_fields: true
+  prefer_is_empty: true
+  prefer_null_aware_operators: true
+  sized_box_for_whitespace: true
+  slash_for_doc_comments: true
+  unnecessary_brace_in_string_interps: true
+  unnecessary_constructor_name: true
+  unnecessary_late: true
+  unnecessary_parenthesis: true
+  unnecessary_string_escapes: true
+  unnecessary_string_interpolations: true
+  always_use_package_imports: true
+  depend_on_referenced_packages: true
+  prefer_single_quotes: true
+  require_trailing_commas: true
+  always_put_required_named_parameters_first: false
+  sort_pub_dependencies: false
+  prefer_if_elements_to_conditional_expressions: false
 
   strong-mode:
-    implicit-casts: true
-
-  errors:
-    missing_required_param: error
-    must_be_immutable: error
-    always_declare_return_types: warning
-
-
+   implicit-casts: false
+   implicit-dynamic: false

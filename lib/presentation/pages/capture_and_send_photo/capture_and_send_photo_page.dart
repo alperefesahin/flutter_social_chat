@@ -24,11 +24,12 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
       listener: (context, state) {
         if (state.isCapturedPhotoSent) {
           context.read<ChatManagementCubit>().reset();
-          context.go(context.namedLocation("channels_page"));
+          context.go(context.namedLocation('channels_page'));
         }
       },
-      child: WillPopScope(
-        onWillPop: () async => Future.value(false),
+      child: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (context, result) {},
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
             onPressed: () {
@@ -41,21 +42,20 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
           ),
           appBar: CustomAppBar(
             centerTitle: false,
-            appBarTitle: "",
+            appBarTitle: '',
             appBarAction: CupertinoIcons.line_horizontal_3_decrease,
             appBarIconColor: blackColor,
             leading: IconButton(
               onPressed: () {
                 context.read<ChatManagementCubit>().reset();
-                context.go(context.namedLocation("camera_page"));
+                context.go(context.namedLocation('camera_page'));
               },
               icon: const Icon(
                 CupertinoIcons.back,
                 color: blackColor,
               ),
             ),
-            maxFontSize: 23,
-            minFontSize: 19,
+            fontSize: 18,
             textPadding: EdgeInsets.zero,
           ),
           body: BlocBuilder<ChatManagementCubit, ChatManagementState>(

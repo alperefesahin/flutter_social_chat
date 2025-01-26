@@ -27,29 +27,29 @@ class CreateNewChatPage extends StatelessWidget {
       listener: (context, state) {
         if (state.isChannelCreated) {
           context.read<ChatManagementCubit>().reset();
-          context.go(context.namedLocation("channels_page"));
+          context.go(context.namedLocation('channels_page'));
         }
       },
-      child: WillPopScope(
-        onWillPop: () async => Future.value(false),
+      child: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (context, result) {},
         child: Scaffold(
           appBar: CustomAppBar(
             centerTitle: false,
-            appBarTitle: "",
+            appBarTitle: '',
             appBarAction: CupertinoIcons.line_horizontal_3_decrease,
             appBarIconColor: blackColor,
             leading: IconButton(
               onPressed: () {
                 context.read<ChatManagementCubit>().reset();
-                context.go(context.namedLocation("channels_page"));
+                context.go(context.namedLocation('channels_page'));
               },
               icon: const Icon(
                 CupertinoIcons.back,
                 color: blackColor,
               ),
             ),
-            maxFontSize: 23,
-            minFontSize: 19,
+            fontSize: 20,
             textPadding: EdgeInsets.zero,
           ),
           body: BlocBuilder<ChatManagementCubit, ChatManagementState>(
@@ -68,13 +68,11 @@ class CreateNewChatPage extends StatelessWidget {
                         ),
                         if (isCreateNewChatPageForCreatingGroup!)
                           CreatingGroupChatPageDetails(
-                            isCreateNewChatPageForCreatingGroup:
-                                isCreateNewChatPageForCreatingGroup,
+                            isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup,
                           )
                         else
                           CreateNewChatButton(
-                            isCreateNewChatPageForCreatingGroup:
-                                isCreateNewChatPageForCreatingGroup!,
+                            isCreateNewChatPageForCreatingGroup: isCreateNewChatPageForCreatingGroup!,
                           ),
                       ],
                     ),

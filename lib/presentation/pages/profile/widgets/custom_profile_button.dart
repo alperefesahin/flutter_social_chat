@@ -33,15 +33,14 @@ class CustomProfileButton extends StatelessWidget {
               width: 4,
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20),
+          child: const Padding(
+            padding: EdgeInsets.only(left: 20),
             child: Row(
-              children: const [
+              children: [
                 Icon(Icons.exit_to_app, size: 30),
                 CustomText(
-                  text: "Sign Out",
-                  minFontSize: 17,
-                  maxFontSize: 20,
+                  text: 'Sign Out',
+                  textStyle: TextStyle(fontSize: 18),
                   textPadding: EdgeInsets.only(left: 10),
                 ),
               ],

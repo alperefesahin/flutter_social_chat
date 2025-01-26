@@ -9,7 +9,7 @@ abstract class IAuthService {
 
   Future<void> signOut();
 
-  Stream<Either<AuthFailure, Tuple2<String, int?>>> signInWithPhoneNumber({
+  Stream<Either<AuthFailure, (String, int?)>> signInWithPhoneNumber({
     required String phoneNumber,
     required Duration timeout,
     required int? resendToken,

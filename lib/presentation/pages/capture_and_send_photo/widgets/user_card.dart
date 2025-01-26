@@ -60,29 +60,23 @@ class UserCard extends StatelessWidget {
                   children: [
                     CustomText(
                       text: memberName,
-                      minFontSize: 21,
-                      maxFontSize: 23,
                       textPadding: const EdgeInsets.only(left: 10, bottom: 10),
-                      textStyle: const TextStyle(fontWeight: FontWeight.w500),
+                      textStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
                     ),
                     CustomText(
-                      text:
-                          memberlastMessageTime == AppLocalizations.of(context).startNewConversation
-                              ? AppLocalizations.of(context).startNewConversation
-                              : AppLocalizations.of(context).lastMessageOn(memberlastMessageTime),
-                      minFontSize: 15,
-                      maxFontSize: 20,
+                      text: memberlastMessageTime == AppLocalizations.of(context)?.startNewConversation
+                          ? AppLocalizations.of(context)?.startNewConversation ?? ''
+                          : AppLocalizations.of(context)?.lastMessageOn(memberlastMessageTime) ?? '',
                       textPadding: const EdgeInsets.only(left: 10, bottom: 20),
-                      textStyle: const TextStyle(fontWeight: FontWeight.w400),
-                    )
+                      textStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                    ),
                   ],
                 ),
               ],
             ),
             CustomText(
               text: channelCreatedTime,
-              minFontSize: 12,
-              maxFontSize: 13,
+              textStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
               textPadding: const EdgeInsets.only(top: 12, right: 12),
             ),
           ],

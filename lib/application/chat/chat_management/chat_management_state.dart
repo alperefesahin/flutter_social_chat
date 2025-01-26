@@ -19,7 +19,7 @@ class ChatManagementState with _$ChatManagementState {
         isChannelNameValid: false,
         isChannelCreated: false,
         isCapturedPhotoSent: false,
-        channelName: "",
+        channelName: '',
         userIndex: 0,
         listOfSelectedUserIDs: {},
         listOfSelectedUsers: {},

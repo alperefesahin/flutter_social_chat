@@ -29,22 +29,18 @@ class ProfileCore extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
-                text: "@$userName",
-                minFontSize: 25,
-                maxFontSize: 30,
-                textStyle: const TextStyle(fontWeight: FontWeight.w700),
+                text: '@$userName',
+                textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 26),
                 textPadding: const EdgeInsets.only(top: 12),
               ),
               CustomText(
                 text: userId,
-                minFontSize: 13,
-                maxFontSize: 14,
-                textStyle: const TextStyle(fontWeight: FontWeight.w400),
+                textStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
                 textPadding: const EdgeInsets.only(top: 5),
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

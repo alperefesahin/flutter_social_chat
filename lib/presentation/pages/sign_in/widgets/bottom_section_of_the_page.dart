@@ -41,13 +41,9 @@ class BottomSectionOfThePage extends StatelessWidget {
                       child: Row(
                         children: [
                           CustomText(
-                            text: AppLocalizations.of(context).signInWithPhoneNumber,
-                            minFontSize: 17,
-                            maxFontSize: 25,
+                            text: AppLocalizations.of(context)?.signInWithPhoneNumber ?? '',
                             textPadding: EdgeInsets.zero,
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                            ),
+                            textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                           const Padding(
                             padding: EdgeInsets.only(left: 10),
@@ -63,9 +59,8 @@ class BottomSectionOfThePage extends StatelessWidget {
                       state: state,
                     ),
                     CustomText(
-                      text: AppLocalizations.of(context).smsInformationMessage,
-                      minFontSize: 15,
-                      maxFontSize: 20,
+                      text: AppLocalizations.of(context)?.smsInformationMessage ?? '',
+                      textStyle: const TextStyle(fontSize: 16),
                       textPadding: const EdgeInsets.symmetric(
                         horizontal: 25,
                         vertical: 45,
@@ -77,7 +72,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                           context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
 
                           context.push(
-                            context.namedLocation("sign_in_verification_page"),
+                            context.namedLocation('sign_in_verification_page'),
                             extra: state,
                           );
                         }
@@ -94,7 +89,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: customIndigoColor.withOpacity(0.8),
+                              color: customIndigoColor.withValues(alpha: 0),
                               spreadRadius: 4,
                               blurRadius: 30,
                               // changes position of shadow
@@ -107,7 +102,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                           color: whiteColor,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

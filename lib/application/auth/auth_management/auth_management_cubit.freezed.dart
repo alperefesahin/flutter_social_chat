@@ -12,7 +12,7 @@ part of 'auth_management_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthManagementState {
@@ -21,7 +21,9 @@ mixin _$AuthManagementState {
   String get userProfilePhotoUrl => throw _privateConstructorUsedError;
   String get selectedImagePath => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthManagementState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthManagementStateCopyWith<AuthManagementState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$AuthManagementStateCopyWithImpl<$Res, $Val extends AuthManagementState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthManagementState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,11 +83,11 @@ class _$AuthManagementStateCopyWithImpl<$Res, $Val extends AuthManagementState>
 }
 
 /// @nodoc
-abstract class _$$_AuthManagementStateCopyWith<$Res>
+abstract class _$$AuthManagementStateImplCopyWith<$Res>
     implements $AuthManagementStateCopyWith<$Res> {
-  factory _$$_AuthManagementStateCopyWith(_$_AuthManagementState value,
-          $Res Function(_$_AuthManagementState) then) =
-      __$$_AuthManagementStateCopyWithImpl<$Res>;
+  factory _$$AuthManagementStateImplCopyWith(_$AuthManagementStateImpl value,
+          $Res Function(_$AuthManagementStateImpl) then) =
+      __$$AuthManagementStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,13 +98,15 @@ abstract class _$$_AuthManagementStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AuthManagementStateCopyWithImpl<$Res>
-    extends _$AuthManagementStateCopyWithImpl<$Res, _$_AuthManagementState>
-    implements _$$_AuthManagementStateCopyWith<$Res> {
-  __$$_AuthManagementStateCopyWithImpl(_$_AuthManagementState _value,
-      $Res Function(_$_AuthManagementState) _then)
+class __$$AuthManagementStateImplCopyWithImpl<$Res>
+    extends _$AuthManagementStateCopyWithImpl<$Res, _$AuthManagementStateImpl>
+    implements _$$AuthManagementStateImplCopyWith<$Res> {
+  __$$AuthManagementStateImplCopyWithImpl(_$AuthManagementStateImpl _value,
+      $Res Function(_$AuthManagementStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthManagementState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,7 +115,7 @@ class __$$_AuthManagementStateCopyWithImpl<$Res>
     Object? userProfilePhotoUrl = null,
     Object? selectedImagePath = null,
   }) {
-    return _then(_$_AuthManagementState(
+    return _then(_$AuthManagementStateImpl(
       isUserNameValid: null == isUserNameValid
           ? _value.isUserNameValid
           : isUserNameValid // ignore: cast_nullable_to_non_nullable
@@ -132,8 +138,8 @@ class __$$_AuthManagementStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthManagementState implements _AuthManagementState {
-  const _$_AuthManagementState(
+class _$AuthManagementStateImpl implements _AuthManagementState {
+  const _$AuthManagementStateImpl(
       {required this.isUserNameValid,
       required this.isInProgress,
       required this.userProfilePhotoUrl,
@@ -154,10 +160,10 @@ class _$_AuthManagementState implements _AuthManagementState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthManagementState &&
+            other is _$AuthManagementStateImpl &&
             (identical(other.isUserNameValid, isUserNameValid) ||
                 other.isUserNameValid == isUserNameValid) &&
             (identical(other.isInProgress, isInProgress) ||
@@ -172,11 +178,13 @@ class _$_AuthManagementState implements _AuthManagementState {
   int get hashCode => Object.hash(runtimeType, isUserNameValid, isInProgress,
       userProfilePhotoUrl, selectedImagePath);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthManagementState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthManagementStateCopyWith<_$_AuthManagementState> get copyWith =>
-      __$$_AuthManagementStateCopyWithImpl<_$_AuthManagementState>(
+  _$$AuthManagementStateImplCopyWith<_$AuthManagementStateImpl> get copyWith =>
+      __$$AuthManagementStateImplCopyWithImpl<_$AuthManagementStateImpl>(
           this, _$identity);
 }
 
@@ -185,7 +193,7 @@ abstract class _AuthManagementState implements AuthManagementState {
       {required final bool isUserNameValid,
       required final bool isInProgress,
       required final String userProfilePhotoUrl,
-      required final String selectedImagePath}) = _$_AuthManagementState;
+      required final String selectedImagePath}) = _$AuthManagementStateImpl;
 
   @override
   bool get isUserNameValid;
@@ -195,8 +203,11 @@ abstract class _AuthManagementState implements AuthManagementState {
   String get userProfilePhotoUrl;
   @override
   String get selectedImagePath;
+
+  /// Create a copy of AuthManagementState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_AuthManagementStateCopyWith<_$_AuthManagementState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AuthManagementStateImplCopyWith<_$AuthManagementStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

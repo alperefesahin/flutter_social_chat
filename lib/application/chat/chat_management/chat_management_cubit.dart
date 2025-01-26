@@ -1,10 +1,8 @@
-// ignore_for_file: depend_on_referenced_packages, avoid_bool_literals_in_conditional_expressions
-
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';
 import 'package:flutter_social_chat/infrastructure/core/firestore_helpers.dart';
@@ -18,7 +16,7 @@ part 'chat_management_state.dart';
 
 @injectable
 class ChatManagementCubit extends Cubit<ChatManagementState> {
-  final String randomGroupProfilePhoto = "https://picsum.photos/200/300";
+  final String randomGroupProfilePhoto = 'https://picsum.photos/200/300';
 
   late final IChatService _chatService;
   late final FirebaseFirestore _firebaseFirestore;
@@ -49,7 +47,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
         isCapturedPhotoSent: false,
         listOfSelectedUsers: {},
         listOfSelectedUserIDs: {},
-        channelName: "",
+        channelName: '',
       ),
     );
   }
@@ -80,7 +78,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
     final channelId = state.currentUserChannels[state.userIndex].id;
 
-    // For showing the progress indicator, and well UX.
+    // To show the progress indicator, and well UX.
     await Future.delayed(const Duration(seconds: 1));
 
     await _chatService.sendPhotoAsMessageToTheSelectedUser(
@@ -99,7 +97,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       return;
     }
 
-    String channelImageUrl = "";
+    String channelImageUrl = '';
     String channelName = state.channelName;
     final listOfMemberIDs = {...state.listOfSelectedUserIDs};
 
@@ -117,24 +115,21 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       // will be image of the selected user.
 
       if (listOfMemberIDs.length == 2) {
-        final String selectedUserId =
-            listOfMemberIDs.where((memberIDs) => memberIDs != currentUserId).toList().first;
+        final String selectedUserId = listOfMemberIDs.where((memberIDs) => memberIDs != currentUserId).toList().first;
 
-        final selectedUserFromFirestore =
-            await _firebaseFirestore.userDocument(userId: selectedUserId);
+        final selectedUserFromFirestore = await _firebaseFirestore.userDocument(userId: selectedUserId);
 
         final getSelectedUserDataFromFirestore = await selectedUserFromFirestore.get();
 
         final selectedUserData = getSelectedUserDataFromFirestore.data() as Map<String, dynamic>?;
 
-        channelName = selectedUserData?["displayName"];
+        channelName = selectedUserData?['displayName'];
 
-        channelImageUrl = selectedUserData?["photoUrl"];
+        channelImageUrl = selectedUserData?['photoUrl'];
       }
     }
 
-    final isChannelNameValid =
-        !isCreateNewChatPageForCreatingGroup ? true : state.isChannelNameValid;
+    final isChannelNameValid = !isCreateNewChatPageForCreatingGroup ? true : state.isChannelNameValid;
 
     if (listOfMemberIDs.length >= 2 && isChannelNameValid) {
       emit(state.copyWith(isInProgress: true, isChannelCreated: false));
@@ -190,9 +185,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
       listOfSelectedUserIDs.add(user.id);
     }
 
-    emit(
-      state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs, userIndex: userIndex),
-    );
+    emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs, userIndex: userIndex));
   }
 
   void removeUserToSendCapturedPhoto({
@@ -202,9 +195,7 @@ class ChatManagementCubit extends Cubit<ChatManagementState> {
 
     listOfSelectedUserIDs.remove(user.id);
 
-    emit(
-      state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs, userIndex: 0),
-    );
+    emit(state.copyWith(listOfSelectedUserIDs: listOfSelectedUserIDs, userIndex: 0));
   }
 
   /// If there is no a searched channel in the list of channels, then return false. If there is, return true.

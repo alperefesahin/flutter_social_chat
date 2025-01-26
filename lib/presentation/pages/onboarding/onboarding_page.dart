@@ -20,11 +20,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     if (mounted) {
       WidgetsBinding.instance.addPostFrameCallback(
         (_) {
-          final bool isOnboardingCompleted =
-              context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
+          final bool isOnboardingCompleted = context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
           if (isOnboardingCompleted) {
-            context.go(context.namedLocation("channels_page"));
+            context.go(context.namedLocation('channels_page'));
           }
         },
       );
@@ -38,7 +37,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.authUser.isOnboardingCompleted) {
-          context.go(context.namedLocation("channels_page"));
+          context.go(context.namedLocation('channels_page'));
         }
       },
       child: BlocBuilder<AuthManagementCubit, AuthManagementState>(
@@ -50,8 +49,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             );
           } else {
-            return WillPopScope(
-              onWillPop: () => Future<bool>.value(false),
+            return PopScope(
+              canPop: false,
+              onPopInvokedWithResult: (context, result) {},
               child: Scaffold(
                 body: OnboardingPageBody(selectedImagePath: state.selectedImagePath),
               ),

@@ -40,7 +40,7 @@ class _ChannelsPageState extends State<ChannelsPage> {
 
   @override
   Widget build(BuildContext context) {
-    String searchedText = "";
+    String searchedText = '';
 
     return Scaffold(
       floatingActionButtonLocation: ExpandableFab.location,
@@ -49,10 +49,9 @@ class _ChannelsPageState extends State<ChannelsPage> {
       ),
       appBar: CustomAppBar(
         centerTitle: false,
-        appBarTitle: AppLocalizations.of(context).chats,
+        fontSize: 40,
+        appBarTitle: AppLocalizations.of(context)?.chats ?? '',
         appBarBackgroundColor: transparentColor,
-        maxFontSize: 45,
-        minFontSize: 40,
         textPadding: const EdgeInsets.only(left: 15),
         appBarTitleTextStyle: const TextStyle(
           fontWeight: FontWeight.w800,
@@ -63,8 +62,8 @@ class _ChannelsPageState extends State<ChannelsPage> {
         children: [
           CustomTextField(
             icon: Icons.search,
-            labelText: AppLocalizations.of(context).search,
-            hintText: AppLocalizations.of(context).searchSomeone,
+            labelText: AppLocalizations.of(context)?.search ?? '',
+            hintText: AppLocalizations.of(context)?.searchSomeone ?? '',
             onChanged: (text) {
               searchedText = text;
               streamChannelListController.refresh();
@@ -74,7 +73,7 @@ class _ChannelsPageState extends State<ChannelsPage> {
             child: StreamChannelListView(
               controller: streamChannelListController,
               onChannelTap: (channel) {
-                context.go(context.namedLocation("chat_page"), extra: channel);
+                context.go(context.namedLocation('chat_page'), extra: channel);
               },
               itemBuilder: (context, listOfChannels, index, defaultWidget) {
                 return SearchedChannel(

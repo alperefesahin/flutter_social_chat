@@ -9,17 +9,17 @@ class PhoneNumberSignInState with _$PhoneNumberSignInState {
     required Option<AuthFailure> failureMessageOption,
     required bool isInProgress,
     required bool isPhoneNumberInputValidated,
-    required Tuple2<String, int?> phoneNumberAndResendTokenPair,
+    required (String, int?) phoneNumberAndResendTokenPair, // Using Dart 3 Records
   }) = _PhoneNumberSignInState;
   const PhoneNumberSignInState._();
 
   factory PhoneNumberSignInState.empty() => PhoneNumberSignInState(
-        phoneNumber: "",
-        smsCode: "",
+        phoneNumber: '',
+        smsCode: '',
         isInProgress: false,
         isPhoneNumberInputValidated: false,
         failureMessageOption: none(),
         verificationIdOption: none(),
-        phoneNumberAndResendTokenPair: tuple2("", null),
+        phoneNumberAndResendTokenPair: ('', null), // Using Dart 3 Records
       );
 }

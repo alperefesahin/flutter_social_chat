@@ -1,10 +1,8 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'dart:async';
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/domain/camera/i_camera_service.dart';
 import 'package:flutter_social_chat/infrastructure/camera/camera_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -23,8 +21,7 @@ class CameraCubit extends Cubit<CameraState> {
   CameraCubit() : super(CameraState.empty()) {
     _cameraService = CameraService();
 
-    _cameraPermissionSubscription =
-        _cameraService.cameraStateChanges.listen(_listenCameraStateChangesStream);
+    _cameraPermissionSubscription = _cameraService.cameraStateChanges.listen(_listenCameraStateChangesStream);
   }
 
   @override
@@ -34,7 +31,7 @@ class CameraCubit extends Cubit<CameraState> {
   }
 
   void refresh() {
-    emit(state.copyWith(pathOfTheTakenPhoto: ""));
+    emit(state.copyWith(pathOfTheTakenPhoto: ''));
   }
 
   Future<void> _listenCameraStateChangesStream(PermissionStatus cameraPermission) async {
@@ -79,7 +76,7 @@ class CameraCubit extends Cubit<CameraState> {
     final file = await xfile;
 
     if (file == null) {
-      emit(state.copyWith(pathOfTheTakenPhoto: "", isInProgress: false));
+      emit(state.copyWith(pathOfTheTakenPhoto: '', isInProgress: false));
     } else {
       sizeOfTheTakenPhoto = await file.length();
 
