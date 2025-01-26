@@ -1,13 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:flutter_social_chat/injection.dart';
+import 'package:fpdart/fpdart.dart';
 
 extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> currentUserDocument() async {
     final userOption = await getIt<IAuthService>().getSignedInUser();
-    final user = userOption.getOrElse(
-      () => throw Exception("Not authanticated"),
-    );
+    final user = userOption.getOrElse(() => throw Exception('Not authanticated'));
 
     return FirebaseFirestore.instance.collection('users').doc(user.id);
   }

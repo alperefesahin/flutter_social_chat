@@ -14,8 +14,8 @@ class ChatUserModel with _$ChatUserModel {
   const ChatUserModel._();
 
   factory ChatUserModel.empty() => const ChatUserModel(
-        createdAt: "",
-        userRole: "",
+        createdAt: '',
+        userRole: '',
         isUserBanned: false,
       );
 

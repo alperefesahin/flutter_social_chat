@@ -52,7 +52,7 @@ class ChatPage extends StatelessWidget {
             ),
           ],
           onBackPressed: () {
-            context.go(context.namedLocation("channels_page"));
+            context.go(context.namedLocation('channels_page'));
           },
         ),
         body: const ChatPageBody(),

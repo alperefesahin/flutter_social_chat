@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_social_chat/presentation/routes/router.dart';
-import 'package:flutter_social_chat/secrets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stream_chat_flutter_core/stream_chat_flutter_core.dart';
 
@@ -25,6 +24,7 @@ abstract class InjectableModule {
   @lazySingleton
   FirebaseStorage get firebaseStorage => FirebaseStorage.instance;
 
+  //getstream api key: 3r6a7g8d4v8e
   @singleton
-  StreamChatClient get streamChatClient => StreamChatClient(getstreamApiKey, logLevel: Level.INFO);
+  StreamChatClient get streamChatClient => StreamChatClient('3r6a7g8d4v8e', logLevel: Level.INFO);
 }

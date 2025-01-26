@@ -12,7 +12,7 @@ part of 'chat_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChatFailure {
@@ -66,28 +66,34 @@ class _$ChatFailureCopyWithImpl<$Res, $Val extends ChatFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ChatFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$ServerErrorCopyWith<$Res> {
-  factory _$$ServerErrorCopyWith(
-          _$ServerError value, $Res Function(_$ServerError) then) =
-      __$$ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ServerErrorCopyWithImpl<$Res>
-    extends _$ChatFailureCopyWithImpl<$Res, _$ServerError>
-    implements _$$ServerErrorCopyWith<$Res> {
-  __$$ServerErrorCopyWithImpl(
-      _$ServerError _value, $Res Function(_$ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$ChatFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ChatFailure
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$ServerError implements ServerError {
-  const _$ServerError();
+class _$ServerErrorImpl implements ServerError {
+  const _$ServerErrorImpl();
 
   @override
   String toString() {
@@ -95,9 +101,9 @@ class _$ServerError implements ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ServerError);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
@@ -161,5 +167,5 @@ class _$ServerError implements ServerError {
 }
 
 abstract class ServerError implements ChatFailure {
-  const factory ServerError() = _$ServerError;
+  const factory ServerError() = _$ServerErrorImpl;
 }

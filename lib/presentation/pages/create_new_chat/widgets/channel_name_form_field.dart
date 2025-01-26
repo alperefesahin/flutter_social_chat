@@ -18,23 +18,22 @@ class ChannelNameFormField extends StatelessWidget {
           validator: (channelName) {
             if (channelName!.trim().isEmpty) {
               context.read<ChatManagementCubit>().validateChannelName(isChannelNameValid: false);
-              return AppLocalizations.of(context).channelNameCanNotBeAnEmpty;
+              return AppLocalizations.of(context)?.channelNameCanNotBeAnEmpty;
             } else if (channelName.trim().length > 10) {
               context.read<ChatManagementCubit>().validateChannelName(isChannelNameValid: false);
-              return AppLocalizations.of(context).channelNameCanNotBeLongerThanTenCharacters;
+              return AppLocalizations.of(context)?.channelNameCanNotBeLongerThanTenCharacters;
             } else if (channelName.trim().length < 3) {
               context.read<ChatManagementCubit>().validateChannelName(isChannelNameValid: false);
-              return AppLocalizations.of(context).channelNameCanNotBeShorterThanThreeCharacters;
+              return AppLocalizations.of(context)?.channelNameCanNotBeShorterThanThreeCharacters;
             } else if (channelName.trim().isEmpty) {
               context.read<ChatManagementCubit>().validateChannelName(isChannelNameValid: false);
-              return AppLocalizations.of(context).channelNameCanNotBeAnEmpty;
+              return AppLocalizations.of(context)?.channelNameCanNotBeAnEmpty;
             }
             context.read<ChatManagementCubit>().validateChannelName(isChannelNameValid: true);
             return null;
           },
           autocorrect: false,
-          onChanged: (channelName) =>
-              context.read<ChatManagementCubit>().channelNameChanged(channelName: channelName),
+          onChanged: (channelName) => context.read<ChatManagementCubit>().channelNameChanged(channelName: channelName),
           decoration: InputDecoration(
             enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -51,8 +50,8 @@ class ChannelNameFormField extends StatelessWidget {
             errorBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(25.0)),
             ),
-            labelText: AppLocalizations.of(context).groupName,
-            hintText: AppLocalizations.of(context).yourInspirationalGroupName,
+            labelText: AppLocalizations.of(context)?.groupName,
+            hintText: AppLocalizations.of(context)?.yourInspirationalGroupName,
             iconColor: blackColor,
             hintStyle: const TextStyle(color: blackColor),
             labelStyle: const TextStyle(color: blackColor),

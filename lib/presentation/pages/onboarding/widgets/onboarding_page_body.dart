@@ -4,7 +4,7 @@ import 'package:flutter_social_chat/presentation/pages/onboarding/widgets/onboar
 import 'package:flutter_social_chat/presentation/pages/onboarding/widgets/profile_image.dart';
 import 'package:flutter_social_chat/presentation/pages/onboarding/widgets/submit_button.dart';
 import 'package:flutter_social_chat/presentation/pages/onboarding/widgets/username_form_field.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 class OnboardingPageBody extends StatelessWidget {
   OnboardingPageBody({super.key, required this.selectedImagePath});

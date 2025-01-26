@@ -21,10 +21,10 @@ class CustomFloatActionButton extends StatelessWidget {
       heroTag: null,
       onPressed: () {
         context.go(
-          context.namedLocation("create_new_chat_page"),
+          context.namedLocation('create_new_chat_page'),
           extra: {
-            "userListController": userListController,
-            "isCreateNewChatPageForCreatingGroup": isCreateNewChatPageForCreatingGroup
+            'userListController': userListController,
+            'isCreateNewChatPageForCreatingGroup': isCreateNewChatPageForCreatingGroup,
           },
         );
       },

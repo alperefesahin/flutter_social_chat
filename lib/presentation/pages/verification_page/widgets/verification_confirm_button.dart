@@ -27,7 +27,7 @@ class VerificationConfirmButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width / 1.15,
         height: MediaQuery.of(context).size.height / 13,
         decoration: BoxDecoration(
-          color: blackColor.withOpacity(0.25),
+          color: blackColor.withValues(alpha: 0.25),
           borderRadius: const BorderRadius.all(
             Radius.circular(10),
           ),
@@ -36,13 +36,12 @@ class VerificationConfirmButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomText(
-              text: AppLocalizations.of(context).confirm,
-              minFontSize: 25,
-              maxFontSize: 30,
+              text: AppLocalizations.of(context)?.confirm ?? '',
               textPadding: const EdgeInsets.only(left: 20),
               textStyle: const TextStyle(
                 color: whiteColor,
                 fontWeight: FontWeight.w600,
+                fontSize: 26,
               ),
             ),
             Container(
@@ -59,7 +58,7 @@ class VerificationConfirmButton extends StatelessWidget {
                 Icons.arrow_forward,
                 size: 40,
               ),
-            )
+            ),
           ],
         ),
       ),

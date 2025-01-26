@@ -1,8 +1,6 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/domain/microphone/i_microphone_service.dart';
 import 'package:flutter_social_chat/infrastructure/microphone/microphone_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

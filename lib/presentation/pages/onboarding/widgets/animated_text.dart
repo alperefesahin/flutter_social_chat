@@ -17,21 +17,21 @@ class AnimatedText extends StatelessWidget {
         repeatForever: true,
         animatedTexts: [
           TypewriterAnimatedText(
-            AppLocalizations.of(context).animatedText1,
+            AppLocalizations.of(context)?.animatedText1 ?? '',
             textStyle: const TextStyle(
               fontFamily: 'Agne',
               fontSize: 22,
             ),
           ),
           TypewriterAnimatedText(
-            AppLocalizations.of(context).animatedText2,
+            AppLocalizations.of(context)?.animatedText2 ?? '',
             textStyle: const TextStyle(
               fontFamily: 'Agne',
               fontSize: 22,
             ),
           ),
           TypewriterAnimatedText(
-            AppLocalizations.of(context).animatedText3,
+            AppLocalizations.of(context)?.animatedText3 ?? '',
             textStyle: const TextStyle(
               fontFamily: 'Agne',
               fontSize: 22,

@@ -25,11 +25,11 @@ class ProfileDetails extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              TitleTextPair(title: AppLocalizations.of(context).createdAtText, text: createdAt),
-              TitleTextPair(title: AppLocalizations.of(context).role, text: userRole),
+              TitleTextPair(title: AppLocalizations.of(context)?.createdAtText ?? '', text: createdAt),
+              TitleTextPair(title: AppLocalizations.of(context)?.role ?? '', text: userRole),
               TitleTextPair(
-                title: AppLocalizations.of(context).banStatus,
-                text: isUserBannedStatus ? "Banned" : "None",
+                title: AppLocalizations.of(context)?.banStatus ?? '',
+                text: isUserBannedStatus ? 'Banned' : 'None',
               ),
             ],
           ),

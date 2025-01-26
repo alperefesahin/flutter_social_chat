@@ -25,7 +25,7 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
           itemCount: state.currentUserChannels.length,
           itemBuilder: (context, index) {
             final memberlastMessageTime = state.currentUserChannels[index].lastMessageAt == null
-                ? AppLocalizations.of(context).startNewConversation
+                ? AppLocalizations.of(context)?.startNewConversation
                 : formatDate(state.currentUserChannels[index].lastMessageAt!, [D]);
 
             final channelCreatedTime =
@@ -47,11 +47,9 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
 
             // To determine if the channel is group or not we need to check the count of members, and then
             // show the related name and image of the channel.
-            final memberName =
-                groupMemberCount <= 2 ? user!.name : state.currentUserChannels[index].name;
+            final memberName = groupMemberCount <= 2 ? user!.name : state.currentUserChannels[index].name;
 
-            final memberImage =
-                groupMemberCount <= 2 ? user!.image : state.currentUserChannels[index].image;
+            final memberImage = groupMemberCount <= 2 ? user!.image : state.currentUserChannels[index].image;
 
             final isUserSelected = state.listOfSelectedUserIDs.contains(user!.id);
 
@@ -60,9 +58,7 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
                 if (isUserSelected) {
                   context.read<ChatManagementCubit>().removeUserToSendCapturedPhoto(user: user);
                 } else {
-                  context
-                      .read<ChatManagementCubit>()
-                      .selectUserToSendCapturedPhoto(user: user, userIndex: index);
+                  context.read<ChatManagementCubit>().selectUserToSendCapturedPhoto(user: user, userIndex: index);
                 }
               },
               child: UserCard(
@@ -71,7 +67,7 @@ class CaptureAndSendPhotoPageBody extends StatelessWidget {
                 isUserSelected: isUserSelected,
                 memberImage: memberImage!,
                 memberName: memberName!,
-                memberlastMessageTime: memberlastMessageTime,
+                memberlastMessageTime: memberlastMessageTime ?? '',
                 channelCreatedTime: channelCreatedTime,
               ),
             );

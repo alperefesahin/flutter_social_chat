@@ -15,11 +15,11 @@ List<Widget> topSectionOfThePage({required Size size}) {
         ),
       ),
     ),
-    Padding(
-      padding: const EdgeInsets.only(top: 100),
+    const Padding(
+      padding: EdgeInsets.only(top: 100),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           Icon(
             Icons.phone_android,
             size: 50,

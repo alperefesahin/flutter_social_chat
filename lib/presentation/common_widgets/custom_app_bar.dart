@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
 import 'package:flutter_social_chat/presentation/common_widgets/custom_text.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({
     super.key,
     required this.appBarTitle,
-    required this.minFontSize,
-    required this.maxFontSize,
+    required this.fontSize,
     required this.textPadding,
     required this.centerTitle,
     this.appBarAction,
@@ -28,8 +27,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final Color? appBarBackgroundColor;
   final Color? appBarIconColor;
   final Color? shadowColor;
-  final double minFontSize;
-  final double maxFontSize;
+  final double fontSize;
   final double? leadingWidth;
   final Widget? leading;
   final TextStyle? appBarTitleTextStyle;
@@ -47,8 +45,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       elevation: 0,
       shadowColor: shadowColor ?? transparentColor,
       title: CustomText(
-        maxFontSize: maxFontSize,
-        minFontSize: minFontSize,
+        textStyle: TextStyle(fontSize: fontSize),
         text: appBarTitle,
         textPadding: textPadding,
       ),
@@ -66,7 +63,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               color: appBarIconColor,
             ),
           ),
-        )
+        ),
       ],
     );
   }

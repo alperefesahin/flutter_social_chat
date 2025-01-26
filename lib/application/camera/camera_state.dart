@@ -13,7 +13,7 @@ class CameraState with _$CameraState {
   factory CameraState.empty() => const CameraState(
         cameras: [],
         sizeOfTheTakenPhoto: 0,
-        pathOfTheTakenPhoto: "",
+        pathOfTheTakenPhoto: '',
         isInProgress: false,
         isCameraPermissionGranted: false,
       );

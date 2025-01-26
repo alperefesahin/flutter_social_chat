@@ -16,13 +16,11 @@ class PhoneNumberSignInSection extends StatefulWidget {
 
 class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
   final PhoneNumberSignInState state;
-  final PhoneNumber initialPhone = PhoneNumber(isoCode: "TR");
+  final PhoneNumber initialPhone = PhoneNumber(isoCode: 'TR');
 
   @override
   void didChangeDependencies() {
-    context
-        .read<PhoneNumberSignInCubit>()
-        .phoneNumberChanged(phoneNumber: initialPhone.phoneNumber ?? "");
+    context.read<PhoneNumberSignInCubit>().phoneNumberChanged(phoneNumber: initialPhone.phoneNumber ?? '');
     super.didChangeDependencies();
   }
 
@@ -50,7 +48,7 @@ class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
                   );
             },
             inputDecoration: InputDecoration(
-              hintText: AppLocalizations.of(context).phoneNumber,
+              hintText: AppLocalizations.of(context)?.phoneNumber,
               focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
                   color: customIndigoColor,

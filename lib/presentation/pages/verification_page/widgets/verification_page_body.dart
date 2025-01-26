@@ -48,13 +48,12 @@ class VerificationPageBody extends StatelessWidget {
                               ),
                             ),
                             CustomText(
-                              text: AppLocalizations.of(context).confirmation,
-                              minFontSize: 30,
-                              maxFontSize: 35,
+                              text: AppLocalizations.of(context)?.confirmation ?? '',
                               textPadding: EdgeInsets.zero,
                               textStyle: const TextStyle(
                                 color: whiteColor,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 32,
                               ),
                             ),
                           ],
@@ -80,7 +79,7 @@ class VerificationPageBody extends StatelessWidget {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: AppLocalizations.of(context).confirmationInfo,
+                                        text: AppLocalizations.of(context)?.confirmationInfo,
                                         style: const TextStyle(
                                           fontSize: 18,
                                           color: whiteColor,
@@ -100,17 +99,17 @@ class VerificationPageBody extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
                       const VerificationPinField(),
                       const ResendCodeButton(),
-                      VerificationConfirmButton(state: state)
+                      VerificationConfirmButton(state: state),
                     ],
                   ),
                 ),
-              )
+              ),
           ],
         );
       },

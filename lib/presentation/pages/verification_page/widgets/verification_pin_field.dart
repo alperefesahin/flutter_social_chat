@@ -36,7 +36,7 @@ class VerificationPinField extends StatelessWidget {
             },
             textStyle: const TextStyle(color: whiteColor),
             keyboardType: TextInputType.phone,
-            hintCharacter: "-",
+            hintCharacter: '-',
             hintStyle: const TextStyle(color: whiteColor),
             pinTheme: PinTheme(
               fieldOuterPadding: const EdgeInsets.only(
@@ -48,9 +48,9 @@ class VerificationPinField extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               fieldHeight: 60,
               fieldWidth: 45,
-              inactiveColor: blackColor.withOpacity(0.2),
-              activeColor: blackColor.withOpacity(0.2),
-              selectedColor: blackColor.withOpacity(0.2),
+              inactiveColor: blackColor.withValues(alpha: 0.2),
+              activeColor: blackColor.withValues(alpha: 0.2),
+              selectedColor: blackColor.withValues(alpha: 0.2),
             ),
           ),
         ],

@@ -13,13 +13,13 @@ class OnboardingImage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Image.asset(
-          "assets/images/onboarding_top_corner.png",
+          'assets/images/onboarding_top_corner.png',
           width: 120,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 50),
           child: SvgPicture.asset(
-            "assets/images/chat.svg",
+            'assets/images/chat.svg',
             width: size.width / 2,
             height: size.height / 4,
           ),

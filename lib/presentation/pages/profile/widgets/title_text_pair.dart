@@ -12,18 +12,14 @@ class TitleTextPair extends StatelessWidget {
       children: [
         CustomText(
           text: title,
-          minFontSize: 20,
-          maxFontSize: 21,
-          textStyle: const TextStyle(fontWeight: FontWeight.w600),
+          textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
           textPadding: EdgeInsets.zero,
         ),
         CustomText(
           text: text,
-          minFontSize: 15,
-          maxFontSize: 20,
-          textStyle: const TextStyle(fontWeight: FontWeight.w500),
+          textStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
           textPadding: const EdgeInsets.only(top: 6),
-        )
+        ),
       ],
     );
   }

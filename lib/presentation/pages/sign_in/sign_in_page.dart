@@ -26,13 +26,12 @@ class SignInPage extends StatelessWidget {
                 (authFailure) {
                   BotToast.showText(
                     text: authFailure.when(
-                      serverError: () => AppLocalizations.of(context).serverError,
-                      tooManyRequests: () => AppLocalizations.of(context).tooManyRequests,
-                      deviceNotSupported: () => AppLocalizations.of(context).deviceNotSupported,
-                      smsTimeout: () => AppLocalizations.of(context).smsTimeout,
-                      sessionExpired: () => AppLocalizations.of(context).sessionExpired,
-                      invalidVerificationCode: () =>
-                          AppLocalizations.of(context).invalidVerificationCode,
+                      serverError: () => AppLocalizations.of(context)?.serverError ?? '',
+                      tooManyRequests: () => AppLocalizations.of(context)?.tooManyRequests ?? '',
+                      deviceNotSupported: () => AppLocalizations.of(context)?.deviceNotSupported ?? '',
+                      smsTimeout: () => AppLocalizations.of(context)?.smsTimeout ?? '',
+                      sessionExpired: () => AppLocalizations.of(context)?.sessionExpired ?? '',
+                      invalidVerificationCode: () => AppLocalizations.of(context)?.invalidVerificationCode ?? '',
                     ),
                   );
                   context.read<PhoneNumberSignInCubit>().reset();
@@ -40,8 +39,9 @@ class SignInPage extends StatelessWidget {
                 },
               );
             },
-            child: WillPopScope(
-              onWillPop: () async => false,
+            child: PopScope(
+              canPop: false,
+              onPopInvokedWithResult: (context, result) {},
               child: const Scaffold(
                 body: CustomProgressIndicator(
                   progressIndicatorColor: blackColor,
@@ -50,17 +50,17 @@ class SignInPage extends StatelessWidget {
             ),
           );
         } else {
-          return WillPopScope(
-            onWillPop: () async => false,
+          return PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (context, result) {},
             child: Scaffold(
               appBar: CustomAppBar(
                 centerTitle: true,
                 appBarIconColor: whiteColor,
                 appBarBackgroundColor: customIndigoColor,
-                appBarTitle: AppLocalizations.of(context).signIn,
+                appBarTitle: AppLocalizations.of(context)?.signIn ?? '',
                 appBarAction: CupertinoIcons.line_horizontal_3_decrease,
-                maxFontSize: 23,
-                minFontSize: 19,
+                fontSize: 20,
                 textPadding: EdgeInsets.zero,
               ),
               body: const SignInPageBody(),

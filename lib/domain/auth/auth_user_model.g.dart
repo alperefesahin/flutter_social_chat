@@ -6,8 +6,8 @@ part of 'auth_user_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AuthUserModel _$$_AuthUserModelFromJson(Map<String, dynamic> json) =>
-    _$_AuthUserModel(
+_$AuthUserModelImpl _$$AuthUserModelImplFromJson(Map<String, dynamic> json) =>
+    _$AuthUserModelImpl(
       id: json['id'] as String,
       phoneNumber: json['phoneNumber'] as String,
       isOnboardingCompleted: json['isOnboardingCompleted'] as bool,
@@ -15,7 +15,7 @@ _$_AuthUserModel _$$_AuthUserModelFromJson(Map<String, dynamic> json) =>
       photoUrl: json['photoUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_AuthUserModelToJson(_$_AuthUserModel instance) =>
+Map<String, dynamic> _$$AuthUserModelImplToJson(_$AuthUserModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'phoneNumber': instance.phoneNumber,

@@ -25,7 +25,7 @@ class CameraView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CameraCubit, CameraState>(
       builder: (context, state) {
-        final isPathOfTheTakenPhotoEmpty = state.pathOfTheTakenPhoto == "";
+        final isPathOfTheTakenPhotoEmpty = state.pathOfTheTakenPhoto == '';
 
         if (isPathOfTheTakenPhotoEmpty) {
           return CameraPreviewWidget(

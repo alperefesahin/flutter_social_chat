@@ -16,14 +16,14 @@ class BottomTabPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<ChatSetupCubit>(),
       child: BlocBuilder<ChatSetupCubit, ChatSetupState>(
-        buildWhen: (p, c) =>
-            p.isChatUserConnected != c.isChatUserConnected && c.isChatUserConnected,
+        buildWhen: (p, c) => p.isChatUserConnected != c.isChatUserConnected && c.isChatUserConnected,
         builder: (context, state) {
           final isUserCheckedFromChatService = state.isUserCheckedFromChatService;
 
           if (isUserCheckedFromChatService) {
-            return WillPopScope(
-              onWillPop: () => Future<bool>.value(false),
+            return PopScope(
+              canPop: false,
+              onPopInvokedWithResult: (context, result) {},
               child: Scaffold(
                 body: child,
                 bottomNavigationBar: bottomNavigationBuilder(context),

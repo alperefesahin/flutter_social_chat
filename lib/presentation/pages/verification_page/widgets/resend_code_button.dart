@@ -23,12 +23,8 @@ class ResendCodeButton extends StatelessWidget {
           child: Row(
             children: [
               CustomText(
-                text: AppLocalizations.of(context).resendCode,
-                minFontSize: 15,
-                maxFontSize: 20,
-                textStyle: const TextStyle(
-                  color: whiteColor,
-                ),
+                text: AppLocalizations.of(context)?.resendCode ?? '',
+                textStyle: const TextStyle(color: whiteColor, fontSize: 16),
                 textPadding: EdgeInsets.zero,
               ),
               const Padding(
@@ -38,7 +34,7 @@ class ResendCodeButton extends StatelessWidget {
                   size: 15,
                   color: whiteColor,
                 ),
-              )
+              ),
             ],
           ),
         ),

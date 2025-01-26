@@ -12,7 +12,7 @@ part of 'chat_management_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ChatManagementState {
@@ -26,7 +26,9 @@ mixin _$ChatManagementState {
   Set<User> get listOfSelectedUsers => throw _privateConstructorUsedError;
   List<Channel> get currentUserChannels => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatManagementState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatManagementStateCopyWith<ChatManagementState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +61,8 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatManagementState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,11 +118,11 @@ class _$ChatManagementStateCopyWithImpl<$Res, $Val extends ChatManagementState>
 }
 
 /// @nodoc
-abstract class _$$_ChatManagementStateCopyWith<$Res>
+abstract class _$$ChatManagementStateImplCopyWith<$Res>
     implements $ChatManagementStateCopyWith<$Res> {
-  factory _$$_ChatManagementStateCopyWith(_$_ChatManagementState value,
-          $Res Function(_$_ChatManagementState) then) =
-      __$$_ChatManagementStateCopyWithImpl<$Res>;
+  factory _$$ChatManagementStateImplCopyWith(_$ChatManagementStateImpl value,
+          $Res Function(_$ChatManagementStateImpl) then) =
+      __$$ChatManagementStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,13 +138,15 @@ abstract class _$$_ChatManagementStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChatManagementStateCopyWithImpl<$Res>
-    extends _$ChatManagementStateCopyWithImpl<$Res, _$_ChatManagementState>
-    implements _$$_ChatManagementStateCopyWith<$Res> {
-  __$$_ChatManagementStateCopyWithImpl(_$_ChatManagementState _value,
-      $Res Function(_$_ChatManagementState) _then)
+class __$$ChatManagementStateImplCopyWithImpl<$Res>
+    extends _$ChatManagementStateCopyWithImpl<$Res, _$ChatManagementStateImpl>
+    implements _$$ChatManagementStateImplCopyWith<$Res> {
+  __$$ChatManagementStateImplCopyWithImpl(_$ChatManagementStateImpl _value,
+      $Res Function(_$ChatManagementStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatManagementState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +160,7 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
     Object? listOfSelectedUsers = null,
     Object? currentUserChannels = null,
   }) {
-    return _then(_$_ChatManagementState(
+    return _then(_$ChatManagementStateImpl(
       isInProgress: null == isInProgress
           ? _value.isInProgress
           : isInProgress // ignore: cast_nullable_to_non_nullable
@@ -197,10 +203,10 @@ class __$$_ChatManagementStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatManagementState
+class _$ChatManagementStateImpl
     with DiagnosticableTreeMixin
     implements _ChatManagementState {
-  const _$_ChatManagementState(
+  const _$ChatManagementStateImpl(
       {required this.isInProgress,
       required this.isChannelNameValid,
       required this.isChannelCreated,
@@ -275,10 +281,10 @@ class _$_ChatManagementState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatManagementState &&
+            other is _$ChatManagementStateImpl &&
             (identical(other.isInProgress, isInProgress) ||
                 other.isInProgress == isInProgress) &&
             (identical(other.isChannelNameValid, isChannelNameValid) ||
@@ -312,11 +318,13 @@ class _$_ChatManagementState
       const DeepCollectionEquality().hash(_listOfSelectedUsers),
       const DeepCollectionEquality().hash(_currentUserChannels));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatManagementState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatManagementStateCopyWith<_$_ChatManagementState> get copyWith =>
-      __$$_ChatManagementStateCopyWithImpl<_$_ChatManagementState>(
+  _$$ChatManagementStateImplCopyWith<_$ChatManagementStateImpl> get copyWith =>
+      __$$ChatManagementStateImplCopyWithImpl<_$ChatManagementStateImpl>(
           this, _$identity);
 }
 
@@ -331,7 +339,7 @@ abstract class _ChatManagementState implements ChatManagementState {
           required final Set<String> listOfSelectedUserIDs,
           required final Set<User> listOfSelectedUsers,
           required final List<Channel> currentUserChannels}) =
-      _$_ChatManagementState;
+      _$ChatManagementStateImpl;
 
   @override
   bool get isInProgress;
@@ -351,8 +359,11 @@ abstract class _ChatManagementState implements ChatManagementState {
   Set<User> get listOfSelectedUsers;
   @override
   List<Channel> get currentUserChannels;
+
+  /// Create a copy of ChatManagementState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ChatManagementStateCopyWith<_$_ChatManagementState> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatManagementStateImplCopyWith<_$ChatManagementStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

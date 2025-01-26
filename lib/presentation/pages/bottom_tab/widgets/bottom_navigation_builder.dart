@@ -13,17 +13,17 @@ Widget bottomNavigationBuilder(BuildContext context) {
     onTap: (index) => _onItemTapped(index, context),
     items: [
       BottomNavigationBarItem(
-        label: AppLocalizations.of(context).chats,
+        label: AppLocalizations.of(context)?.chats,
         icon: const Icon(CupertinoIcons.chat_bubble_2, size: 31),
         activeIcon: const Icon(CupertinoIcons.chat_bubble_2_fill, size: 31),
       ),
       BottomNavigationBarItem(
-        label: AppLocalizations.of(context).camera,
+        label: AppLocalizations.of(context)?.camera,
         icon: const Icon(CupertinoIcons.camera, size: 30),
         activeIcon: const Icon(CupertinoIcons.camera_fill, size: 30),
       ),
       BottomNavigationBarItem(
-        label: AppLocalizations.of(context).profile,
+        label: AppLocalizations.of(context)?.profile,
         icon: const Icon(FontAwesomeIcons.user, size: 29),
         activeIcon: const Icon(FontAwesomeIcons.userAlt, size: 29),
       ),
@@ -32,15 +32,15 @@ Widget bottomNavigationBuilder(BuildContext context) {
 }
 
 int _calculateSelectedIndex(BuildContext context) {
-  final String location = GoRouterState.of(context).location;
+  final String location = GoRouterState.of(context).uri.toString();
 
-  if (location == "/channels_page") {
+  if (location == '/channels_page') {
     return 0;
   }
-  if (location == "/camera_page") {
+  if (location == '/camera_page') {
     return 1;
   }
-  if (location == "/profile_page") {
+  if (location == '/profile_page') {
     return 2;
   }
   return 0;

@@ -12,7 +12,7 @@ part of 'phone_number_sign_in_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PhoneNumberSignInState {
@@ -23,10 +23,12 @@ mixin _$PhoneNumberSignInState {
       throw _privateConstructorUsedError;
   bool get isInProgress => throw _privateConstructorUsedError;
   bool get isPhoneNumberInputValidated => throw _privateConstructorUsedError;
-  Tuple2<String, int?> get phoneNumberAndResendTokenPair =>
+  (String, int?) get phoneNumberAndResendTokenPair =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PhoneNumberSignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PhoneNumberSignInStateCopyWith<PhoneNumberSignInState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,7 +46,7 @@ abstract class $PhoneNumberSignInStateCopyWith<$Res> {
       Option<AuthFailure> failureMessageOption,
       bool isInProgress,
       bool isPhoneNumberInputValidated,
-      Tuple2<String, int?> phoneNumberAndResendTokenPair});
+      (String, int?) phoneNumberAndResendTokenPair});
 }
 
 /// @nodoc
@@ -58,6 +60,8 @@ class _$PhoneNumberSignInStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PhoneNumberSignInState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,17 +101,18 @@ class _$PhoneNumberSignInStateCopyWithImpl<$Res,
       phoneNumberAndResendTokenPair: null == phoneNumberAndResendTokenPair
           ? _value.phoneNumberAndResendTokenPair
           : phoneNumberAndResendTokenPair // ignore: cast_nullable_to_non_nullable
-              as Tuple2<String, int?>,
+              as (String, int?),
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_PhoneNumberSignInStateCopyWith<$Res>
+abstract class _$$PhoneNumberSignInStateImplCopyWith<$Res>
     implements $PhoneNumberSignInStateCopyWith<$Res> {
-  factory _$$_PhoneNumberSignInStateCopyWith(_$_PhoneNumberSignInState value,
-          $Res Function(_$_PhoneNumberSignInState) then) =
-      __$$_PhoneNumberSignInStateCopyWithImpl<$Res>;
+  factory _$$PhoneNumberSignInStateImplCopyWith(
+          _$PhoneNumberSignInStateImpl value,
+          $Res Function(_$PhoneNumberSignInStateImpl) then) =
+      __$$PhoneNumberSignInStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,18 +122,21 @@ abstract class _$$_PhoneNumberSignInStateCopyWith<$Res>
       Option<AuthFailure> failureMessageOption,
       bool isInProgress,
       bool isPhoneNumberInputValidated,
-      Tuple2<String, int?> phoneNumberAndResendTokenPair});
+      (String, int?) phoneNumberAndResendTokenPair});
 }
 
 /// @nodoc
-class __$$_PhoneNumberSignInStateCopyWithImpl<$Res>
+class __$$PhoneNumberSignInStateImplCopyWithImpl<$Res>
     extends _$PhoneNumberSignInStateCopyWithImpl<$Res,
-        _$_PhoneNumberSignInState>
-    implements _$$_PhoneNumberSignInStateCopyWith<$Res> {
-  __$$_PhoneNumberSignInStateCopyWithImpl(_$_PhoneNumberSignInState _value,
-      $Res Function(_$_PhoneNumberSignInState) _then)
+        _$PhoneNumberSignInStateImpl>
+    implements _$$PhoneNumberSignInStateImplCopyWith<$Res> {
+  __$$PhoneNumberSignInStateImplCopyWithImpl(
+      _$PhoneNumberSignInStateImpl _value,
+      $Res Function(_$PhoneNumberSignInStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PhoneNumberSignInState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +148,7 @@ class __$$_PhoneNumberSignInStateCopyWithImpl<$Res>
     Object? isPhoneNumberInputValidated = null,
     Object? phoneNumberAndResendTokenPair = null,
   }) {
-    return _then(_$_PhoneNumberSignInState(
+    return _then(_$PhoneNumberSignInStateImpl(
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -168,15 +176,15 @@ class __$$_PhoneNumberSignInStateCopyWithImpl<$Res>
       phoneNumberAndResendTokenPair: null == phoneNumberAndResendTokenPair
           ? _value.phoneNumberAndResendTokenPair
           : phoneNumberAndResendTokenPair // ignore: cast_nullable_to_non_nullable
-              as Tuple2<String, int?>,
+              as (String, int?),
     ));
   }
 }
 
 /// @nodoc
 
-class _$_PhoneNumberSignInState extends _PhoneNumberSignInState {
-  const _$_PhoneNumberSignInState(
+class _$PhoneNumberSignInStateImpl extends _PhoneNumberSignInState {
+  const _$PhoneNumberSignInStateImpl(
       {required this.phoneNumber,
       required this.smsCode,
       required this.verificationIdOption,
@@ -199,7 +207,7 @@ class _$_PhoneNumberSignInState extends _PhoneNumberSignInState {
   @override
   final bool isPhoneNumberInputValidated;
   @override
-  final Tuple2<String, int?> phoneNumberAndResendTokenPair;
+  final (String, int?) phoneNumberAndResendTokenPair;
 
   @override
   String toString() {
@@ -207,10 +215,10 @@ class _$_PhoneNumberSignInState extends _PhoneNumberSignInState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhoneNumberSignInState &&
+            other is _$PhoneNumberSignInStateImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.smsCode, smsCode) || other.smsCode == smsCode) &&
@@ -241,12 +249,14 @@ class _$_PhoneNumberSignInState extends _PhoneNumberSignInState {
       isPhoneNumberInputValidated,
       phoneNumberAndResendTokenPair);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PhoneNumberSignInState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhoneNumberSignInStateCopyWith<_$_PhoneNumberSignInState> get copyWith =>
-      __$$_PhoneNumberSignInStateCopyWithImpl<_$_PhoneNumberSignInState>(
-          this, _$identity);
+  _$$PhoneNumberSignInStateImplCopyWith<_$PhoneNumberSignInStateImpl>
+      get copyWith => __$$PhoneNumberSignInStateImplCopyWithImpl<
+          _$PhoneNumberSignInStateImpl>(this, _$identity);
 }
 
 abstract class _PhoneNumberSignInState extends PhoneNumberSignInState {
@@ -257,8 +267,8 @@ abstract class _PhoneNumberSignInState extends PhoneNumberSignInState {
           required final Option<AuthFailure> failureMessageOption,
           required final bool isInProgress,
           required final bool isPhoneNumberInputValidated,
-          required final Tuple2<String, int?> phoneNumberAndResendTokenPair}) =
-      _$_PhoneNumberSignInState;
+          required final (String, int?) phoneNumberAndResendTokenPair}) =
+      _$PhoneNumberSignInStateImpl;
   const _PhoneNumberSignInState._() : super._();
 
   @override
@@ -274,9 +284,12 @@ abstract class _PhoneNumberSignInState extends PhoneNumberSignInState {
   @override
   bool get isPhoneNumberInputValidated;
   @override
-  Tuple2<String, int?> get phoneNumberAndResendTokenPair;
+  (String, int?) get phoneNumberAndResendTokenPair;
+
+  /// Create a copy of PhoneNumberSignInState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_PhoneNumberSignInStateCopyWith<_$_PhoneNumberSignInState> get copyWith =>
-      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PhoneNumberSignInStateImplCopyWith<_$PhoneNumberSignInStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

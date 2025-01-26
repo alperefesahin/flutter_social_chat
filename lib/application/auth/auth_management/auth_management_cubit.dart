@@ -1,10 +1,8 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:flutter_social_chat/infrastructure/core/firestore_helpers.dart';
@@ -49,14 +47,14 @@ class AuthManagementCubit extends Cubit<AuthManagementState> {
 
   Future<String> createProfile() async {
     if (state.isInProgress) {
-      return "";
+      return '';
     }
 
     emit(state.copyWith(isInProgress: true));
 
     final uid = _authCubit.state.authUser.id;
 
-    if (state.selectedImagePath != "" && state.isUserNameValid) {
+    if (state.selectedImagePath != '' && state.isUserNameValid) {
       await _firebaseStorage.ref(uid).putFile(File(state.selectedImagePath)).then(
         (taskState) async {
           if (taskState.state == TaskState.success) {
@@ -67,9 +65,9 @@ class AuthManagementCubit extends Cubit<AuthManagementState> {
 
       return state.userProfilePhotoUrl;
     } else {
-      emit(state.copyWith(isInProgress: false, userProfilePhotoUrl: ""));
+      emit(state.copyWith(isInProgress: false, userProfilePhotoUrl: ''));
 
-      return "";
+      return '';
     }
   }
 
@@ -87,8 +85,8 @@ class AuthManagementCubit extends Cubit<AuthManagementState> {
     await _firebaseFirestore.currentUserDocument().then(
           (value) => value.set(
             {
-              "photoUrl": photoUrl,
-              "displayName": _authCubit.state.authUser.userName,
+              'photoUrl': photoUrl,
+              'displayName': _authCubit.state.authUser.userName,
             },
             SetOptions(merge: true),
           ),

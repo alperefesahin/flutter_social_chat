@@ -21,13 +21,13 @@ class ProfilePage extends StatelessWidget {
             listenWhen: (p, c) => p.isLoggedIn != c.isLoggedIn,
             listener: (context, state) {
               if (!state.isLoggedIn) {
-                context.go(context.namedLocation("sign_in_page"));
+                context.go(context.namedLocation('sign_in_page'));
               }
             },
             builder: (context, authState) {
               final String? userName = authState.authUser.userName;
               final String? userPhotoUrl = authState.authUser.photoUrl;
-              final String userId = authState.authUser.id.replaceRange(8, 25, "*****");
+              final String userId = authState.authUser.id.replaceRange(8, 25, '*****');
               final String userPhoneNumber = authState.authUser.phoneNumber;
 
               final String userRole = chatSetupState.chatUser.userRole;
@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: AssetImage(
-                                        "assets/images/flutter.png",
+                                        'assets/images/flutter.png',
                                       ),
                                     ),
                                     borderRadius: BorderRadius.only(

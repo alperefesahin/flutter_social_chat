@@ -12,7 +12,7 @@ part of 'chat_user_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ChatUserModel _$ChatUserModelFromJson(Map<String, dynamic> json) {
   return _ChatUserModel.fromJson(json);
@@ -24,8 +24,12 @@ mixin _$ChatUserModel {
   String get userRole => throw _privateConstructorUsedError;
   bool get isUserBanned => throw _privateConstructorUsedError;
 
+  /// Serializes this ChatUserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatUserModelCopyWith<ChatUserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$ChatUserModelCopyWithImpl<$Res, $Val extends ChatUserModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatUserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,24 +80,26 @@ class _$ChatUserModelCopyWithImpl<$Res, $Val extends ChatUserModel>
 }
 
 /// @nodoc
-abstract class _$$_ChatUserModelCopyWith<$Res>
+abstract class _$$ChatUserModelImplCopyWith<$Res>
     implements $ChatUserModelCopyWith<$Res> {
-  factory _$$_ChatUserModelCopyWith(
-          _$_ChatUserModel value, $Res Function(_$_ChatUserModel) then) =
-      __$$_ChatUserModelCopyWithImpl<$Res>;
+  factory _$$ChatUserModelImplCopyWith(
+          _$ChatUserModelImpl value, $Res Function(_$ChatUserModelImpl) then) =
+      __$$ChatUserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String createdAt, String userRole, bool isUserBanned});
 }
 
 /// @nodoc
-class __$$_ChatUserModelCopyWithImpl<$Res>
-    extends _$ChatUserModelCopyWithImpl<$Res, _$_ChatUserModel>
-    implements _$$_ChatUserModelCopyWith<$Res> {
-  __$$_ChatUserModelCopyWithImpl(
-      _$_ChatUserModel _value, $Res Function(_$_ChatUserModel) _then)
+class __$$ChatUserModelImplCopyWithImpl<$Res>
+    extends _$ChatUserModelCopyWithImpl<$Res, _$ChatUserModelImpl>
+    implements _$$ChatUserModelImplCopyWith<$Res> {
+  __$$ChatUserModelImplCopyWithImpl(
+      _$ChatUserModelImpl _value, $Res Function(_$ChatUserModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatUserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,7 +107,7 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
     Object? userRole = null,
     Object? isUserBanned = null,
   }) {
-    return _then(_$_ChatUserModel(
+    return _then(_$ChatUserModelImpl(
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -118,15 +126,15 @@ class __$$_ChatUserModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ChatUserModel extends _ChatUserModel {
-  const _$_ChatUserModel(
+class _$ChatUserModelImpl extends _ChatUserModel {
+  const _$ChatUserModelImpl(
       {required this.createdAt,
       required this.userRole,
       required this.isUserBanned})
       : super._();
 
-  factory _$_ChatUserModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ChatUserModelFromJson(json);
+  factory _$ChatUserModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChatUserModelImplFromJson(json);
 
   @override
   final String createdAt;
@@ -141,10 +149,10 @@ class _$_ChatUserModel extends _ChatUserModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatUserModel &&
+            other is _$ChatUserModelImpl &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.userRole, userRole) ||
@@ -153,20 +161,22 @@ class _$_ChatUserModel extends _ChatUserModel {
                 other.isUserBanned == isUserBanned));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, createdAt, userRole, isUserBanned);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatUserModelCopyWith<_$_ChatUserModel> get copyWith =>
-      __$$_ChatUserModelCopyWithImpl<_$_ChatUserModel>(this, _$identity);
+  _$$ChatUserModelImplCopyWith<_$ChatUserModelImpl> get copyWith =>
+      __$$ChatUserModelImplCopyWithImpl<_$ChatUserModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChatUserModelToJson(
+    return _$$ChatUserModelImplToJson(
       this,
     );
   }
@@ -176,11 +186,11 @@ abstract class _ChatUserModel extends ChatUserModel {
   const factory _ChatUserModel(
       {required final String createdAt,
       required final String userRole,
-      required final bool isUserBanned}) = _$_ChatUserModel;
+      required final bool isUserBanned}) = _$ChatUserModelImpl;
   const _ChatUserModel._() : super._();
 
   factory _ChatUserModel.fromJson(Map<String, dynamic> json) =
-      _$_ChatUserModel.fromJson;
+      _$ChatUserModelImpl.fromJson;
 
   @override
   String get createdAt;
@@ -188,8 +198,11 @@ abstract class _ChatUserModel extends ChatUserModel {
   String get userRole;
   @override
   bool get isUserBanned;
+
+  /// Create a copy of ChatUserModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_ChatUserModelCopyWith<_$_ChatUserModel> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatUserModelImplCopyWith<_$ChatUserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

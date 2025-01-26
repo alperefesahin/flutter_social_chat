@@ -1,4 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -41,13 +40,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
   }
 
   Future<void> _listenAuthStateChangesStream(AuthUserModel authUser) async {
-    emit(
-      state.copyWith(
-        isInProgress: true,
-        authUser: authUser,
-        isUserCheckedFromAuthService: true,
-      ),
-    );
+    emit(state.copyWith(isInProgress: true, authUser: authUser, isUserCheckedFromAuthService: true));
 
     if (state.isLoggedIn) {
       await _chatService.connectTheCurrentUser();
@@ -63,7 +56,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
   Future<void> createProfile() async {
     final userProfilePhotoUrl = await _authManagementCubit.createProfile();
 
-    if (userProfilePhotoUrl == "") {
+    if (userProfilePhotoUrl == '') {
       return;
     }
 
@@ -79,11 +72,11 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
   @override
   AuthState? fromJson(Map<String, dynamic> json) {
-    return AuthState.empty().copyWith(authUser: json["authUser"]);
+    return AuthState.empty().copyWith(authUser: json['authUser']);
   }
 
   @override
   Map<String, dynamic>? toJson(AuthState state) {
-    return {"authUser": state.authUser.toJson()};
+    return {'authUser': state.authUser.toJson()};
   }
 }

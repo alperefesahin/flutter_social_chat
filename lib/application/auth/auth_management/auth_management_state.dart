@@ -12,7 +12,7 @@ class AuthManagementState with _$AuthManagementState {
   factory AuthManagementState.empty() => const AuthManagementState(
         isUserNameValid: false,
         isInProgress: false,
-        userProfilePhotoUrl: "",
-        selectedImagePath: "",
+        userProfilePhotoUrl: '',
+        selectedImagePath: '',
       );
 }

@@ -28,13 +28,14 @@ class SignInVerificationPage extends StatelessWidget {
         final isOnboardingCompleted = state.authUser.isOnboardingCompleted;
 
         if (isLoggedIn && isOnboardingCompleted) {
-          context.go(context.namedLocation("channels_page"));
+          context.go(context.namedLocation('channels_page'));
         } else if (isLoggedIn && !isOnboardingCompleted) {
-          context.go(context.namedLocation("onboarding_page"));
+          context.go(context.namedLocation('onboarding_page'));
         }
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (context, result) {},
         child: Scaffold(
           backgroundColor: whiteColor,
           appBar: CustomAppBar(
@@ -50,16 +51,15 @@ class SignInVerificationPage extends StatelessWidget {
               ),
             ),
             appBarBackgroundColor: whiteColor,
-            appBarTitle: AppLocalizations.of(context).verification,
+            appBarTitle: AppLocalizations.of(context)?.verification ?? '',
             appBarAction: Icons.lock,
             appBarTitleTextStyle: const TextStyle(
               color: blackColor,
               fontWeight: FontWeight.w500,
             ),
             appBarIconColor: blackColor,
-            maxFontSize: 23,
-            minFontSize: 19,
             textPadding: EdgeInsets.zero,
+            fontSize: 20,
           ),
           body: VerificationPageBody(
             phoneNumber: phoneNumber,
