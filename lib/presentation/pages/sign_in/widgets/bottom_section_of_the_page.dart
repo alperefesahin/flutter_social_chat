@@ -6,6 +6,7 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
 import 'package:flutter_social_chat/presentation/common_widgets/custom_text.dart';
 import 'package:flutter_social_chat/presentation/pages/sign_in/widgets/phone_number_sign_in_section.dart';
+import 'package:flutter_social_chat/presentation/routes/codec.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomSectionOfThePage extends StatelessWidget {
@@ -74,7 +75,15 @@ class BottomSectionOfThePage extends StatelessWidget {
 
                           context.push(
                             context.namedLocation('sign_in_verification_page'),
-                            extra: state,
+                            extra: PhoneNumberSignInStateCodec.encode({
+                              'phoneNumber': state.phoneNumber,
+                              'smsCode': state.smsCode,
+                              'verificationId': state.verificationIdOption.toNullable(),
+                              'isInProgress': state.isInProgress,
+                              'isPhoneNumberInputValidated': state.isPhoneNumberInputValidated,
+                              'phoneNumberPair': state.phoneNumberAndResendTokenPair.$1,
+                              'resendToken': state.phoneNumberAndResendTokenPair.$2,
+                            }),
                           );
                         }
                       },
