@@ -1,6 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
+import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/presentation/pages/bottom_tab/bottom_tab.dart';
 import 'package:flutter_social_chat/presentation/pages/camera/camera_page.dart';
 import 'package:flutter_social_chat/presentation/pages/capture_and_send_photo/capture_and_send_photo_page.dart';
@@ -12,6 +12,8 @@ import 'package:flutter_social_chat/presentation/pages/onboarding/onboarding_pag
 import 'package:flutter_social_chat/presentation/pages/profile/profile_page.dart';
 import 'package:flutter_social_chat/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:flutter_social_chat/presentation/pages/verification_page/sign_in_verification_page.dart';
+import 'package:flutter_social_chat/presentation/routes/codec.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
@@ -140,8 +142,23 @@ class AppRouter {
         name: 'sign_in_verification_page',
         path: '/sign_in_verification_page',
         builder: (context, state) {
-          final phoneNumberSignInState = state.extra as PhoneNumberSignInState?;
-          return SignInVerificationPage(state: phoneNumberSignInState!);
+          final String? encodedExtras = state.extra as String?;
+
+          final extras = encodedExtras != null ? PhoneNumberSignInStateCodec.decode(encodedExtras) : {};
+
+          final phoneNumberSignInState = PhoneNumberSignInState(
+            phoneNumber: extras['phoneNumber'] ?? '',
+            smsCode: extras['smsCode'] ?? '',
+            verificationIdOption: Option.of(extras['verificationId'] as String? ?? ''),
+            isInProgress: extras['isInProgress'] ?? false,
+            isPhoneNumberInputValidated: extras['isPhoneNumberInputValidated'] ?? false,
+            phoneNumberAndResendTokenPair: (
+              extras['phoneNumberPair'] ?? '',
+              extras['resendToken'] as int?,
+            ),
+          );
+
+          return SignInVerificationPage(state: phoneNumberSignInState);
         },
       ),
       GoRoute(

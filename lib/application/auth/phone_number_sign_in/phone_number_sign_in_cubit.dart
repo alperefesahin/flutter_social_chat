@@ -1,15 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/domain/auth/auth_failure.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:flutter_social_chat/injection.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
-part 'phone_number_sign_in_cubit.freezed.dart';
-part 'phone_number_sign_in_state.dart';
 
 @injectable
 class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
