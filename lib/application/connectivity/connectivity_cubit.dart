@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/connectivity/connectivity_state.dart';
 import 'package:flutter_social_chat/domain/connectivity/i_connectivity_service.dart';
 import 'package:flutter_social_chat/injection.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class ConnectivityCubit extends Cubit<ConnectivityState> {
   late StreamSubscription? _connectivitySubscription;
   late final IConnectivityService _connectivityService;

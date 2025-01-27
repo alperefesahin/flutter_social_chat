@@ -23,6 +23,8 @@ import 'package:flutter_social_chat/application/chat/chat_management/chat_manage
     as _i666;
 import 'package:flutter_social_chat/application/chat/chat_setup/chat_setup_cubit.dart'
     as _i652;
+import 'package:flutter_social_chat/application/connectivity/connectivity_cubit.dart'
+    as _i944;
 import 'package:flutter_social_chat/application/microphone/microphone_cubit.dart'
     as _i439;
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart' as _i395;
@@ -74,6 +76,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i829.StreamChatClient>(
         () => injectableModule.streamChatClient);
     gh.lazySingleton<_i652.ChatSetupCubit>(() => _i652.ChatSetupCubit());
+    gh.lazySingleton<_i944.ConnectivityCubit>(() => _i944.ConnectivityCubit());
     gh.lazySingleton<_i974.AuthCubit>(() => _i974.AuthCubit());
     gh.lazySingleton<_i799.AuthManagementCubit>(
         () => _i799.AuthManagementCubit());
