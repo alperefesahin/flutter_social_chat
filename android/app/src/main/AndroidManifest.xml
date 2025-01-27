@@ -20,6 +20,7 @@
 
     
     <application
+        android:enableOnBackInvokedCallback="true"
         android:label="flutter_social_chat_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
