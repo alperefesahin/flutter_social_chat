@@ -20,6 +20,4 @@ doc/api/
 .flutter-plugins-dependencies
 firebase.json
 lib/firebase_options.dart
-android/
-ios/
 flutter_social_chat_app_iml
