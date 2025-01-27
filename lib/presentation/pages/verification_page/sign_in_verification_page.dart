@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
+import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
 import 'package:flutter_social_chat/presentation/common_widgets/custom_app_bar.dart';
 import 'package:flutter_social_chat/presentation/pages/verification_page/widgets/verification_page_body.dart';

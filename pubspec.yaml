@@ -60,7 +60,8 @@ dependencies:
   get_it: ^8.0.3
   fpdart: ^1.1.1
   uuid: ^4.5.1
-
+  equatable: ^2.0.7
+  
   firebase_core: ^3.10.1
   firebase_auth: ^5.4.1
   firebase_storage: ^12.4.1
