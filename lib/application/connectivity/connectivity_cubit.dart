@@ -2,15 +2,10 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_social_chat/application/connectivity/connectivity_state.dart';
 import 'package:flutter_social_chat/domain/connectivity/i_connectivity_service.dart';
 import 'package:flutter_social_chat/injection.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 
-part 'connectivity_state.dart';
-part 'connectivity_cubit.freezed.dart';
-
-@lazySingleton
 class ConnectivityCubit extends Cubit<ConnectivityState> {
   late StreamSubscription? _connectivitySubscription;
   late final IConnectivityService _connectivityService;

@@ -74,7 +74,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                           context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
 
                           context.push(
-                            context.namedLocation('sign_in_verification_page'),
+                            '/sign_in_verification_page',
                             extra: PhoneNumberSignInStateCodec.encode({
                               'phoneNumber': state.phoneNumber,
                               'smsCode': state.smsCode,

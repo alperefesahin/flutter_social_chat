@@ -1,9 +1,18 @@
-part of 'connectivity_cubit.dart';
+import 'package:equatable/equatable.dart';
 
-@freezed
-class ConnectivityState with _$ConnectivityState {
-  const factory ConnectivityState({required bool isUserConnectedToTheInternet}) =
-      _ConnectivityState;
+class ConnectivityState extends Equatable {
+  const ConnectivityState({this.isUserConnectedToTheInternet = false});
 
-  factory ConnectivityState.empty() => const ConnectivityState(isUserConnectedToTheInternet: false);
+  final bool isUserConnectedToTheInternet;
+
+  @override
+  List<Object> get props => [isUserConnectedToTheInternet];
+
+  ConnectivityState copyWith({bool? isUserConnectedToTheInternet}) {
+    return ConnectivityState(
+      isUserConnectedToTheInternet: isUserConnectedToTheInternet ?? this.isUserConnectedToTheInternet,
+    );
+  }
+
+  factory ConnectivityState.empty() => const ConnectivityState();
 }
