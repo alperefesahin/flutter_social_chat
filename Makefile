@@ -3,3 +3,10 @@ build_runner:
 
 localization:
 	flutter gen-l10n --arb-dir lib/presentation/l10n
+
+clean:
+	flutter clean
+	flutter pub get
+	$(MAKE) build_runner
+	$(MAKE) localization
+	flutter pub get
