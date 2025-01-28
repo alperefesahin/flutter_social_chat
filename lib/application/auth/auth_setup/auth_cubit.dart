@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_state.dart';
 import 'package:flutter_social_chat/domain/auth/auth_user_model.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
@@ -10,16 +9,13 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 class AuthCubit extends HydratedCubit<AuthState> {
   final IAuthService _authService;
   final IChatService _chatService;
-  final AuthManagementCubit _authManagementCubit;
   StreamSubscription<AuthUserModel>? _authUserSubscription;
 
   AuthCubit({
     required IAuthService authService,
     required IChatService chatService,
-    required AuthManagementCubit authManagementCubit,
   })  : _authService = authService,
         _chatService = chatService,
-        _authManagementCubit = authManagementCubit,
         super(AuthState.empty()) {
     _authUserSubscription = _authService.authStateChanges.listen(_listenAuthStateChangesStream);
   }
@@ -48,8 +44,8 @@ class AuthCubit extends HydratedCubit<AuthState> {
     emit(state.copyWith(authUser: state.authUser.copyWith(userName: userName)));
   }
 
-  Future<void> createProfile() async {
-    final userProfilePhotoUrl = await _authManagementCubit.createProfile();
+  Future<void> completeProfileSetup(Future<String> getProfilePhotoUrl) async {
+    final userProfilePhotoUrl = await getProfilePhotoUrl;
 
     if (userProfilePhotoUrl == '') {
       return;

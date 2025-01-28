@@ -66,7 +66,6 @@ void injectionSetup() {
     () => AuthCubit(
       authService: getIt<IAuthService>(),
       chatService: getIt<IChatService>(),
-      authManagementCubit: getIt<AuthManagementCubit>(),
     ),
   );
   getIt.registerLazySingleton<AuthManagementCubit>(
@@ -77,6 +76,7 @@ void injectionSetup() {
       authCubit: getIt<AuthCubit>(),
     ),
   );
+
   getIt.registerFactory(() => PhoneNumberSignInCubit(getIt<IAuthService>()));
 
   // App Services (Router, StreamChatClient, etc.)

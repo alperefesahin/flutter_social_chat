@@ -52,9 +52,7 @@ class SignInPage extends StatelessWidget {
               canPop: false,
               onPopInvokedWithResult: (context, result) {},
               child: const Scaffold(
-                body: CustomProgressIndicator(
-                  progressIndicatorColor: blackColor,
-                ),
+                body: CustomProgressIndicator(progressIndicatorColor: blackColor),
               ),
             ),
           );

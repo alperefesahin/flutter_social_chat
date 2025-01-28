@@ -8,14 +8,13 @@ import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   injectionSetup();
 
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: HydratedStorageDirectory((await getApplicationDocumentsDirectory()).path),
   );
-
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const AppWidget());
 }

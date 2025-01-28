@@ -15,9 +15,9 @@ class ConnectivityHandler implements IConnectivityService {
   @override
   Stream<ConnectivityResult> get connectivityStateChanges {
     return _connectivity.onConnectivityChanged.map((connectivityResult) {
-      if (connectivityResult == ConnectivityResult.mobile) {
+      if (connectivityResult.contains(ConnectivityResult.mobile)) {
         return ConnectivityResult.mobile;
-      } else if (connectivityResult == ConnectivityResult.wifi) {
+      } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
         return ConnectivityResult.wifi;
       } else {
         return ConnectivityResult.none;
