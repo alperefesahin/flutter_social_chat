@@ -5,7 +5,7 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_text.dart';
-import 'package:flutter_social_chat/presentation/pages/sign_in/widgets/phone_number_sign_in_section.dart';
+import 'package:flutter_social_chat/view/sign_in/widgets/phone_number_sign_in_section.dart';
 import 'package:flutter_social_chat/presentation/routes/codec.dart';
 import 'package:go_router/go_router.dart';
 

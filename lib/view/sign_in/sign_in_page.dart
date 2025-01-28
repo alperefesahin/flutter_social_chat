@@ -8,7 +8,7 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_app_bar.dart';
 import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
-import 'package:flutter_social_chat/presentation/pages/sign_in/widgets/sign_in_body.dart';
+import 'package:flutter_social_chat/view/sign_in/widgets/sign_in_body.dart';
 import 'package:go_router/go_router.dart';
 
 class SignInPage extends StatelessWidget {
@@ -16,6 +16,13 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String serverErrorText = AppLocalizations.of(context)?.serverError ?? '';
+    final String tooManyRequestsText = AppLocalizations.of(context)?.tooManyRequests ?? '';
+    final String deviceNotSupportedText = AppLocalizations.of(context)?.deviceNotSupported ?? '';
+    final String smsTimeoutText = AppLocalizations.of(context)?.smsTimeout ?? '';
+    final String sessionExpiredText = AppLocalizations.of(context)?.sessionExpired ?? '';
+    final String invalidVerificationCodeText = AppLocalizations.of(context)?.invalidVerificationCode ?? '';
+
     return BlocBuilder<PhoneNumberSignInCubit, PhoneNumberSignInState>(
       builder: (context, state) {
         if (state.isInProgress) {
@@ -27,14 +34,15 @@ class SignInPage extends StatelessWidget {
                 (authFailure) {
                   BotToast.showText(
                     text: authFailure.when(
-                      serverError: () => AppLocalizations.of(context)?.serverError ?? '',
-                      tooManyRequests: () => AppLocalizations.of(context)?.tooManyRequests ?? '',
-                      deviceNotSupported: () => AppLocalizations.of(context)?.deviceNotSupported ?? '',
-                      smsTimeout: () => AppLocalizations.of(context)?.smsTimeout ?? '',
-                      sessionExpired: () => AppLocalizations.of(context)?.sessionExpired ?? '',
-                      invalidVerificationCode: () => AppLocalizations.of(context)?.invalidVerificationCode ?? '',
+                      serverError: () => serverErrorText,
+                      tooManyRequests: () => tooManyRequestsText,
+                      deviceNotSupported: () => deviceNotSupportedText,
+                      smsTimeout: () => smsTimeoutText,
+                      sessionExpired: () => sessionExpiredText,
+                      invalidVerificationCode: () => invalidVerificationCodeText,
                     ),
                   );
+
                   context.read<PhoneNumberSignInCubit>().reset();
                   context.pop();
                 },
