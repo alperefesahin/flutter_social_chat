@@ -3,24 +3,16 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_social_chat/application/camera/camera_state.dart';
 import 'package:flutter_social_chat/domain/camera/i_camera_service.dart';
-import 'package:flutter_social_chat/infrastructure/camera/camera_service.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart' as img;
-import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-part 'camera_cubit.freezed.dart';
-part 'camera_state.dart';
-
-@injectable
 class CameraCubit extends Cubit<CameraState> {
-  late final ICameraService _cameraService;
+  final ICameraService _cameraService;
   late StreamSubscription<PermissionStatus>? _cameraPermissionSubscription;
 
-  CameraCubit() : super(CameraState.empty()) {
-    _cameraService = CameraService();
-
+  CameraCubit(this._cameraService) : super(CameraState.empty()) {
     _cameraPermissionSubscription = _cameraService.cameraStateChanges.listen(_listenCameraStateChangesStream);
   }
 

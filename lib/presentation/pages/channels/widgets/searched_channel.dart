@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class SearchedChannel extends StatelessWidget {

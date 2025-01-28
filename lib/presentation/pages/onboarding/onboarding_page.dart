@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
+import 'package:flutter_social_chat/application/auth/auth_management/auth_management_state.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:flutter_social_chat/application/auth/auth_setup/auth_state.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
 import 'package:flutter_social_chat/presentation/pages/onboarding/widgets/onboarding_page_body.dart';
 import 'package:go_router/go_router.dart';
 

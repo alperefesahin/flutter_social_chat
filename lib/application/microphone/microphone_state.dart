@@ -1,10 +1,18 @@
-part of 'microphone_cubit.dart';
+import 'package:equatable/equatable.dart';
 
-@freezed
-class MicrophoneState with _$MicrophoneState {
-  const factory MicrophoneState({
-    required bool isMicrophonePermissionGranted,
-  }) = _MicrophoneState;
+class MicrophoneState extends Equatable {
+  final bool isMicrophonePermissionGranted;
 
-  factory MicrophoneState.empty() => const MicrophoneState(isMicrophonePermissionGranted: false);
+  const MicrophoneState({this.isMicrophonePermissionGranted = false});
+
+  @override
+  List<Object> get props => [isMicrophonePermissionGranted];
+
+  MicrophoneState copyWith({bool? isMicrophonePermissionGranted}) {
+    return MicrophoneState(
+      isMicrophonePermissionGranted: isMicrophonePermissionGranted ?? this.isMicrophonePermissionGranted,
+    );
+  }
+
+  factory MicrophoneState.empty() => const MicrophoneState();
 }

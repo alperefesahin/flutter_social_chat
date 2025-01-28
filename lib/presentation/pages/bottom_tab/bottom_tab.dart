@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/chat/chat_setup/chat_setup_cubit.dart';
-import 'package:flutter_social_chat/injection.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:flutter_social_chat/application/chat/chat_setup/chat_setup_state.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
+import 'package:flutter_social_chat/core/di/dependency_injector.dart';
 import 'package:flutter_social_chat/presentation/pages/bottom_tab/widgets/bottom_navigation_builder.dart';
 
 class BottomTabPage extends StatelessWidget {

@@ -1,34 +1,24 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
+import 'package:flutter_social_chat/application/chat/chat_management/chat_management_state.dart';
 import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';
 import 'package:flutter_social_chat/infrastructure/core/firestore_helpers.dart';
-import 'package:flutter_social_chat/injection.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-part 'chat_management_cubit.freezed.dart';
-part 'chat_management_state.dart';
-
-@injectable
 class ChatManagementCubit extends Cubit<ChatManagementState> {
   final String randomGroupProfilePhoto = 'https://picsum.photos/200/300';
 
-  late final IChatService _chatService;
-  late final FirebaseFirestore _firebaseFirestore;
-  late final AuthCubit _authCubit;
+  final IChatService _chatService;
+  final FirebaseFirestore _firebaseFirestore;
+  final AuthCubit _authCubit;
 
   late StreamSubscription<List<Channel>>? _currentUserChannelsSubscription;
 
-  ChatManagementCubit() : super(ChatManagementState.empty()) {
-    _chatService = getIt<IChatService>();
-    _firebaseFirestore = getIt<FirebaseFirestore>();
-    _authCubit = getIt<AuthCubit>();
-
+  ChatManagementCubit(this._chatService, this._firebaseFirestore, this._authCubit)
+      : super(ChatManagementState.empty()) {
     _currentUserChannelsSubscription =
         _chatService.channelsThatTheUserIsIncluded.listen(_listenCurrentUserChannelsChangeStream);
   }

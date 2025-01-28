@@ -1,20 +1,45 @@
-part of 'camera_cubit.dart';
+import 'package:camera/camera.dart';
+import 'package:equatable/equatable.dart';
 
-@freezed
-class CameraState with _$CameraState {
-  const factory CameraState({
-    required List<CameraDescription> cameras,
-    required int sizeOfTheTakenPhoto,
-    required String pathOfTheTakenPhoto,
-    required bool isInProgress,
-    required bool isCameraPermissionGranted,
-  }) = _CameraState;
+class CameraState extends Equatable {
+  final List<CameraDescription> cameras;
+  final int sizeOfTheTakenPhoto;
+  final String pathOfTheTakenPhoto;
+  final bool isInProgress;
+  final bool isCameraPermissionGranted;
 
-  factory CameraState.empty() => const CameraState(
-        cameras: [],
-        sizeOfTheTakenPhoto: 0,
-        pathOfTheTakenPhoto: '',
-        isInProgress: false,
-        isCameraPermissionGranted: false,
-      );
+  const CameraState({
+    this.cameras = const [],
+    this.sizeOfTheTakenPhoto = 0,
+    this.pathOfTheTakenPhoto = '',
+    this.isInProgress = false,
+    this.isCameraPermissionGranted = false,
+  });
+
+  @override
+  List<Object> get props => [
+        cameras,
+        sizeOfTheTakenPhoto,
+        pathOfTheTakenPhoto,
+        isInProgress,
+        isCameraPermissionGranted,
+      ];
+
+  CameraState copyWith({
+    List<CameraDescription>? cameras,
+    int? sizeOfTheTakenPhoto,
+    String? pathOfTheTakenPhoto,
+    bool? isInProgress,
+    bool? isCameraPermissionGranted,
+  }) {
+    return CameraState(
+      cameras: cameras ?? this.cameras,
+      sizeOfTheTakenPhoto: sizeOfTheTakenPhoto ?? this.sizeOfTheTakenPhoto,
+      pathOfTheTakenPhoto: pathOfTheTakenPhoto ?? this.pathOfTheTakenPhoto,
+      isInProgress: isInProgress ?? this.isInProgress,
+      isCameraPermissionGranted: isCameraPermissionGranted ?? this.isCameraPermissionGranted,
+    );
+  }
+
+  factory CameraState.empty() => const CameraState();
 }

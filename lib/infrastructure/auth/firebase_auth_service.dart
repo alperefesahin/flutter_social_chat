@@ -8,9 +8,7 @@ import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:flutter_social_chat/infrastructure/core/firebase_helpers.dart';
 import 'package:flutter_social_chat/infrastructure/core/firestore_helpers.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:injectable/injectable.dart';
 
-@LazySingleton(as: IAuthService)
 class FirebaseAuthService implements IAuthService {
   FirebaseAuthService(this._firebaseAuth, this._firestore);
 
@@ -31,7 +29,8 @@ class FirebaseAuthService implements IAuthService {
   }
 
   @override
-  Future<Option<AuthUserModel>> getSignedInUser() async => optionOf(_firebaseAuth.currentUser?.toDomain());
+  Future<Option<AuthUserModel>> getSignedInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<void> signOut() async {
@@ -56,7 +55,6 @@ class FirebaseAuthService implements IAuthService {
         await _firebaseAuth.signInWithCredential(credential);
       },
       codeSent: (String verificationId, int? resendToken) async {
-        // Wait for the user to enter the SMS code
         streamController.add(right((verificationId, resendToken)));
       },
       codeAutoRetrievalTimeout: (String verificationId) {},

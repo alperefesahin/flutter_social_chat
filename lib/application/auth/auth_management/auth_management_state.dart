@@ -1,18 +1,39 @@
-part of 'auth_management_cubit.dart';
+import 'package:equatable/equatable.dart';
 
-@freezed
-class AuthManagementState with _$AuthManagementState {
-  const factory AuthManagementState({
-    required bool isUserNameValid,
-    required bool isInProgress,
-    required String userProfilePhotoUrl,
-    required String selectedImagePath,
-  }) = _AuthManagementState;
+class AuthManagementState extends Equatable {
+  const AuthManagementState({
+    this.isUserNameValid = false,
+    this.isInProgress = false,
+    this.userProfilePhotoUrl = '',
+    this.selectedImagePath = '',
+  });
 
-  factory AuthManagementState.empty() => const AuthManagementState(
-        isUserNameValid: false,
-        isInProgress: false,
-        userProfilePhotoUrl: '',
-        selectedImagePath: '',
-      );
+  final bool isUserNameValid;
+  final bool isInProgress;
+  final String userProfilePhotoUrl;
+  final String selectedImagePath;
+
+  @override
+  List<Object?> get props => [
+        isUserNameValid,
+        isInProgress,
+        userProfilePhotoUrl,
+        selectedImagePath,
+      ];
+
+  AuthManagementState copyWith({
+    bool? isUserNameValid,
+    bool? isInProgress,
+    String? userProfilePhotoUrl,
+    String? selectedImagePath,
+  }) {
+    return AuthManagementState(
+      isUserNameValid: isUserNameValid ?? this.isUserNameValid,
+      isInProgress: isInProgress ?? this.isInProgress,
+      userProfilePhotoUrl: userProfilePhotoUrl ?? this.userProfilePhotoUrl,
+      selectedImagePath: selectedImagePath ?? this.selectedImagePath,
+    );
+  }
+
+  factory AuthManagementState.empty() => const AuthManagementState();
 }

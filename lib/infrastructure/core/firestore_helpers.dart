@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_social_chat/core/di/dependency_injector.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
-import 'package:flutter_social_chat/injection.dart';
 import 'package:fpdart/fpdart.dart';
 
 extension FirestoreX on FirebaseFirestore {

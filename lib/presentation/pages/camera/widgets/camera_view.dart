@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/camera/camera_cubit.dart';
+import 'package:flutter_social_chat/application/camera/camera_state.dart';
 import 'package:flutter_social_chat/presentation/pages/camera/widgets/camera_output_widget.dart';
 import 'package:flutter_social_chat/presentation/pages/camera/widgets/camera_preview_widget.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';

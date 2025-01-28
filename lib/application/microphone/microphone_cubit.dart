@@ -1,23 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_social_chat/application/microphone/microphone_state.dart';
 import 'package:flutter_social_chat/domain/microphone/i_microphone_service.dart';
-import 'package:flutter_social_chat/infrastructure/microphone/microphone_service.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-part 'microphone_state.dart';
-part 'microphone_cubit.freezed.dart';
-
-@injectable
 class MicrophoneCubit extends Cubit<MicrophoneState> {
-  late final IMicrophoneService _microphoneService;
+  final IMicrophoneService _microphoneService;
   late StreamSubscription<PermissionStatus>? _microphonePermissionSubscription;
 
-  MicrophoneCubit() : super(MicrophoneState.empty()) {
-    _microphoneService = MicrophoneService();
-
+  MicrophoneCubit(this._microphoneService) : super(MicrophoneState.empty()) {
     _microphonePermissionSubscription =
         _microphoneService.microphoneStateChanges.listen(_listenMicrophoneStateChangesStream);
   }

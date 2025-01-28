@@ -56,7 +56,6 @@ dependencies:
   hydrated_bloc: ^10.0.0
   freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
-  injectable: ^2.5.0
   get_it: ^8.0.3
   fpdart: ^1.1.1
   uuid: ^4.5.1
@@ -74,7 +73,6 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.4.14
   freezed: ^2.5.7
-  injectable_generator: ^2.6.2
   json_serializable: ^6.9.0
   flutter_gen_runner: ^5.8.0
   # The "flutter_lints" package below contains a set of recommended lints to

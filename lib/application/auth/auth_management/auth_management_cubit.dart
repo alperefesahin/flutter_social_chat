@@ -1,32 +1,30 @@
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_social_chat/application/auth/auth_management/auth_management_state.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
-import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:flutter_social_chat/infrastructure/core/firestore_helpers.dart';
-import 'package:flutter_social_chat/injection.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:injectable/injectable.dart';
+import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 
-part 'auth_management_state.dart';
-part 'auth_management_cubit.freezed.dart';
-
-@lazySingleton
 class AuthManagementCubit extends Cubit<AuthManagementState> {
-  late final IAuthService _authService;
-  late final FirebaseStorage _firebaseStorage;
-  late final FirebaseFirestore _firebaseFirestore;
-  late final AuthCubit _authCubit;
+  AuthManagementCubit({
+    required IAuthService authService,
+    required FirebaseStorage firebaseStorage,
+    required FirebaseFirestore firebaseFirestore,
+    required AuthCubit authCubit,
+  })  : _authService = authService,
+        _firebaseStorage = firebaseStorage,
+        _firebaseFirestore = firebaseFirestore,
+        _authCubit = authCubit,
+        super(AuthManagementState.empty());
 
-  AuthManagementCubit() : super(AuthManagementState.empty()) {
-    _authService = getIt<IAuthService>();
-    _firebaseStorage = getIt<FirebaseStorage>();
-    _firebaseFirestore = getIt<FirebaseFirestore>();
-    _authCubit = getIt<AuthCubit>();
-  }
+  final IAuthService _authService;
+  final FirebaseStorage _firebaseStorage;
+  final FirebaseFirestore _firebaseFirestore;
+  final AuthCubit _authCubit;
 
   void validateUserName({required bool isUserNameValid}) {
     emit(state.copyWith(isUserNameValid: isUserNameValid));

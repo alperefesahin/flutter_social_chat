@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
+import 'package:flutter_social_chat/application/chat/chat_management/chat_management_state.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class UserListView extends StatelessWidget {

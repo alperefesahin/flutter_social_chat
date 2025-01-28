@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_text.dart';
+import 'package:flutter_social_chat/core/design_system/custom_text.dart';
 
 class TitleTextPair extends StatelessWidget {
   const TitleTextPair({super.key, required this.title, required this.text});

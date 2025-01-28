@@ -1,8 +1,6 @@
 import 'package:flutter_social_chat/domain/camera/i_camera_service.dart';
-import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-@LazySingleton(as: ICameraService)
 class CameraService implements ICameraService {
   @override
   Stream<PermissionStatus> get cameraStateChanges {
