@@ -6,9 +6,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class CustomWaveAnimation extends StatelessWidget {
-  const CustomWaveAnimation({
-    super.key,
-  });
+  const CustomWaveAnimation({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_app_bar.dart';
 import 'package:flutter_social_chat/core/design_system/popscope_scaffold.dart';
-import 'package:flutter_social_chat/view/sms_verification/widgets/verification_page_body.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/sms_verification_view_body.dart';
 import 'package:go_router/go_router.dart';
 
 class SmsVerificationView extends StatelessWidget {
