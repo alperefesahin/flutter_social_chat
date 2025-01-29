@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         validator: validator,
         autocorrect: false,
-        cursorColor: blackColor,
+        cursorColor: black,
         onChanged: onChanged,
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
@@ -43,10 +43,10 @@ class CustomTextField extends StatelessWidget {
           ),
           labelText: labelText,
           hintText: hintText,
-          iconColor: blackColor,
-          hintStyle: const TextStyle(color: blackColor),
-          labelStyle: const TextStyle(color: blackColor),
-          prefixIcon: Icon(icon, color: blackColor),
+          iconColor: black,
+          hintStyle: const TextStyle(color: black),
+          labelStyle: const TextStyle(color: black),
+          prefixIcon: Icon(icon, color: black),
         ),
       ),
     );

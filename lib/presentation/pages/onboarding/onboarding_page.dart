@@ -47,7 +47,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           if (state.isInProgress) {
             return const Scaffold(
               body: CustomProgressIndicator(
-                progressIndicatorColor: blackColor,
+                progressIndicatorColor: black,
               ),
             );
           } else {

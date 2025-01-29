@@ -58,7 +58,7 @@ class SearchedChannel extends StatelessWidget {
           ),
           placeholder: (context, url) => const CircleAvatar(
             radius: 40,
-            child: CircularProgressIndicator(color: blackColor),
+            child: CircularProgressIndicator(color: black),
           ),
         ),
         title: Text(

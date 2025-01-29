@@ -32,7 +32,7 @@ class BottomTabPage extends StatelessWidget {
             );
           } else {
             return const Scaffold(
-              body: CustomProgressIndicator(progressIndicatorColor: blackColor),
+              body: CustomProgressIndicator(progressIndicatorColor: black),
             );
           }
         },

@@ -31,8 +31,7 @@ class CreateNewChatButton extends StatelessWidget {
           text: isCreateNewChatPageForCreatingGroup
               ? AppLocalizations.of(context)?.createNewGroupChat ?? ''
               : AppLocalizations.of(context)?.createNewOneToOneChat ?? '',
-          textStyle: const TextStyle(fontSize: 16),
-          textPadding: EdgeInsets.zero,
+          fontSize: 16,
         ),
       ),
     );

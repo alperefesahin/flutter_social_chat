@@ -25,7 +25,7 @@ class VerificationPageBody extends StatelessWidget {
             const CustomWaveAnimation(),
             if (state.isInProgress)
               const CustomProgressIndicator(
-                progressIndicatorColor: whiteColor,
+                progressIndicatorColor: white,
               )
             else
               Padding(
@@ -45,17 +45,14 @@ class VerificationPageBody extends StatelessWidget {
                               child: Icon(
                                 Icons.check_rounded,
                                 size: 25,
-                                color: whiteColor,
+                                color: white,
                               ),
                             ),
                             CustomText(
                               text: AppLocalizations.of(context)?.confirmation ?? '',
-                              textPadding: EdgeInsets.zero,
-                              textStyle: const TextStyle(
-                                color: whiteColor,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 32,
-                              ),
+                              color: white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 32,
                             ),
                           ],
                         ),
@@ -71,7 +68,7 @@ class VerificationPageBody extends StatelessWidget {
                             const Icon(
                               Icons.vibration,
                               size: 50,
-                              color: whiteColor,
+                              color: white,
                             ),
                             Expanded(
                               child: Padding(
@@ -83,7 +80,7 @@ class VerificationPageBody extends StatelessWidget {
                                         text: AppLocalizations.of(context)?.confirmationInfo,
                                         style: const TextStyle(
                                           fontSize: 18,
-                                          color: whiteColor,
+                                          color: white,
                                           fontWeight: FontWeight.w500,
                                           height: 1.75,
                                         ),
@@ -92,7 +89,7 @@ class VerificationPageBody extends StatelessWidget {
                                         text: phoneNumber,
                                         style: const TextStyle(
                                           fontSize: 18,
-                                          color: whiteColor,
+                                          color: white,
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),

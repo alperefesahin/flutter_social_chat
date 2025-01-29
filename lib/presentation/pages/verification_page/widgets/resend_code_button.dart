@@ -16,23 +16,23 @@ class ResendCodeButton extends StatelessWidget {
         onTap: () {
           context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
         },
-        splashColor: transparentColor,
-        highlightColor: transparentColor,
+        splashColor: transparent,
+        highlightColor: transparent,
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
               CustomText(
                 text: AppLocalizations.of(context)?.resendCode ?? '',
-                textStyle: const TextStyle(color: whiteColor, fontSize: 16),
-                textPadding: EdgeInsets.zero,
+                color: white,
+                fontSize: 16,
               ),
               const Padding(
                 padding: EdgeInsets.only(left: 15),
                 child: Icon(
                   Icons.arrow_forward_ios,
                   size: 15,
-                  color: whiteColor,
+                  color: white,
                 ),
               ),
             ],

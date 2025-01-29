@@ -39,7 +39,7 @@ class CameraPageBody extends StatelessWidget {
             }
             if (cameras == null || controller == null) {
               return const Scaffold(
-                body: CustomProgressIndicator(progressIndicatorColor: blackColor),
+                body: CustomProgressIndicator(progressIndicatorColor: black),
               );
             } else {
               return CameraView(

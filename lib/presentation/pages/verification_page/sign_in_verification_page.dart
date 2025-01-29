@@ -39,7 +39,7 @@ class SignInVerificationPage extends StatelessWidget {
         canPop: false,
         onPopInvokedWithResult: (context, result) {},
         child: Scaffold(
-          backgroundColor: whiteColor,
+          backgroundColor: white,
           appBar: CustomAppBar(
             centerTitle: true,
             leading: IconButton(
@@ -49,17 +49,17 @@ class SignInVerificationPage extends StatelessWidget {
               },
               icon: const Icon(
                 CupertinoIcons.back,
-                color: blackColor,
+                color: black,
               ),
             ),
-            appBarBackgroundColor: whiteColor,
+            appBarBackgroundColor: white,
             appBarTitle: AppLocalizations.of(context)?.verification ?? '',
             appBarAction: Icons.lock,
             appBarTitleTextStyle: const TextStyle(
-              color: blackColor,
+              color: black,
               fontWeight: FontWeight.w500,
             ),
-            appBarIconColor: blackColor,
+            appBarIconColor: black,
             textPadding: EdgeInsets.zero,
             fontSize: 20,
           ),

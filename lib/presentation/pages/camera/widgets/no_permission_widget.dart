@@ -8,10 +8,13 @@ class NoPermissionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CustomText(
-        text: AppLocalizations.of(context)?.giveRelatedPermission ?? '',
-        textStyle: const TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 24),
-        textPadding: const EdgeInsets.all(8),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: CustomText(
+          text: AppLocalizations.of(context)?.giveRelatedPermission ?? '',
+          fontWeight: FontWeight.w900,
+          fontSize: 24,
+        ),
       ),
     );
   }

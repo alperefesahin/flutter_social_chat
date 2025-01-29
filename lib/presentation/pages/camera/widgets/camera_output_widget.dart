@@ -55,7 +55,7 @@ class CameraOutputWidget extends StatelessWidget {
               },
               icon: const Icon(
                 CupertinoIcons.clear,
-                color: whiteColor,
+                color: white,
                 size: 30,
               ),
             ),

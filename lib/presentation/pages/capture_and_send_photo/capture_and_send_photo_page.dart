@@ -45,7 +45,7 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
             centerTitle: false,
             appBarTitle: '',
             appBarAction: CupertinoIcons.line_horizontal_3_decrease,
-            appBarIconColor: blackColor,
+            appBarIconColor: black,
             leading: IconButton(
               onPressed: () {
                 context.read<ChatManagementCubit>().reset();
@@ -53,7 +53,7 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
               },
               icon: const Icon(
                 CupertinoIcons.back,
-                color: blackColor,
+                color: black,
               ),
             ),
             fontSize: 18,
@@ -64,7 +64,7 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
               final isInProgress = state.isInProgress;
 
               if (isInProgress) {
-                return const CustomProgressIndicator(progressIndicatorColor: blackColor);
+                return const CustomProgressIndicator(progressIndicatorColor: black);
               } else {
                 return CaptureAndSendPhotoPageBody(state: state);
               }

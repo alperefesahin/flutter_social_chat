@@ -37,7 +37,7 @@ class CameraPreviewWidget extends StatelessWidget {
                       IconButton(
                         onPressed: onNewCameraSelected,
                         icon: const Icon(CupertinoIcons.arrow_2_circlepath),
-                        color: whiteColor,
+                        color: white,
                         iconSize: 32,
                       ),
                     ],

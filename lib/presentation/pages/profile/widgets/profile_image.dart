@@ -35,7 +35,7 @@ class ProfileImage extends StatelessWidget {
           ),
         ),
         placeholder: (context, url) => Container(
-           constraints: BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: size.height / 6.5,
             maxHeight: size.height / 6.5,
           ),
@@ -45,13 +45,13 @@ class ProfileImage extends StatelessWidget {
               bottomRight: Radius.circular(20),
             ),
             border: Border.all(
-              color: whiteColor,
+              color: white,
               width: 4,
             ),
           ),
           child: const Center(
             child: CircularProgressIndicator(
-              color: blackColor,
+              color: black,
             ),
           ),
         ),

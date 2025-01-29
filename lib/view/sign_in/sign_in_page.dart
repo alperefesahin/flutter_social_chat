@@ -52,7 +52,7 @@ class SignInPage extends StatelessWidget {
               canPop: false,
               onPopInvokedWithResult: (context, result) {},
               child: const Scaffold(
-                body: CustomProgressIndicator(progressIndicatorColor: blackColor),
+                body: CustomProgressIndicator(progressIndicatorColor: black),
               ),
             ),
           );
@@ -63,7 +63,7 @@ class SignInPage extends StatelessWidget {
             child: Scaffold(
               appBar: CustomAppBar(
                 centerTitle: true,
-                appBarIconColor: whiteColor,
+                appBarIconColor: white,
                 appBarBackgroundColor: customIndigoColor,
                 appBarTitle: AppLocalizations.of(context)?.signIn ?? '',
                 appBarAction: CupertinoIcons.line_horizontal_3_decrease,

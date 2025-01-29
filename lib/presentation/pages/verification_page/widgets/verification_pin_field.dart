@@ -18,14 +18,14 @@ class VerificationPinField extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 1.15,
             height: MediaQuery.of(context).size.height / 9,
             decoration: BoxDecoration(
-              border: Border.all(color: whiteColor, width: 2),
+              border: Border.all(color: white, width: 2),
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
             ),
           ),
           PinCodeTextField(
-            backgroundColor: transparentColor,
+            backgroundColor: transparent,
             mainAxisAlignment: MainAxisAlignment.center,
             appContext: context,
             length: 6,
@@ -34,10 +34,10 @@ class VerificationPinField extends StatelessWidget {
                     smsCode: smsCode,
                   );
             },
-            textStyle: const TextStyle(color: whiteColor),
+            textStyle: const TextStyle(color: white),
             keyboardType: TextInputType.phone,
             hintCharacter: '-',
-            hintStyle: const TextStyle(color: whiteColor),
+            hintStyle: const TextStyle(color: white),
             pinTheme: PinTheme(
               fieldOuterPadding: const EdgeInsets.only(
                 left: 5,
@@ -48,9 +48,9 @@ class VerificationPinField extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               fieldHeight: 60,
               fieldWidth: 45,
-              inactiveColor: blackColor.withValues(alpha: 0.2),
-              activeColor: blackColor.withValues(alpha: 0.2),
-              selectedColor: blackColor.withValues(alpha: 0.2),
+              inactiveColor: black.withValues(alpha: 0.2),
+              activeColor: black.withValues(alpha: 0.2),
+              selectedColor: black.withValues(alpha: 0.2),
             ),
           ),
         ],

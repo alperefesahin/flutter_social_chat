@@ -39,7 +39,7 @@ class CreateNewChatPage extends StatelessWidget {
             centerTitle: false,
             appBarTitle: '',
             appBarAction: CupertinoIcons.line_horizontal_3_decrease,
-            appBarIconColor: blackColor,
+            appBarIconColor: black,
             leading: IconButton(
               onPressed: () {
                 context.read<ChatManagementCubit>().reset();
@@ -47,7 +47,7 @@ class CreateNewChatPage extends StatelessWidget {
               },
               icon: const Icon(
                 CupertinoIcons.back,
-                color: blackColor,
+                color: black,
               ),
             ),
             fontSize: 20,
@@ -56,7 +56,7 @@ class CreateNewChatPage extends StatelessWidget {
           body: BlocBuilder<ChatManagementCubit, ChatManagementState>(
             builder: (context, state) {
               if (state.isInProgress) {
-                return const CustomProgressIndicator(progressIndicatorColor: blackColor);
+                return const CustomProgressIndicator(progressIndicatorColor: black);
               } else {
                 return SingleChildScrollView(
                   child: RefreshIndicator(

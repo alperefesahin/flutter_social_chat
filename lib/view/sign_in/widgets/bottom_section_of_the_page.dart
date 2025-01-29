@@ -34,7 +34,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                 minWidth: size.width,
               ),
               child: Card(
-                color: whiteColor,
+                color: white,
                 elevation: 4.0,
                 child: Column(
                   children: [
@@ -44,8 +44,8 @@ class BottomSectionOfThePage extends StatelessWidget {
                         children: [
                           CustomText(
                             text: AppLocalizations.of(context)?.signInWithPhoneNumber ?? '',
-                            textPadding: EdgeInsets.zero,
-                            textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
                           ),
                           const Padding(
                             padding: EdgeInsets.only(left: 10),
@@ -60,12 +60,14 @@ class BottomSectionOfThePage extends StatelessWidget {
                     PhoneNumberSignInSection(
                       state: state,
                     ),
-                    CustomText(
-                      text: AppLocalizations.of(context)?.smsInformationMessage ?? '',
-                      textStyle: const TextStyle(fontSize: 16),
-                      textPadding: const EdgeInsets.symmetric(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 25,
                         vertical: 45,
+                      ),
+                      child: CustomText(
+                        text: AppLocalizations.of(context)?.smsInformationMessage ?? '',
+                        fontSize: 16,
                       ),
                     ),
                     InkWell(
@@ -109,7 +111,7 @@ class BottomSectionOfThePage extends StatelessWidget {
                         child: const Icon(
                           Icons.arrow_forward,
                           size: 35,
-                          color: whiteColor,
+                          color: white,
                         ),
                       ),
                     ),

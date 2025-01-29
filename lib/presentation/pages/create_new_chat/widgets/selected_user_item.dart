@@ -29,7 +29,7 @@ class SelectedUserItem extends StatelessWidget {
         ),
         placeholder: (context, url) => CircleAvatar(
           radius: itemSize / 2,
-          child: const CircularProgressIndicator(color: blackColor),
+          child: const CircularProgressIndicator(color: black),
         ),
       ),
     );

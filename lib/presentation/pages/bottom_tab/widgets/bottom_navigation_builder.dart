@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 
 Widget bottomNavigationBuilder(BuildContext context) {
   return BottomNavigationBar(
-    backgroundColor: whiteColor,
+    backgroundColor: white,
     currentIndex: _calculateSelectedIndex(context),
     selectedItemColor: customIndigoColor,
     onTap: (index) => _onItemTapped(index, context),

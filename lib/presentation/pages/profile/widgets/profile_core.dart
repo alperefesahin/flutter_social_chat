@@ -28,15 +28,21 @@ class ProfileCore extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomText(
-                text: '@$userName',
-                textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 26),
-                textPadding: const EdgeInsets.only(top: 12),
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: CustomText(
+                  text: '@$userName',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 26,
+                ),
               ),
-              CustomText(
-                text: userId,
-                textStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-                textPadding: const EdgeInsets.only(top: 5),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: CustomText(
+                  text: userId,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                ),
               ),
             ],
           ),

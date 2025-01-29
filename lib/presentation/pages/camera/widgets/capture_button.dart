@@ -14,15 +14,13 @@ class CaptureButton extends StatelessWidget {
       padding: const EdgeInsets.only(left: 100),
       child: IconButton(
         alignment: Alignment.bottomCenter,
-        icon: const Icon(Icons.camera, size: 50, color: whiteColor),
+        icon: const Icon(Icons.camera, size: 50, color: white),
         color: Colors.blue,
         onPressed: () {
           final cameraLensDirection = controller?.description.lensDirection;
           final filePath = takePicture(controller, context);
 
-          context
-              .read<CameraCubit>()
-              .takePicture(xfile: filePath, cameraLensDirection: cameraLensDirection);
+          context.read<CameraCubit>().takePicture(xfile: filePath, cameraLensDirection: cameraLensDirection);
         },
       ),
     );

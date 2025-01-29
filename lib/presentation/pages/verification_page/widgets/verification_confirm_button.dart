@@ -21,14 +21,14 @@ class VerificationConfirmButton extends StatelessWidget {
           context.read<PhoneNumberSignInCubit>().verifySmsCode();
         }
       },
-      splashColor: transparentColor,
-      highlightColor: transparentColor,
+      splashColor: transparent,
+      highlightColor: transparent,
       child: Container(
         margin: const EdgeInsets.only(top: 75),
         width: MediaQuery.of(context).size.width / 1.15,
         height: MediaQuery.of(context).size.height / 13,
         decoration: BoxDecoration(
-          color: blackColor.withValues(alpha: 0.25),
+          color: black.withValues(alpha: 0.25),
           borderRadius: const BorderRadius.all(
             Radius.circular(10),
           ),
@@ -36,11 +36,11 @@ class VerificationConfirmButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomText(
-              text: AppLocalizations.of(context)?.confirm ?? '',
-              textPadding: const EdgeInsets.only(left: 20),
-              textStyle: const TextStyle(
-                color: whiteColor,
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: CustomText(
+                text: AppLocalizations.of(context)?.confirm ?? '',
+                color: white,
                 fontWeight: FontWeight.w600,
                 fontSize: 26,
               ),
@@ -49,7 +49,7 @@ class VerificationConfirmButton extends StatelessWidget {
               width: 75,
               height: MediaQuery.of(context).size.height / 13,
               decoration: const BoxDecoration(
-                color: whiteColor,
+                color: white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10),
                   bottomRight: Radius.circular(10),

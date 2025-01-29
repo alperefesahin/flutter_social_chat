@@ -51,11 +51,11 @@ class _ChannelsPageState extends State<ChannelsPage> {
         centerTitle: false,
         fontSize: 40,
         appBarTitle: AppLocalizations.of(context)?.chats ?? '',
-        appBarBackgroundColor: transparentColor,
+        appBarBackgroundColor: transparent,
         textPadding: const EdgeInsets.only(left: 15),
         appBarTitleTextStyle: const TextStyle(
           fontWeight: FontWeight.w800,
-          color: blackColor,
+          color: black,
         ),
       ),
       body: Column(

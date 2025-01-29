@@ -43,11 +43,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: appBarBackgroundColor ?? scaffoldBackgroundColor,
       toolbarHeight: 80,
       elevation: 0,
-      shadowColor: shadowColor ?? transparentColor,
-      title: CustomText(
-        textStyle: TextStyle(fontSize: fontSize),
-        text: appBarTitle,
-        textPadding: textPadding,
+      shadowColor: shadowColor ?? transparent,
+      title: Padding(
+        padding: textPadding,
+        child: CustomText(
+          fontSize: fontSize,
+          text: appBarTitle,
+        ),
       ),
       titleTextStyle: appBarTitleTextStyle,
       leadingWidth: leadingWidth ?? 90,

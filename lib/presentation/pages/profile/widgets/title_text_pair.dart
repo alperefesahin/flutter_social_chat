@@ -10,15 +10,10 @@ class TitleTextPair extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomText(
-          text: title,
-          textStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-          textPadding: EdgeInsets.zero,
-        ),
-        CustomText(
-          text: text,
-          textStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-          textPadding: const EdgeInsets.only(top: 6),
+        CustomText(text: title, fontWeight: FontWeight.w600),
+        Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: CustomText(text: text, fontSize: 16),
         ),
       ],
     );
