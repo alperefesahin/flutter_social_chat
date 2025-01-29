@@ -41,27 +41,15 @@ class SignInVerificationPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: white,
           appBar: CustomAppBar(
-            centerTitle: true,
             leading: IconButton(
               onPressed: () {
                 context.read<PhoneNumberSignInCubit>().reset();
                 context.pop();
               },
-              icon: const Icon(
-                CupertinoIcons.back,
-                color: black,
-              ),
+              icon: const Icon(CupertinoIcons.back, color: black),
             ),
-            appBarBackgroundColor: white,
-            appBarTitle: AppLocalizations.of(context)?.verification ?? '',
-            appBarAction: Icons.lock,
-            appBarTitleTextStyle: const TextStyle(
-              color: black,
-              fontWeight: FontWeight.w500,
-            ),
-            appBarIconColor: black,
-            textPadding: EdgeInsets.zero,
-            fontSize: 20,
+            backgroundColor: white,
+            title: AppLocalizations.of(context)?.verification ?? '',
           ),
           body: VerificationPageBody(
             phoneNumber: phoneNumber,

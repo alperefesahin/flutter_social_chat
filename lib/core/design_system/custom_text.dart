@@ -20,7 +20,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.robotoCondensed(color: color, fontWeight: fontWeight, fontSize: fontSize),
+      style: GoogleFonts.roboto(color: color, fontWeight: fontWeight, fontSize: fontSize),
     );
   }
 }

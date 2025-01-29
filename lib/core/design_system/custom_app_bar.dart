@@ -5,68 +5,45 @@ import 'package:flutter_social_chat/core/design_system/custom_text.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({
     super.key,
-    required this.appBarTitle,
-    required this.fontSize,
-    required this.textPadding,
-    required this.centerTitle,
-    this.appBarAction,
-    this.appBarBackgroundColor,
-    this.appBarIconColor,
-    this.appBarTitleTextStyle,
-    this.actionsOnPressed,
-    this.shadowColor,
-    this.leadingWidth,
+    this.title,
+    this.backgroundColor,
     this.leading,
+    this.isTitleCentered = true,
+    this.titleColor = black,
+    this.titleFontSize = 20,
+    this.titleFontWeight = FontWeight.w500,
   }) : preferredSize = const Size.fromHeight(70.0);
 
   @override
   final Size preferredSize;
-  final bool centerTitle;
-  final String appBarTitle;
-  final IconData? appBarAction;
-  final Color? appBarBackgroundColor;
-  final Color? appBarIconColor;
-  final Color? shadowColor;
-  final double fontSize;
-  final double? leadingWidth;
+  final bool? isTitleCentered;
+  final String? title;
+  final Color? backgroundColor;
+  final Color? titleColor;
+  final double? titleFontSize;
+  final FontWeight? titleFontWeight;
   final Widget? leading;
-  final TextStyle? appBarTitleTextStyle;
-  final EdgeInsetsGeometry textPadding;
-  final Function()? actionsOnPressed;
 
   @override
   Widget build(BuildContext context) {
     final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
 
+    final appbarTitle = CustomText(
+      color: titleColor ?? black,
+      fontSize: titleFontSize ?? 20,
+      text: title!,
+      fontWeight: titleFontWeight ?? FontWeight.w500,
+    );
+
     return AppBar(
-      centerTitle: centerTitle,
-      backgroundColor: appBarBackgroundColor ?? scaffoldBackgroundColor,
+      centerTitle: isTitleCentered,
+      backgroundColor: backgroundColor ?? scaffoldBackgroundColor,
       toolbarHeight: 80,
       elevation: 0,
-      shadowColor: shadowColor ?? transparent,
-      title: Padding(
-        padding: textPadding,
-        child: CustomText(
-          fontSize: fontSize,
-          text: appBarTitle,
-        ),
-      ),
-      titleTextStyle: appBarTitleTextStyle,
-      leadingWidth: leadingWidth ?? 90,
+      leadingWidth: 90,
       leading: leading,
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: IconButton(
-            onPressed: actionsOnPressed,
-            icon: Icon(
-              appBarAction,
-              size: 28,
-              color: appBarIconColor,
-            ),
-          ),
-        ),
-      ],
+      shadowColor: transparent,
+      title: title != null ? appbarTitle : null,
     );
   }
 }

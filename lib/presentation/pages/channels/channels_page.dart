@@ -48,15 +48,11 @@ class _ChannelsPageState extends State<ChannelsPage> {
         userListController: userListController,
       ),
       appBar: CustomAppBar(
-        centerTitle: false,
-        fontSize: 40,
-        appBarTitle: AppLocalizations.of(context)?.chats ?? '',
-        appBarBackgroundColor: transparent,
-        textPadding: const EdgeInsets.only(left: 15),
-        appBarTitleTextStyle: const TextStyle(
-          fontWeight: FontWeight.w800,
-          color: black,
-        ),
+        isTitleCentered: false,
+        titleFontSize: 40,
+        title: AppLocalizations.of(context)?.chats ?? '',
+        backgroundColor: transparent,
+        titleFontWeight: FontWeight.w800,
       ),
       body: Column(
         children: [

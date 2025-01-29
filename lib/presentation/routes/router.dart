@@ -10,7 +10,7 @@ import 'package:flutter_social_chat/presentation/pages/create_new_chat/create_ne
 import 'package:flutter_social_chat/presentation/pages/landing/landing_page.dart';
 import 'package:flutter_social_chat/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:flutter_social_chat/presentation/pages/profile/profile_page.dart';
-import 'package:flutter_social_chat/view/sign_in/sign_in_page.dart';
+import 'package:flutter_social_chat/view/sign_in/sign_in_view.dart';
 import 'package:flutter_social_chat/presentation/pages/verification_page/sign_in_verification_page.dart';
 import 'package:flutter_social_chat/presentation/routes/codec.dart';
 import 'package:fpdart/fpdart.dart';
@@ -135,7 +135,7 @@ class AppRouter {
               child: child,
             );
           },
-          child: const SignInPage(),
+          child: const SignInView(),
         ),
       ),
       GoRoute(

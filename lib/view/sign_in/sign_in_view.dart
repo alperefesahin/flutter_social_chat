@@ -1,5 +1,4 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,8 +10,8 @@ import 'package:flutter_social_chat/core/design_system/custom_progress_indicator
 import 'package:flutter_social_chat/view/sign_in/widgets/sign_in_body.dart';
 import 'package:go_router/go_router.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+class SignInView extends StatelessWidget {
+  const SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,26 +50,21 @@ class SignInPage extends StatelessWidget {
             child: PopScope(
               canPop: false,
               onPopInvokedWithResult: (context, result) {},
-              child: const Scaffold(
-                body: CustomProgressIndicator(progressIndicatorColor: black),
-              ),
+              child: const Scaffold(body: CustomProgressIndicator(progressIndicatorColor: black)),
             ),
           );
         } else {
+          final String appbarTitle = AppLocalizations.of(context)?.signIn ?? '';
+
           return PopScope(
             canPop: false,
             onPopInvokedWithResult: (context, result) {},
             child: Scaffold(
+              body: const SignInViewBody(),
               appBar: CustomAppBar(
-                centerTitle: true,
-                appBarIconColor: white,
-                appBarBackgroundColor: customIndigoColor,
-                appBarTitle: AppLocalizations.of(context)?.signIn ?? '',
-                appBarAction: CupertinoIcons.line_horizontal_3_decrease,
-                fontSize: 20,
-                textPadding: EdgeInsets.zero,
+                backgroundColor: customIndigoColor,
+                title: appbarTitle,
               ),
-              body: const SignInPageBody(),
             ),
           );
         }

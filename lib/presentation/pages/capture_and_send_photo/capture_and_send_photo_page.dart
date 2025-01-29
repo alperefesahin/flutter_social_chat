@@ -42,10 +42,7 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
             child: const Icon(Icons.send),
           ),
           appBar: CustomAppBar(
-            centerTitle: false,
-            appBarTitle: '',
-            appBarAction: CupertinoIcons.line_horizontal_3_decrease,
-            appBarIconColor: black,
+            isTitleCentered: false,
             leading: IconButton(
               onPressed: () {
                 context.read<ChatManagementCubit>().reset();
@@ -56,8 +53,7 @@ class CaptureAndSendPhotoPage extends StatelessWidget {
                 color: black,
               ),
             ),
-            fontSize: 18,
-            textPadding: EdgeInsets.zero,
+            titleFontSize: 18,
           ),
           body: BlocBuilder<ChatManagementCubit, ChatManagementState>(
             builder: (context, state) {
