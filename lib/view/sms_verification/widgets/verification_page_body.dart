@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
 import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
-import 'package:flutter_social_chat/core/design_system/custom_text.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/confirmation_info_text_with_icon.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/confirmation_text_row.dart';
 import 'package:flutter_social_chat/view/sms_verification/widgets/resend_code_button.dart';
 import 'package:flutter_social_chat/view/sms_verification/widgets/verification_confirm_button.dart';
 import 'package:flutter_social_chat/view/sms_verification/widgets/verification_pin_field.dart';
@@ -24,83 +24,15 @@ class SmsVerificationViewBody extends StatelessWidget {
           children: [
             const CustomWaveAnimation(),
             if (state.isInProgress)
-              const CustomProgressIndicator(
-                progressIndicatorColor: white,
-              )
+              const CustomProgressIndicator(progressIndicatorColor: white)
             else
               Padding(
-                padding: const EdgeInsets.only(top: 140),
+                padding: const EdgeInsets.only(top: 160),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(
-                                right: 20,
-                                top: 5,
-                              ),
-                              child: Icon(
-                                Icons.check_rounded,
-                                size: 25,
-                                color: white,
-                              ),
-                            ),
-                            CustomText(
-                              text: AppLocalizations.of(context)?.confirmation ?? '',
-                              color: white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 32,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 25,
-                          top: 25,
-                          right: 25,
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.vibration,
-                              size: 50,
-                              color: white,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 25),
-                                child: RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: AppLocalizations.of(context)?.confirmationInfo,
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          color: white,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1.75,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: phoneNumber,
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          color: white,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      const ConfirmationTextWithIcon(),
+                      ConfirmationInfoTextWithIcon(phoneNumber: phoneNumber),
                       const VerificationPinField(),
                       const ResendCodeButton(),
                       VerificationConfirmButton(state: state),
