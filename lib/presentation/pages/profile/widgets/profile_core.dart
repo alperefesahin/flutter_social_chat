@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_text.dart';
+import 'package:flutter_social_chat/core/design_system/custom_text.dart';
 import 'package:flutter_social_chat/presentation/pages/profile/widgets/profile_image.dart';
 
 class ProfileCore extends StatelessWidget {
@@ -28,15 +28,21 @@ class ProfileCore extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomText(
-                text: '@$userName',
-                textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 26),
-                textPadding: const EdgeInsets.only(top: 12),
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: CustomText(
+                  text: '@$userName',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 26,
+                ),
               ),
-              CustomText(
-                text: userId,
-                textStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-                textPadding: const EdgeInsets.only(top: 5),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: CustomText(
+                  text: userId,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                ),
               ),
             ],
           ),

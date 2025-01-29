@@ -2,7 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/camera/camera_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 
 class CaptureButton extends StatelessWidget {
   const CaptureButton({super.key, this.controller});
@@ -14,15 +14,13 @@ class CaptureButton extends StatelessWidget {
       padding: const EdgeInsets.only(left: 100),
       child: IconButton(
         alignment: Alignment.bottomCenter,
-        icon: const Icon(Icons.camera, size: 50, color: whiteColor),
+        icon: const Icon(Icons.camera, size: 50, color: white),
         color: Colors.blue,
         onPressed: () {
           final cameraLensDirection = controller?.description.lensDirection;
           final filePath = takePicture(controller, context);
 
-          context
-              .read<CameraCubit>()
-              .takePicture(xfile: filePath, cameraLensDirection: cameraLensDirection);
+          context.read<CameraCubit>().takePicture(xfile: filePath, cameraLensDirection: cameraLensDirection);
         },
       ),
     );

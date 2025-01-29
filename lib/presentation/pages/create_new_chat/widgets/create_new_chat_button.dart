@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_text.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/design_system/custom_text.dart';
 
 class CreateNewChatButton extends StatelessWidget {
   const CreateNewChatButton({
@@ -31,8 +31,7 @@ class CreateNewChatButton extends StatelessWidget {
           text: isCreateNewChatPageForCreatingGroup
               ? AppLocalizations.of(context)?.createNewGroupChat ?? ''
               : AppLocalizations.of(context)?.createNewOneToOneChat ?? '',
-          textStyle: const TextStyle(fontSize: 16),
-          textPadding: EdgeInsets.zero,
+          fontSize: 16,
         ),
       ),
     );

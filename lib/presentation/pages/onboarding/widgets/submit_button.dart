@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -20,7 +21,9 @@ class SubmitButton extends StatelessWidget {
         controller: btnController,
         onPressed: () {
           btnController.reset();
-          context.read<AuthCubit>().createProfile();
+
+          final saveProfilePhoto = context.read<AuthManagementCubit>().createProfile();
+          context.read<AuthCubit>().completeProfileSetup(saveProfilePhoto);
         },
         animateOnTap: false,
         child: Text(

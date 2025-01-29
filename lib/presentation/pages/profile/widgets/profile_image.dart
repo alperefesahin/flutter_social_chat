@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({super.key, required this.userPhotoUrl});
@@ -35,7 +35,7 @@ class ProfileImage extends StatelessWidget {
           ),
         ),
         placeholder: (context, url) => Container(
-           constraints: BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: size.height / 6.5,
             maxHeight: size.height / 6.5,
           ),
@@ -45,13 +45,13 @@ class ProfileImage extends StatelessWidget {
               bottomRight: Radius.circular(20),
             ),
             border: Border.all(
-              color: whiteColor,
+              color: white,
               width: 4,
             ),
           ),
           child: const Center(
             child: CircularProgressIndicator(
-              color: blackColor,
+              color: black,
             ),
           ),
         ),

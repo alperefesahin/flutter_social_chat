@@ -1,8 +1,6 @@
 import 'package:flutter_social_chat/domain/microphone/i_microphone_service.dart';
-import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-@LazySingleton(as: IMicrophoneService)
 class MicrophoneService implements IMicrophoneService {
   @override
   Stream<PermissionStatus> get microphoneStateChanges {

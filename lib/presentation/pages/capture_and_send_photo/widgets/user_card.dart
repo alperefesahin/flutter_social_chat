@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_text.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/design_system/custom_text.dart';
 
 class UserCard extends StatelessWidget {
   const UserCard({
@@ -33,7 +33,7 @@ class UserCard extends StatelessWidget {
       width: deviceWidth,
       child: Card(
         margin: const EdgeInsets.all(10),
-        color: isUserSelected ? customGreyColor400 : whiteColor,
+        color: isUserSelected ? customGreyColor400 : white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +50,7 @@ class UserCard extends StatelessWidget {
                     ),
                     placeholder: (context, url) => const CircleAvatar(
                       radius: 40,
-                      child: CircularProgressIndicator(color: blackColor),
+                      child: CircularProgressIndicator(color: black),
                     ),
                   ),
                 ),
@@ -58,26 +58,34 @@ class UserCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText(
-                      text: memberName,
-                      textPadding: const EdgeInsets.only(left: 10, bottom: 10),
-                      textStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, bottom: 10),
+                      child: CustomText(
+                        text: memberName,
+                        fontSize: 22,
+                      ),
                     ),
-                    CustomText(
-                      text: memberlastMessageTime == AppLocalizations.of(context)?.startNewConversation
-                          ? AppLocalizations.of(context)?.startNewConversation ?? ''
-                          : AppLocalizations.of(context)?.lastMessageOn(memberlastMessageTime) ?? '',
-                      textPadding: const EdgeInsets.only(left: 10, bottom: 20),
-                      textStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, bottom: 20),
+                      child: CustomText(
+                        text: memberlastMessageTime == AppLocalizations.of(context)?.startNewConversation
+                            ? AppLocalizations.of(context)?.startNewConversation ?? ''
+                            : AppLocalizations.of(context)?.lastMessageOn(memberlastMessageTime) ?? '',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
-            CustomText(
-              text: channelCreatedTime,
-              textStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
-              textPadding: const EdgeInsets.only(top: 12, right: 12),
+            Padding(
+              padding: const EdgeInsets.only(top: 12, right: 12),
+              child: CustomText(
+                text: channelCreatedTime,
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+              ),
             ),
           ],
         ),

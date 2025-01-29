@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_app_bar.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_progress_indicator.dart';
+import 'package:flutter_social_chat/application/chat/chat_management/chat_management_state.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/design_system/custom_app_bar.dart';
+import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
 import 'package:flutter_social_chat/presentation/pages/create_new_chat/widgets/create_new_chat_button.dart';
 import 'package:flutter_social_chat/presentation/pages/create_new_chat/widgets/creating_group_chat_page_details.dart';
 import 'package:flutter_social_chat/presentation/pages/create_new_chat/widgets/user_list_view.dart';
@@ -35,27 +36,19 @@ class CreateNewChatPage extends StatelessWidget {
         onPopInvokedWithResult: (context, result) {},
         child: Scaffold(
           appBar: CustomAppBar(
-            centerTitle: false,
-            appBarTitle: '',
-            appBarAction: CupertinoIcons.line_horizontal_3_decrease,
-            appBarIconColor: blackColor,
+            isTitleCentered: false,
             leading: IconButton(
               onPressed: () {
                 context.read<ChatManagementCubit>().reset();
                 context.go(context.namedLocation('channels_page'));
               },
-              icon: const Icon(
-                CupertinoIcons.back,
-                color: blackColor,
-              ),
+              icon: const Icon(CupertinoIcons.back, color: black),
             ),
-            fontSize: 20,
-            textPadding: EdgeInsets.zero,
           ),
           body: BlocBuilder<ChatManagementCubit, ChatManagementState>(
             builder: (context, state) {
               if (state.isInProgress) {
-                return const CustomProgressIndicator(progressIndicatorColor: blackColor);
+                return const CustomProgressIndicator(progressIndicatorColor: black);
               } else {
                 return SingleChildScrollView(
                   child: RefreshIndicator(

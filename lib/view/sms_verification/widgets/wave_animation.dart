@@ -1,14 +1,12 @@
 // ignore_for_file: use_named_constants
 
 import 'package:flutter/material.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class CustomWaveAnimation extends StatelessWidget {
-  const CustomWaveAnimation({
-    super.key,
-  });
+  const CustomWaveAnimation({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,19 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/domain/auth/auth_failure.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
-import 'package:flutter_social_chat/injection.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
   StreamSubscription<Either<AuthFailure, (String, int?)>>? _phoneNumberSignInSubscription;
-  late final IAuthService _authService;
+  final IAuthService _authService;
   final Duration verificationCodeTimeout = const Duration(seconds: 60);
 
-  PhoneNumberSignInCubit() : super(PhoneNumberSignInState.empty()) {
-    _authService = getIt<IAuthService>();
-  }
+  PhoneNumberSignInCubit(this._authService) : super(PhoneNumberSignInState.empty());
 
   void phoneNumberChanged({required String phoneNumber}) {
     emit(state.copyWith(phoneNumber: phoneNumber));

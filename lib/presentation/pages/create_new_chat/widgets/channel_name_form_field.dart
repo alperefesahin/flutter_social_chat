@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 
 class ChannelNameFormField extends StatelessWidget {
   const ChannelNameFormField({super.key});
@@ -52,10 +52,10 @@ class ChannelNameFormField extends StatelessWidget {
             ),
             labelText: AppLocalizations.of(context)?.groupName,
             hintText: AppLocalizations.of(context)?.yourInspirationalGroupName,
-            iconColor: blackColor,
-            hintStyle: const TextStyle(color: blackColor),
-            labelStyle: const TextStyle(color: blackColor),
-            prefixIcon: const Icon(CupertinoIcons.group, color: blackColor),
+            iconColor: black,
+            hintStyle: const TextStyle(color: black),
+            labelStyle: const TextStyle(color: black),
+            prefixIcon: const Icon(CupertinoIcons.group, color: black),
           ),
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class SelectedUserItem extends StatelessWidget {
@@ -29,7 +29,7 @@ class SelectedUserItem extends StatelessWidget {
         ),
         placeholder: (context, url) => CircleAvatar(
           radius: itemSize / 2,
-          child: const CircularProgressIndicator(color: blackColor),
+          child: const CircularProgressIndicator(color: black),
         ),
       ),
     );

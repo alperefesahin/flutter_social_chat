@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_app_bar.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/custom_text_field.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/design_system/custom_app_bar.dart';
+import 'package:flutter_social_chat/core/design_system/custom_text_field.dart';
 import 'package:flutter_social_chat/presentation/pages/channels/widgets/animated_create_new_chat_button.dart';
 import 'package:flutter_social_chat/presentation/pages/channels/widgets/searched_channel.dart';
 import 'package:go_router/go_router.dart';
@@ -48,15 +48,11 @@ class _ChannelsPageState extends State<ChannelsPage> {
         userListController: userListController,
       ),
       appBar: CustomAppBar(
-        centerTitle: false,
-        fontSize: 40,
-        appBarTitle: AppLocalizations.of(context)?.chats ?? '',
-        appBarBackgroundColor: transparentColor,
-        textPadding: const EdgeInsets.only(left: 15),
-        appBarTitleTextStyle: const TextStyle(
-          fontWeight: FontWeight.w800,
-          color: blackColor,
-        ),
+        isTitleCentered: false,
+        titleFontSize: 40,
+        title: AppLocalizations.of(context)?.chats ?? '',
+        backgroundColor: transparent,
+        titleFontWeight: FontWeight.w800,
       ),
       body: Column(
         children: [

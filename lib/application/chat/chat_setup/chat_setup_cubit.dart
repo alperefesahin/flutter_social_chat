@@ -1,25 +1,18 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter_social_chat/application/chat/chat_setup/chat_setup_state.dart';
 import 'package:flutter_social_chat/domain/chat/chat_user_model.dart';
 import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';
-import 'package:flutter_social_chat/injection.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:injectable/injectable.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
-part 'chat_setup_state.dart';
-part 'chat_setup_cubit.freezed.dart';
+import 'package:get_it/get_it.dart';
 
-@lazySingleton
 class ChatSetupCubit extends HydratedCubit<ChatSetupState> {
-  late StreamSubscription<ChatUserModel>? _chatUserSubscription;
-
+  late final StreamSubscription<ChatUserModel>? _chatUserSubscription;
   late final IChatService _chatService;
 
   ChatSetupCubit() : super(ChatSetupState.empty()) {
-    _chatService = getIt<IChatService>();
+    _chatService = GetIt.instance<IChatService>();
 
     _chatUserSubscription = _chatService.chatAuthStateChanges.listen(_listenChatUserAuthStateChangesStream);
   }
@@ -27,7 +20,6 @@ class ChatSetupCubit extends HydratedCubit<ChatSetupState> {
   @override
   Future<void> close() async {
     await _chatUserSubscription?.cancel();
-
     super.close();
   }
 
@@ -39,17 +31,15 @@ class ChatSetupCubit extends HydratedCubit<ChatSetupState> {
     );
   }
 
-  @override
-  ChatSetupState? fromJson(Map<String, dynamic> json) {
-    return ChatSetupState.empty().copyWith(
-      chatUser: json['chatUser'],
-    );
-  }
-
-  @override
-  Map<String, dynamic>? toJson(ChatSetupState state) {
+  Map<String, dynamic> toJson(ChatSetupState state) {
     return {
       'chatUser': state.chatUser.toJson(),
     };
+  }
+
+  ChatSetupState fromJson(Map<String, dynamic> json) {
+    return ChatSetupState.empty().copyWith(
+      chatUser: ChatUserModel.fromJson(json['chatUser']),
+    );
   }
 }

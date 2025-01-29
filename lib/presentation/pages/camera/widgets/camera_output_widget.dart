@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_social_chat/application/camera/camera_cubit.dart';
-import 'package:flutter_social_chat/presentation/common_widgets/colors.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
@@ -55,7 +55,7 @@ class CameraOutputWidget extends StatelessWidget {
               },
               icon: const Icon(
                 CupertinoIcons.clear,
-                color: whiteColor,
+                color: white,
                 size: 30,
               ),
             ),
