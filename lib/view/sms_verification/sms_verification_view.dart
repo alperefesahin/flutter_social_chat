@@ -8,20 +8,19 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_app_bar.dart';
-import 'package:flutter_social_chat/presentation/pages/verification_page/widgets/verification_page_body.dart';
+import 'package:flutter_social_chat/core/design_system/popscope_scaffold.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/verification_page_body.dart';
 import 'package:go_router/go_router.dart';
 
-class SignInVerificationPage extends StatelessWidget {
-  const SignInVerificationPage({
-    super.key,
-    required this.state,
-  });
+class SmsVerificationView extends StatelessWidget {
+  const SmsVerificationView({super.key, required this.state});
 
   final PhoneNumberSignInState state;
 
   @override
   Widget build(BuildContext context) {
-    final phoneNumber = state.phoneNumber;
+    final String phoneNumber = state.phoneNumber;
+    final String appBarTitle = AppLocalizations.of(context)?.verification ?? '';
 
     return BlocListener<AuthCubit, AuthState>(
       listenWhen: (p, c) => p.isLoggedIn != c.isLoggedIn,
@@ -30,31 +29,26 @@ class SignInVerificationPage extends StatelessWidget {
         final isOnboardingCompleted = state.authUser.isOnboardingCompleted;
 
         if (isLoggedIn && isOnboardingCompleted) {
-          context.go(context.namedLocation('channels_page'));
+          context.go('/channels_page');
         } else if (isLoggedIn && !isOnboardingCompleted) {
-          context.go(context.namedLocation('onboarding_page'));
+          context.go('/onboarding_page');
         }
       },
-      child: PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (context, result) {},
-        child: Scaffold(
+      child: PopScopeScaffold(
+        backgroundColor: white,
+        appBar: CustomAppBar(
+          leading: IconButton(
+            onPressed: () {
+              context.read<PhoneNumberSignInCubit>().reset();
+
+              context.pop();
+            },
+            icon: const Icon(CupertinoIcons.back, color: black),
+          ),
           backgroundColor: white,
-          appBar: CustomAppBar(
-            leading: IconButton(
-              onPressed: () {
-                context.read<PhoneNumberSignInCubit>().reset();
-                context.pop();
-              },
-              icon: const Icon(CupertinoIcons.back, color: black),
-            ),
-            backgroundColor: white,
-            title: AppLocalizations.of(context)?.verification ?? '',
-          ),
-          body: VerificationPageBody(
-            phoneNumber: phoneNumber,
-          ),
+          title: appBarTitle,
         ),
+        body: SmsVerificationViewBody(phoneNumber: phoneNumber),
       ),
     );
   }

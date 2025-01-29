@@ -11,7 +11,7 @@ import 'package:flutter_social_chat/presentation/pages/landing/landing_page.dart
 import 'package:flutter_social_chat/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:flutter_social_chat/presentation/pages/profile/profile_page.dart';
 import 'package:flutter_social_chat/view/sign_in/sign_in_view.dart';
-import 'package:flutter_social_chat/presentation/pages/verification_page/sign_in_verification_page.dart';
+import 'package:flutter_social_chat/view/sms_verification/sms_verification_view.dart';
 import 'package:flutter_social_chat/presentation/routes/codec.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
@@ -158,7 +158,7 @@ class AppRouter {
             ),
           );
 
-          return SignInVerificationPage(state: phoneNumberSignInState);
+          return SmsVerificationView(state: phoneNumberSignInState);
         },
       ),
       GoRoute(

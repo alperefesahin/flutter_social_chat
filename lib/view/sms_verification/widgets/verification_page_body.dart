@@ -6,13 +6,13 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
 import 'package:flutter_social_chat/core/design_system/custom_text.dart';
-import 'package:flutter_social_chat/presentation/pages/verification_page/widgets/resend_code_button.dart';
-import 'package:flutter_social_chat/presentation/pages/verification_page/widgets/verification_confirm_button.dart';
-import 'package:flutter_social_chat/presentation/pages/verification_page/widgets/verification_pin_field.dart';
-import 'package:flutter_social_chat/presentation/pages/verification_page/widgets/wave_animation.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/resend_code_button.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/verification_confirm_button.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/verification_pin_field.dart';
+import 'package:flutter_social_chat/view/sms_verification/widgets/wave_animation.dart';
 
-class VerificationPageBody extends StatelessWidget {
-  const VerificationPageBody({super.key, required this.phoneNumber});
+class SmsVerificationViewBody extends StatelessWidget {
+  const SmsVerificationViewBody({super.key, required this.phoneNumber});
 
   final String phoneNumber;
 

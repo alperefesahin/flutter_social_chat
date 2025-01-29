@@ -46,7 +46,8 @@ class PhoneNumberInputCard extends StatelessWidget {
                     hoverColor: transparent,
                     onTap: () {
                       if (state.isPhoneNumberInputValidated) {
-                        context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
+                        //! TODO: DO NOT FORGET HERE
+                        /* context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber(); */
 
                         context.push(
                           '/sign_in_verification_page',
