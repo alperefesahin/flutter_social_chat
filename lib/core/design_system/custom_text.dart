@@ -5,10 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomText extends StatelessWidget {
   const CustomText({
     super.key,
+    required this.text,
     this.color = black,
     this.fontWeight = FontWeight.w500,
     this.fontSize = 20,
-    required this.text,
   });
 
   final String text;
