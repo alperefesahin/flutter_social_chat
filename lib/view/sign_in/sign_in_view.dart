@@ -8,7 +8,7 @@ import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_app_bar.dart';
 import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
 import 'package:flutter_social_chat/core/design_system/popscope_scaffold.dart';
-import 'package:flutter_social_chat/view/sign_in/widgets/sign_in_view_widget.dart';
+import 'package:flutter_social_chat/view/sign_in/widgets/sign_in_view_body.dart';
 import 'package:go_router/go_router.dart';
 
 class SignInView extends StatelessWidget {
@@ -54,7 +54,7 @@ class SignInView extends StatelessWidget {
           final String appBarTitle = AppLocalizations.of(context)?.signIn ?? '';
 
           return PopScopeScaffold(
-            body: const SignInViewWidget(),
+            body: const SignInViewBody(),
             appBar: CustomAppBar(backgroundColor: customIndigoColor, title: appBarTitle, titleColor: white),
           );
         }

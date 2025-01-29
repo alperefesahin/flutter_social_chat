@@ -36,6 +36,7 @@ class SmsVerificationView extends StatelessWidget {
       },
       child: PopScopeScaffold(
         backgroundColor: white,
+        body: SmsVerificationViewBody(phoneNumber: phoneNumber),
         appBar: CustomAppBar(
           leading: IconButton(
             onPressed: () {
@@ -48,7 +49,6 @@ class SmsVerificationView extends StatelessWidget {
           backgroundColor: white,
           title: appBarTitle,
         ),
-        body: SmsVerificationViewBody(phoneNumber: phoneNumber),
       ),
     );
   }

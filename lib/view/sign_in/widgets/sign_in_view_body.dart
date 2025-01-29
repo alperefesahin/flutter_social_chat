@@ -5,8 +5,8 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/view/sign_in/widgets/bottom_section_of_the_page.dart';
 
-class SignInViewWidget extends StatelessWidget {
-  const SignInViewWidget({super.key});
+class SignInViewBody extends StatelessWidget {
+  const SignInViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
