@@ -1,4 +1,3 @@
-// ignore_for_file: no_logic_in_create_state
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,15 +6,16 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-class PhoneNumberSignInSection extends StatefulWidget {
-  const PhoneNumberSignInSection({super.key, required this.state});
+class PhoneNumberInputField extends StatefulWidget {
+  const PhoneNumberInputField({super.key, required this.state});
 
   final PhoneNumberSignInState state;
+
   @override
-  State<PhoneNumberSignInSection> createState() => _PhoneNumberSignInSectionState(state);
+  State<PhoneNumberInputField> createState() => _PhoneNumberInputFieldState(state);
 }
 
-class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
+class _PhoneNumberInputFieldState extends State<PhoneNumberInputField> {
   final PhoneNumberSignInState state;
   final PhoneNumber initialPhone = PhoneNumber(isoCode: 'TR');
 
@@ -25,44 +25,38 @@ class _PhoneNumberSignInSectionState extends State<PhoneNumberSignInSection> {
     super.didChangeDependencies();
   }
 
-  _PhoneNumberSignInSectionState(this.state);
+  _PhoneNumberInputFieldState(this.state);
 
   @override
   Widget build(BuildContext context) {
+    final String hintText = AppLocalizations.of(context)?.phoneNumber ?? '';
+
     return BlocBuilder<PhoneNumberSignInCubit, PhoneNumberSignInState>(
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(
-            left: 30,
-            right: 30,
-            top: 20,
-          ),
+        return Container(
+          width: double.infinity,
+          height: 100,
+          padding: const EdgeInsets.symmetric(horizontal: 28),
           child: InternationalPhoneNumberInput(
             onInputChanged: (PhoneNumber phoneNumber) {
-              context.read<PhoneNumberSignInCubit>().phoneNumberChanged(
-                    phoneNumber: phoneNumber.phoneNumber!,
-                  );
+              context.read<PhoneNumberSignInCubit>().phoneNumberChanged(phoneNumber: phoneNumber.phoneNumber!);
             },
             onInputValidated: (bool isPhoneNumberInputValidated) {
-              context.read<PhoneNumberSignInCubit>().updateNextButtonStatus(
-                    isPhoneNumberInputValidated: isPhoneNumberInputValidated,
-                  );
+              context
+                  .read<PhoneNumberSignInCubit>()
+                  .updateNextButtonStatus(isPhoneNumberInputValidated: isPhoneNumberInputValidated);
             },
             inputDecoration: InputDecoration(
-              hintText: AppLocalizations.of(context)?.phoneNumber,
-              focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: customIndigoColor,
-                ),
-              ),
+              hintText: hintText,
+              focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: customIndigoColor)),
             ),
-            selectorConfig: const SelectorConfig(
-              selectorType: PhoneInputSelectorType.DIALOG,
-            ),
+            selectorConfig:
+                const SelectorConfig(selectorType: PhoneInputSelectorType.BOTTOM_SHEET, useBottomSheetSafeArea: true),
             autoValidateMode: AutovalidateMode.onUserInteraction,
             initialValue: initialPhone,
             formatInput: false,
             inputBorder: const OutlineInputBorder(),
+            cursorColor: customIndigoColor,
           ),
         );
       },

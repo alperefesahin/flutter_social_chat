@@ -9,114 +9,76 @@ import 'package:flutter_social_chat/view/sign_in/widgets/phone_number_sign_in_se
 import 'package:flutter_social_chat/presentation/routes/codec.dart';
 import 'package:go_router/go_router.dart';
 
-class BottomSectionOfThePage extends StatelessWidget {
-  const BottomSectionOfThePage({super.key, required this.size});
-
-  final Size size;
+class PhoneNumberInputCard extends StatelessWidget {
+  const PhoneNumberInputCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PhoneNumberSignInCubit, PhoneNumberSignInState>(
       builder: (context, state) {
+        final Size size = MediaQuery.of(context).size;
+
+        final String signInWithPhoneNumber = AppLocalizations.of(context)?.signInWithPhoneNumber ?? '';
+        final String smsInformationMessage = AppLocalizations.of(context)?.smsInformationMessage ?? '';
+
         return SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.only(
-              top: size.height / 3,
-              right: 25,
-              left: 25,
-              bottom: 25,
-            ),
-            child: Container(
-              constraints: BoxConstraints(
-                maxHeight: size.height / 2,
-                maxWidth: size.width,
-                minHeight: size.height / 2.5,
-                minWidth: size.width,
-              ),
-              child: Card(
-                color: white,
-                elevation: 4.0,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 30),
-                      child: Row(
-                        children: [
-                          CustomText(
-                            text: AppLocalizations.of(context)?.signInWithPhoneNumber ?? '',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Icon(
-                              Icons.keyboard_arrow_down,
-                              size: 20,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    PhoneNumberSignInSection(
-                      state: state,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 25,
-                        vertical: 45,
-                      ),
-                      child: CustomText(
-                        text: AppLocalizations.of(context)?.smsInformationMessage ?? '',
-                        fontSize: 16,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        if (state.isPhoneNumberInputValidated) {
-                          context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
+            width: size.width,
+            padding: EdgeInsets.only(top: size.height / 3, right: 24, left: 24, bottom: 24),
+            child: Card(
+              color: white,
+              elevation: 4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 28, left: 28),
+                    child: CustomText(text: signInWithPhoneNumber, fontWeight: FontWeight.w600),
+                  ),
+                  PhoneNumberInputField(state: state),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
+                    child: CustomText(text: smsInformationMessage, fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                  InkWell(
+                    highlightColor: transparent,
+                    splashColor: transparent,
+                    hoverColor: transparent,
+                    onTap: () {
+                      if (state.isPhoneNumberInputValidated) {
+                        context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
 
-                          context.push(
-                            '/sign_in_verification_page',
-                            extra: PhoneNumberSignInStateCodec.encode({
-                              'phoneNumber': state.phoneNumber,
-                              'smsCode': state.smsCode,
-                              'verificationId': state.verificationIdOption.toNullable(),
-                              'isInProgress': state.isInProgress,
-                              'isPhoneNumberInputValidated': state.isPhoneNumberInputValidated,
-                              'phoneNumberPair': state.phoneNumberAndResendTokenPair.$1,
-                              'resendToken': state.phoneNumberAndResendTokenPair.$2,
-                            }),
-                          );
-                        }
-                      },
+                        context.push(
+                          '/sign_in_verification_page',
+                          extra: PhoneNumberSignInStateCodec.encode({
+                            'phoneNumber': state.phoneNumber,
+                            'smsCode': state.smsCode,
+                            'verificationId': state.verificationIdOption.toNullable(),
+                            'isInProgress': state.isInProgress,
+                            'isPhoneNumberInputValidated': state.isPhoneNumberInputValidated,
+                            'phoneNumberPair': state.phoneNumberAndResendTokenPair.$1,
+                            'resendToken': state.phoneNumberAndResendTokenPair.$2,
+                          }),
+                        );
+                      }
+                    },
+                    child: Center(
                       child: Container(
-                        constraints: BoxConstraints(
-                          minHeight: size.height / 10,
-                          minWidth: size.width / 4.7,
-                        ),
+                        height: 75,
+                        width: 75,
+                        margin: const EdgeInsets.only(top: 40, bottom: 60),
                         decoration: BoxDecoration(
                           color: customIndigoColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(60),
-                          ),
+                          borderRadius: const BorderRadius.all(Radius.circular(36)),
                           boxShadow: [
-                            BoxShadow(
-                              color: customIndigoColor.withValues(alpha: 0),
-                              spreadRadius: 4,
-                              blurRadius: 30,
-                              // changes position of shadow
-                            ),
+                            BoxShadow(blurRadius: 50, color: customIndigoColor.withValues(alpha: 0.75)),
                           ],
                         ),
-                        child: const Icon(
-                          Icons.arrow_forward,
-                          size: 35,
-                          color: white,
-                        ),
+                        child: const Icon(Icons.arrow_forward, size: 28, color: white),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

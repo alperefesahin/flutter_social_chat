@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
 
-    final appbarTitle = CustomText(
+    final appBarTitle = CustomText(
       color: titleColor ?? black,
       fontSize: titleFontSize ?? 20,
       text: title!,
@@ -42,8 +42,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leadingWidth: 90,
       leading: leading,
+      surfaceTintColor: backgroundColor,
       shadowColor: transparent,
-      title: title != null ? appbarTitle : null,
+      title: title != null ? appBarTitle : null,
     );
   }
 }

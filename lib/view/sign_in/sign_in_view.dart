@@ -7,7 +7,8 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/design_system/custom_app_bar.dart';
 import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
-import 'package:flutter_social_chat/view/sign_in/widgets/sign_in_body.dart';
+import 'package:flutter_social_chat/core/design_system/popscope_scaffold.dart';
+import 'package:flutter_social_chat/view/sign_in/widgets/sign_in_view_widget.dart';
 import 'package:go_router/go_router.dart';
 
 class SignInView extends StatelessWidget {
@@ -47,25 +48,14 @@ class SignInView extends StatelessWidget {
                 },
               );
             },
-            child: PopScope(
-              canPop: false,
-              onPopInvokedWithResult: (context, result) {},
-              child: const Scaffold(body: CustomProgressIndicator(progressIndicatorColor: black)),
-            ),
+            child: const PopScopeScaffold(body: CustomProgressIndicator(progressIndicatorColor: black)),
           );
         } else {
-          final String appbarTitle = AppLocalizations.of(context)?.signIn ?? '';
+          final String appBarTitle = AppLocalizations.of(context)?.signIn ?? '';
 
-          return PopScope(
-            canPop: false,
-            onPopInvokedWithResult: (context, result) {},
-            child: Scaffold(
-              body: const SignInViewBody(),
-              appBar: CustomAppBar(
-                backgroundColor: customIndigoColor,
-                title: appbarTitle,
-              ),
-            ),
+          return PopScopeScaffold(
+            body: const SignInViewWidget(),
+            appBar: CustomAppBar(backgroundColor: customIndigoColor, title: appBarTitle, titleColor: white),
           );
         }
       },

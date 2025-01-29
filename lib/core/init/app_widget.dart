@@ -10,6 +10,7 @@ import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_social_chat/application/connectivity/connectivity_cubit.dart';
 import 'package:flutter_social_chat/application/connectivity/connectivity_state.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
 import 'package:flutter_social_chat/core/di/dependency_injector.dart';
 import 'package:flutter_social_chat/presentation/routes/router.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
@@ -64,6 +65,13 @@ class AppWidget extends StatelessWidget {
             }
           },
           child: MaterialApp.router(
+            theme: ThemeData(
+              textSelectionTheme: const TextSelectionThemeData(
+                cursorColor: customIndigoColor,
+                selectionColor: customIndigoColor,
+                selectionHandleColor: customIndigoColor,
+              ),
+            ),
             debugShowCheckedModeBanner: false,
             routerConfig: appRouter.router,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -71,10 +79,7 @@ class AppWidget extends StatelessWidget {
             builder: (context, child) {
               final client = getIt<StreamChatClient>();
 
-              child = StreamChat(
-                client: client,
-                child: child,
-              );
+              child = StreamChat(client: client, child: child);
               child = botToastBuilder(context, child);
 
               return child;
