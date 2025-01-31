@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_social_chat/application/auth/auth_setup/auth_state.dart';
+import 'package:flutter_social_chat/view/sms_verification/cubit/auth_state.dart';
 import 'package:flutter_social_chat/domain/auth/auth_user_model.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';

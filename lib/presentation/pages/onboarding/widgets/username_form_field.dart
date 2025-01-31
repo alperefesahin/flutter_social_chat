@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
-import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
+import 'package:flutter_social_chat/application/auth_management/auth_management_cubit.dart';
+import 'package:flutter_social_chat/view/sms_verification/cubit/auth_cubit.dart';
 import 'package:flutter_social_chat/core/design_system/custom_text_field.dart';
 
 class UsernameFormField extends StatelessWidget {

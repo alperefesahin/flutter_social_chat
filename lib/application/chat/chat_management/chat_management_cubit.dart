@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
+import 'package:flutter_social_chat/view/sms_verification/cubit/auth_cubit.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_state.dart';
 import 'package:flutter_social_chat/domain/chat/i_chat_service.dart';
 import 'package:flutter_social_chat/infrastructure/core/firestore_helpers.dart';
