@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/constants/enums/router_enum.dart';
 import 'package:flutter_social_chat/view/sms_verification/cubit/auth_cubit.dart';
 import 'package:flutter_social_chat/view/sms_verification/cubit/auth_state.dart';
 import 'package:flutter_social_chat/core/design_system/custom_progress_indicator.dart';
@@ -26,11 +28,11 @@ class _LandingPageState extends State<LandingPage> {
           final bool isOnboardingCompleted = context.read<AuthCubit>().state.authUser.isOnboardingCompleted;
 
           if (isUserLoggedIn && !isOnboardingCompleted) {
-            context.go(context.namedLocation('onboarding_page'));
+            context.go(RouterEnum.onboardingView.routeName);
           } else if (isUserLoggedIn && isOnboardingCompleted) {
-            context.go(context.namedLocation('channels_page'));
+            context.go(RouterEnum.channelsView.routeName);
           } else {
-            context.go(context.namedLocation('sign_in_page'));
+            context.go(RouterEnum.signInView.routeName);
           }
         }
       },
@@ -48,20 +50,15 @@ class _LandingPageState extends State<LandingPage> {
         final bool isOnboardingCompleted = state.authUser.isOnboardingCompleted;
 
         if (isUserLoggedIn && !isOnboardingCompleted) {
-          context.go(context.namedLocation('onboarding_page'));
+          context.go(RouterEnum.onboardingView.routeName);
         } else if (isUserLoggedIn && isOnboardingCompleted) {
-          context.go(context.namedLocation('channels_page'));
+          context.go(RouterEnum.channelsView.routeName);
+          ;
         } else {
-          context.go(context.namedLocation('sign_in_page'));
+          context.go(RouterEnum.signInView.routeName);
         }
       },
-      child: const Scaffold(
-        body: Center(
-          child: CustomProgressIndicator(
-            progressIndicatorColor: Colors.black,
-          ),
-        ),
-      ),
+      child: const Scaffold(body: Center(child: CustomProgressIndicator(progressIndicatorColor: black))),
     );
   }
 }
