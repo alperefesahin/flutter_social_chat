@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
-import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
-import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
+import 'package:flutter_social_chat/application/auth_management/auth_management_cubit.dart';
+import 'package:flutter_social_chat/view/sms_verification/cubit/auth_cubit.dart';
+import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_cubit.dart';
 import 'package:flutter_social_chat/application/camera/camera_cubit.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_social_chat/application/chat/chat_setup/chat_setup_cubit.dart';
