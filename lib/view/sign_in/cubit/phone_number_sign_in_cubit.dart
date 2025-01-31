@@ -7,11 +7,12 @@ import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:fpdart/fpdart.dart';
 
 class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
+  PhoneNumberSignInCubit(this._authService) : super(PhoneNumberSignInState.empty());
+
   StreamSubscription<Either<AuthFailure, (String, int?)>>? _phoneNumberSignInSubscription;
-  final IAuthService _authService;
   final Duration verificationCodeTimeout = const Duration(seconds: 60);
 
-  PhoneNumberSignInCubit(this._authService) : super(PhoneNumberSignInState.empty());
+  final IAuthService _authService;
 
   void phoneNumberChanged({required String phoneNumber}) {
     emit(state.copyWith(phoneNumber: phoneNumber));
@@ -48,6 +49,7 @@ class PhoneNumberSignInCubit extends Cubit<PhoneNumberSignInState> {
     if (state.isInProgress) {
       return;
     }
+
     state.verificationIdOption.fold(
       () {
         //Verification id does not exist. This should not happen.

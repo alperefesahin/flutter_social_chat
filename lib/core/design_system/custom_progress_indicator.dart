@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:progress_indicators/progress_indicators.dart';
 
 class CustomProgressIndicator extends StatelessWidget {
   const CustomProgressIndicator({
@@ -12,9 +11,10 @@ class CustomProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: JumpingDotsProgressIndicator(
-        fontSize: 50,
-        color: progressIndicatorColor,
+      child: SizedBox(
+        width: 50,
+        height: 50,
+        child: CircularProgressIndicator(color: progressIndicatorColor),
       ),
     );
   }

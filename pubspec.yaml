@@ -36,7 +36,6 @@ dependencies:
   wave: ^0.2.2
   pin_code_fields: ^8.0.1
   bot_toast: ^4.1.3
-  progress_indicators: ^1.0.0
   flutter_expandable_fab: ^2.3.0
   cupertino_icons: ^1.0.8
   image_picker: ^1.1.2
