@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_social_chat/application/auth/auth_management/auth_management_cubit.dart';
 import 'package:flutter_social_chat/application/auth/auth_setup/auth_cubit.dart';
-import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_cubit.dart';
+import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_cubit.dart';
 import 'package:flutter_social_chat/application/chat/chat_management/chat_management_cubit.dart';
 import 'package:flutter_social_chat/application/connectivity/connectivity_cubit.dart';
 import 'package:flutter_social_chat/application/connectivity/connectivity_state.dart';

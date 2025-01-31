@@ -1,6 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
+import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/presentation/pages/bottom_tab/bottom_tab.dart';
 import 'package:flutter_social_chat/presentation/pages/camera/camera_page.dart';
 import 'package:flutter_social_chat/presentation/pages/capture_and_send_photo/capture_and_send_photo_page.dart';

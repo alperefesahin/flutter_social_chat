@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_social_chat/application/auth/phone_number_sign_in/phone_number_sign_in_state.dart';
+import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/domain/auth/auth_failure.dart';
 import 'package:flutter_social_chat/domain/auth/i_auth_service.dart';
 import 'package:fpdart/fpdart.dart';
