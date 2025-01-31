@@ -1,5 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_social_chat/core/constants/enums/router_enum.dart';
 import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/presentation/pages/bottom_tab/bottom_tab.dart';
 import 'package:flutter_social_chat/presentation/pages/camera/camera_page.dart';
@@ -27,17 +28,13 @@ class AppRouter {
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     observers: [botToastNavigatorObserver],
-    initialLocation: '/',
+    initialLocation: RouterEnum.initialLocation.routeName,
     routes: [
       GoRoute(
-        name: '/',
-        path: '/',
+        path: RouterEnum.initialLocation.routeName,
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
+            return FadeTransition(opacity: animation, child: child);
           },
           child: const LandingPage(),
         ),
@@ -57,42 +54,30 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            name: 'channels_page',
-            path: '/channels_page',
+            path: RouterEnum.channelsView.routeName,
             pageBuilder: (context, state) {
               return CustomTransitionPage(
                 transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                  return FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  );
+                  return FadeTransition(opacity: animation, child: child);
                 },
                 child: const ChannelsPage(),
               );
             },
           ),
           GoRoute(
-            name: 'camera_page',
-            path: '/camera_page',
+            path: RouterEnum.cameraView.routeName,
             pageBuilder: (context, state) => CustomTransitionPage(
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return FadeTransition(
-                  opacity: animation,
-                  child: child,
-                );
+                return FadeTransition(opacity: animation, child: child);
               },
               child: const CameraPage(),
             ),
           ),
           GoRoute(
-            name: 'profile_page',
-            path: '/profile_page',
+            path: RouterEnum.profileView.routeName,
             pageBuilder: (context, state) => CustomTransitionPage(
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return FadeTransition(
-                  opacity: animation,
-                  child: child,
-                );
+                return FadeTransition(opacity: animation, child: child);
               },
               child: const ProfilePage(),
             ),
@@ -100,16 +85,14 @@ class AppRouter {
         ],
       ),
       GoRoute(
-        name: 'chat_page',
-        path: '/chat_page',
+        path: RouterEnum.chatView.routeName,
         builder: (context, state) {
           final channel = state.extra as Channel?;
           return ChatPage(channel: channel!);
         },
       ),
       GoRoute(
-        name: 'capture_and_send_photo_page',
-        path: '/capture_and_send_photo_page',
+        path: RouterEnum.captureAndSendPhotoView.routeName,
         builder: (context, state) {
           final extraParameters = state.extra as Map<String, dynamic>?;
 
@@ -126,21 +109,16 @@ class AppRouter {
         },
       ),
       GoRoute(
-        name: 'sign_in_page',
-        path: '/sign_in_page',
+        path: RouterEnum.signInView.routeName,
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
+            return FadeTransition(opacity: animation, child: child);
           },
           child: const SignInView(),
         ),
       ),
       GoRoute(
-        name: 'sign_in_verification_page',
-        path: '/sign_in_verification_page',
+        path: RouterEnum.signInVerificationView.routeName,
         builder: (context, state) {
           final String? encodedExtras = state.extra as String?;
 
@@ -162,8 +140,7 @@ class AppRouter {
         },
       ),
       GoRoute(
-        name: 'create_new_chat_page',
-        path: '/create_new_chat_page',
+        path: RouterEnum.createNewChatView.routeName,
         builder: (context, state) {
           final extraParameters = state.extra as Map<String, dynamic>?;
 
@@ -184,14 +161,10 @@ class AppRouter {
         },
       ),
       GoRoute(
-        name: 'onboarding_page',
-        path: '/onboarding_page',
+        path: RouterEnum.onboardingView.routeName,
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
+            return FadeTransition(opacity: animation, child: child);
           },
           child: const OnboardingPage(),
         ),
