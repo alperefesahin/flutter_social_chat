@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_social_chat/core/constants/colors.dart';
+import 'package:flutter_social_chat/core/constants/enums/router_enum.dart';
 import 'package:go_router/go_router.dart';
 
 Widget bottomNavigationBuilder(BuildContext context) {
@@ -34,13 +35,13 @@ Widget bottomNavigationBuilder(BuildContext context) {
 int _calculateSelectedIndex(BuildContext context) {
   final String location = GoRouterState.of(context).uri.toString();
 
-  if (location == '/channels_page') {
+  if (location == RouterEnum.channelsView.routeName) {
     return 0;
   }
-  if (location == '/camera_page') {
+  if (location == RouterEnum.cameraView.routeName) {
     return 1;
   }
-  if (location == '/profile_page') {
+  if (location == RouterEnum.profileView.routeName) {
     return 2;
   }
   return 0;
@@ -49,13 +50,13 @@ int _calculateSelectedIndex(BuildContext context) {
 void _onItemTapped(int index, BuildContext context) {
   switch (index) {
     case 0:
-      GoRouter.of(context).go('/channels_page');
+      GoRouter.of(context).go(RouterEnum.channelsView.routeName);
       break;
     case 1:
-      GoRouter.of(context).go('/camera_page');
+      GoRouter.of(context).go(RouterEnum.cameraView.routeName);
       break;
     case 2:
-      GoRouter.of(context).go('/profile_page');
+      GoRouter.of(context).go(RouterEnum.profileView.routeName);
       break;
   }
 }

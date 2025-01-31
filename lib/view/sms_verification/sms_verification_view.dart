@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_social_chat/core/constants/enums/router_enum.dart';
 import 'package:flutter_social_chat/view/sms_verification/cubit/auth_cubit.dart';
 import 'package:flutter_social_chat/view/sms_verification/cubit/auth_state.dart';
 import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_cubit.dart';
@@ -29,9 +30,9 @@ class SmsVerificationView extends StatelessWidget {
         final isOnboardingCompleted = state.authUser.isOnboardingCompleted;
 
         if (isLoggedIn && isOnboardingCompleted) {
-          context.go('/channels_page');
+          context.go(RouterEnum.channelsView.routeName);
         } else if (isLoggedIn && !isOnboardingCompleted) {
-          context.go('/onboarding_page');
+          context.go(RouterEnum.onboardingView.routeName);
         }
       },
       child: PopScopeScaffold(

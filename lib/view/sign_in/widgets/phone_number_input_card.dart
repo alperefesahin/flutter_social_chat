@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_social_chat/core/constants/enums/router_enum.dart';
 import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_cubit.dart';
 import 'package:flutter_social_chat/view/sign_in/cubit/phone_number_sign_in_state.dart';
 import 'package:flutter_social_chat/core/constants/colors.dart';
@@ -49,7 +50,7 @@ class PhoneNumberInputCard extends StatelessWidget {
                         context.read<PhoneNumberSignInCubit>().signInWithPhoneNumber();
 
                         context.push(
-                          '/sign_in_verification_page',
+                          RouterEnum.signInVerificationView.routeName,
                           extra: PhoneNumberSignInStateCodec.encode({
                             'phoneNumber': state.phoneNumber,
                             'smsCode': state.smsCode,
